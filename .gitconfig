@@ -9,9 +9,9 @@
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	# Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
+	t = tag -l
+	br=branch -a
+	rem = remote -v
 
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
@@ -50,7 +50,7 @@
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
-    a   = add -A
+    a   = add
     all   = add -A :/
     ci  = commit -am
     br  = branch

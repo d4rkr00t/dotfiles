@@ -3,6 +3,26 @@ function mkd() {
     mkdir -p "$@" && cd "$@"
 }
 
+# Change git origin and add upstream
+function gitor() {
+    local url=$1
+
+    if [[ $url != http* && $url != git@* && ! -z "$url" ]]; then
+        local url="https://github.yandex-team.ru/$1.git"
+    fi
+
+    if [[ -z "$url" ]]; then
+        local url="git@github.yandex-team.ru:sysoev/web3.git"
+    fi
+
+    if ! git remote | grep upstream > /dev/null; then
+        git remote rename origin upstream
+        git remote add origin $url
+    fi
+
+    git remote -v
+}
+
 # Determine size of a file or total size of a directory
 function fs() {
     if du -b /dev/null > /dev/null 2>&1; then

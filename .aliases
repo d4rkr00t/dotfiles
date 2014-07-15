@@ -125,6 +125,9 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
+# Mount serp.spb.yandex.ru
+alias spb="sshfs -o IdentityFile=~/.ssh/id_rsa sysoev@spb.serp.yandex.ru:/home/sysoev /Users/sysoev/Development/serp"
+
 # Faster npm for europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"
 

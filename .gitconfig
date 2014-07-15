@@ -3,14 +3,14 @@
 	lg = log --color --graph -n 20 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'  --abbrev-commit --date=short --decorate
 
 	# View the current working tree status using the short format
-	s = status -sb
+	st = status -sb
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	# Show verbose output about tags, branches or remotes
-	t = tag -l
-	br=branch -a
+	t   = tag -l
+	br  = branch -a
 	rem = remote -v
 
 	# Credit an author on the latest commit
@@ -48,11 +48,13 @@
 	out = log @{u}..
 
 	# Amend the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD
+	am = commit --amend
 
     a   = add
-    all   = add -A :/
-    ci  = commit -am
+    all = add -A :/
+    ci  = commit -m
+    cia = commit -am
+    co  = checkout
     br  = branch
     df  = diff --color --color-words --abbrev
     cid = rev-parse HEAD
@@ -104,9 +106,13 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+	tool = vimdiff
 
 [push]
-	default = simple
+	default = current
+
+[branch]
+    autosetuprebase = always
 
 [user]
 	email = "d4rkr00t@gmail.com"

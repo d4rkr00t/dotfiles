@@ -7,20 +7,37 @@ function mkd() {
 function gitor() {
     local url=$1
 
-    if [[ $url != http* && $url != git@* && ! -z "$url" ]]; then
-        local url="https://github.yandex-team.ru/$1.git"
-    fi
+    if [ -d .git ]; then
+      if [[ $url != http* && $url != git@* && ! -z "$url" ]]; then
+          local url="https://github.yandex-team.ru/$1.git"
+      fi
 
-    if [[ -z "$url" ]]; then
-        local url="git@github.yandex-team.ru:sysoev/web3.git"
-    fi
+      if [[ -z "$url" ]]; then
+          local url="git@github.yandex-team.ru:sysoev/web3.git"
+      fi
 
-    if ! git remote | grep upstream > /dev/null; then
-        git remote rename origin upstream
-        git remote add origin $url
-    fi
+      if ! git remote | grep upstream > /dev/null; then
+          git remote rename origin upstream
+          git remote add origin $url
+      fi
 
-    git remote -v
+      git remote -v
+    else
+      echo "-=-=-=->> There isn't a git repo! <<-=-=-=-"
+    fi;
+}
+
+function gitores() {
+    if [ -d .git ]; then
+      if git remote | grep upstream > /dev/null; then
+          git remote rm origin
+          git remote rename upstream origin
+      fi
+
+      git remote -v
+    else
+      echo "-=-=-=->> There isn't a git repo! <<-=-=-=-"
+    fi;
 }
 
 # Determine size of a file or total size of a directory

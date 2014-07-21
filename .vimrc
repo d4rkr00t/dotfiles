@@ -38,6 +38,8 @@ endif
 " Let NeoNeoBundle manage NeoNeoBundle
 NeoBundle 'Shougo/neobundle.vim'
 
+NeoBundle 'kien/ctrlp.vim'
+
 " Instlall vimrpoc. is uses by unite and neocomplcache
 " for async searches and calls
 NeoBundle 'Shougo/vimproc', {
@@ -136,6 +138,11 @@ let NERDTreeMinimalUI=1
 " Display current file in the NERDTree ont the left
 nmap <silent> <leader>f :NERDTreeFind<CR>
 
+"-------------------------
+" CtrlP
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "--------------------------------------------------
 " General options

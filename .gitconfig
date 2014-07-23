@@ -48,7 +48,7 @@
 	out = log @{u}..
 
 	# Amend the currently staged files to the latest commit
-	am = commit --amend
+	am = commit --amend --no-edit
 
     a   = add
     all = add -A :/

@@ -39,7 +39,7 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Shougo/neocomplcache.vim'
 
 " Instlall vimrpoc. is uses by unite and neocomplcache
 " for async searches and calls
@@ -139,6 +139,11 @@ let NERDTreeMinimalUI=1
 
 " Display current file in the NERDTree ont the left
 nmap <silent> <leader>f :NERDTreeFind<CR>
+
+"-------------------------
+" NeoComplCache
+
+let g:neocomplcache_enable_at_startup = 1
 
 "-------------------------
 " CtrlP

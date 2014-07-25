@@ -61,6 +61,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'scrooloose/nerdtree'
 
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'SevInf/vim-bemhtml'
 
 " Add code static check on write
 " need to be properly configured.

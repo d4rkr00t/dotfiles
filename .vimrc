@@ -39,6 +39,7 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Valloric/YouCompleteMe'
 
 " Instlall vimrpoc. is uses by unite and neocomplcache
 " for async searches and calls

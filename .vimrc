@@ -85,6 +85,13 @@ if !executable("csslint")
     endif
 endif
 
+" Syntax and other productivity
+
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key='<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+
 "--------------------------------------------------
 " Colorscheme
 
@@ -132,7 +139,7 @@ set autoread
 " set clipboard=unnamed
 
 " Detect filetype
-filetype plugin on
+filetype indent plugin on
 
 " Enable syntax highighting
 syntax on
@@ -238,7 +245,7 @@ set wildmode=list:longest
 set wildignore+=*DS_Store*
 
 " Autocmpletion hotkey
-set wildcharm=<TAB>
+" set wildcharm=<TAB>
 
 " Allow cursor keys in insert mode
 set esckeys
@@ -379,10 +386,6 @@ set matchpairs+=<:>
 
 " Extended autocmpletion for commands
 set wildmenu
-
-" Autocmpletion hotkey
-set wildcharm=<TAB>
-
 
 "--------------------------------------------------
 " Folding

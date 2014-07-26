@@ -59,6 +59,9 @@ NeoBundle 'tpope/vim-fugitive'
 " Very usefull
 NeoBundle 'tomtom/tcomment_vim'
 
+" Surround.vim
+NeoBundle 'tpope/vim-surround'
+
 " Syntastic
 NeoBundle 'scrooloose/syntastic'
 

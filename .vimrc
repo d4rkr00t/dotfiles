@@ -32,6 +32,12 @@ if system('uname -o') =~ '^GNU/'
     let g:make = 'make'
 endif
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+
 "--------------------------------------------------
 " Bundles
 
@@ -161,12 +167,6 @@ set splitright
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
-
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
 
 " 256 colours, please
 set t_Co=256

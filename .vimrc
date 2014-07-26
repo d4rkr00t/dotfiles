@@ -50,6 +50,18 @@ let g:ctrlp_prompt_mappings = {
 NeoBundle 'scrooloose/nerdtree'
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 
+" Fugitive
+NeoBundle 'tpope/vim-fugitive'
+
+" Add smart commands for comments like:
+" gcc - Toggle comment for the current line
+" gc  - Toggle comments for selected region or number of strings
+" Very usefull
+NeoBundle 'tomtom/tcomment_vim'
+
+" Syntastic
+NeoBundle 'scrooloose/syntastic'
+
 "--------------------------------------------------
 " Colorscheme
 
@@ -75,10 +87,14 @@ set encoding=utf-8
 " status bar
 set statusline=%F%m%r%h%w\  "fullpath and status modified sign
 set statusline+=\ %y "filetype
-" set statusline+=\ %{fugitive#statusline()}
+set statusline+=\ %{fugitive#statusline()}
 set statusline+=%= " this line bumps the line number to RHS
 set statusline+=[wc:%{WordCount()}]
-set statusline+=\ [%l\/%L] "line number and column number
+set statusline+=\ [%l\/%c\/%L] "line number and column number
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="

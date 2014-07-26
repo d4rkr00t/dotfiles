@@ -62,6 +62,9 @@ NeoBundle 'tomtom/tcomment_vim'
 " Surround.vim
 NeoBundle 'tpope/vim-surround'
 
+" NeoComplCache — autocompletion
+NeoBundle 'Shougo/neocomplcache.vim'
+
 " Syntastic
 NeoBundle 'scrooloose/syntastic'
 

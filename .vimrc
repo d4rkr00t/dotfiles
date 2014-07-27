@@ -324,10 +324,18 @@ autocmd BufReadPost *
       \ endif
 
 " sublime key bindings
-nmap <D-]> >>
-nmap <D-[> <<
-vmap <D-[> <gv
-vmap <D-]> >gv
+nmap ‘ >>
+nmap “ <<
+vmap ‘ <gv
+vmap “ >gv
+
+" move line up and down
+nnoremap ∆ :m+<CR>==
+nnoremap ˚ :m-2<CR>==
+inoremap ∆ <Esc>:m+<CR>==gi
+inoremap ˚ <Esc>:m-2<CR>==gi
+vnoremap ˚ :m-2<CR>gv=gv
+vnoremap ∆ :m'>+<CR>gv=gv
 
 " word count, taken from
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim

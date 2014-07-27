@@ -44,6 +44,12 @@ let mapleader=","
 " Colorscheme solarazied for vim
 NeoBundle 'altercation/vim-colors-solarized'
 
+" CSS colors
+NeoBundle 'skammer/vim-css-color'
+
+" Git gutter
+NeoBundle 'airblade/vim-gitgutter'
+
 " CtrlP Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMRU'
@@ -54,7 +60,9 @@ let g:ctrlp_prompt_mappings = {
 
 " NerdTree. A tree explorer plugin for vim.
 NeoBundle 'scrooloose/nerdtree'
-nmap <silent> <leader>f :NERDTreeToggle<CR>
+map <silent> <C-f> :NERDTreeClose<CR>:NERDTreeFind<CR>
+NeoBundle 'jistr/vim-nerdtree-tabs'
+nmap <silent> <leader>f :NERDTreeTabsToggle<CR>
 
 " Fugitive
 NeoBundle 'tpope/vim-fugitive'
@@ -142,7 +150,7 @@ set history=1000
 set autoread
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
-" set clipboard=unnamed
+set clipboard=unnamed
 
 " Detect filetype
 filetype indent plugin on
@@ -337,6 +345,7 @@ inoremap ˚ <Esc>:m-2<CR>==gi
 vnoremap ˚ :m-2<CR>gv=gv
 vnoremap ∆ :m'>+<CR>gv=gv
 
+
 " word count, taken from
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
 function! WordCount()
@@ -375,3 +384,4 @@ set diffopt+=horizontal
 
 " Ignore changes in whitespaces characters
 set diffopt+=iwhite
+

@@ -58,6 +58,8 @@
     br  = branch
     df  = diff --color --color-words --abbrev
     cid = rev-parse HEAD
+    f = fetch
+    fa = fetch --all
 
 [apply]
 	# Detect whitespace errors when applying a patch

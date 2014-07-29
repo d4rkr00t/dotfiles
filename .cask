@@ -4,7 +4,7 @@
 install caskroom/cask/brew-cask
 tap caskroom/versions
 
-cask install dropbox 2> /dev/null
+# cask install dropbox 2> /dev/null
 cask install google-chrome 2> /dev/null
 cask install google-chrome-canary 2> /dev/null
 cask install imagealpha 2> /dev/null
@@ -17,6 +17,7 @@ cask install firefox 2> /dev/null
 cask install skype 2> /dev/null
 cask install transmission 2> /dev/null
 cask install mou 2> /dev/null
+cask install chromium 2> /dev/null
 
 # QuickLook plugins
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch

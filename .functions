@@ -4,7 +4,7 @@ function mkd() {
 }
 
 function mkpr() {
-  ./bin/mkproject.sh $1 $2 && cp ./serp-build/* ./$1/ && cd $1 && npm i && cd web3 && make clean && make && gitor && git go SERP-$1 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo -e "\a"
+  ./bin/mkproject.sh $1 $2 && cd serp-build && git pull && cd ../ && cp ./serp-build/gulpfile.js ./$1/ && cp ./serp-build/package.json ./$1/ && cd $1 && npm i && cd web3 && make clean && make && gitor && git go SERP-$1 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo -e "\a"
 }
 
 # Get random string from file

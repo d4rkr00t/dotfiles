@@ -135,4 +135,4 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
-alias bup="cp ../serp-build/* ./"
+alias bup="cd ../serp-build/ && git pull && cd - && cp ../serp-build/gulpfile.js ./ && cp ../serp-build/package.json ./"

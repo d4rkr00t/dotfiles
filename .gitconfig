@@ -60,6 +60,7 @@
     cid = rev-parse HEAD
     f = fetch
     fa = fetch --all
+    cont = rebase --continue
 
 [apply]
 	# Detect whitespace errors when applying a patch

@@ -15,17 +15,18 @@ alias pj="cd ~/Development/JavaScript"
 alias g="git"
 alias h="history"
 
+# Git
+alias gam="git commit --amend"
+alias gamq="git commit --amend --no-edit"
+alias grc="git rebase --continue"
+
 # Edit config
 alias ealiases="subl ~/.aliases"
 
 # Apache
-
 alias astart="sudo apachectl start"
 alias astop="sudo apachectl stop"
 alias arestart="sudo apachectl restart"
-
-# Grunt + Node
-alias initgrunt="touch Gruntfile.js"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

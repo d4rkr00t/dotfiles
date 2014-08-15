@@ -16,9 +16,6 @@
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 
-	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
-
 	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 
@@ -49,15 +46,16 @@
 
     a   = add
     all = add -A :/
+    br  = branch
     ci  = commit -m
     cia = commit -am
-    co  = checkout
-    br  = branch
-    df  = diff --color --color-words --abbrev
     cid = rev-parse HEAD
+    co  = checkout
+    df  = diff --color --color-words --abbrev
     f = fetch
     fa = fetch --all
-    cont = rebase --continue
+    r = "rebase"
+    ri = "!r() { git rebase -i HEAD~$1; }; r"
 
 [apply]
 	# Detect whitespace errors when applying a patch

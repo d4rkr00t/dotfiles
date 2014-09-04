@@ -2,8 +2,11 @@
 cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
 function doIt() {
+	chmod +x .node-packages.sh
+
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" \
         --exclude "SolarizedDark.terminal" \
+        --exclude ".node-packages.sh" \
         --exclude ".idea" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~
 	source ~/.bash_profile

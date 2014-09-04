@@ -57,6 +57,9 @@ alias gurl='curl --compressed'
 # Get week number
 alias week='date +%V'
 
+# hicat — command-line syntax highlighter
+alias hi=hicat
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 

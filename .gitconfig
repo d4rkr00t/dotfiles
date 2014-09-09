@@ -57,6 +57,10 @@
     r = "rebase"
     ri = "!r() { git rebase -i HEAD~$1; }; r"
 
+    # rebase shortcuts
+    rom = rebase origin/master
+    rud = rebase upstream/dev
+
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix

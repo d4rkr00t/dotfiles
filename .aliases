@@ -19,6 +19,9 @@ alias h="history"
 alias gam="git commit --amend"
 alias gamq="git commit --amend --no-edit"
 alias grc="git rebase --continue"
+alias grom="git rebase origin/master"
+alias grud="git rebase upstream/dev"
+alias gfl="rm .git/index.lock"
 
 # Edit config
 alias ealiases="subl ~/.aliases"

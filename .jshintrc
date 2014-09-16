@@ -33,6 +33,8 @@
         "Util",
         "_",
         "describeBlock",
+        "stubData",
+        "stubBlock",
         "describe",
         "beforeEach",
         "it",

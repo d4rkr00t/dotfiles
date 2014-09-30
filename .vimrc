@@ -138,7 +138,7 @@ nnoremap cp :cp<CR>
 nnoremap ff :CtrlP<CR>
 nnoremap -- :GundoToggle<CR>
 
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
 
 "set iskeyword+=- "Makes foo-bar considered one word

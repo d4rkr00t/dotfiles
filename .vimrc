@@ -1,195 +1,72 @@
-"--------------------------------------------------
-" NeoBundle Init
-
-" Turn off filetype plugins before bundles init
-filetype off
-" Auto installing NeoNeoBundle
-let isNpmInstalled = executable("npm")
-let iCanHazNeoBundle=1
-let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-    if !isNpmInstalled
-        echo "==============================================="
-        echo "Your need to install npm to enable all features"
-        echo "==============================================="
-    endif
-    echo "Installing NeoBundle.."
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-    let iCanHazNeoBundle=0
+" If vundle is not installed, do it first
+if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
+    call system(expand("mkdir -p $HOME/.vim/bundle"))
+    call system(expand("git clone git@github.com:gmarik/vundle $HOME/.vim/bundle/vundle"))
+    echoerr 'Vundle was freshly installed. You should run :BundleInstall'
 endif
 
-" Call NeoBundle
-if has('vim_starting')
-    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
-endif
+set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
+let mapleader = ","   " Set the map leader. Useful for custom commands.
 
-call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+" Install and setup vundle https://github.com/gmarik/Vundle.vim
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
-" Determine make or gmake will be used for making additional deps for Bundles
-let g:make = 'gmake'
-if system('uname -o') =~ '^GNU/'
-    let g:make = 'make'
-endif
+" PLUGINS
+" Personally I wouldn't want to live without these
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
+Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'acevery/snipmate-plus'
+Bundle 'ag.vim'
+Bundle 'bling/vim-airline'
 
-"--------------------------------------------------
-" Bundles
+" Syntax plugins
+Bundle 'Syntastic'
+Bundle 'groenewege/vim-less'
+Bundle 'othree/html5.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'ap/vim-css-color'
 
-" Colorscheme solarazied for vim
-NeoBundle 'altercation/vim-colors-solarized'
+" Themes
+Bundle 'altercation/vim-colors-solarized'
 
-" CSS colors
-NeoBundle 'skammer/vim-css-color'
+" STUFF
+set title                   " Sets the title at top of tab to be the filename if "titlestring" isn't defined
+set laststatus=1            " Has to do with the status bar at the bottom. Check :help laststatus
+set number                  " Line numbers on the left hand side
+set visualbell              " That bell is the worst sound. Shut it the fuck off.
+syntax enable               " Sets syntax highlighting on because what is this notepad
+filetype plugin indent on   " This gets vim to automatically load filetype specific options for plugins and indentation
 
-" Git gutter
-NeoBundle 'airblade/vim-gitgutter'
+"" BASIC FUNCTIONALITY
+set encoding=utf-8    " Duh
+set history=512       " Default is 20, I'd rather set this to ∞
+set nofoldenable      " Don't fold shit because it's the worst.
 
-" CtrlP Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-NeoBundle 'kien/ctrlp.vim'
-let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
-
-" NerdTree. A tree explorer plugin for vim.
-NeoBundle 'scrooloose/nerdtree'
-map <silent> <C-f> :NERDTreeClose<CR>:NERDTreeFind<CR>
-NeoBundle 'jistr/vim-nerdtree-tabs'
-nmap <silent> <leader>f :NERDTreeTabsToggle<CR>
-
-" Fugitive
-NeoBundle 'tpope/vim-fugitive'
-
-" Add smart commands for comments like:
-" gcc - Toggle comment for the current line
-" gc  - Toggle comments for selected region or number of strings
-" Very usefull
-NeoBundle 'tomtom/tcomment_vim'
-
-" Surround.vim
-NeoBundle 'tpope/vim-surround'
-
-" NeoComplCache — autocompletion
-NeoBundle 'Shougo/neocomplcache.vim'
-
-" Syntastic
-NeoBundle 'scrooloose/syntastic'
-
-" Install jshint and csslint for syntastic
-" Path to jshint if it not installed globally, then use local installation
-if !executable("jshint")
-    "let g:syntastic_jshint_exec = '~/.vim/node_modules/.bin/jshint'
-    let g:syntastic_javascript_jshint_exec = '~/.vim/node_modules/.bin/jshint'
-    if isNpmInstalled && !executable(expand(g:syntastic_javascript_jshint_exec))
-        silent ! echo 'Installing jshint' && npm --prefix ~/.vim/ install jshint
-    endif
-endif
-" Path to csslint if it not installed globally, then use local installation
-if !executable("csslint")
-    let g:syntastic_css_csslint_exec='~/.vim/node_modules/.bin/csslint'
-    if isNpmInstalled && !executable(expand(g:syntastic_css_csslint_exec))
-        silent ! echo 'Installing csslint' && npm --prefix ~/.vim/ install csslint
-    endif
-endif
-
-" Syntax and other productivity
-
-NeoBundle 'mattn/emmet-vim'
-let g:user_emmet_expandabbr_key='<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
-NeoBundle 'SevInf/vim-bemhtml'
-"--------------------------------------------------
-" Colorscheme
-
-" Use solarized colorscheme
-colorscheme solarized
-
-" Setting up light color scheme
-set background=dark
-
-
-"--------------------------------------------------
-" General options
-
-" Turn Off Swap Files
+" Swap file stuff. If you don't have one make an undodir in ~/.vim
+" In terminal just type mkdir -p ~/.vim/undodir
 set noswapfile
-set nobackup
-set nowb
-
-" No compatibility
-set nocompatible
-set encoding=utf-8
-
-" status bar
-set statusline=%F%m%r%h%w\  "fullpath and status modified sign
-set statusline+=\ %y "filetype
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%= " this line bumps the line number to RHS
-set statusline+=[wc:%{WordCount()}]
-set statusline+=\ [%l\/%c\/%L] "line number and column number
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" Resize splits when the window is resized
-au VimResized * exe "normal! \<c-w>="
-
-"Store lots of :cmdline history
-set history=1000
-
-"Reload files changed outside vim
-set autoread
-
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-
-" Detect filetype
-filetype indent plugin on
-
-" Enable syntax highighting
-syntax on
-
-" show matching bracket for 0.2 seconds
-set matchtime=2
-
-" specially for html
-set matchpairs+=<:>
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
 set hidden
+set undofile
+set undodir=~/.vim/undodir
 
-" 256 colours, please
-set t_Co=256
+autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 
-" detect file type
-filetype plugin indent on
-
-" 4 spaces please
+" Formatting
+set smartindent
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
 
-" Round indent to nearest multiple of 4
-set shiftround
+set modeline
+set modelines=5                " default numbers of lines to read for
 
 " Start scrolling slightly before the cursor reaches an edge
 set scrolloff=3
@@ -198,121 +75,38 @@ set sidescrolloff=5
 " Scroll sideways a character at a time, rather than a screen at a time
 set sidescroll=1
 
-" Allow motions and back-spacing over line-endings etc
-set backspace=indent,eol,start
-set whichwrap=h,l,b,<,>,~,[,]
+" Grab last edited / pasted text
+nnoremap gp `[v`]
 
-set iskeyword-=_
+" Fix indenting for css style things (sass, css)
+au BufEnter *.css set nocindent
+au BufLeave *.css set cindent
+au BufEnter *.scss set nocindent
+au BufLeave *.scss set cindent
+au BufEnter *.less set nocindent
+au BufEnter *.styl set nocindent
+au BufLeave *.styl set cindent
 
-" Show status line
-set laststatus=2
+autocmd BufNewFile,BufRead *.scss set ft=scss.css "Sets filetpe of scss to be css. Helps with plugins.
+autocmd BufNewFile,BufRead *.less set ft=less.css "Sets filetpe of less to be css. Helps with plugins.
+autocmd BufNewFile,BufRead *.styl set ft=styl.css "Sets filetpe of less to be css. Helps with plugins.
 
-" Show what mode you’re currently in
-set showmode
+" Omnicompletion
+imap <leader>m <c-x><c-o>
+imap <leader>, <esc>
 
-" Show what commands you’re typing
-set showcmd
+" Enter newlines without entering insert mode
+" http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
+nnoremap <CR> o<Esc>k
 
-" Respect modeline in files
-set modeline
-set modelines=4
+set statusline+=%*
 
-" Show current line and column position in file
-set ruler
-
-" Show file title in terminal tab
-set title
-
-" Highlight current line
-set cursorline
-
-" Highlight searches
-set hlsearch
-
-" ...just highlight as we type
-set incsearch
-
-" Ignore case when searching...
-set ignorecase
-
-" ...except if we input a capital letter
-set smartcase
-
-" Enable mouse in all modes
-set mouse=a
-
-" Disable error bells
-set noerrorbells
-
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-
-" Enhance command-line completion
-set wildmenu
-set wildmode=list:longest
-set wildignore+=*DS_Store*
-
-" Autocmpletion hotkey
-" set wildcharm=<TAB>
-
-" Allow cursor keys in insert mode
-set esckeys
-
-" Optimize for fast terminal connections
-set ttyfast
-
-" Add the g flag to search/replace by default
-set gdefault
-
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-
-" Enable line numbers
-set number
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-nmap <silent> <leader>s :set nolist!<CR>
-
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-
-" Do not add eol at the end of file.
-set noeol
-
-" toggle paste mode on \p
-set pastetoggle=<leader>p
-
-" Enable syntax folding in javascript
-let javaScript_fold=1
-
-" No fold closed at open file
-set foldlevelstart=99
-set nofoldenable
-
-" break properly, don't split words
-set linebreak
-
-" Keymap to toggle folds with space
-nmap <space> za
-
-
-" =====================================
-" Mapping and usefull functions
-
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" Tab Navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tn  :tabnew<CR>
 
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -320,68 +114,64 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" :Q to quit (should be default)
-command! Q q
-
-" When editing a file, always jump to the last cursor position
-autocmd BufReadPost *
-      \ if ! exists("g:leave_my_cursor_position_alone") |
-      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \         exe "normal g'\"" |
-      \     endif |
-      \ endif
-
-" sublime key bindings
-nmap ‘ >>
-nmap “ <<
-vmap ‘ <gv
-vmap “ >gv
-
-" move line up and down
-nnoremap ∆ :m+<CR>==
-nnoremap ˚ :m-2<CR>==
-inoremap ∆ <Esc>:m+<CR>==gi
-inoremap ˚ <Esc>:m-2<CR>==gi
-vnoremap ˚ :m-2<CR>gv=gv
-vnoremap ∆ :m'>+<CR>gv=gv
+" I like to roll through buffers like
+nnoremap <leader>m  :bn<CR>
+nnoremap <leader>n  :bp<CR>
 
 
-" word count, taken from
-" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
-function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<c-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count
-endfunction
+" Local list nav
+nnoremap fj :execute "noautocmd vimgrep /" . expand("<cword>") . "/j **" <Bar> cnext<CR>
 
-" Automatic commands
-if has("autocmd")
-    " Treat .json files as .js
-    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-    " set some markdown specific things
-    autocmd FileType markdown setlocal shiftwidth=4 softtabstop=4 tabstop=4
-    " wrap linebreak nolist wrap lbr colorcolumn=0
-    autocmd FileType markdown setlocal statusline+=\ %{WordCount()}
-    autocmd FileType tex setlocal colorcolumn=0 wrap lbr linebreak spell
-endif
+" Run through jumplist with ease
+nnoremap cn :cn<CR>
+nnoremap cp :cp<CR>
 
-"--------------------------------------------------
-" Diff Options
+" Custom Plugin Mappings
+nnoremap ff :CtrlP<CR>
+nnoremap -- :GundoToggle<CR>
 
-" Display filler
-set diffopt=filler
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
 
-" Open diff in horizontal buffer
-set diffopt+=horizontal
+"set iskeyword+=- "Makes foo-bar considered one word
+"
+nnoremap <leader>ev :e $MYVIMRC<cr> " ,ev will open up your vimrc in a vertical split
+nnoremap <leader>gb :Gbrowse<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>c :ccl<cr>
+nnoremap <leader>o :copen<cr>
 
-" Ignore changes in whitespaces characters
-set diffopt+=iwhite
+map <Esc><Esc> :w<CR>
 
+set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff,node_modules
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS " Gives css auto completion to files using filetype=css
+
+
+" Plugins Config
+
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set laststatus=2
+
+" Airline
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'

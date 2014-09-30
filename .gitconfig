@@ -91,10 +91,10 @@
 	remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red bold # deletions
-	new = green bold # additions
+	meta = yellow
+	frag = magenta # line info
+	old = red # deletions
+	new = green # additions
 
 [color "status"]
 	added = yellow

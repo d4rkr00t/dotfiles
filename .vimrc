@@ -8,10 +8,6 @@ endif
 set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
 let mapleader = ","   " Set the map leader. Useful for custom commands.
 
-
-
-
-
 " Install and setup vundle https://github.com/gmarik/Vundle.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -34,9 +30,14 @@ Bundle 'Syntastic'
 Bundle 'groenewege/vim-less'
 Bundle 'othree/html5.vim'
 Bundle 'hail2u/vim-css3-syntax'
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'ap/vim-css-color'
+Bundle 'SevInf/vim-bemhtml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'mattn/emmet-vim'
+Bundle 'HTML-AutoCloseTag'
+Bundle 'gregsexton/MatchTag'
 
 " Themes
 Bundle 'altercation/vim-colors-solarized'

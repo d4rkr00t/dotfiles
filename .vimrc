@@ -8,6 +8,10 @@ endif
 set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
 let mapleader = ","   " Set the map leader. Useful for custom commands.
 
+
+
+
+
 " Install and setup vundle https://github.com/gmarik/Vundle.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -100,7 +104,7 @@ imap <leader>, <esc>
 
 " Enter newlines without entering insert mode
 " http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
-nnoremap <CR> o<Esc>k
+nnoremap <CR> o<Esc>
 
 set statusline+=%*
 

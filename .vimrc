@@ -57,6 +57,9 @@ set hidden
 set undofile
 set undodir=~/.vim/undodir
 
+" Don’t reset cursor to start of line when moving around.
+set nostartofline
+
 autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 
 " Formatting

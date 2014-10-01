@@ -24,6 +24,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'acevery/snipmate-plus'
 Bundle 'ag.vim'
 Bundle 'bling/vim-airline'
+Bundle 'vim-scripts/IndentConsistencyCop'
 
 " Syntax plugins
 Bundle 'Syntastic'

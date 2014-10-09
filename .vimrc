@@ -26,8 +26,10 @@ Bundle 'ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/IndentConsistencyCop'
 Bundle 'scrooloose/nerdtree'
+Bundle 'jszakmeister/vim-togglecursor'
 
 " Syntax plugins
+Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Syntastic'
 Bundle 'groenewege/vim-less'
 Bundle 'othree/html5.vim'
@@ -107,6 +109,87 @@ let NERDTreeMinimalUI=1
 
 " Display current file in the NERDTree ont the left
 nmap <silent> <leader>f :NERDTreeFind<CR>
+
+" Toggle Nerd Tree
+nmap <silent> <leader>t :NERDTreeToggle<CR>
+
+"-------------------------
+" Syntastic
+
+" Enable autochecks
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+
+" For correct works of next/previous error navigation
+let g:syntastic_always_populate_loc_list = 1
+
+" check json files with jshint
+let g:syntastic_filetype_map = { "json": "javascript", }
+
+" open quicfix window with all error found
+nmap <silent> <leader>ll :Errors<cr>
+" previous syntastic error
+nmap <silent> [ :lprev<cr>
+" next syntastic error
+nmap <silent> ] :lnext<cr>
+
+"-------------------------
+" neocomplcache
+
+" Enable NeocomplCache at startup
+let g:neocomplcache_enable_at_startup = 1
+
+" Max items in code-complete
+let g:neocomplcache_max_list = 10
+
+" Max width of code-complete window
+let g:neocomplcache_max_keyword_width = 80
+
+" Code complete is ignoring case until no Uppercase letter is in input
+let g:neocomplcache_enable_smart_case = 1
+
+" Auto select first item in code-complete
+let g:neocomplcache_enable_auto_select = 1
+
+" Disable auto popup
+let g:neocomplcache_disable_auto_complete = 1
+
+" Smart tab Behavior
+function! CleverTab()
+    " If autocomplete window visible then select next item in there
+    if pumvisible()
+        return "\<C-n>"
+    endif
+    " If it's begining of the string then return just tab pressed
+    let substr = strpart(getline('.'), 0, col('.') - 1)
+    let substr = matchstr(substr, '[^ \t]*$')
+    if strlen(substr) == 0
+        " nothing to match on empty string
+        return "\<Tab>"
+    else
+        " If not begining of the string, and autocomplete popup is not visible
+        " Open this popup
+        return "\<C-x>\<C-u>"
+    endif
+endfunction
+inoremap <expr><TAB> CleverTab()
+
+" Undo autocomplete
+inoremap <expr><C-e> neocomplcache#undo_completion()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+" For cursor moving in insert mode
+inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
+inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
+
+" disable preview in code complete
+set completeopt-=preview
 
 "--------------------------------------------------
 " General options
@@ -264,13 +347,6 @@ nnoremap <leader>o :copen<cr>
 map <Esc><Esc> :w<CR>
 
 set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff,node_modules
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS " Gives css auto completion to files using filetype=css
-
-if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
-
 
 " It executes specific command when specific events occured
 " like reading or writing file, or open or close buffer

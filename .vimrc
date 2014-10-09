@@ -239,6 +239,9 @@ set nostartofline
 " Display Line numbers
 set number
 
+" Highlight line with cursor
+" set cursorline
+
 "--------------------------------------------------
 " Edit
 
@@ -255,6 +258,43 @@ set noswapfile
 
 " Do not add eol at the end of file.
 set noeol
+
+"--------------------------------------------------
+" Search options
+
+" Add the g flag to search/replace by default
+set gdefault
+
+" Highlight search results
+set hlsearch
+
+" Ignore case in search patterns
+set ignorecase
+
+" Override the 'ignorecase' option if the search patter ncontains upper case characters
+set smartcase
+
+" Live search. While typing a search command, show where the pattern
+set incsearch
+
+" Disable higlighting search result on Enter key
+nnoremap <silent> <cr> :nohlsearch<cr><cr>
+
+" Show matching brackets
+set showmatch
+
+" Make < and > match as well
+set matchpairs+=<:>
+
+
+"--------------------------------------------------
+" Wildmenu
+
+" Extended autocmpletion for commands
+set wildmenu
+
+" Autocmpletion hotkey
+set wildcharm=<TAB>
 
 "--------------------------------------------------
 " Folding
@@ -307,9 +347,6 @@ nnoremap gp `[v`]
 imap <leader>m <c-x><c-o>
 imap <leader>, <esc>
 
-" Enter newlines without entering insert mode
-nnoremap <CR> o<Esc>
-
 " Tab Navigation
 nnoremap th  :tabfirst<CR>
 nnoremap tj  :tabnext<CR>
@@ -333,7 +370,6 @@ nnoremap cp :cp<CR>
 
 " Custom Plugin Mappings
 nnoremap -- :GundoToggle<CR>
-
 
 "set iskeyword+=- "Makes foo-bar considered one word
 "

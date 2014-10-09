@@ -13,8 +13,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" PLUGINS
-" Personally I wouldn't want to live without these
+"--------------------------------------------------
+" Plugins
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
@@ -25,6 +25,7 @@ Bundle 'acevery/snipmate-plus'
 Bundle 'ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/IndentConsistencyCop'
+Bundle 'scrooloose/nerdtree'
 
 " Syntax plugins
 Bundle 'Syntastic'
@@ -43,72 +44,188 @@ Bundle 'gregsexton/MatchTag'
 " Themes
 Bundle 'altercation/vim-colors-solarized'
 
-" STUFF
-set title                   " Sets the title at top of tab to be the filename if "titlestring" isn't defined
-set laststatus=1            " Has to do with the status bar at the bottom. Check :help laststatus
-set number                  " Line numbers on the left hand side
-set visualbell              " That bell is the worst sound. Shut it the fuck off.
-syntax enable               " Sets syntax highlighting on because what is this notepad
-filetype plugin indent on   " This gets vim to automatically load filetype specific options for plugins and indentation
+"--------------------------------------------------
+" Plugins Config
 
-"" BASIC FUNCTIONALITY
-set encoding=utf-8    " Duh
-set history=512       " Default is 20, I'd rather set this to ∞
-set nofoldenable      " Don't fold shit because it's the worst.
+" Enable Indent in plugins
+filetype plugin indent on
 
-" Swap file stuff. If you don't have one make an undodir in ~/.vim
-" In terminal just type mkdir -p ~/.vim/undodir
-set noswapfile
-set hidden
-set undofile
-set undodir=~/.vim/undodir
+" Enable syntax highlighting
+syntax on
 
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
+set t_Co=256
+let g:solarized_termcolors=256
 
-autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
+set laststatus=2
 
-" Formatting
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
+"-------------------------
+" CtrlP
 
-set modeline
-set modelines=5                " default numbers of lines to read for
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
 
-" Start scrolling slightly before the cursor reaches an edge
-set scrolloff=3
-set sidescrolloff=5
+" show hidden files
+let g:ctrlp_show_hidden = 1
+
+nnoremap ff :CtrlP<CR>
+
+"-------------------------
+" vim-airline
+
+" Colorscheme for airline
+" let g:airline_theme='understated'
+
+" Set custom left separator
+let g:airline_left_sep = '▶'
+
+" Set custom right separator
+let g:airline_right_sep = '◀'
+
+" Enable airline for tab-bar
+let g:airline#extensions#tabline#enabled = 1
+
+" Don't display buffers in tab-bar with single tab
+let g:airline#extensions#tabline#show_buffers = 0
+
+" Display only filename in tab
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Don't display encoding
+let g:airline_section_y = ''
+
+" Don't display filetype
+let g:airline_section_x = ''
+
+"-------------------------
+" NERDTree
+
+" Tell NERDTree to display hidden files on startup
+let NERDTreeShowHidden=1
+
+" Disable bookmarks label, and hint about '?'
+let NERDTreeMinimalUI=1
+
+" Display current file in the NERDTree ont the left
+nmap <silent> <leader>f :NERDTreeFind<CR>
+
+"--------------------------------------------------
+" General options
+
+" Auto reload changed files
+set autoread
+
+" Indicates fast terminal connection
+set ttyfast
+
+" Set character encoding to use in vim
+set encoding=utf-8
+
+" Let vim know what encoding we use in our terminal
+set termencoding=utf-8
+
+"--------------------------------------------------
+" Display options
+
+" Hide showmode
+" Showmode is useless with airline
+set noshowmode
+
+" Show file name in window title
+set title
+
+" Mute error bell
+set novisualbell
+
+" Remove all useless messages like intro screen and use abbreviation like RO
+" instead readonly and + instead modified
+set shortmess=atI
+
+" Numbers of rows to keep to the left and to the right off the screen
+set scrolloff=10
+
+" Numbers of columns to keep to the left and to the right off the screen
+set sidescrolloff=10
 
 " Scroll sideways a character at a time, rather than a screen at a time
 set sidescroll=1
 
+" The cursor should stay where you leave it, instead of moving to the first non
+" blank of the line
+set nostartofline
+
+" Display Line numbers
+set number
+
+"--------------------------------------------------
+" Edit
+
+" Allow backspace to remove indents, newlines and old text
+set backspace=indent,eol,start
+
+" toggle paste mode on \p
+set pastetoggle=<leader>p
+
+set history=512       " Default is 20, I'd rather set this to ∞
+
+" Disable swp files
+set noswapfile
+
+" Do not add eol at the end of file.
+set noeol
+
+"--------------------------------------------------
+" Folding
+
+" Enable syntax folding in javascript
+let javaScript_fold=1
+
+" No fold closed at open file
+set foldlevelstart=99
+set nofoldenable
+
+"--------------------------------------------------
+" Tab options
+
+" Copy indent from previous line
+set autoindent
+
+" Enable smart indent. it add additional indents whe necessary
+set smartindent
+
+" Replace tabs with spaces
+set expandtab
+
+" Whe you hit tab at start of line, indent added according to shiftwidth value
+set smarttab
+
+" number of spaces to use for each step of indent
+set shiftwidth=4
+
+" Number of spaces that a Tab in the file counts for
+set tabstop=4
+
+" Same but for editing operation (not shure what exactly does it means)
+" but in most cases tabstop and softtabstop better be the same
+set softtabstop=4
+
+" Round indent to multiple of 'shiftwidth'.
+" Indentation always be multiple of shiftwidth
+" Applies to  < and > command
+set shiftround
+
+
+"--------------------------------------------------
+" Key Remaps
+
 " Grab last edited / pasted text
 nnoremap gp `[v`]
-
-" Fix indenting for css style things (sass, css)
-au BufEnter *.css set nocindent
-au BufLeave *.css set cindent
-au BufEnter *.scss set nocindent
-au BufLeave *.scss set cindent
-au BufEnter *.less set nocindent
-au BufEnter *.styl set nocindent
-au BufLeave *.styl set cindent
-
-autocmd BufNewFile,BufRead *.scss set ft=scss.css "Sets filetpe of scss to be css. Helps with plugins.
-autocmd BufNewFile,BufRead *.less set ft=less.css "Sets filetpe of less to be css. Helps with plugins.
-autocmd BufNewFile,BufRead *.styl set ft=styl.css "Sets filetpe of less to be css. Helps with plugins.
 
 " Omnicompletion
 imap <leader>m <c-x><c-o>
 imap <leader>, <esc>
 
 " Enter newlines without entering insert mode
-" http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
 nnoremap <CR> o<Esc>
-
-set statusline+=%*
 
 " Tab Navigation
 nnoremap th  :tabfirst<CR>
@@ -127,20 +244,13 @@ nnoremap <c-l> <c-w>l
 nnoremap <leader>m  :bn<CR>
 nnoremap <leader>n  :bp<CR>
 
-
-" Local list nav
-nnoremap fj :execute "noautocmd vimgrep /" . expand("<cword>") . "/j **" <Bar> cnext<CR>
-
 " Run through jumplist with ease
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 
 " Custom Plugin Mappings
-nnoremap ff :CtrlP<CR>
 nnoremap -- :GundoToggle<CR>
 
-" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
 
 "set iskeyword+=- "Makes foo-bar considered one word
 "
@@ -156,31 +266,58 @@ map <Esc><Esc> :w<CR>
 set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff,node_modules
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS " Gives css auto completion to files using filetype=css
 
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
 
-" Plugins Config
 
-set t_Co=256
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-set laststatus=2
+" It executes specific command when specific events occured
+" like reading or writing file, or open or close buffer
+if has("autocmd")
+    " Define group of commands,
+    " Commands defined in .vimrc don't bind twice if .vimrc will reload
+    augroup vimrc
+    " Delete any previosly defined autocommands
+    au!
+        " Auto reload vim after your cahange it
+        au BufWritePost *.vim source $MYVIMRC | AirlineRefresh
+        au BufWritePost .vimrc source $MYVIMRC | AirlineRefresh
 
-" Airline
-let g:airline_powerline_fonts = 1
+        autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
+        " Restore cursor position :help last-position-jump
+        au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+          \| exe "normal g'\"" | endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+        " Set filetypes aliases
+        au FileType scss set ft=scss.css
+        au FileType less set ft=less.css
+        au BufWinEnter * if line2byte(line("$") + 1) > 100000 | syntax clear | endif
+        au BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
+        au BufRead,BufNewFile *.json set ft=json
+        au BufRead,BufNewFile *.bemhtml set ft=javascript
+        au BufNewFile,BufRead *.styl set ft=styl.css "Sets filetpe of less to be css. Helps with plugins.
+
+        " Fix indenting for css style things (sass, css)
+        au BufEnter *.css set nocindent
+        au BufLeave *.css set cindent
+        au BufEnter *.scss set nocindent
+        au BufLeave *.scss set cindent
+        au BufEnter *.less set nocindent
+        au BufEnter *.styl set nocindent
+        au BufLeave *.styl set cindent
+
+        " Auto close preview window, it uses with tags,
+        " I don't use it
+        autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+        autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+        " Enable Folding, uses plugin vim-javascript-syntax
+        au FileType javascript* call JavaScriptFold()
+
+    " Group end
+    augroup END
+
+endif
+

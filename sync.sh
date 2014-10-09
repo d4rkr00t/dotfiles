@@ -6,6 +6,7 @@ function doIt() {
 
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" \
         --exclude "SolarizedDark.terminal" \
+        --exclude "SolarizedDark.itermcolors" \
         --exclude ".node-packages.sh" \
         --exclude ".idea" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~

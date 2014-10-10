@@ -426,7 +426,7 @@ if has("autocmd")
         autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
         " Enable Folding, uses plugin vim-javascript-syntax
-        au FileType javascript* call JavaScriptFold()
+        " au FileType javascript* call JavaScriptFold()
 
     " Group end
     augroup END

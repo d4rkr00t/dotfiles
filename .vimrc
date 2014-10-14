@@ -5,6 +5,8 @@ if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
     echoerr 'Vundle was freshly installed. You should run :BundleInstall'
 endif
 
+let isNpmInstalled = executable("npm")
+
 set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
 let mapleader = ","   " Set the map leader. Useful for custom commands.
 
@@ -31,17 +33,38 @@ Bundle 'jszakmeister/vim-togglecursor'
 " Syntax plugins
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Syntastic'
-Bundle 'groenewege/vim-less'
-Bundle 'othree/html5.vim'
-Bundle 'hail2u/vim-css3-syntax'
+Bundle 'tomtom/tcomment_vim'
+
+" CSS
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'ap/vim-css-color'
+Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+Bundle 'git://github.com/ap/vim-css-color.git'
+Bundle 'git://github.com/groenewege/vim-less.git'
+Bundle 'git://github.com/miripiruni/vim-better-css-indent.git'
+Bundle 'git://github.com/csscomb/csscomb-for-vim.git'
+Bundle 'git://github.com/wavded/vim-stylus.git'
+
+" JavaScript
 Bundle 'SevInf/vim-bemhtml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'git://github.com/itspriddle/vim-jquery.git'
+Bundle 'git://github.com/leshill/vim-json.git'
+
+" Provide smart autocomplete results for javascript, and some usefull commands
+if has("python")
+    Bundle 'marijnh/tern_for_vim'
+    " install node dependencies for tern
+    if isNpmInstalled && isdirectory(expand('~/.vim/bundle/tern_for_vim')) && !isdirectory(expand('~/.vim/bundle/tern_for_vim/node_modules'))
+        silent ! echo 'Installing tern' && npm --prefix ~/.vim/bundle/tern_for_vim install
+    endif
+endif
+
 Bundle 'mattn/emmet-vim'
+
 Bundle 'HTML-AutoCloseTag'
 Bundle 'gregsexton/MatchTag'
+Bundle 'othree/html5.vim'
 
 " Themes
 Bundle 'altercation/vim-colors-solarized'
@@ -115,6 +138,23 @@ nmap <silent> <leader>t :NERDTreeToggle<CR>
 
 "-------------------------
 " Syntastic
+
+" Install jshint and csslint for syntastic
+" Path to jshint if it not installed globally, then use local installation
+if !executable("jshint")
+    "let g:syntastic_jshint_exec = '~/.vim/node_modules/.bin/jshint'
+    let g:syntastic_javascript_jshint_exec = '~/.vim/node_modules/.bin/jshint'
+    if isNpmInstalled && !executable(expand(g:syntastic_javascript_jshint_exec))
+        silent ! echo 'Installing jshint' && npm --prefix ~/.vim/ install jshint
+    endif
+endif
+" Path to csslint if it not installed globally, then use local installation
+if !executable("csslint")
+    let g:syntastic_css_csslint_exec='~/.vim/node_modules/.bin/csslint'
+    if isNpmInstalled && !executable(expand(g:syntastic_css_csslint_exec))
+        silent ! echo 'Installing csslint' && npm --prefix ~/.vim/ install csslint
+    endif
+endif
 
 " Enable autochecks
 let g:syntastic_check_on_open=1
@@ -296,6 +336,16 @@ set wildmenu
 " Autocmpletion hotkey
 set wildcharm=<TAB>
 
+" Set completion mode
+" When more than one match, list all matches and complete first match
+" Then complete the next full match
+set wildmode=list:longest,full
+
+" Ignore following files when completing file/directory names
+set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff,node_modules
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.DS_Store
+
 "--------------------------------------------------
 " Folding
 
@@ -372,7 +422,6 @@ nnoremap cp :cp<CR>
 nnoremap -- :GundoToggle<CR>
 
 "set iskeyword+=- "Makes foo-bar considered one word
-"
 nnoremap <leader>ev :e $MYVIMRC<cr> " ,ev will open up your vimrc in a vertical split
 nnoremap <leader>gb :Gbrowse<cr>
 nnoremap <leader>gs :Gstatus<cr>
@@ -382,7 +431,6 @@ nnoremap <leader>o :copen<cr>
 
 map <Esc><Esc> :w<CR>
 
-set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff,node_modules
 
 " It executes specific command when specific events occured
 " like reading or writing file, or open or close buffer
@@ -403,22 +451,13 @@ if has("autocmd")
           \| exe "normal g'\"" | endif
 
         " Set filetypes aliases
-        au FileType scss set ft=scss.css
-        au FileType less set ft=less.css
+        " au FileType scss set ft=scss.css
+        " au FileType less set ft=less.css
         au BufWinEnter * if line2byte(line("$") + 1) > 100000 | syntax clear | endif
         au BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
         au BufRead,BufNewFile *.json set ft=json
         au BufRead,BufNewFile *.bemhtml set ft=javascript
         au BufNewFile,BufRead *.styl set ft=styl.css "Sets filetpe of less to be css. Helps with plugins.
-
-        " Fix indenting for css style things (sass, css)
-        au BufEnter *.css set nocindent
-        au BufLeave *.css set cindent
-        au BufEnter *.scss set nocindent
-        au BufLeave *.scss set cindent
-        au BufEnter *.less set nocindent
-        au BufEnter *.styl set nocindent
-        au BufLeave *.styl set cindent
 
         " Auto close preview window, it uses with tags,
         " I don't use it

@@ -1,0 +1,25 @@
+{
+  "name": "bemhtml",
+  "version": "0.10.0",
+  "description": "BEMHTML syntax support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "https://github.com/jchouse/bemhtml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jchouse/bemhtml.git"
+  },
+  "readme": "# bemhtml language support in Atom\n\nAdds syntax highlighting and snippets to bemhtml file in Atom.\n\nOriginally (https://github.com/atom/language-javascript).\n\nBased (https://github.com/feugenix/BEMHTMLSublime).\n\nContributions are greatly appreciated. Please fork this repository and open a\npull request to add snippets, make grammar tweaks, etc.\n\n## Upgrade\n\nTo upgrade pkg, reinstall with shell command `rm -rf bemhtml && apm instal bemhtml` in /Users/username/.atom/packages\n\n## Snippets\n**don't be afraid to press ⇥**\n\nblock\n    `b` -> `block blockName,`\n\nblock\n    `b:` -> `block: 'blockName',`\n\nelem\n    `e` -> `elem elemName,`\n\nelem\n    `e:` -> `elem: 'elemName',`\n\nblock + elem\n    `be` -> `block blockName, elem elemName,`\n\nmod\n    `m` -> `mod modName modValue,`\n\nmods\n    `m:` -> `mods: { modName: 'modValue' },`\n\nelemMod\n    `em` -> `elemMod modName modValue,`\n\nelemMods\n    `em:` -> `elemMods: { modName: 'modValue' },`\n\nmix\n    `mi:` -> `mix: [ { block: blockName } ]`\n\ncontent\n    `c:` -> `content: [ { ... } ]`\n\njs\n    `js:` -> `js: { ... }`\n\ntag\n    `t:` -> `tag: 'tagName',`\n\nattrs\n    `a:` -> `attrs: { ... }`\n\ncls\n    `cl:` -> `cls: 'className',`\n\nbem: false\n    `bf:` -> `bem: false`\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jchouse/bemhtml/issues"
+  },
+  "_id": "bemhtml@0.10.0",
+  "dist": {
+    "shasum": "513cce15e06fff761682fe4110f5f34be2f42369"
+  },
+  "_resolved": "/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-11471-69788-1iikzk7/package.tgz",
+  "_from": "/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-11471-69788-1iikzk7/package.tgz"
+}

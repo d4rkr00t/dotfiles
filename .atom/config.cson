@@ -1,0 +1,52 @@
+'global':
+  'editor':
+    'fontSize': 14
+    'lineHeight': 1.7
+    'showInvisibles': true
+    'softWrap': true
+    'showIndentGuide': true
+    'fontFamily': 'Menlo'
+    'tabLength': 4
+    'scrollPastEnd': true
+    'invisibles': {}
+  'core':
+    'themes': [
+      'neutron-ui'
+      'neutron-syntax'
+    ]
+    'disabledPackages': [
+      'metrics'
+      'language-c'
+      'language-go'
+      'language-java'
+      'language-objective-c'
+      'language-php'
+      'language-perl'
+      'language-ruby'
+      'language-ruby-on-rails'
+      'language-toml'
+      'styleguide'
+      'welcome'
+      'remember-session'
+    ]
+    'destroyEmptyPanes': false
+  'exception-reporting':
+    'userId': 'baddc7d1-03c8-6c0c-d012-b60bc75b03b5'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': 'b7fa566fb5c2241960a0362553c9c5755e4b08a6'
+  'git-diff':
+    'showIconsInEditorGutter': true
+  'linter':
+    'showStatusBarWhenCursorIsInErrorRange': true
+    'lintOnChange': false
+    'showHighlighting': false
+  'remember-session':
+    'x': 0
+    'y': 23
+    'width': 1440
+    'height': 873
+    'treeWidth': 200
+    'path': '/Users/sysoev/Development/JavaScript/dayreview'
+    'tabs': '/Users/sysoev/Development/JavaScript/dayreview/gulpfile.js'

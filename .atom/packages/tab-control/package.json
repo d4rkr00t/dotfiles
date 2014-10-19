@@ -1,0 +1,33 @@
+{
+  "name": "tab-control",
+  "main": "./lib/tab-control",
+  "version": "0.1.1",
+  "description": "Allows you to configure tab settings on the current editor.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ehuss/atom-tab-control"
+  },
+  "license": "Unlicense",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "activationEvents": "tab-control:show",
+  "readme": "# tab-control\n\nThis is an extremely simple package for [Atom](https://atom.io/) that gives you the ability to change the tab settings on an individual editor.\n\n![example](https://raw.githubusercontent.com/ehuss/atom-tab-control/master/example.png)\n\n[![Build Status](https://travis-ci.org/ehuss/atom-tab-control.svg?branch=master)](https://travis-ci.org/ehuss/atom-tab-control)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/ehuss/atom-tab-control/issues"
+  },
+  "homepage": "https://github.com/ehuss/atom-tab-control",
+  "_id": "tab-control@0.1.1",
+  "dist": {
+    "shasum": "1cd92c5736a0feb4edbc530a3dd5df8d8175b645"
+  },
+  "_resolved": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-8650-rn5kte/package.tgz",
+  "_from": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-8650-rn5kte/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "folders": []
+  }
+}

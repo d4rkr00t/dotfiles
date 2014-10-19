@@ -192,7 +192,7 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_auto_select = 1
 
 " Disable auto popup
-let g:neocomplcache_disable_auto_complete = 1
+" let g:neocomplcache_disable_auto_complete = 1
 
 " Smart tab Behavior
 function! CleverTab()

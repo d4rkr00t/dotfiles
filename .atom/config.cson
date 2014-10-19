@@ -8,6 +8,7 @@
     'fontFamily': 'Menlo'
     'tabLength': 4
     'scrollPastEnd': true
+    'preferredLineLength': 120
     'invisibles': {}
   'core':
     'themes': [
@@ -28,6 +29,7 @@
       'styleguide'
       'welcome'
       'remember-session'
+      'autocomplete'
     ]
     'destroyEmptyPanes': false
   'exception-reporting':
@@ -50,3 +52,6 @@
     'treeWidth': 200
     'path': '/Users/sysoev/Development/JavaScript/dayreview'
     'tabs': '/Users/sysoev/Development/JavaScript/dayreview/gulpfile.js'
+  'autocomplete-plus':
+    'includeCompletionsFromAllBuffers': true
+  'emmet': {}

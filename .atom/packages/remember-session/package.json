@@ -20,10 +20,10 @@
   "homepage": "https://github.com/hampustagerud/atom-remember-session",
   "_id": "remember-session@0.5.1",
   "dist": {
-    "shasum": "e47b889225fcadb170349fc8330da71c43fd7e22"
+    "shasum": "d647aa63ceaae425088784a9a5bce3f9f74dc059"
   },
-  "_resolved": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-7413-57a0l1/package.tgz",
-  "_from": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-7413-57a0l1/package.tgz",
+  "_resolved": "/private/var/folders/bm/6hjtn84s0kd8qxxc2pm3kk81fht27_/T/d-114920-30064-fwgxcj/package.tgz",
+  "_from": "/private/var/folders/bm/6hjtn84s0kd8qxxc2pm3kk81fht27_/T/d-114920-30064-fwgxcj/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

@@ -24,10 +24,10 @@
   "homepage": "https://github.com/AtomLinter/linter-jsxhint",
   "_id": "linter-jsxhint@0.0.7",
   "dist": {
-    "shasum": "5b6d6060d57eafa7c67176848d8ac5f9c1e8c3b5"
+    "shasum": "6d9895a0be6fe76f9ffb0d1e73d1c6bf88d77b23"
   },
-  "_resolved": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-7087-mifkaa/package.tgz",
-  "_from": "/private/var/folders/7h/xjwfy0c14l1gc5kfvlpwrzjw0000gn/T/d-114919-7087-mifkaa/package.tgz",
+  "_resolved": "/private/var/folders/bm/6hjtn84s0kd8qxxc2pm3kk81fht27_/T/d-114920-36174-1055dmy/package.tgz",
+  "_from": "/private/var/folders/bm/6hjtn84s0kd8qxxc2pm3kk81fht27_/T/d-114920-36174-1055dmy/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

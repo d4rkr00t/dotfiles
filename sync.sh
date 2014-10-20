@@ -10,6 +10,7 @@ function doIt() {
         --exclude ".node-packages.sh" \
         --exclude ".idea" \
         --exclude ".atom" \
+		--exclude "atom.icns" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~
 	source ~/.bash_profile
 }

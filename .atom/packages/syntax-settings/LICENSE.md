@@ -1,4 +1,4 @@
-Copyright (c) 2014 Bruce Williams, Lynn Wallenstein
+Copyright (c) 2014 <Cameron Stitt>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

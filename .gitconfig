@@ -36,6 +36,7 @@
 
 	# View last commit
     last = log --graph --decorate --pretty=oneline --abbrev-commit -1 --stat --date=short
+	ld = log -p -1
 
     # Watch my commits for last day
     standup = log --since '1 day ago' --oneline --author d4rkr00t@gmail.com

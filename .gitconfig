@@ -57,6 +57,8 @@
     fa = fetch --all
     r = "rebase"
     ri = "!r() { git rebase -i HEAD~$1; }; r"
+	s = stash
+	sa = stash apply
 
     # rebase shortcuts
     rom = rebase origin/master

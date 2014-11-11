@@ -453,6 +453,10 @@ defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 # Show full names rather than Twitter handles
 defaults write com.twitter.twitter-mac ShowFullNames -bool true
 
+# Disable image caching
+rm -rf ~/Library/Containers/com.twitter.twitter-mac/Data/Library/Caches/com.atebits.tweetie.profile-images
+ln -s /dev/null ~/Library/Containers/com.twitter.twitter-mac/Data/Library/Caches/com.atebits.tweetie.profile-images
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################

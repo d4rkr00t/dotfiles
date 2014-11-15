@@ -26,10 +26,8 @@ alias gfl="rm -rf ./.git/index.lock"
 # Edit config
 alias ealiases="subl ~/.aliases"
 
-# Apache
-alias astart="sudo apachectl start"
-alias astop="sudo apachectl stop"
-alias arestart="sudo apachectl restart"
+# NPM
+alias nom="rm -rf node_modules && npm cache clear && npm i"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

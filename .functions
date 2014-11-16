@@ -4,7 +4,11 @@ function mkd() {
 }
 
 function mkpr() {
-  ./bin/mkproject.sh $1 $2 && cd $1/web3 && make clean && make && gitor && git go SERP-$1 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
+  ./bin/mkproject.sh $1 && cd $1/web3 && make clean && make && gitor && git go SERP-$1 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
+}
+
+function mkprwtp() {
+  ./bin/mkproject.sh $1 $2 web_touch_phone && cd $1/web_touch_phone && make clean && make && gitor git@github.yandex-team.ru:sysoev/web-touch-phone.git && git go SERP-$2 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
 }
 
 # Get random string from file

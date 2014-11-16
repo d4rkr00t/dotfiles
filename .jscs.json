@@ -25,6 +25,9 @@
         "return",
         "catch"
     ],
+    "disallowSpaceAfterKeywords": [
+        "function"
+    ],
     "requireMultipleVarDecl": true,
     "disallowLeftStickedOperators": [
         "?",

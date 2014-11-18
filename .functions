@@ -77,15 +77,6 @@ if [ $? -eq 0 ]; then
     }
 fi
 
-# Create a data URL from a file
-function dataurl() {
-    local mimeType=$(file -b --mime-type "$1")
-    if [[ $mimeType == text/* ]]; then
-        mimeType="${mimeType};charset=utf-8"
-    fi
-    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
@@ -202,4 +193,22 @@ function imgsize() {
   else
     echo "File not found"
   fi
+}
+
+# SSHFS mount
+function sshfsmount() {
+  local mountPath="/Volumes/sshfs"
+
+  mkdir -p $mountPath
+
+  sshfs -o Ciphers=arcfour -o Compression=yes -o auto_cache,reconnect,defer_permissions,noappledouble -o workaround=nodelaysrv -o cache_stat_timeout=600 -o IdentityFile=~/.ssh/id_rsa $1 $mountPath
+}
+
+# Create a data URL from a file
+function dataurl() {
+    local mimeType=$(file -b --mime-type "$1")
+    if [[ $mimeType == text/* ]]; then
+        mimeType="${mimeType};charset=utf-8"
+    fi
+    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }

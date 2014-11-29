@@ -24,3 +24,5 @@ else
 	fi
 fi
 unset doIt
+
+cp -f atom.icns /Applications/Atom.app/Contents/Resources/atom.icns

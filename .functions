@@ -8,7 +8,7 @@ function mkpr() {
 }
 
 function mkprwtp() {
-  ./bin/mkproject.sh $1 $2 web_touch_phone && cd $1/web_touch_phone && make clean && make && gitor git@github.yandex-team.ru:sysoev/web-touch-phone.git && git go SERP-$2 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
+  ./bin/mkproject.sh $1 web_touch_phone && cd $1/web_touch_phone && make clean && make && gitor git@github.yandex-team.ru:sysoev/web-touch-phone.git && git go SERP-$2 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
 }
 
 # Get random string from file
@@ -156,6 +156,35 @@ function sshfsmount() {
   mkdir -p $mountPath
 
   sshfs -o Ciphers=arcfour -o Compression=yes -o auto_cache,reconnect,defer_permissions,noappledouble -o workaround=nodelaysrv -o cache_stat_timeout=600 -o IdentityFile=~/.ssh/id_rsa $1 $mountPath
+}
+
+# Prepare sbs static
+function sbs() {
+  rm -rf node_modules
+  rm -rf bundles-*
+  rm -rf .*
+  rm -rf configs/
+  rm -rf debian/
+  rm -rf contribs/
+  rm -rf tools/
+  rm -rf bower.json
+  rm -rf flags_allowed.json
+  rm -rf GITHEAD
+  rm -rf GNUmakefile
+  rm -rf lego.version
+  rm -rf npm-shrinkwrap.json
+  rm -rf package.json
+  rm -rf README.md
+
+  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.js -delete
+  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.css -delete
+  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.bemhtml -delete
+  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.txt -delete
+  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.json -delete
+
+  find pages-desktop pages-touch-pad pages-touch-phone ! -name "_*"
+
+  find . -empty -type d -delete
 }
 
 # Create a data URL from a file

@@ -60,6 +60,9 @@
 	s = stash
 	sa = stash apply
 
+	# checkout and track branch
+	tr = "!r() { git checkout --track $1; }; r"
+
     # rebase shortcuts
     rom = rebase origin/master
     rud = rebase upstream/dev

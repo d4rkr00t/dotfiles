@@ -20,7 +20,6 @@ alias gam="git commit --amend"
 alias gamq="git commit --amend --no-edit"
 alias grc="git rebase --continue"
 alias grom="git rebase origin/master"
-alias grud="git rebase upstream/dev"
 alias gfl="rm -rf ./.git/index.lock"
 
 # Edit config
@@ -130,9 +129,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
-
-# Mount serp.spb.yandex.ru
-alias spb="sshfs -o Ciphers=arcfour -o Compression=yes -o auto_cache,reconnect,defer_permissions,noappledouble -o workaround=nodelaysrv -o cache_stat_timeout=600 -o IdentityFile=~/.ssh/id_rsa sysoev@spb.serp.yandex.ru:/home/sysoev /Users/sysoev/Development/serp"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description

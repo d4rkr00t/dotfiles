@@ -3,10 +3,6 @@ function mkd() {
     mkdir -p "$@" && cd "$_"
 }
 
-function mkpr() {
-  ~/bin/mkproject.sh $1 && cd $1/web4 && make clean && make && gitor && git go SERP-$1 && echo && echo -en "\033[0;33m======= Project created =======\033[0m" && echo && echo 'http://sysoev-d-'$1'.spb.serp.yandex.ru' && echo -e "\a"
-}
-
 # Get random string from file
 function rndstr(){
   local count=$2
@@ -20,11 +16,7 @@ function gitor() {
 
     if [ -d .git ]; then
       if [[ $url != http* && $url != git@* && ! -z "$url" ]]; then
-          local url="https://github.yandex-team.ru/$1.git"
-      fi
-
-      if [[ -z "$url" ]]; then
-          local url="git@github.yandex-team.ru:search-interfaces/web4.git"
+          local url="https://github.com/$1.git"
       fi
 
       if ! git remote | grep upstream > /dev/null; then
@@ -152,35 +144,6 @@ function sshfsmount() {
   mkdir -p $mountPath
 
   sshfs -o Ciphers=arcfour -o Compression=yes -o auto_cache,reconnect,defer_permissions,noappledouble -o workaround=nodelaysrv -o cache_stat_timeout=600 -o IdentityFile=~/.ssh/id_rsa $1 $mountPath
-}
-
-# Prepare sbs static
-function sbs() {
-  rm -rf node_modules
-  rm -rf bundles-*
-  rm -rf .*
-  rm -rf configs/
-  rm -rf debian/
-  rm -rf contribs/
-  rm -rf tools/
-  rm -rf bower.json
-  rm -rf flags_allowed.json
-  rm -rf GITHEAD
-  rm -rf GNUmakefile
-  rm -rf lego.version
-  rm -rf npm-shrinkwrap.json
-  rm -rf package.json
-  rm -rf README.md
-
-  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.js -delete
-  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.css -delete
-  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.bemhtml -delete
-  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.txt -delete
-  find blocks-deskpad blocks-desktop blocks-touch-pad blocks-touch-phone -name *.json -delete
-
-  find pages-desktop pages-touch-pad pages-touch-phone ! -name "_*"
-
-  find . -empty -type d -delete
 }
 
 # Grep with file mask filter

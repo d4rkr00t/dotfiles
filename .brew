@@ -30,6 +30,7 @@ install node
 install rename
 install webkit2png
 install mongodb
+install speedtest_cli
 
 # Remove outdated versions from the cellar
 cleanup

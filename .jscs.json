@@ -25,6 +25,12 @@
         "return",
         "catch"
     ],
+    "disallowSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
     "requireMultipleVarDecl": true,
     "disallowLeftStickedOperators": [
         "?",

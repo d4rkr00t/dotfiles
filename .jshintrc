@@ -38,6 +38,7 @@
         "sinon",
         "chai",
         "describe",
+        "afterEach",
         "beforeEach",
         "it",
         "expect",

@@ -15,6 +15,9 @@ alias pj="cd ~/Development/JavaScript"
 alias g="git"
 alias h="history"
 
+# Disk Usage
+alias ds="du -hd 1 2> /dev/null"
+
 # Git
 alias gam="git commit --amend"
 alias gamq="git commit --amend --no-edit"

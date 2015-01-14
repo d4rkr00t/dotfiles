@@ -19,10 +19,10 @@ alias h="history"
 alias ds="du -hd 1 2> /dev/null"
 
 # Git
-alias gam="git commit --amend"
-alias gamq="git commit --amend --no-edit"
-alias grc="git rebase --continue"
-alias grom="git rebase origin/master"
+# alias gam="git commit --amend"
+# alias gamq="git commit --amend --no-edit"
+# alias grc="git rebase --continue"
+# alias grom="git rebase origin/master"
 alias gfl="rm -rf ./.git/index.lock"
 
 # Edit config

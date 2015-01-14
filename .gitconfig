@@ -5,9 +5,6 @@
 	# View the current working tree status using the short format
 	st = status -sb
 
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
 	# Show verbose output about tags, branches or remotes
 	t   = tag -l
 	br  = branch -a
@@ -34,10 +31,6 @@
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-	# View last commit
-    last = log --graph --decorate --pretty=oneline --abbrev-commit -1 --stat --date=short
-	ld = log -p -1
-
     # Watch my commits for last day
     standup = log --since '1 day ago' --oneline --author d4rkr00t@gmail.com
 
@@ -45,27 +38,55 @@
 	in = "!git remote update -p; git log ..@{u}"
 	out = log @{u}..
 
-    a   = add
-    all = add -A :/
-    br  = branch
-    ci  = commit -m
-    cia = commit -am
-    cid = rev-parse HEAD
-    co  = checkout
-    df  = diff --color --color-words --abbrev
+	# add
+	a   = add
+	all = add -A :/
+
+	# commit
+	ci  = commit -m
+	cia = commit -am
+	cid = rev-parse HEAD
+	# View last commit
+	last = log --graph --decorate --pretty=oneline --abbrev-commit -1 --stat --date=short
+	ld = log -p -1
+
+	# fetch
     f = fetch
     fa = fetch --all
-    r = "rebase"
-    ri = "!r() { git rebase -i HEAD~$1; }; r"
+
+	# stash
 	s = stash
 	sa = stash apply
+
+	# rebase
+	r = rebase
+	ri = "!r() { git rebase -i HEAD~$1; }; r"
+	ri = "!r() { git rebase -i HEAD~$1; }; r"
 
 	# checkout and track branch
 	tr = "!r() { git checkout --track $1; }; r"
 
     # rebase shortcuts
-    rom = rebase origin/master
-    rud = rebase upstream/dev
+    rom = "!r() { git rebase origin/master; }; r"
+    rud = "!r() { git rebase upstream/dev; }; r"
+	rc = rebase --continue
+
+	# reflog
+	ref = reflog --format='%C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs (%s)'
+
+	# amend
+	am = "!r() { git commit --amend; }; r"
+	amq = "!r() { git commit --amend --no-edit; }; r"
+
+	# diff
+	df  = diff --color --color-words --abbrev
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# misc
+	br  = branch
+	co  = checkout
+	df  = diff --color --color-words --abbrev
 
 [apply]
 	# Detect whitespace errors when applying a patch

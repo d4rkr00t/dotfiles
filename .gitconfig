@@ -61,15 +61,12 @@
 	# rebase
 	r = rebase
 	ri = "!r() { git rebase -i HEAD~$1; }; r"
-	ri = "!r() { git rebase -i HEAD~$1; }; r"
+	rom = "!r() { git rebase origin/master; }; r"
+	rud = "!r() { git rebase upstream/dev; }; r"
+	rc = rebase --continue
 
 	# checkout and track branch
 	tr = "!r() { git checkout --track $1; }; r"
-
-    # rebase shortcuts
-    rom = "!r() { git rebase origin/master; }; r"
-    rud = "!r() { git rebase upstream/dev; }; r"
-	rc = rebase --continue
 
 	# reflog
 	ref = reflog --format='%C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs (%s)'

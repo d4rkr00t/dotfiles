@@ -3,7 +3,7 @@ function mkd() {
     mkdir -p "$@" && cd "$_"
 }
 
-# mesure
+# mesure execution time
 function exectime() {
   start_time=`date +%s`
 
@@ -159,6 +159,13 @@ function sshfsmount() {
 # Grep with file mask filter
 function fgr() {
   find -name $2 -type f | xargs grep $1
+}
+
+# get value of property from json file
+function jsonval() {
+  KEY=$2
+  num=$3
+  cat $1 | awk -F"[,:}]" '{for(i=1;i<=NF;i++){if($i~/\042'$KEY'\042/){print $(i+1)}}}' | tr -d '"' | sed -n ${num}p
 }
 
 # Create a data URL from a file

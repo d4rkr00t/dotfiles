@@ -28,6 +28,9 @@ alias gfl="rm -rf ./.git/index.lock"
 # Edit config
 alias ealiases="atom ~/.aliases"
 
+# NODE
+command -v node > /dev/null && alias node="node --harmony"
+
 # NPM
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 

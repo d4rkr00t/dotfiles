@@ -83,6 +83,7 @@
 	# misc
 	br  = branch
 	co  = checkout
+	cl  = clone
 	df  = diff --color --color-words --abbrev
 
 [apply]

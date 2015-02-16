@@ -79,6 +79,8 @@
 	df  = diff --color --color-words --abbrev
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	di = "diff --ignore-space-change"
+	dii = "diff --ignore-space-change --color-words --diff-algorithm=patience"
 
 	# misc
 	br  = branch

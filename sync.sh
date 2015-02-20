@@ -7,6 +7,7 @@ function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" \
         --exclude "SolarizedDark.terminal" \
         --exclude "SolarizedDark.itermcolors" \
+		--exclude "Iterm.itermcolors" \
         --exclude ".node-packages.sh" \
         --exclude ".idea" \
         --exclude ".atom" \

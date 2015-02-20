@@ -5,9 +5,6 @@ function doIt() {
 	chmod +x .node-packages.sh
 
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" \
-        --exclude "SolarizedDark.terminal" \
-        --exclude "SolarizedDark.itermcolors" \
-		--exclude "Iterm.itermcolors" \
         --exclude ".node-packages.sh" \
         --exclude ".idea" \
         --exclude ".atom" \

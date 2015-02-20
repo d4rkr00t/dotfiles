@@ -31,6 +31,9 @@ alias ealiases="atom ~/.aliases"
 # NODE
 command -v node > /dev/null && alias node="node --harmony"
 
+alias use-iojs="brew unlink node && brew link --force iojs"
+alias use-node="brew unlink iojs && brew link --force node"
+
 # NPM
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 

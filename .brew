@@ -27,6 +27,7 @@ install pv
 install git
 install imagemagick --with-webp
 install node
+install iojs
 install rename
 install webkit2png
 install mongodb

@@ -63,6 +63,7 @@
 	ri = "!r() { git rebase -i HEAD~$1; }; r"
 	rom = "!r() { git rebase origin/master; }; r"
 	rud = "!r() { git rebase upstream/dev; }; r"
+	rum = "!r() { git rebase upstream/master; }; r"
 	rc = rebase --continue
 
 	# checkout and track branch

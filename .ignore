@@ -1,0 +1,22 @@
+# Files listed here will not be copied to your home directory.
+
+.git/
+
+.ignore
+sync.sh
+.node-packages.sh
+.idea
+.atom
+.osx
+.brew
+.cask
+atom.icns
+
+README.md
+
+.DS_Store
+Desktop.ini
+
+*~
+*.swp
+*.swo

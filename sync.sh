@@ -4,12 +4,7 @@ cd "$(dirname "${BASH_SOURCE}")"
 function doIt() {
 	chmod +x .node-packages.sh
 
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "sync.sh" \
-        --exclude ".node-packages.sh" \
-        --exclude ".idea" \
-        --exclude ".atom" \
-		--exclude "atom.icns" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~
+	rsync --exclude-from .IGNORE -avh --no-perms . ~;
 	source ~/.bash_profile
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

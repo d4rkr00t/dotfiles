@@ -36,6 +36,7 @@ alias use-node="brew unlink iojs && brew link --force node"
 
 # NPM
 alias nom="rm -rf node_modules && npm cache clear && npm i"
+alias nup="npm update --save-dev && npm update --save"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

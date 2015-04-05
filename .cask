@@ -17,7 +17,6 @@ cask install firefox 2> /dev/null
 cask install skype 2> /dev/null
 cask install transmission 2> /dev/null
 cask install mou 2> /dev/null
-cask install chromium 2> /dev/null
 cask install iterm2 2> /dev/null
 
 # QuickLook plugins

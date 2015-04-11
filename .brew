@@ -13,6 +13,7 @@ install moreutils
 install findutils
 # Install Bash 4
 install bash
+install bash-completion
 
 # Install wget with IRI support
 install wget --with-iri

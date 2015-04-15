@@ -7,6 +7,9 @@
         "jquery": true,
         "es6": true
     },
+    "ecmaFeatures": {
+        "jsx": true
+    },
     "rules": {
         "no-extra-boolean-cast": 0,
         "no-reserved-keys": 2,

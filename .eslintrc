@@ -1,7 +1,4 @@
 {
-    "plugins": [
-        "smells"
-    ],
     "env": {
         "browser": true,
         "node": true,
@@ -61,10 +58,6 @@
 
         "max-depth": [1, 2],
         "max-len": [1, 120, 4],
-        "max-params": [1, 5],
-
-        "no-complex-switch-case": 1,
-        "no-setinterval": 1,
-        "no-this-assign": 1
+        "max-params": [1, 5]
     }
 }

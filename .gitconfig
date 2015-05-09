@@ -41,6 +41,7 @@
 	# add
 	a   = add
 	all = add -A :/
+	ai = add --interactive
 
 	# commit
 	ci  = commit -m
@@ -73,21 +74,21 @@
 	ref = reflog --format='%C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs (%s)'
 
 	# amend
-	am = "!r() { git commit --amend; }; r"
-	amq = "!r() { git commit --amend --no-edit; }; r"
+	ame = commit --amend
+	amq = commit --amend --reuse-message=HEAD
 
 	# diff
 	df  = diff --color --color-words --abbrev
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	di = "diff --ignore-space-change"
-	dii = "diff --ignore-space-change --color-words --diff-algorithm=patience"
+	di = "--no-pager diff --ignore-space-change"
+	dii = "--no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
 
 	# misc
 	br  = branch
 	co  = checkout
 	cl  = clone
-	df  = diff --color --color-words --abbrev
+	cleanit = clean -fd
 
 [apply]
 	# Detect whitespace errors when applying a patch

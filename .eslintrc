@@ -28,6 +28,7 @@
         "no-extra-bind": 2,
         "no-floating-decimal": 1,
         "no-self-compare": 2,
+        "no-mixed-requires": 0,
         "wrap-iife": 0,
 
         "strict": 0,

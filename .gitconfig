@@ -89,6 +89,7 @@
 	co  = checkout
 	cl  = clone
 	cleanit = clean -fd
+	cp = cherry-pick
 
 [apply]
 	# Detect whitespace errors when applying a patch

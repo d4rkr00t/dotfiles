@@ -78,11 +78,9 @@
 	amq = commit --amend --reuse-message=HEAD
 
 	# diff
-	df  = diff --color --color-words --abbrev
-	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	di = "--no-pager diff --ignore-space-change"
-	dii = "--no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
+	di = !"git --no-pager diff --ignore-space-change"
+	dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
 
 	# misc
 	br  = branch

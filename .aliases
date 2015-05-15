@@ -74,6 +74,9 @@ alias hi=hicat
 # tmux
 alias mux='tmux -CC new -A -s 0'
 
+# image
+alias imginfo='identify -verbose'
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 

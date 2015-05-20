@@ -47,9 +47,11 @@
 	ci  = commit -m
 	cia = commit -am
 	cid = rev-parse HEAD
-	# View last commit
-	last = log --graph --decorate --pretty=oneline --abbrev-commit -1 --stat --date=short
-	ld = log -p -1
+
+	# log
+	last = log --graph --decorate --oneline -1 --stat # last commit stats
+	ld = log -p -1 # last commit diff
+	lp = log --branches --not --remotes --decorate --oneline # commits to push
 
 	# fetch
     f = fetch

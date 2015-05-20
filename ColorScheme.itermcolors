@@ -59,11 +59,11 @@
 	<key>Ansi 14 Color</key>
 	<dict>
 		<key>Blue Component</key>
-		<real>0.95955532789999998</real>
+		<real>0.85037487745285034</real>
 		<key>Green Component</key>
-		<real>0.8690328598</real>
+		<real>0.75008952617645264</real>
 		<key>Red Component</key>
-		<real>0.24355655909999999</real>
+		<real>0.19595509767532349</real>
 	</dict>
 	<key>Ansi 15 Color</key>
 	<dict>
@@ -113,11 +113,11 @@
 	<key>Ansi 6 Color</key>
 	<dict>
 		<key>Blue Component</key>
-		<real>0.97254901960784312</real>
+		<real>0.97254902124404907</real>
 		<key>Green Component</key>
-		<real>0.96470588235294119</real>
+		<real>0.96470588445663452</real>
 		<key>Red Component</key>
-		<real>0.51372549019607838</real>
+		<real>0.51372551918029785</real>
 	</dict>
 	<key>Ansi 7 Color</key>
 	<dict>

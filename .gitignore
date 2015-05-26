@@ -16,3 +16,4 @@ Thumbs.db
 .idea
 
 node_modules
+.node-bin/node_modules

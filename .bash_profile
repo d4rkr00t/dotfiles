@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.node-bin:$HOME/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -37,6 +37,9 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Bash completions
 eval "$(gulp --completion=bash)"
+
+
+
 
 if hash brew 2>/dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then

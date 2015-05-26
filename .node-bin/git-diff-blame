@@ -1,0 +1,210 @@
+#!/usr/bin/env node
+
+var colors = require('colors');
+var Promise = require('bluebird');
+var child_process = require('child_process');
+
+// globals
+var oldrev = process.argv[2] || 'HEAD';
+var newrev = process.argv[3] || '';
+
+var pre, post;
+var deleted, created;
+var prefilename, postfilename;
+var statistic = [];
+
+spawn_async('git', ['rev-parse', '--show-toplevel'])
+    .then(function(output) {
+        var git_root = output[0].trim();
+        process.chdir(git_root);
+
+        var args = ['--no-pager', 'diff', '--no-prefix', oldrev];
+        if (newrev) args.push(newrev);
+
+        return spawn_async('git', args);
+    })
+    .then(function(output) {
+        var stdout = output[0].split('\n');
+
+        return new Promise(function(resolve, reject) {
+            var loop = function(file) {
+                if (file.length === 0) {
+                    resolve();
+                } else {
+                    var line = file.shift();
+                    parse_diff_line(line, function() {
+                        return loop(file);
+                    });
+                }
+            };
+
+            return loop(stdout);
+        });
+    })
+    .then(function() {
+        var stats = {};
+        var authors = [];
+        var max_name = 0;
+        statistic.map(function(rec) {
+            if (!stats[rec.mail]) {
+                stats[rec.mail] = 0;
+                authors.push(rec.mail);
+                if (rec.mail.length > max_name) {
+                    max_name = rec.mail.length;
+                }
+            }
+            stats[rec.mail]++;
+        });
+
+        authors.sort(function(a, b) {
+            return stats[b] - stats[a];
+        });
+
+        authors = authors.filter(function(name) { return name != 'not.committed.yet' });
+
+        authors.map(function(mail) {
+            var pad = Array(max_name - mail.length + 1).join(' ');
+            console.log(mail + ': ' + pad + stats[mail]);
+        });
+    })
+    .catch(function(reason) {
+        console.error(reason);
+    });
+
+function parse_diff_line(line, next) {
+    var blame;
+
+    if (match = line.match(/^diff --git (.*) \1$/)) {
+        created = false;
+        deleted = false;
+        prefilename  = match[1];
+        postfilename = match[1];
+        // console.log(line);
+        next();
+    }
+    else if (line.match(/^new file/)) {
+        created = true;
+        prefilename = '/dev/null';
+        next();
+    }
+    else if (line.match(/^deleted file/)) {
+        deleted = true;
+        postfilename = '/dev/null';
+        next();
+    }
+    else if (line.match(new RegExp('^--- ' + prefilename + '$'))) {
+        console.log(line);
+        next();
+    }
+    else if (line.match(new RegExp('^\\+\\+\\+ ' + postfilename + '$'))) {
+        console.log(line);
+        next();
+    }
+    else if (line.match(/^@@ /)) {
+        var args;
+        var h = parse_hunk_header(line);
+        var o_end = h.o_ofs + h.o_cnt - 1;
+        var n_end = h.n_ofs + h.n_cnt - 1;
+        var spawns = [];
+        var blameArgs = ['blame', '-e', '-M', '--date=short'];
+
+        if (!created) {
+            args = blameArgs.concat([ '-L' + h.o_ofs + ',' + o_end, oldrev, '--', prefilename]);
+            spawns.push(
+                spawn_async('git', args)
+                .then(function(output) {
+                    pre = output[0].split('\n');
+                })
+            );
+        }
+
+        if (!deleted) {
+            args = blameArgs.concat([]);
+            args.push('-L' + h.n_ofs + ',' + n_end);
+            if (newrev) args.push(newrev);
+            args.push('--');
+            args.push(postfilename);
+
+            spawns.push(
+                spawn_async('git', args)
+                .then(function(output) {
+                    post = output[0].split('\n');
+                })
+            );
+        }
+
+        Promise.all(spawns).then(next);
+    } else if (line.match(/^ /)) {
+        blame = pre.shift();
+        report(blame, line, ' ');
+        console.log('    ' + get_blame_prefix(blame) + '\t' + line);
+        post.shift();
+        next();
+    } else if (line.match(/^\-/)) {
+        blame = pre.shift();
+        report(blame, line, '-');
+        console.log((' -  ' + get_blame_prefix(blame) + '\t' + line).red);
+        next();
+    } else if (line.match(/^\+/)) {
+        blame = post.shift();
+        report(blame, line, '+');
+        console.log((' +  ' + get_blame_prefix(blame) + '\t' + line).green);
+        next();
+    } else {
+        console.log('');
+        next();
+    }
+}
+
+function parse_hunk_header(line) {
+    var m = line.match(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/)
+    var o_ofs = parseInt(m[1], 10);
+    var o_cnt = parseInt(m[2], 10) || 1;
+    var n_ofs = parseInt(m[3], 10);
+    var n_cnt = parseInt(m[4], 10) || 1;
+
+    return { o_ofs: o_ofs, o_cnt: o_cnt, n_ofs: n_ofs, n_cnt: n_cnt };
+}
+
+function get_blame_prefix(line) {
+    var m = line.match(/^(\^?[0-9a-f]+\s+(\S+\s+)?\([^\)]+\))/);
+    if (!m) {
+        console.log('bad blame output: ' + line);
+        process.exit(1);
+    } else {
+        return m[1];
+    }
+}
+
+function report(blame, line, status) {
+    if (status === ' ') return;
+
+    var m = blame.match(/^\^?([0-9a-f]+)\s+(\S+\s+)?\(<([^>]+)>\s+(\d+\-\d+\-\d+)\s+(\d+)+\)/);
+    if (m) {
+        statistic.push({ hash: m[1], mail: m[3], date: m[4], line: m[5], status: status });
+    }
+}
+
+function spawn_async(command, args, opts) {
+    return new Promise(function(resolve, reject) {
+        var child = child_process.spawn(command, args, opts);
+        var stdout = '';
+        var stderr = '';
+
+        child.stdout.on('data', function(output) {
+            stdout += output;
+        });
+
+        child.stderr.on('data', function (output) {
+            stderr += output;
+        });
+
+        child.on('close', function (code) {
+            if (parseInt(code, 10) === 0) {
+                resolve([stdout, stderr]);
+            } else {
+                reject([stdout, stderr].join('\n'));
+            }
+        });
+    });
+}

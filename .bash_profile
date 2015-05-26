@@ -38,10 +38,12 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # Bash completions
 eval "$(gulp --completion=bash)"
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if hash brew 2>/dev/null; then
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+    else
+        # If possible, add tab completion for many more commands
+        [ -f /etc/bash_completion ] && source /etc/bash_completion
+    fi
 fi
 # End bash completions
-
-# If possible, add tab completion for many more commands
-[ -f /etc/bash_completion ] && source /etc/bash_completion

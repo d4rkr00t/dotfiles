@@ -59,3 +59,9 @@ brew bundle .cask
 ```bash
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 ```
+
+### Make new bash as a default shell
+```bash
+sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+chsh -s /usr/local/bin/bash
+```

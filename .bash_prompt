@@ -3,6 +3,9 @@
 # https://github.com/twolfson/sexy-bash-prompt
 # Forked from gf3, https://gist.github.com/gf3/306785
 
+# Set iterm window title to PWD
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+
 # If we are on a colored terminal
 if tput setaf 1 &> /dev/null; then
   # Reset the shell from our `if` check

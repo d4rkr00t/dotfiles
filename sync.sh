@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
 cd "$(dirname "${BASH_SOURCE}")"
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-function doIt() {
-	chmod +x .node-packages.sh
+while read f; do
+    ln -sf "$DIR/$f" "$HOME/$f"
+done < .sync-list
 
-	rsync --exclude-from .IGNORE -avh --no-perms . ~;
-	source ~/.bash_profile
-}
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-	echo
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt
-	fi
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    cp -f atom.icns /Applications/Atom.app/Contents/Resources/atom.icns
 fi
-unset doIt
-
-cp -f atom.icns /Applications/Atom.app/Contents/Resources/atom.icns

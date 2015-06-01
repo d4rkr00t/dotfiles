@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git_root() {
+  git rev-parse --show-toplevel
+}
+
+if test $# -eq 0; then
+    git_root
+fi

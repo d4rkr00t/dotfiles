@@ -119,7 +119,7 @@
 
 	# Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
     # Use: `git gh-pr 123` or `git gh-pr 123 upstream`
-    gh-pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:gh-pr/$1 && git checkout gh-pr/$1' -
+    pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1' -
 
 	tr = "!r() { git checkout --track $1; }; r" # checkout and track branch
 

@@ -1,2 +1,2 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$DOTFILES/bin:$HOME/bin:$PATH"
+export PATH="$DOTFILES/bin:$DOTFILES/bin/git:$HOME/bin:$PATH"

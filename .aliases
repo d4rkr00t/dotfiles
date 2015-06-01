@@ -14,6 +14,7 @@ alias p="cd ~/Development"
 alias pj="cd ~/Development/JavaScript"
 alias g="git"
 alias h="history"
+alias _="sudo"
 
 # Disk Usage
 alias ds="du -hd 1 2> /dev/null"
@@ -146,3 +147,9 @@ alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v e
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Tree
+if [ ! -x "$(which tree 2>/dev/null)" ]
+then
+  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+fi

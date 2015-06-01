@@ -1,0 +1,41 @@
+# Install native apps
+# Usage: `brew bundle Caskfile`
+
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
+
+pkgs=(
+  dropbox
+  google-chrome
+  google-chrome-canary
+  imagealpha
+  imageoptim
+  miro-video-converter
+  opera
+  opera-developer
+  opera-next
+  firefox
+  skype
+  transmission
+  mou
+  iterm2
+  tunnelblick
+
+  # QuickLook plugins
+  qlcolorcode
+  qlstephen
+  qlmarkdown
+  quicklook-json
+  qlprettypatch
+  quicklook-csv
+  betterzipql
+  webp-quicklook
+  suspicious-package
+)
+
+for pkg in "${pkgs[@]}"; do
+    echo "Installing $pkg"
+    brew cask install $pkg
+done
+
+brew cask cleanup

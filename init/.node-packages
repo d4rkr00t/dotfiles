@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+npm update
+
+pkgs=(
+    csscomb
+    gulp
+    grunt-cli
+    jshint
+    hicat
+    vtop
+    bower
+    jscs
+    svgo
+    is-up
+    psi
+    live-server
+    ngrok
+    svgexport
+    npm-check-updates
+)
+
+for pkg in "${pkgs[@]}"; do
+    echo "Installing $pkg"
+    npm i -g $pkg
+done

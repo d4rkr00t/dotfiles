@@ -1,0 +1,31 @@
+# Make sure we’re using the latest Homebrew
+brew update
+
+# Upgrade any already-installed formulae
+brew upgrade --all
+
+pkgs=(
+    coreutils
+    findutils
+    bash
+    wget --with-iri
+    vim --override-system-vi
+    homebrew/dupes/grep
+    ag
+    git
+    imagemagick --with-webp
+    node
+    rename
+    webkit2png
+    mongodb
+    speedtest_cli
+    tree
+)
+
+for pkg in "${pkgs[@]}"; do
+    echo "Installing $pkg"
+    brew install $pkg
+done
+
+# Remove outdated versions from the cellar
+brew cleanup

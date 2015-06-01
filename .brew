@@ -7,8 +7,6 @@ upgrade --all
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 install coreutils
-# Install some other useful utilities like `sponge`
-install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 install findutils
 # Install Bash 4
@@ -24,15 +22,14 @@ install homebrew/dupes/grep
 
 # Install other useful binaries
 install ag
-install pv
 install git
 install imagemagick --with-webp
 install node
-install iojs
 install rename
 install webkit2png
 install mongodb
 install speedtest_cli
+install tree
 
 # Remove outdated versions from the cellar
 cleanup

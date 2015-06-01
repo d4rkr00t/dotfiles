@@ -29,21 +29,21 @@ alias df="df -h"
 alias ds="du -hd 1 2> /dev/null"
 alias imginfo='identify -verbose'
 
-# Git
-alias gfl="rm -rf ./.git/index.lock"
+#
+# NODE / NPM
+#
 
-# Edit config
-alias ealiases="atom ~/.aliases"
-
-# NODE
 command -v node > /dev/null && alias node="node --harmony"
 
 alias use-iojs="brew unlink node && brew link --force iojs"
 alias use-node="brew unlink iojs && brew link --force node"
 
-# NPM
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 alias nup="npm update --save-dev && npm update --save"
+
+#
+# Listing — LS
+#
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -71,6 +71,16 @@ fi
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
 
+#
+# Misc
+#
+
+# Git
+alias gfl="rm -rf ./.git/index.lock"
+
+# Edit aliases
+alias ealiases="atom ~/.aliases"
+
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
 
@@ -79,12 +89,6 @@ alias week='date +%V'
 
 # hicat — command-line syntax highlighter
 alias hi=hicat
-
-# tmux
-alias mux='tmux -CC new -A -s 0'
-
-# Stopwatch
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'

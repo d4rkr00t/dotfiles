@@ -13,10 +13,6 @@ if [ ! -L ~/.ssh ]; then
   rm -rf ~/.ssh
 fi
 
-if [ ! -L ~/.vim ]; then
-  rm -rf ~/.vim
-fi
-
 # Synlink all files in "link" directory
 for file in $DIR/link/*; do
     ln -sfF "$file" "$HOME/"

@@ -1,6 +1,13 @@
 .DS_Store
 npm-debug.log
 
+link/.vim/backups/*
+link/.vim/swaps/*
+link/.vim/syntax/*
+link/.vim/undo/*
+link/.vim/etc
+link/.vim/bundle
+
 # Top secret stuff!
 link/.ssh/authorized_keys
 link/.ssh/id_*

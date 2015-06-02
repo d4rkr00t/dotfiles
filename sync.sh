@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
-# Tweak file globbing.
 shopt -s dotglob
 
 cd "$(dirname "${BASH_SOURCE}")"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Update path to dotfiles
-sed '3s#.*#export DOTFILES='$DIR'#' link/.bash_profile
+sed '3s#.*#export DOTFILES='$DIR'#' link/.bash_profile > .tmp-profile && mv -f .tmp-profile link/.bash_profile
 
 # Save everythong on ~/.ssh folder
-cp ~/.ssh/* ./link/.ssh/
+if [ ! -L ~/.ssh ]; then
+  cp ~/.ssh/* ./link/.ssh/
+  rm -rf ~/.ssh
+fi
+
+if [ ! -L ~/.vim ]; then
+  rm -rf ~/.vim
+fi
 
 # Synlink all files in "link" directory
 for file in $DIR/link/*; do
-    ln -sf "$file" "$HOME/${file##*/}"
+    ln -sfF "$file" "$HOME/"
 done
 unset file
 

@@ -20,6 +20,7 @@ pkgs=(
     mongodb
     speedtest_cli
     tree
+    bash_completion
 )
 
 for pkg in "${pkgs[@]}"; do

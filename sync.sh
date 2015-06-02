@@ -7,12 +7,6 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Update path to dotfiles
 sed '3s#.*#export DOTFILES='$DIR'#' link/.bash_profile > .tmp-profile && mv -f .tmp-profile link/.bash_profile
 
-# Save everythong on ~/.ssh folder
-if [ ! -L ~/.ssh ]; then
-  cp ~/.ssh/* ./link/.ssh/
-  rm -rf ~/.ssh
-fi
-
 # Synlink all files in "link" directory
 for file in $DIR/link/*; do
     ln -sfF "$file" "$HOME/"

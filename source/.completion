@@ -1,3 +1,4 @@
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
 
@@ -11,5 +12,13 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # Bash completions
 # eval "$(gulp --completion=bash)"
 
-# Directories
-complete -A directory cd mkdir rmdir mkd cf
+# Bash completions
+if hash brew 2>/dev/null; then
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+    else
+        # If possible, add tab completion for many more commands
+        [ -f /etc/bash_completion ] && source /etc/bash_completion
+    fi
+fi
+# End bash completions

@@ -20,20 +20,13 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
 Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'acevery/snipmate-plus'
-Bundle 'ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/IndentConsistencyCop'
 Bundle 'scrooloose/nerdtree'
-Bundle 'jszakmeister/vim-togglecursor'
 
 " Syntax plugins
-Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Syntastic'
-Bundle 'tomtom/tcomment_vim'
 
 " CSS
 Bundle 'cakebaker/scss-syntax.vim'
@@ -41,7 +34,6 @@ Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
 Bundle 'git://github.com/ap/vim-css-color.git'
 Bundle 'git://github.com/groenewege/vim-less.git'
 Bundle 'git://github.com/miripiruni/vim-better-css-indent.git'
-Bundle 'git://github.com/csscomb/csscomb-for-vim.git'
 Bundle 'git://github.com/wavded/vim-stylus.git'
 
 " JavaScript
@@ -51,18 +43,6 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'git://github.com/itspriddle/vim-jquery.git'
 Bundle 'git://github.com/leshill/vim-json.git'
 
-" Provide smart autocomplete results for javascript, and some usefull commands
-if has("python")
-    Bundle 'marijnh/tern_for_vim'
-    " install node dependencies for tern
-    if isNpmInstalled && isdirectory(expand('~/.vim/bundle/tern_for_vim')) && !isdirectory(expand('~/.vim/bundle/tern_for_vim/node_modules'))
-        silent ! echo 'Installing tern' && npm --prefix ~/.vim/bundle/tern_for_vim install
-    endif
-endif
-
-Bundle 'mattn/emmet-vim'
-
-Bundle 'HTML-AutoCloseTag'
 Bundle 'gregsexton/MatchTag'
 Bundle 'othree/html5.vim'
 
@@ -172,64 +152,6 @@ nmap <silent> <leader>ll :Errors<cr>
 nmap <silent> [ :lprev<cr>
 " next syntastic error
 nmap <silent> ] :lnext<cr>
-
-"-------------------------
-" neocomplcache
-
-" Enable NeocomplCache at startup
-let g:neocomplcache_enable_at_startup = 1
-
-" Max items in code-complete
-let g:neocomplcache_max_list = 10
-
-" Max width of code-complete window
-let g:neocomplcache_max_keyword_width = 80
-
-" Code complete is ignoring case until no Uppercase letter is in input
-let g:neocomplcache_enable_smart_case = 1
-
-" Auto select first item in code-complete
-let g:neocomplcache_enable_auto_select = 1
-
-" Disable auto popup
-" let g:neocomplcache_disable_auto_complete = 1
-
-" Smart tab Behavior
-function! CleverTab()
-    " If autocomplete window visible then select next item in there
-    if pumvisible()
-        return "\<C-n>"
-    endif
-    " If it's begining of the string then return just tab pressed
-    let substr = strpart(getline('.'), 0, col('.') - 1)
-    let substr = matchstr(substr, '[^ \t]*$')
-    if strlen(substr) == 0
-        " nothing to match on empty string
-        return "\<Tab>"
-    else
-        " If not begining of the string, and autocomplete popup is not visible
-        " Open this popup
-        return "\<C-x>\<C-u>"
-    endif
-endfunction
-inoremap <expr><TAB> CleverTab()
-
-" Undo autocomplete
-inoremap <expr><C-e> neocomplcache#undo_completion()
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-" For cursor moving in insert mode
-inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-
-" disable preview in code complete
-set completeopt-=preview
 
 "--------------------------------------------------
 " General options
@@ -418,9 +340,6 @@ nnoremap <leader>n  :bp<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 
-" Custom Plugin Mappings
-nnoremap -- :GundoToggle<CR>
-
 "set iskeyword+=- "Makes foo-bar considered one word
 nnoremap <leader>ev :e $MYVIMRC<cr> " ,ev will open up your vimrc in a vertical split
 nnoremap <leader>gb :Gbrowse<cr>
@@ -471,4 +390,3 @@ if has("autocmd")
     augroup END
 
 endif
-

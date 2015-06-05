@@ -89,7 +89,7 @@
 	#
 
 	last = log --graph --decorate --oneline -1 --stat # last commit stats
-	lg = log --color --graph -n 25 --pretty=custom  --abbrev-commit --date=short --decorate
+	lg = log --color --graph -n 20 --pretty=custom  --abbrev-commit --date=short --decorate
 	ld = log -p -1 # last commit diff
 	lp = log --branches --not --remotes --decorate --oneline # commits to push
 

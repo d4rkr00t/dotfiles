@@ -17,6 +17,7 @@ pkgs=(
     ngrok
     svgexport
     npm-check-updates
+    caniuse-cmd
 )
 
 for pkg in "${pkgs[@]}"; do

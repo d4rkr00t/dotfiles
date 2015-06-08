@@ -18,6 +18,7 @@ alias pj="cd ~/Development/JavaScript"
 alias g="git"
 alias h="history"
 alias _="sudo"
+alias +x="chmod +x"
 
 # Easily re-execute the last history command.
 alias r="fc -s"
@@ -68,6 +69,9 @@ alias ls="command ls ${colorflag}"
 #
 # Misc
 #
+
+# Show $PATH in a readable way
+alias path='echo -e ${PATH//:/\\n}'
 
 # Git
 alias gfl="rm -rf ./.git/index.lock"

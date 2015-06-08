@@ -62,6 +62,7 @@
 	#
 
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f" # Credit an author on the latest commit
+	conflict = "!f(){ git ls-files -u | awk '{print $4}' | sort -u; }; f"
 
 	# git in / git out — смотреть какие коммиты придут/уйдут перед выполнением pull/push
 	in = "!git remote update -p; git log ..@{u}"

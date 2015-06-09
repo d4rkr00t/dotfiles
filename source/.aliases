@@ -8,6 +8,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias cdgr="cd $(git root)"
 
 # Shortcuts
 alias d="cd ~/Dropbox"

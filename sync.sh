@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE}")"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Update path to dotfiles
-sed '3s#.*#export DOTFILES='$DIR'#' link/.bash_profile > .tmp-profile && mv -f .tmp-profile link/.bash_profile
+echo 'export DOTFILES='$DIR > link/.dotfiles
 
 # Synlink all files in "link" directory
 for file in $DIR/link/*; do

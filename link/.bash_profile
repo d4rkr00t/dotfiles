@@ -1,6 +1,7 @@
-# DOTFILES WILL BE REPLACED TO CURRENT PATH
-# Where magic happens.
-export DOTFILES=/Users/sysoev/Development/dotfiles
+#
+# WHERE MAGIC HAPPENS.
+#
+source ~/.dotfiles
 
 # Tweak file globbing.
 shopt -s dotglob

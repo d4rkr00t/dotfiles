@@ -70,6 +70,9 @@ alias ls="command ls ${colorflag}"
 # Misc
 #
 
+# History stats
+alias hstat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+
 # Show $PATH in a readable way
 alias path='echo -e ${PATH//:/\\n}'
 

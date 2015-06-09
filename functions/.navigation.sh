@@ -62,3 +62,8 @@ cd() {
 function cdf() {
 	cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
+
+# cd into whatever is the forefront Finder window.
+function cdgr() {
+	cd `git root`
+}

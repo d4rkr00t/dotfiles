@@ -1,4 +1,4 @@
-# mesure execution time
+# Mesure execution time
 function exectime() {
   start_time=`date +%s`
 
@@ -45,7 +45,7 @@ function aa_256()
   done )
 }
 
-# sanitize filename: lowercase, no other characters than letters, digits, dash, underscore and dot
+# Sanitize filename: lowercase, no other characters than letters, digits, dash, underscore and dot
 function sanitize() {
     for file in *; do
        file_clean=`echo $file | tr '[:upper:]' '[:lower:]' | tr -cd "[:alnum:]-_."`
@@ -56,7 +56,7 @@ function sanitize() {
     done
 }
 
-# get value of property from json file
+# Get value of property from json file
 function jsonval() {
   KEY=$2
   num=$3

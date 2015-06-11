@@ -8,3 +8,8 @@ function find-exec() {
 function ff() {
   find . -iname "*${1:-}*"
 }
+
+# Find and replace
+function fr() {
+  sed -i '' -e 's/'$2'/'$3'/g' $(find . -type f -iname $1)
+}

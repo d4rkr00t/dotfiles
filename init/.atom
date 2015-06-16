@@ -2,11 +2,15 @@ SRC_DIR=$( cd ~/Dropbox/Apps/atom/ && pwd )
 DEST_DIR=$( cd ~/.atom/ && pwd )
 
 files=(
+  projects.cson
   config.cson
   styles.less
+  packages/base16-ocean-light
 )
 
-echo "Setup atom symlinks -------------------"
+echo ""
+echo "Setup atom symlinks"
+echo ""
 
 for file in "${files[@]}"; do
     echo "Symlinking $file"
@@ -16,5 +20,5 @@ unset file
 
 # Copy atom icon
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    cp -f ../misc/atom.icns /Applications/Atom.app/Contents/Resources/atom.icns
+    cp -f misc/atom.icns /Applications/Atom.app/Contents/Resources/atom.icns
 fi

@@ -12,6 +12,7 @@ pkgs=(
     vim --override-system-vi
     homebrew/dupes/grep
     ag
+    hh
     git
     imagemagick --with-webp
     node

@@ -11,7 +11,7 @@ set nocompatible      " This should be the first line. It sets vim to not be bac
 let mapleader = ","   " Set the map leader. Useful for custom commands.
 
 " Install and setup vundle https://github.com/gmarik/Vundle.vim
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 

@@ -13,13 +13,13 @@ pkgs=(
   miro-video-converter
   opera
   opera-developer
-  opera-next
   firefox
   skype
   transmission
   mou
   iterm2
   tunnelblick
+  numi
 
   # QuickLook plugins
   qlcolorcode

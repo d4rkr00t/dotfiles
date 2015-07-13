@@ -1,2 +1,8 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$DOTFILES/bin:$DOTFILES/bin/git:$HOME/bin:$PATH"
+
+if hash brew 2>/dev/null; then
+    if [ -f $(brew --prefix nvm)/nvm.sh ]; then
+        source $(brew --prefix nvm)/nvm.sh
+    fi
+fi

@@ -11,6 +11,7 @@ pkgs=(
     wget --with-iri
     vim --override-system-vi
     homebrew/dupes/grep
+    node
     ag
     hh
     git
@@ -31,5 +32,3 @@ done
 
 # Remove outdated versions from the cellar
 brew cleanup
-
-echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.extra

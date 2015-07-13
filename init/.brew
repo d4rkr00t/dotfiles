@@ -15,13 +15,13 @@ pkgs=(
     hh
     git
     imagemagick --with-webp
-    node
     rename
     webkit2png
     mongodb
     speedtest_cli
     tree
     bash_completion
+    nvm
 )
 
 for pkg in "${pkgs[@]}"; do
@@ -31,3 +31,5 @@ done
 
 # Remove outdated versions from the cellar
 brew cleanup
+
+echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.extra

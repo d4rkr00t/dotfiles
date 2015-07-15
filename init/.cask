@@ -17,7 +17,7 @@ pkgs=(
   skype
   transmission
   mou
-  iterm2
+  iterm2-nightly
   tunnelblick
   numi
 

@@ -8,7 +8,6 @@ files=(
 )
 
 pkgs=(
-  base16-ocean-light
   static-snippets
 )
 
@@ -27,8 +26,3 @@ for pkg in "${pkgs[@]}"; do
     ln -sfF "$SRC_DIR/packages/$pkg" "$DEST_DIR/packages/"
 done
 unset pkg
-
-# Copy atom icon
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    cp -f misc/atom.icns /Applications/Atom.app/Contents/Resources/atom.icns
-fi

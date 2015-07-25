@@ -6,20 +6,24 @@ brew tap caskroom/versions
 
 pkgs=(
   dropbox
+  evernote
+  firefox
+  firefoxdeveloperedition
   google-chrome
   google-chrome-canary
   imagealpha
   imageoptim
+  iterm2-nightly
+  macclean
   miro-video-converter
+  mou
+  numi
   opera
   opera-developer
-  firefox
   skype
   transmission
-  mou
-  iterm2-nightly
   tunnelblick
-  numi
+  vlc-nightly
 
   # QuickLook plugins
   qlcolorcode

@@ -22,6 +22,7 @@ pkgs=(
     tree
     bash_completion
     nvm
+    the_silver_searcher
 )
 
 for pkg in "${pkgs[@]}"; do

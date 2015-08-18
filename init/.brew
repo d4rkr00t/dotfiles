@@ -23,6 +23,8 @@ pkgs=(
     bash_completion
     nvm
     the_silver_searcher
+    ffmpeg
+    gifsicle
 )
 
 for pkg in "${pkgs[@]}"; do

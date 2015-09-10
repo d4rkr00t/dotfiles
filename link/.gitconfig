@@ -104,6 +104,7 @@
 	rud = "!r() { git rebase upstream/dev; }; r"
 	rum = "!r() { git rebase upstream/master; }; r"
 	rc = rebase --continue
+	rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
 	#
 	# Stash

@@ -2,7 +2,6 @@
 npm update
 
 pkgs=(
-    yo
     csscomb
     gulp
     grunt-cli
@@ -19,6 +18,8 @@ pkgs=(
     svgexport
     npm-check-updates
     caniuse-cmd
+    yo
+    generator-np
 )
 
 for pkg in "${pkgs[@]}"; do

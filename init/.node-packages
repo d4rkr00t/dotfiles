@@ -2,6 +2,7 @@
 npm update
 
 pkgs=(
+    yo
     csscomb
     gulp
     grunt-cli

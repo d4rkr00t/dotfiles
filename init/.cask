@@ -15,7 +15,6 @@ pkgs=(
   iterm2-nightly
   macclean
   miro-video-converter
-  mou
   numi
   opera
   opera-developer

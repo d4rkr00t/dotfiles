@@ -19,3 +19,14 @@ function nyan() {
     echo -e $NOCOLOR$BOLD'""  ""'$NOCOLOR
     echo
 }
+
+# Convert text
+function ctxt() {
+    local from="${1:-WINDOWS-1251}"
+    local to="${2:-UTF-8}"
+    local res="${3:-converted}"
+
+    rm -rf $res;
+    mkdir -p $res;
+    find . -type f -exec bash -c 'iconv -f '$from' -t '$to' "{}" > "'$res'/{}"' \;
+}

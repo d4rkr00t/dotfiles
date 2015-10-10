@@ -1,9 +1,0 @@
-{
-  "name": "dotfiles-scripts",
-  "version": "0.0.1",
-  "description": "Some useful scripts",
-  "dependencies": {
-    "bluebird": "^2.9.26",
-    "colors": "^1.1.0"
-  }
-}

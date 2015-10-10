@@ -4,7 +4,6 @@ npm update
 pkgs=(
     csscomb
     gulp
-    grunt-cli
     jshint
     hicat
     vtop

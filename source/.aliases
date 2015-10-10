@@ -36,9 +36,6 @@ alias imginfo='identify -verbose'
 
 command -v node > /dev/null && alias node="node --harmony"
 
-alias use-iojs="brew unlink node && brew link --force iojs"
-alias use-node="brew unlink iojs && brew link --force node"
-
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 alias nup="npm update --save-dev && npm update --save"
 
@@ -81,9 +78,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Git
 alias gfl="rm -rf ./.git/index.lock"
-
-# Edit aliases
-alias ealiases="atom ~/.aliases"
 
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
@@ -132,9 +126,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
-# Make Grunt print stack traces by default
-command -v grunt > /dev/null && alias grunt="grunt --stack"
-
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
@@ -159,7 +150,6 @@ alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-alias chromiumkill="ps ux | grep '[C]hromium Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"

@@ -5,4 +5,6 @@ if hash brew 2>/dev/null; then
     if [ -f $(brew --prefix nvm)/nvm.sh ]; then
         source $(brew --prefix nvm)/nvm.sh
     fi
+else
+    [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 fi

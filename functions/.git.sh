@@ -7,7 +7,7 @@ function ghurl() {
     echo "https://$user_repo"
 }
 
-# Change git origin and add upstream
+# Change git origin to given url and make old origin as upstream
 function gitor() {
     local url=$1
 
@@ -27,7 +27,7 @@ function gitor() {
     fi;
 }
 
-# Resets origin to upstream
+# Restore remote origin url from upstream url
 function gitores() {
     if [ -d .git ]; then
         if git remote | grep upstream > /dev/null; then

@@ -15,6 +15,7 @@ function rndstr(){
   f=$1; n=$(expr $RANDOM \* `cat $f | wc -l` \/ 32768 + 1); head -n $n $f | tail $count
 }
 
+# Search upwards till found
 function upsearch () {
   slashes=${PWD//[^\/]/}
   directory="$PWD"
@@ -45,7 +46,7 @@ function aa_256()
   done )
 }
 
-# Sanitize filename: lowercase, no other characters than letters, digits, dash, underscore and dot
+# Sanitize all filenames in current dir: lowercase, no other characters than letters, digits, dash, underscore and dot
 function sanitize() {
     for file in *; do
        file_clean=`echo $file | tr '[:upper:]' '[:lower:]' | tr -cd "[:alnum:]-_."`

@@ -1,212 +1,212 @@
 [alias]
-    #
-    # Add / Commit / Clone / Checkout etc.
-    #
+	#
+	# Add / Commit / Clone / Checkout etc.
+	#
 
-    a   = add
-    all = add -A :/
-    ai = add --interactive
-    ame = commit --amend
-    amq = commit --amend --reuse-message=HEAD
-    ci = commit -m
-    cia = commit -am
-    cid = rev-parse HEAD
-    co = checkout
-    cl = clone
-    cp = cherry-pick
+	a   = add
+	all = add -A :/
+	ai = add --interactive
+	ame = commit --amend
+	amq = commit --amend --reuse-message=HEAD
+	ci = commit -m
+	cia = commit -am
+	cid = rev-parse HEAD
+	co = checkout
+	cl = clone
+	cp = cherry-pick
 
-    #
-    # Branches
-    #
+	#
+	# Branches
+	#
 
-    br = branch -a
+	br = branch -a
 
-    # Switch to a branch, creating it if necessary
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-    # Remove branches that have already been merged with master
-    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	# Remove branches that have already been merged with master
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-    #
-    # Diff
-    #
+	#
+	# Diff
+	#
 
-    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-    dc = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --cached"
-    di = !"git --no-pager diff --ignore-space-change"
-    dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
-    ds = diff --stat
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	dc = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --cached"
+	di = !"git --no-pager diff --ignore-space-change"
+	dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
+	ds = diff --stat
 
-    #
-    # Find
-    #
+	#
+	# Find
+	#
 
-    fb = "!f() { git branch -a --contains $1; }; f" # Find branches containing commit
-    ft = "!f() { git describe --always --contains $1; }; f" # Find tags containing commit
+	fb = "!f() { git branch -a --contains $1; }; f" # Find branches containing commit
+	ft = "!f() { git describe --always --contains $1; }; f" # Find tags containing commit
 
-    # Find commits by source code
-    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
-    # Find commits by commit message
-    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-    #
-    # Fetch
-    #
+	#
+	# Fetch
+	#
 
-    f = fetch
-    fa = fetch --all
+	f = fetch
+	fa = fetch --all
 
-    #
-    # Info
-    #
+	#
+	# Info
+	#
 
-    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f" # Credit an author on the latest commit
-    conflict = "!f(){ git ls-files -u | awk '{print $4}' | sort -u; }; f"
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f" # Credit an author on the latest commit
+	conflict = "!f(){ git ls-files -u | awk '{print $4}' | sort -u; }; f"
 
-    # git in / git out — смотреть какие коммиты придут/уйдут перед выполнением pull/push
-    in = "!git remote update -p; git log ..@{u}"
-    out = log @{u}..
+	# git in / git out — смотреть какие коммиты придут/уйдут перед выполнением pull/push
+	in = "!git remote update -p; git log ..@{u}"
+	out = log @{u}..
 
-    ref = reflog -n 25 --format=ref
+	ref = reflog -n 25 --format=ref
 
-    # List remotes
-    rem = remote -v
+	# List remotes
+	rem = remote -v
 
-    st = status -sb
+	st = status -sb
 
-    # Watch my commits for last day
-    standup = log --since '1 day ago' --oneline --author d4rkr00t@gmail.com
+	# Watch my commits for last day
+	standup = log --since '1 day ago' --oneline --author d4rkr00t@gmail.com
 
-    # List all tags
-    t = tag -l
+	# List all tags
+	t = tag -l
 
-    # Find out who is currently active on the repository
-    # Displays committers in descending order of number of commits
-    who = shortlog --numbered --summary --email --no-merges --since="3 months"
+	# Find out who is currently active on the repository
+	# Displays committers in descending order of number of commits
+	who = shortlog --numbered --summary --email --no-merges --since="3 months"
 
-    #
-    # Log
-    #
+	#
+	# Log
+	#
 
-    last = log --graph --decorate --oneline -1 --stat # last commit stats
-    lg = log --color --graph -n 20 --pretty=custom  --abbrev-commit --date=short --decorate
-    ld = log -p -1 # last commit diff
-    lp = log --branches --not --remotes --decorate --oneline # commits to push
+	last = log --graph --decorate --oneline -1 --stat # last commit stats
+	lg = log --color --graph -n 20 --pretty=custom  --abbrev-commit --date=short --decorate
+	ld = log -p -1 # last commit diff
+	lp = log --branches --not --remotes --decorate --oneline # commits to push
 
-    #
-    # Rebase
-    #
+	#
+	# Rebase
+	#
 
-    r = rebase
-    ri = "!r() { git rebase -i HEAD~$1; }; r"
-    rom = "!r() { git rebase origin/master; }; r"
-    rud = "!r() { git rebase upstream/dev; }; r"
-    rum = "!r() { git rebase upstream/master; }; r"
-    rc = rebase --continue
-    rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
+	r = rebase
+	ri = "!r() { git rebase -i HEAD~$1; }; r"
+	rom = "!r() { git rebase origin/master; }; r"
+	rud = "!r() { git rebase upstream/dev; }; r"
+	rum = "!r() { git rebase upstream/master; }; r"
+	rc = rebase --continue
+	rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
-    #
-    # Stash
-    #
+	#
+	# Stash
+	#
 
-    s = stash
-    sa = stash apply
+	s = stash
+	sa = stash apply
 
-    #
-    # Misc
-    #
+	#
+	# Misc
+	#
 
-    cleanit = clean -fd
+	cleanit = clean -fd
 
-    # Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
-    # Use: `git gh-pr 123` or `git gh-pr 123 upstream`
-    pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1' -
+	# Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
+	# Use: `git gh-pr 123` or `git gh-pr 123 upstream`
+	pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1' -
 
-    tr = "!r() { git checkout --track $1; }; r" # checkout and track branch
+	tr = "!r() { git checkout --track $1; }; r" # checkout and track branch
 
 [apply]
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
 
 [core]
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
-    attributesfile = ~/.gitattributes
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
 
-    # Treat spaces before tabs and all kinds of trailing whitespace as an error.
-    # [default] trailing-space: looks for spaces at the end of a line
-    # [default] space-before-tab: looks for spaces before tabs at the beginning of
-    # a line
-    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of
+	# a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-    # Make `git rebase` safer on OS X
-    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-    trustctime = false
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
 
-    # Git and the Umlaut problem on Mac OS X
-    # Prevent showing files which filenames contains umlauts as unversioned
-    # Needs to be false since OS X 10.9.x
-    # See http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-    precomposeunicode = false
+	# Git and the Umlaut problem on Mac OS X
+	# Prevent showing files which filenames contains umlauts as unversioned
+	# Needs to be false since OS X 10.9.x
+	# See http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
 
 [color]
-    # Use colors in Git commands that are capable of colored output when
-    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-    ui = auto
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	ui = auto
 
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-    meta = yellow
-    frag = magenta # line info
-    old = red # deletions
-    new = green # additions
+	meta = yellow
+	frag = magenta # line info
+	old = red # deletions
+	new = green # additions
 
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [help]
-    # Automatically correct and execute mistyped commands
-    autocorrect = 1
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
 
 [merge]
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
-    tool = vimdiff
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+	tool = vimdiff
 
 [pretty]
-    custom = "%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset"
-    ref = "%Cred%h%Creset %<|(17)%gd %C(blue)%ci%C(reset) %gs (%s)"
+	custom = "%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset"
+	ref = "%Cred%h%Creset %<|(17)%gd %C(blue)%ci%C(reset) %gs (%s)"
 
 [push]
-    default = current
+	default = current
 
 [branch]
-    autosetuprebase = always
+	autosetuprebase = always
 
 [user]
-    email = "d4rkr00t@gmail.com"
-    name = "Stanislav Sysoev"
+	email = "d4rkr00t@gmail.com"
+	name = "Stanislav Sysoev"
 
 # URL shorthands
 [url "git@github.com:"]
-    insteadOf = "gh:"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-    insteadOf = "github:"
+	insteadOf = "github:"
 
 [url "git@gist.github.com:"]
-    insteadOf = "gst:"
-    pushInsteadOf = "gist:"
-    pushInsteadOf = "git://gist.github.com/"
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
-    insteadOf = "gist:"
+	insteadOf = "gist:"

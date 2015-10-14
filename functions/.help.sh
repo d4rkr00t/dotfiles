@@ -9,6 +9,7 @@ function dthelp() {
     echo "aa_256 — Print all 256 colors"
     echo ""
     echo "bootstrap-csscomb — Copy default .csscomb.json to current folder"
+    echo "bootstrap-cz — Copy default .cz.json to current folder"
     echo "bootstrap-eslint — Copy default .eslintrc to current folder"
     echo "bootstrap-editorconfig — Copy default .editorconfig to current folder"
     echo ""

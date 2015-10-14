@@ -12,3 +12,8 @@ function bootstrap-csscomb() {
 function bootstrap-editorconfig() {
     cp "$DOTFILES/misc/.editorconfig" ./
 }
+
+# Copy default .cz.json to current folder
+function bootstrap-cz() {
+    cp "$DOTFILES/misc/.cz.json" ./
+}

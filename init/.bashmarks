@@ -1,0 +1,1 @@
+cp "$DOTFILES/misc/.sdirs" ~/

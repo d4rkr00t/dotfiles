@@ -23,15 +23,15 @@ if tput setaf 1 &> /dev/null; then
 
   # If the terminal supports at least 256 colors, write out our 256 color based set
   if [[ "$(tput colors)" -ge 256 ]] &> /dev/null; then
-    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 11)"
+    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 3)"
     sexy_bash_prompt_preposition_color="$sexy_bash_prompt_bold$(tput setaf 7)"
-    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 11)"
-    sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 4)"
+    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 3)"
+    sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 12)"
     sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 10)"
     sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 9)"
   else
     # Otherwise, use colors from our set of 8
-    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 5)"
+    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 3)"
     sexy_bash_prompt_preposition_color="$sexy_bash_prompt_bold$(tput setaf 7)"
     sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 3)"
     sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 4)"

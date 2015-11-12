@@ -19,6 +19,7 @@ pkgs=(
     caniuse-cmd
     yo
     generator-np
+    peerflix
 )
 
 for pkg in "${pkgs[@]}"; do

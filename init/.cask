@@ -21,18 +21,18 @@ pkgs=(
   skype
   transmission
   tunnelblick
-  vlc-nightly
+  vlc
 
   # QuickLook plugins
-  qlcolorcode
-  qlstephen
-  qlmarkdown
-  quicklook-json
-  qlprettypatch
-  quicklook-csv
   betterzipql
-  webp-quicklook
+  qlcolorcode
+  qlmarkdown
+  qlprettypatch
+  qlstephen
+  quicklook-csv
+  quicklook-json
   suspicious-package
+  webp-quicklook
 )
 
 for pkg in "${pkgs[@]}"; do

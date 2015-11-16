@@ -2,24 +2,24 @@
 npm update
 
 pkgs=(
-    csscomb
-    gulp
-    jshint
-    hicat
-    vtop
     bower
-    jscs
-    svgo
+    caniuse-cmd
+    csscomb
+    generator-np
+    gulp
+    hicat
     is-up
-    psi
+    jscs
+    jshint
     live-server
     ngrok
-    svgexport
     npm-check-updates
-    caniuse-cmd
-    yo
-    generator-np
     peerflix
+    psi
+    svgexport
+    svgo
+    vtop
+    yo
 )
 
 for pkg in "${pkgs[@]}"; do

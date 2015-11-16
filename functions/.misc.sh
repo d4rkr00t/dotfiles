@@ -10,3 +10,7 @@ function manp {
     print 'What manual page do you want?' >&2
   fi
 }
+
+function rndnum {
+  echo $RANDOM % "$1" + 1 | bc
+}

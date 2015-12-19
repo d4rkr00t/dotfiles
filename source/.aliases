@@ -32,7 +32,7 @@ alias imginfo='identify -verbose'
 
 # tmux aliases
 alias ta='tmux attach'
-alias tls='tmux ls'
+alias tls='tmux ls 2> /dev/null'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
 

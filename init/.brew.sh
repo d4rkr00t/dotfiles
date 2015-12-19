@@ -19,6 +19,7 @@ pkgs=(
     webkit2png
     mongodb
     speedtest_cli
+    tmux
     tree
     bash_completion
     nvm

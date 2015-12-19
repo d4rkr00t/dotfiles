@@ -30,6 +30,12 @@ alias df="df -h"
 alias ds="du -hd 1 2> /dev/null"
 alias imginfo='identify -verbose'
 
+# tmux aliases
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
+
 #
 # NODE / NPM
 #

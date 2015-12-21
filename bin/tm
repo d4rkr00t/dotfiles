@@ -6,17 +6,13 @@
 # startup a "default" session if non currently exists
 # tmux has-session -t _default || tmux new-session -s _default -d
 
-# colors
-color_reset="\033[m"
-color_mute="\033[1;33m"
-
 # present menu for user to choose which workspace to open
 PS3="Please choose your session: "
 options=($(tmux list-sessions -F "#S" 2> /dev/null) "New Session")
 
 echo " "
 echo "Available sessions"
-echo "${color_mute}------------------${color_reset}"
+echo "------------------"
 
 select opt in "${options[@]}"
 do

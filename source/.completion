@@ -22,3 +22,6 @@ else
     [ -f /etc/bash_completion ] && source /etc/bash_completion
 fi
 # End bash completions
+
+# Enable git completions for g alias
+__git_complete g _git

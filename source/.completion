@@ -16,17 +16,16 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 if hash brew 2>/dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
         . `brew --prefix`/etc/bash_completion
-
-        # Enable git completions for g alias
-        __git_complete g _git
     fi
 else
     # If possible, add tab completion for many more commands
     if [ -f /etc/bash_completion ]; then
         source /etc/bash_completion
-
-        # Enable git completions for g alias
-        __git_complete g _git
     fi
 fi
 # End bash completions
+
+# Enable git completions for g alias
+if hash __git_complete 2>/dev/null; then
+    __git_complete g _git
+fi

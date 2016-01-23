@@ -22,6 +22,7 @@ pkgs=(
   transmission
   tunnelblick
   vlc
+  xmind
 
   # QuickLook plugins
   betterzipql

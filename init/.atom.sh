@@ -5,6 +5,7 @@ files=(
   projects.cson
   config.cson
   styles.less
+  keymap.cson
 )
 
 pkgs=(

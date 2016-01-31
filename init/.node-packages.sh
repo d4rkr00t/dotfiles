@@ -11,7 +11,6 @@ pkgs=(
     hicat
     is-up
     jscs
-    jshint
     live-server
     ngrok
     npm-check-updates

@@ -15,6 +15,7 @@ pkgs=(
     ngrok
     npm-check-updates
     peerflix
+    pmm
     psi
     svgexport
     svgo

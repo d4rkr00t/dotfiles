@@ -28,10 +28,10 @@
 	# Diff
 	#
 
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	dc = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --cached"
-	di = !"git --no-pager diff --ignore-space-change"
-	dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience"
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --color | diff-so-fancy"
+	dc = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --cached --color | diff-so-fancy"
+	di = !"git --no-pager diff --ignore-space-change --color | diff-so-fancy"
+	dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience | diff-so-fancy"
 	ds = diff --stat
 
 	#

@@ -28,10 +28,10 @@
 	# Diff
 	#
 
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --color | diff-so-fancy"
-	dc = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --cached --color | diff-so-fancy"
-	di = !"git --no-pager diff --ignore-space-change --color | diff-so-fancy"
-	dii = !"git --no-pager diff --ignore-space-change --color-words --diff-algorithm=patience | diff-so-fancy"
+	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat --color"
+	dc = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat --cached --color"
+	di = !"git diff --ignore-space-change --color"
+	dii = !"git diff --ignore-space-change --color-words --diff-algorithm=patience"
 	ds = diff --stat
 
 	#
@@ -146,6 +146,7 @@
 	# Needs to be false since OS X 10.9.x
 	# See http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
+	pager = diff-so-fancy
 
 [color]
 	# Use colors in Git commands that are capable of colored output when

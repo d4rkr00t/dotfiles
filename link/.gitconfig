@@ -12,6 +12,7 @@
 	cia = commit -am
 	cid = rev-parse HEAD
 	co = checkout
+	sco = smart-checkout
 	cl = clone
 	cp = cherry-pick
 

@@ -7,7 +7,6 @@ pkgs=(
     commitizen
     csscomb
     generator-np
-    diff-so-fancy
     gulp
     hicat
     is-up

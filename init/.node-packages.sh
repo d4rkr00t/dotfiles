@@ -7,6 +7,7 @@ pkgs=(
     commitizen
     csscomb
     generator-np
+    git-checkout-gui
     gulp
     hicat
     is-up

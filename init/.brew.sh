@@ -5,27 +5,28 @@ brew update
 brew upgrade --all
 
 pkgs=(
-    coreutils
-    findutils
-    bash
-    wget --with-iri
-    vim --override-system-vi
-    homebrew/dupes/grep
     ag
-    hh
+    bash
+    bash_completion
+    coreutils
+    ffmpeg
+    findutils
+    gifsicle
     git
+    hh
+    homebrew/dupes/grep
     imagemagick --with-webp
-    rename
-    webkit2png
     mongodb
+    ncdu
+    nvm
+    rename
     speedtest_cli
+    the_silver_searcher
     tmux
     tree
-    bash_completion
-    nvm
-    the_silver_searcher
-    ffmpeg
-    gifsicle
+    vim --override-system-vi
+    webkit2png
+    wget --with-iri
 )
 
 for pkg in "${pkgs[@]}"; do

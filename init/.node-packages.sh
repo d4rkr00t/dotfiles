@@ -10,6 +10,7 @@ pkgs=(
     git-checkout-gui
     gulp
     hicat
+    how2
     is-up
     jscs
     live-server

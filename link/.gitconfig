@@ -117,6 +117,13 @@
 
 	cleanit = clean -fd
 
+	# Instantly clean a git repo from extraneous files in a non-blocking fashion
+ 	purge = "!f() { \
+ 		declare tmp_dir=$(mktemp -d); \
+ 		git clean -fdxn | sed -n s'/^Would remove \\(.*\\)/\\1/p' | xargs -I % mv \"%\" \"$tmp_dir\"; \
+		(rm -rf \"$tmp_dir\" &); \
+	}; f"
+
 	# Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
 	# Use: `git gh-pr 123` or `git gh-pr 123 upstream`
 	pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1' -

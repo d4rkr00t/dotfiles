@@ -2,7 +2,6 @@
 npm update
 
 pkgs=(
-    bower
     caniuse-cmd
     commitizen
     csscomb

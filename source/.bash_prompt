@@ -247,15 +247,6 @@ get_git_info () {
 #
 #
 
-prompt_symbol_with_status () {
-  if [ $? = 0 ]; then
-    echo -n "$color_prompt_symbol"
-  else
-    echo -n "$color_prompt_symbol_error"
-  fi
-  echo -n "$prompt_symbol$color_reset "
-}
-
 user_host_prompt () {
   # Only show username if not default
   local user_prompt=
@@ -266,7 +257,7 @@ user_host_prompt () {
   [ -n "$remote" ] && host_prompt="$color_host$HOSTNAME$color_reset"
 
   local login_delimiter=
-	[ -n "$user_prompt" ] && [ -n "$host_prompt" ] && login_delimiter="$color_preposition:"
+  [ -n "$user_prompt" ] && [ -n "$host_prompt" ] && login_delimiter="$color_preposition:"
 
   if [[ -n "$user_prompt" ||  -n "$host_prompt" ]]; then
     echo -n "$user_prompt$login_delimiter$host_prompt  "
@@ -276,15 +267,29 @@ user_host_prompt () {
 }
 
 git_prompt () {
-  if [[ is_on_git ]]; then
-      # echo -n "$color_preposition on $color_reset" &&
+  if $(is_on_git); then
       echo -n "  $color_git_status$(get_git_info)" &&
       echo -n "$color_git_progress$(get_git_progress)"
   fi
   echo -n ""
 }
 
-first_line="\$(user_host_prompt)\[$color_dir\]\w\[$color_reset\]\$(git_prompt)"
-second_line="\$(prompt_symbol_with_status)"
+function prompt_command() {
+  prompt_status=$?
 
-PS1="\n$first_line\n$second_line"
+  prompt_symbol_with_status () {
+    if [ $prompt_status = 0 ]; then
+      echo -n "$color_prompt_symbol"
+    else
+      echo -n "$color_prompt_symbol_error"
+    fi
+    echo -n "$prompt_symbol$color_reset "
+  }
+
+  first_line="\$(user_host_prompt)\[$color_dir\]\w\[$color_reset\]\$(git_prompt)"
+  second_line="\$(prompt_symbol_with_status)"
+
+  PS1="\n$first_line\n$second_line"
+}
+
+PROMPT_COMMAND=prompt_command

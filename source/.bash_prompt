@@ -254,7 +254,7 @@ user_host_prompt () {
 
   # Show hostname inside SSH session
   local host_prompt=
-  [ -n "$remote" ] && host_prompt="$color_host$HOSTNAME$color_reset"
+  [ -n "$SSH_CLIENT" ] && host_prompt="$color_host$HOSTNAME$color_reset"
 
   local login_delimiter=
   [ -n "$user_prompt" ] && [ -n "$host_prompt" ] && login_delimiter="$color_preposition:"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Better find(1)
+
+find . -iname "*${1:-}*"

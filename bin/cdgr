@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# cd into git repo root
+
+cd `git root`

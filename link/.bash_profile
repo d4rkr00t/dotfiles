@@ -34,13 +34,8 @@ if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
-# Source all files in "source" and "functions"
+# Source all files in "source"
 for file in $DOTFILES/source/*; do
-    source "$file"
-done
-unset file
-
-for file in $DOTFILES/functions/*; do
     source "$file"
 done
 unset file

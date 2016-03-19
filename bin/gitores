@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Restore remote origin url from upstream url
+
+if [ -d .git ]; then
+  if git remote | grep upstream > /dev/null; then
+    git remote rm origin
+    git remote rename upstream origin
+  fi
+
+  git remote -v
+else
+  echo "-=-=-=->> There isn't a git repo! <<-=-=-=-"
+fi;

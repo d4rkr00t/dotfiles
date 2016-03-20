@@ -4,11 +4,11 @@ npm update
 pkgs=(
     babel-eslint
     caniuse-cmd
+    cloc
     commitizen
     csscomb
     eslint
     generator-np
-    git-checkout-gui
     gulp
     hicat
     how2

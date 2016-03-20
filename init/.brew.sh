@@ -11,6 +11,7 @@ pkgs=(
     coreutils
     ffmpeg
     findutils
+    fpp
     gifsicle
     git
     hh

@@ -283,13 +283,14 @@ function prompt_command() {
     else
       echo -n "$color_prompt_symbol_error"
     fi
-    echo -n "$prompt_symbol$color_reset "
+
+    echo -n "$prompt_symbol "
   }
 
   first_line="\$(user_host_prompt)\[$color_dir\]\w\[$color_reset\]\$(git_prompt)"
   second_line="\$(prompt_symbol_with_status)"
 
-  PS1="\n$first_line\n$second_line"
+  PS1="\n$first_line\n$second_line\[$color_reset\]"
 }
 
 PROMPT_COMMAND=prompt_command

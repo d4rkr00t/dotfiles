@@ -4,7 +4,7 @@
 # Forked from gf3, https://gist.github.com/gf3/306785
 
 # Set iterm window title to PWD
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+# export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 
 
 #
@@ -277,20 +277,18 @@ git_prompt () {
 function prompt_command() {
   prompt_status=$?
 
-  prompt_symbol_with_status () {
+  prompt_symbol_color () {
     if [ $prompt_status = 0 ]; then
       echo -n "$color_prompt_symbol"
     else
       echo -n "$color_prompt_symbol_error"
     fi
-
-    echo -n "$prompt_symbol "
   }
 
   first_line="\$(user_host_prompt)\[$color_dir\]\w\[$color_reset\]\$(git_prompt)"
-  second_line="\$(prompt_symbol_with_status)"
+  second_line="\[$(prompt_symbol_color)\]\$prompt_symbol\[$color_reset\] "
 
-  PS1="\n$first_line\n$second_line\[$color_reset\]"
+  PS1="\n$first_line\n$second_line"
 }
 
 PROMPT_COMMAND=prompt_command

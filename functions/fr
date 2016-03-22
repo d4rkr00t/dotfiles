@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Find and replace
+
+fr() {
+  sed -i '' -e 's/'$2'/'$3'/g' $(find . -type f -iname $1)
+}

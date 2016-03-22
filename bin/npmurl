@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# NPM URL for current package.
-
-package=`jsonval package.json name 1 | tr -d ' '`
-
-[[ "$package" ]] || return
-
-echo "https://npmjs.com/package/$package"

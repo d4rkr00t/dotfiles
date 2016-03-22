@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Returns random number between 1 and given param
-
-echo $RANDOM % "$1" + 1 | bc

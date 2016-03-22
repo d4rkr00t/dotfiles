@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bs-csscomb() {
+  cp "$DOTFILES/link/.csscomb.json" ./
+}

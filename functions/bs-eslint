@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bs-eslint() {
+  cp "$DOTFILES/link/.eslintrc" ./
+}

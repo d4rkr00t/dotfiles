@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Get value of property from json file
-
-KEY=$2
-num=$3
-cat $1 | awk -F"[,:}]" '{for(i=1;i<=NF;i++){if($i~/\042'$KEY'\042/){print $(i+1)}}}' | tr -d '"' | sed -n ${num}p

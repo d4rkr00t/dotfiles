@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# NPM URL for current package.
+
+npmurl() {
+  local package=`jsonval package.json name 1 | tr -d ' '`
+
+  [[ "$package" ]] || return
+
+  echo "https://npmjs.com/package/$package"
+}

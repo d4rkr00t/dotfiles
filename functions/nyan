@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Print nyan cat
+# https://github.com/steckel/Git-Nyan-Graph/blob/master/nyan.sh
+# If you want big animated version: `telnet miku.acm.uiuc.edu`
+
+nyan() {
+  local e='\033'
+  local reset="$e[0m"
+  local bold="$e[1m"
+  local cyan="$e[0;96m"
+  local red="$e[0;91m"
+  local yellow="$e[0;93m"
+  local green="$e[0;92m"
+
+  echo
+  echo -en $red'-_-_-_-_-_-_-_'
+  echo -e $reset$bold',------,'$reset
+  echo -en $yellow'_-_-_-_-_-_-_-'
+  echo -e $reset$bold'|   /\_/\\'$reset
+  echo -en $green'-_-_-_-_-_-_-'
+  echo -e $reset$bold'~|__( ^ .^)'$reset
+  echo -en $cyan'-_-_-_-_-_-_-'
+  echo -e $reset$bold'""  ""'$reset
+  echo
+}

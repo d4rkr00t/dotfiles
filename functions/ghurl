@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# GitHub URL for current repo.
+
+ghurl() {
+  local remotename="${@:-origin}"
+  local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
+
+  [[ "$remote" ]] || return
+
+  local user_repo="$(echo "$remote" | perl -pe 's/.*:\/\///;s/\.git$//;s/git@//;s/\:/\//')"
+
+  echo "https://$user_repo"
+}

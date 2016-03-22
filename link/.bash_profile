@@ -40,5 +40,11 @@ for file in $DOTFILES/source/*; do
 done
 unset file
 
+# Source all files in "functions"
+for file in $DOTFILES/functions/*; do
+    source "$file"
+done
+unset file
+
 # Extra dotfiles
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# cd into git repo root
+cdgr() {
+  cd `git root`
+}

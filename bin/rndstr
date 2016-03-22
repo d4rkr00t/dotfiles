@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Get random string from file
-
-count=$2
-: ${count:=-1}
-f=$1; n=$(expr $RANDOM \* `cat $f | wc -l` \/ 32768 + 1); head -n $n $f | tail $count

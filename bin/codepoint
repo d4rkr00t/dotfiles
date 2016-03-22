@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Get a character’s Unicode code point: £ → \x00A3
-
-perl -e "use utf8; print sprintf('\x%04X', ord(\"$@\"))"
-echo

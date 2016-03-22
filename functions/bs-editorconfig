@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bs-editorconfig() {
+  cp "$DOTFILES/misc/.editorconfig" ./
+}

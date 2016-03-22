@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# SSHFS mount
-
-mount_path="/Volumes/sshfs"
-
-mkdir -p $mount_path
-
-sshfs -o Ciphers=arcfour -o Compression=yes -o auto_cache,reconnect,defer_permissions,noappledouble -o workaround=nodelaysrv -o cache_stat_timeout=600 -o IdentityFile=~/.ssh/id_rsa $1 $mount_path

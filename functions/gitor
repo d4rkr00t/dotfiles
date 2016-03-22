@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Change git origin to given url and make old origin as upstream
+
+gitor() {
+  local url=$1
+
+  if [ -d .git ]; then
+    if [[ $url != http* && $url != git@* && ! -z "$url" ]]; then
+      url="https://github.com/$1.git"
+    fi
+
+    if ! git remote | grep upstream > /dev/null; then
+      git remote rename origin upstream
+      git remote add origin $url
+    fi
+
+    git remote -v
+  else
+    echo "-=-=-=->> There isn't a git repo! <<-=-=-=-"
+  fi;
+}

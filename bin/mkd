@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Create a new directory
-
-mkdir -p "$@"

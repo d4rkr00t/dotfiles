@@ -1,6 +1,11 @@
 #!/bin/sh
 
 extract() {
+  about 'Extracts archives of various types'
+  param '1: atchive path'
+  example '$ extract project.zip'
+  group 'utils'
+
   if [ -f $1 ] ; then
     local dir_name=${1%.*}  # Filename without extension
 

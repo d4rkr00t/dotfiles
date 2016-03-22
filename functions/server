@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Start an HTTP server from a directory, optionally specifying the port
-
 server() {
+  about 'Start an HTTP server from a directory, optionally specifying the port'
+  param '1: optional, port (default: 8000)'
+  example '$ server'
+  group 'utils'
+
   local port="${1:-8000}"
 
   sleep 1 && open "http://localhost:${port}/" &

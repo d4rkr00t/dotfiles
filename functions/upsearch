@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Search upwards till have found
-
 upsearch() {
+  about 'Search upwards till have found'
+  param '1: path to search'
+  example '$ upsearch node_modules'
+  group 'search'
+
   local slashes=${PWD//[^\/]/}
   local directory="$PWD"
 

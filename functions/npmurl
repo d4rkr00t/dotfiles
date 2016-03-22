@@ -3,6 +3,10 @@
 # NPM URL for current package.
 
 npmurl() {
+  about 'NPM URL for current package'
+  example '$ npmurl'
+  group 'npm'
+
   local package=`jsonval package.json name 1 | tr -d ' '`
 
   [[ "$package" ]] || return

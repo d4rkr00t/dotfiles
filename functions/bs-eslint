@@ -1,5 +1,9 @@
 #!/bin/sh
 
 bs-eslint() {
+  about 'Copy default .eslint to current folder'
+  example '$ bs-eslint'
+  group 'bootstrap'
+
   cp "$DOTFILES/link/.eslintrc" ./
 }

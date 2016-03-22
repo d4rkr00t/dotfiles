@@ -1,8 +1,15 @@
 #!/bin/sh
 
-# Converts Mov files to gif.
-
 movtogif() {
+  about 'Converts Mov/MP4 files to gif.'
+  param '1: filepath'
+  param '2: optional, output (default: out.gif)'
+  param '3: optional, video frame size (default: 1024)'
+  param '4: optional, frame rate (default: 10)'
+  param '4: optional, colors (default: 128)'
+  example '$ movtogif movie.mov'
+  group 'convert'
+
   local output="${2:-out.gif}"
   local size="${3:-1024}"
   local rate="${4:-10}"

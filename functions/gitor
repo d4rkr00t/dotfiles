@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Change git origin to given url and make old origin as upstream
-
 gitor() {
+  about 'Change git origin to given url and make old origin as upstream'
+  param '1: new origin url'
+  example '$ gitor git@github.com:d4rkr00t/dotfiles.git'
+  group 'git'
+
   local url=$1
 
   if [ -d .git ]; then

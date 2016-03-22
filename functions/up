@@ -48,6 +48,13 @@ _up() {
 }
 
 up() {
+  about 'Quickly traverse up the current working path.'
+  param '1: optional, until path'
+  param '1: optional, times'
+  example '$ up home'
+  example '$ up 3'
+  group 'nav'
+
   # up one
   if (( ! $# )); then
     cd ..

@@ -4,5 +4,11 @@
 # $ find-exec .coffee cat | wc -l
 
 find-exec() {
+  about 'Find files and exec commands at them'
+  param '1: filename to search'
+  param '2: command to execute on files'
+  example '$ find-exec .coffee cat | wc -l'
+  group 'search'
+
   find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
 }

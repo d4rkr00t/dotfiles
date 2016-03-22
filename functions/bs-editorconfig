@@ -1,5 +1,9 @@
 #!/bin/sh
 
 bs-editorconfig() {
+  about 'Copy default .editorconfig to current folder'
+  example '$ bs-editorconfig'
+  group 'bootstrap'
+
   cp "$DOTFILES/misc/.editorconfig" ./
 }

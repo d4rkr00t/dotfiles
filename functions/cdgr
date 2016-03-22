@@ -1,6 +1,11 @@
 #!/bin/sh
 
 # cd into git repo root
+
 cdgr() {
+  about 'cd into git repo root'
+  example '$ cdgr'
+  group 'nav'
+
   cd `git root`
 }

@@ -1,7 +1,9 @@
 #!/bin/sh
 
-# cd into whatever is the forefront Finder window.
-
 cdf() {
+  about 'cd into whatever is the forefront Finder window'
+  example '$ cdf'
+  group 'nav'
+
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }

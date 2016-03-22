@@ -1,8 +1,12 @@
 #!/bin/sh
 
-# Count files
-
 cf() {
+  about 'Count files'
+  param '1: optional, directory'
+  example '$ cf src'
+  example '$ cf'
+  group 'info'
+
   local dir
 
   # Specify directory to check

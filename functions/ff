@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# Better find(1)
-
 ff() {
+  about 'Better find(1)'
+  param '1: filename to search'
+  example '$ ff .js'
+  group 'search'
+
   find . -iname "*${1:-}*"
 }

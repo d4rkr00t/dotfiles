@@ -4,6 +4,11 @@
 # $ manp cd
 
 manp() {
+  about 'Show man page in Preview.app.'
+  param '1: man page name'
+  example '$ manp cd'
+  group 'info'
+
   if (( $# > 0 )); then
     for page in "$@"; do
       man -t "$page" | open -f -a Preview

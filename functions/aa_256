@@ -3,6 +3,10 @@
 # Print all 256 colors
 
 aa_256() {
+  about 'Print all 256 colors'
+  example '$ aa_256'
+  group 'other'
+
   ( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;
   for i in {0..256}; do
     o=00$i;

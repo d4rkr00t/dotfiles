@@ -1,6 +1,11 @@
 #!/bin/sh
 
 dataurl() {
+  about 'Builds data-url from file'
+  param '1: filepath'
+  example '$ dataurl icon.svg'
+  group 'convert'
+
   local mimeType=$(file -b --mime-type "$1")
 
   if [[ $mimeType == text/* ]]; then

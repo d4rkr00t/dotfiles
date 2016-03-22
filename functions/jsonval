@@ -3,6 +3,14 @@
 # Get value of property from json file
 
 jsonval() {
+  about 'Get value of property from json file'
+  param '1: path to .json file'
+  param '2: property to search'
+  param '3: optional, number of results (default: all)'
+  example '$ jsonval package.json name'
+  example '$ jsonval package.json name 1'
+  group 'utils'
+
   local key=$2
   local num=$3
 

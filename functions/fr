@@ -1,7 +1,12 @@
 #!/bin/sh
 
-# Find and replace
-
 fr() {
+  about 'Find and replace'
+  param '1: filename to search'
+  param '2: pattern which will be replaced'
+  param '3: pattern on what :2 will be replaced'
+  example '$ fr .js tset test'
+  group 'search'
+
   sed -i '' -e 's/'$2'/'$3'/g' $(find . -type f -iname $1)
 }

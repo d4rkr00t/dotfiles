@@ -5,6 +5,10 @@
 # If you want big animated version: `telnet miku.acm.uiuc.edu`
 
 nyan() {
+  about 'Print nyan cat'
+  example '$ nyan'
+  group 'other'
+
   local e='\033'
   local reset="$e[0m"
   local bold="$e[1m"

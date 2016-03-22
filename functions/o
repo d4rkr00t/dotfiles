@@ -1,9 +1,12 @@
 #!/bin/sh
 
-# `o` with no arguments opens current directory, otherwise opens the given
-# location
-
 o() {
+  about 'With no arguments opens current directory, otherwise opens the given location'
+  param '1: optional, path'
+  example '$ o'
+  example '$ o test/'
+  group 'nav'
+
   if [ $# -eq 0 ]; then
     open .
   else

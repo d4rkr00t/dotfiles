@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Mesure execution time
-
 exectime() {
+  about 'Mesures execution time'
+  param '1: command to mesure'
+  example '$ exectime extract some.zip'
+  group 'info'
+
   local start_time=`date +%s`
 
   eval '$@'

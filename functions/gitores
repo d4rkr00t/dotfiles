@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# Restore remote origin url from upstream url
-
 gitores() {
+  about 'Restore remote origin url from upstream url'
+  example '$ gitores'
+  group 'git'
+
   if [ -d .git ]; then
     if git remote | grep upstream > /dev/null; then
       git remote rm origin

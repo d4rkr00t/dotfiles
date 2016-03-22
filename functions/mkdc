@@ -3,5 +3,11 @@
 # Create a new directory and enter it
 
 mkdc() {
+  about 'Create a new directory and enter it'
+  param '1: dirname or path'
+  example '$ mkdc test'
+  example '$ mkdc test/dir/name'
+  group 'fs'
+
   mkd "$@" && cd "$_"
 }

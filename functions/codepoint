@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Get a character’s Unicode code point: £ → \x00A3
-
 codepoint() {
+  about 'Get a character’s Unicode code point: £ → \x00A3'
+  param '1: char'
+  example '$ codepoint 🐑'
+  group 'convert'
+
   perl -e "use utf8; print sprintf('\x%04X', ord(\"$@\"))"
   echo
 }

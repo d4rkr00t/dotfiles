@@ -3,6 +3,11 @@
 # SSHFS mount
 
 sshfsmount() {
+  about 'SSHFS mount'
+  param '1: ssh server to mount'
+  example '$ sshfs root@login.server.com'
+  group 'utils'
+
   local mount_path="/Volumes/sshfs"
 
   mkdir -p $mount_path

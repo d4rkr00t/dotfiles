@@ -1,60 +1,147 @@
 #!/bin/sh
 
-dthelp() {
-  local color_reset="\033[0;37m"
-  local color_func="\033[1;32m"
-  local color_arg="\033[1;33m"
+# https://github.com/erichs/composure
 
-  echo -e ""
-  echo -e "FUNCTIONS:"
-  echo -e ""
-  echo -e "${color_func}aa_256${color_reset} — Print all 256 colors"
-  echo -e ""
-  echo -e "${color_func}bs-csscomb${color_reset} — Copy default .csscomb.json to current folder"
-  echo -e "${color_func}bs-eslint${color_reset} — Copy default .eslintrc to current folder"
-  echo -e "${color_func}bs-editorconfig${color_reset} — Copy default .editorconfig to current folder"
-  echo -e ""
-  echo -e "${color_func}cdf${color_reset} — cd into whatever is the forefront Finder window"
-  echo -e "${color_func}cdgr${color_reset} — cd into git repo root"
-  echo -e "${color_func}cf ${color_arg}[<dir:pwd>]${color_reset} — Count files"
-  echo -e "${color_func}codepoint ${color_arg}<char>${color_reset} — Get a character’s Unicode code point: £ → \x00A3"
-  echo -e "${color_func}ctxt ${color_arg}[<from:WINDOWS-1251>] [<to:UTF-8>] [<result folder:converted>]${color_reset} — # Convert text. Result folder will be removed and recreated"
-  echo -e ""
-  echo -e "${color_func}dataurl ${color_arg}<file>${color_reset} — Create a data URL from a file"
-  echo -e ""
-  echo -e "${color_func}exectime ${color_arg}<command>${color_reset} — Mesure execution time"
-  echo -e "${color_func}extract ${color_arg}<file>${color_reset} — Extract archives of various types"
-  echo -e ""
-  echo -e "${color_func}ff${color_reset} — Better find(1)"
-  echo -e "${color_func}find-exec ${color_arg}<pattern> <command>${color_reset} — Find files and exec commands at them. $ find-exec .coffee cat | wc -l"
-  echo -e "${color_func}fr ${color_arg}<where> <from> <to>${color_reset} — Find and replace"
-  echo -e ""
-  echo -e "${color_func}ghurl${color_reset} — GitHub URL for current repo"
-  echo -e "${color_func}gitor ${color_arg}<new origin url>${color_reset} — Change git origin to given url and make old origin as upstream"
-  echo -e "${color_func}gitores${color_reset} — Restore remote origin url from upstream url"
-  echo -e "${color_func}gz ${color_arg}<file>${color_reset} — Compare original and gzipped file size"
-  echo -e ""
-  echo -e "${color_func}imgsize ${color_arg}<file>${color_reset} — Quickly get image dimensions from the command line"
-  echo -e ""
-  echo -e "${color_func}jsonval ${color_arg}<file> <key> <count of results>${color_reset} — Get value of property from json file"
-  echo -e ""
-  echo -e "${color_func}manp ${color_arg}<command>${color_reset} — Show man page in Preview.app. $ manp cd"
-  echo -e "${color_func}mkd ${color_arg}<name>${color_reset} — Create a new directory"
-  echo -e "${color_func}mkdc ${color_arg}<name>${color_reset} — Create a new directory and enter it"
-  echo -e "${color_func}movtogif ${color_arg}<file> [<output:out.gif>] [<size:1024>] [<rate:10>] [<colors:128>]${color_reset} — Converts mov to gif"
-  echo -e ""
-  echo -e "${color_func}npmurl${color_reset} — NPM URL for current package"
-  echo -e "${color_func}nyan${color_reset} — Print nyan cat"
-  echo -e ""
-  echo -e "${color_func}ram ${color_arg}<app>${color_reset} — Show how much RAM application uses. $ ram safari"
-  echo -e "${color_func}rndstr ${color_arg}<file>${color_reset} — Get random string from file"
-  echo -e "${color_func}rndnum ${color_arg}<max_num>${color_reset} — Returns random number betwean 1 and max_number"
-  echo -e ""
-  echo -e "${color_func}sanitize${color_reset} — Sanitize all filenames in current dir: lowercase, no other characters than letters, digits, dash, underscore and dot"
-  echo -e "${color_func}server ${color_arg}[<port:8000>]${color_reset} — Start an HTTP server from a directory, optionally specifying the port"
-  echo -e "${color_func}sshfsmount ${color_arg}<host> <mount_path>${color_reset} — SSHFS mount"
-  echo -e ""
-  echo -e "${color_func}up ${color_arg}<times>${color_reset} — CD up number of times"
-  echo -e "${color_func}upsearch ${color_arg}<what>${color_reset} — Search upwards till found. $ upsearch node_modules/.bin/babel-node"
-  echo -e ""
+_help_keywords ()
+{
+  echo "about example group param"
 }
+
+_typeset_functions ()
+{
+  typeset f
+  for f in "$DOTFILES"/functions/*; do
+    # Without nullglob, we'll get back the glob
+    [[ -f "$f" ]] || continue
+
+    f="${f##*/}"
+    f="${f%.inc}"
+    echo "$f"
+  done
+}
+
+_longest_function_name_length ()
+{
+   _typeset_functions | awk 'BEGIN{ maxlength=0 }
+  {
+  for(i=1;i<=NF;i++)
+    if (length($i)>maxlength)
+    {
+    maxlength=length($i)
+    }
+  }
+  END{ print maxlength}'
+}
+
+_letterpress ()
+{
+  typeset rightcol="$1" leftcol="${2:- }" leftwidth="${3:-20}"
+
+  if [ -z "$rightcol" ]; then
+    return
+  fi
+
+  printf "%-*s%s\n" "$leftwidth" "$leftcol" "$rightcol"
+}
+
+metafor ()
+{
+  about 'Prints function metadata associated with keyword'
+  param '1: meta keyword'
+  example '$ typeset -f glossary | metafor example'
+  group 'dthelp'
+
+  typeset keyword=$1
+
+  if [ -z "$keyword" ]; then
+    printf '%s\n' 'missing parameter(s)'
+    reference metafor
+    return
+  fi
+
+  # this sed-fu is the retrieval half of the 'metadata' system:
+  # 'grep' for the metadata keyword, and then parse/filter the matching line
+
+  # grep keyword # strip trailing '|"|; # ignore thru keyword and leading '|"
+  sed -n "/$keyword / s/['\";]*\$//;s/^[ 	]*$keyword ['\"]*\([^([].*\)*\$/\1/p"
+}
+
+ref ()
+{
+  about 'Displays apidoc help for a specific function'
+  param '1: function name'
+  example '$ reference revise'
+  group 'dthelp'
+
+  local color_title="$(tput setaf 10)"
+  local color_reset="$(tput sgr0)"
+
+  typeset func=$1
+  if [ -z "$func" ]; then
+    printf '%s\n' 'missing parameter(s)'
+    reference reference
+    return
+  fi
+
+  typeset line
+
+  typeset about="$(typeset -f "$func" | metafor about)"
+  printf "\n  $about\n"
+
+  if [ -n "$(typeset -f $func | metafor param)" ]; then
+    printf "\n  ${color_title}Options:${color_reset}\n"
+    typeset -f $func | metafor param | while read -r line
+    do
+      printf "    $line\n"
+    done
+  fi
+
+  if [ -n "$(typeset -f $func | metafor example)" ]; then
+    printf "\n  ${color_title}Examples:${color_reset}\n"
+    typeset -f $func | metafor example | while read -r line
+    do
+      printf "    $line\n"
+    done
+  fi
+}
+
+list ()
+{
+  about 'Displays help summary for all functions, or summary for a group of functions'
+  param '1: optional, group name'
+  example '$ list'
+  example '$ list misc'
+  group 'dthelp'
+
+  local color_func="$(tput setaf 4)"
+  local color_about="$(tput setaf 8)"
+  local color_reset="$(tput sgr0)"
+
+  typeset targetgroup=${1:-}
+  typeset maxwidth=$(_longest_function_name_length | awk '{print $1 + 15}')
+
+  for func in $(_typeset_functions); do
+
+    if [ "X${targetgroup}X" != "XX" ]; then
+      typeset group="$(typeset -f -- $func | metafor group)"
+      if [ "$group" != "$targetgroup" ]; then
+        continue  # skip non-matching groups, if specified
+      fi
+    fi
+    typeset about="$(typeset -f -- $func | metafor about)"
+    typeset aboutline=
+    echo "$about" | fmt | while read -r aboutline; do
+      if [[ $aboutline ]]; then
+        _letterpress "$color_about$aboutline$color_reset" "$color_func$func$color_reset" "$maxwidth"
+      fi
+      func=" " # only display function name once
+    done
+  done
+}
+
+# bootstrap metadata
+for f in $(_help_keywords)
+do
+  eval "$f() { :; }"
+done
+unset f

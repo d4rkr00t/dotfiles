@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# Runs given command using binary in node_modules/.bin of the current project
-# https://github.com/ai/environment
-
 n() {
+  about 'Runs given command using binary in node_modules/.bin of the current project (https://github.com/ai/environment)'
+  param '1: binary name'
+  example '$ n eslint .'
+  group 'npm'
+
   if [ -d $(npm bin) ]; then
     local prog="$1"
     shift

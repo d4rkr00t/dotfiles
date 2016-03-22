@@ -3,6 +3,11 @@
 # Quickly get image dimensions from the command line
 
 imgsize() {
+  about 'Quickly get image dimensions from the command line'
+  param '1: image path'
+  example '$ imgsize file.png'
+  group 'info'
+
   if [[ -f $1 ]]; then
     local height=$(sips -g pixelHeight "$1"|tail -n 1|awk '{print $2}')
     local width=$(sips -g pixelWidth "$1"|tail -n 1|awk '{print $2}')

@@ -1,6 +1,10 @@
 #!/bin/sh
 
 tm() {
+  about 'Shows list of active tmux sessions'
+  example '$ tm'
+  group 'utils'
+
   # abort if we're already inside a TMUX session
   [ "$TMUX" == "" ] || exit 0
   # startup a "default" session if non currently exists

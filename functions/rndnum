@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# Returns random number between 1 and given param
-
 rndnum() {
+  about 'Returns random number between 1 and given param'
+  param '1: max number'
+  example '$ rndnum 20'
+  group 'other'
+
   echo $RANDOM % "$1" + 1 | bc
 }

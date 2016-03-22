@@ -1,7 +1,11 @@
 #!/bin/sh
 
-# Create a new directory
-
 mkd() {
+  about 'Create a new directory'
+  param '1: dirname or path'
+  example '$ mkd test'
+  example '$ mkd test/dir/name'
+  group 'fs'
+
   mkdir -p "$@"
 }

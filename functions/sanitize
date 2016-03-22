@@ -3,6 +3,10 @@
 # Sanitize all filenames in current dir: lowercase, no other characters than letters, digits, dash, underscore and dot
 
 sanitize() {
+  about 'Sanitize all filenames in current dir: lowercase, no other characters than letters, digits, dash, underscore and dot'
+  example '$ sanitize'
+  group 'utils'
+
   for file in *; do
     local file_clean=`echo $file | tr '[:upper:]' '[:lower:]' | tr -cd "[:alnum:]-_."`
 

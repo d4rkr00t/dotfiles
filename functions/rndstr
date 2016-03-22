@@ -3,6 +3,13 @@
 # Get random string from file
 
 rndstr() {
+  about 'Get random string from file'
+  param '1: filepath'
+  param '2: optional, lines count (default: 1)'
+  example '$ rndstr list.txt'
+  example '$ rndstr list.txt 10'
+  group 'other'
+
   local count=$2
 
   : ${count:=-1}

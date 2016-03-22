@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# GitHub URL for current repo.
-
 ghurl() {
+  about 'GitHub URL for current repo'
+  example '$ ghurl'
+  group 'git'
+
   local remotename="${@:-origin}"
   local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
 

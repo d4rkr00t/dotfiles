@@ -5,6 +5,12 @@
 # # => safari uses 154.69 MBs of RAM.
 
 ram() {
+  about 'Show how much RAM application uses'
+  param '1: app name'
+  example '$ ram safari'
+  example '# => safari uses 154.69 MBs of RAM.'
+  group 'info'
+
   local sum
   local items
   local app="$1"

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+nvm-upgrade() {
+  about 'Upgrades node versions and reinstalls global packages from previous version'
+  param '1: version prefix for example 4 for node versions 4.0.0+'
+  example '$ nvm-upgrade 4'
+  example '$ nvm-upgrade 5'
+  group 'nvm'
+
+  local new_version_prefix=$1
+  local current_version=$(nvm_version $new_version_prefix)
+
+  if [ "$current_version" = "N/A" ]; then
+    nvm install $new_version_prefix
+  else
+    local remote_version=$(nvm_ls_remote $new_version_prefix | tail -1)
+
+    if [ "$current_version" != "$remote_version" ]; then
+      nvm install $new_version_prefix --reinstall-packages-from="$current_version"
+    else
+      nvm install $new_version_prefix
+    fi
+  fi
+}

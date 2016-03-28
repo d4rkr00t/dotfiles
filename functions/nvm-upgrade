@@ -17,8 +17,7 @@ nvm-upgrade() {
 
     if [ "$current_version" != "$remote_version" ]; then
       nvm install $new_version_prefix --reinstall-packages-from="$current_version"
-    else
-      nvm install $new_version_prefix
+      nvm uninstall $current_version
     fi
   fi
 }

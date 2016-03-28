@@ -13,7 +13,7 @@ _nvm-cleanup-filter-current() {
 }
 
 _nvm-cleanup-confirm() {
-  read -p $'\e[35mAre you sure you want to delete these versions?\e[0m (y/n) ' -n 1 -r
+  read -p $'\e[35mAre you sure you want to uninstall these versions?\e[0m (y/n) ' -n 1 -r
   echo && echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
   then

@@ -2,7 +2,6 @@ SRC_DIR=$( cd ~/Dropbox/Apps/atom/ && pwd )
 DEST_DIR=$( cd ~/.atom/ && pwd )
 
 files=(
-  projects.cson
   config.cson
   styles.less
   keymap.cson

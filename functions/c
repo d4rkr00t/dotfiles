@@ -1,0 +1,15 @@
+#!/bin/sh
+
+c() {
+  about 'With no arguments opens the current directory in Visual Studio Code, otherwise opens the given location'
+  param '1: optional, path'
+  example '$ a index.js'
+  example '$ a .'
+  group 'editors'
+
+  if [ $# -eq 0 ]; then
+    code-insiders .
+  else
+    code-insiders "$@"
+  fi
+}

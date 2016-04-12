@@ -1,6 +1,6 @@
 #!/bin/sh
 
-c() {
+vsc() {
   about 'With no arguments opens the current directory in Visual Studio Code, otherwise opens the given location'
   param '1: optional, path'
   example '$ a index.js'

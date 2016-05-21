@@ -21,6 +21,7 @@ pkgs=(
   skype
   transmission
   tunnelblick
+  virtualbox
   vlc
   xmind
 

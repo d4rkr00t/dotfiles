@@ -9,6 +9,9 @@ pkgs=(
     bash
     bash_completion
     coreutils
+    docker
+    docker-machine
+    docker-compose
     ffmpeg
     findutils
     fpp

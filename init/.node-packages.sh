@@ -4,7 +4,6 @@ npm update
 pkgs=(
     aik
     babel-eslint
-    caniuse-cmd
     commitizen
     csscomb
     eslint

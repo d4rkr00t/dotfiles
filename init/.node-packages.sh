@@ -5,22 +5,19 @@ pkgs=(
     aik
     babel-eslint
     caniuse-cmd
-    cloc
     commitizen
     csscomb
     eslint
     generator-np
+    greenkeeper
     gulp
     hicat
-    how2
     is-up
-    jscs
     live-server
     ngrok
     npm-check-updates
     peerflix
     pmm
-    psi
     svgexport
     svgo
     vtop

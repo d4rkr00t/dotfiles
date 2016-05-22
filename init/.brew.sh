@@ -5,7 +5,6 @@ brew update
 brew upgrade --all
 
 pkgs=(
-    ag
     bash
     bash_completion
     coreutils
@@ -29,7 +28,6 @@ pkgs=(
     tmux
     tree
     vim --override-system-vi
-    webkit2png
     wget --with-iri
 )
 

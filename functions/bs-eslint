@@ -5,5 +5,5 @@ bs-eslint() {
   example '$ bs-eslint'
   group 'bootstrap'
 
-  cp "$DOTFILES/link/.eslintrc" ./
+  cp "$DOTFILES/misc/.eslintrc" ./
 }

@@ -17,3 +17,5 @@ Thumbs.db
 
 node_modules
 .node-bin/node_modules
+jsconfig.json
+npm-debug.log

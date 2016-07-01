@@ -200,6 +200,14 @@
 	email = "d4rkr00t@gmail.com"
 	name = "Stanislav Sysoev"
 
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+	# (git 2.9+) Set this option to `true` to enable an experimental heuristic that
+	# shifts the hunk boundary in an attempt to make the resulting
+	# patch easier to read.
+	compactionHeuristic = true
+
 # URL shorthands
 [url "git@github.com:"]
 	insteadOf = "gh:"
@@ -216,10 +224,12 @@
 
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge --skip %f
+
 [lfs]
 	batch = true
 	concurrenttransfers = 15

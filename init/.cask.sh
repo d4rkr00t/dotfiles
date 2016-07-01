@@ -5,7 +5,6 @@ brew tap caskroom/versions
 
 pkgs=(
   dropbox
-  evernote
   firefox
   firefoxdeveloperedition
   google-chrome

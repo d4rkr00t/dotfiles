@@ -11,13 +11,14 @@ pkgs=(
   google-chrome-canary
   imagealpha
   imageoptim
-  iterm2-nightly
+  iterm2
   macclean
   miro-video-converter
   numi
   opera
   opera-developer
   skype
+  spectacle
   transmission
   tunnelblick
   vlc

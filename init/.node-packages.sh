@@ -11,6 +11,7 @@ pkgs=(
     greenkeeper
     gulp
     hicat
+    imageoptim-cli
     is-up
     live-server
     ngrok

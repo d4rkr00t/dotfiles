@@ -19,7 +19,6 @@ Install and init settings for some apps:
 ./init/.npm.sh
 ./init/.node-packages.sh
 ./init/.tmux.sh
-./init/.docker.sh
 ./init/.bashmarks.sh
 ./init/.atom.sh
 ```

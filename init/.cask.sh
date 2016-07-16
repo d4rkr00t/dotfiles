@@ -4,6 +4,7 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 pkgs=(
+  anki
   dropbox
   firefox
   firefoxdeveloperedition

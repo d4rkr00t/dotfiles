@@ -21,6 +21,7 @@ Install and init settings for some apps:
 ./init/.tmux.sh
 ./init/.bashmarks.sh
 ./init/.atom.sh
+./init/.vscode.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:

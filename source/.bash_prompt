@@ -40,7 +40,7 @@ if tput setaf 1 &> /dev/null; then
     color_git_progress="$(tput setaf 1)"
   fi
 
-  color_prompt_symbol="$(tput setaf 5)"
+  color_prompt_symbol="$(tput setaf 11)"
   color_prompt_symbol_error="$(tput setaf 1)"
 
 else

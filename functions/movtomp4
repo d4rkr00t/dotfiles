@@ -1,0 +1,13 @@
+#!/bin/sh
+
+movtomp4() {
+  about 'Converts Mov files to mp4.'
+  param '1: filepath'
+  param '2: output (default: out.mp4)'
+  example '$ movtomp4 movie.mov'
+  group 'convert'
+
+  local output="${2:-out.mp4}"
+
+  ffmpeg -i $1 -acodec copy -vcodec copy $output
+}

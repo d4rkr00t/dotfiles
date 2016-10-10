@@ -14,9 +14,11 @@ Thumbs.db
 .Trashes
 
 .idea
+.vscode
+jsconfig.json
+typings
+.flowconfig
 
 node_modules
 .node-bin/node_modules
-jsconfig.json
 npm-debug.log
-.vscode

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Run given command specified number of times
+
+runn() {
+  about 'Run given command specified number of times'
+  param '1: number of runs'
+  param '2: command to run'
+  example '$ runn 1 echo "123"'
+  group 'other'
+
+  local runs=$1
+
+  shift
+
+  for run in $(seq 1 $runs)
+  do
+    eval '$@'
+  done
+}

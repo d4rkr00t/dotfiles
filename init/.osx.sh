@@ -36,21 +36,21 @@ defaults write com.apple.systemuiserver menuExtras -array \
     "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Set sidebar icon size to small
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+defaults write -g NSTableViewDefaultSizeMode -int 1
 
 # Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+defaults write -g NSWindowResizeTime -float 0.001
 
 # Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+defaults write -g PMPrintingExpandedStateForPrint -bool true
+defaults write -g PMPrintingExpandedStateForPrint2 -bool true
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -68,10 +68,10 @@ systemsetup -setrestartfreeze on
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -99,7 +99,7 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+defaults write -g AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
@@ -109,11 +109,11 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
+defaults write -g InitialKeyRepeat -int 10
 
 ###############################################################################
 # Screen                                                                      #
@@ -129,7 +129,7 @@ defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
+defaults write -g AppleFontSmoothing -int 2
 
 ###############################################################################
 # Finder                                                                      #
@@ -139,7 +139,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write -g AppleShowAllExtensions -bool true
 
 # Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
@@ -160,10 +160,10 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable spring loading for directories
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+defaults write -g com.apple.springing.enabled -bool true
 
 # Set the spring loading delay for directories
-defaults write NSGlobalDomain com.apple.springing.delay -float 0.4
+defaults write -g com.apple.springing.delay -float 0.4
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -204,7 +204,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Enable the MacBook Air SuperDrive on any Mac
-sudo nvram boot-args="mbasd=1"
+# sudo nvram boot-args="mbasd=1"
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
@@ -242,9 +242,6 @@ defaults write com.apple.dock show-process-indicators -bool true
 
 # Don’t animate opening applications from the Dock
 defaults write com.apple.dock launchanim -bool false
-
-# Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
@@ -318,7 +315,7 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 # Add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+defaults write -g WebKitDeveloperExtras -bool true
 
 ###############################################################################
 # Spotlight                                                                   #

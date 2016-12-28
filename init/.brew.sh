@@ -16,7 +16,6 @@ pkgs=(
     hh
     homebrew/dupes/grep
     imagemagick --with-webp
-    mongodb
     ncdu
     nvm
     rename

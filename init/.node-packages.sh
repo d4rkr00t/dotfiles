@@ -3,7 +3,6 @@ npm update
 
 pkgs=(
     aik
-    babel-eslint
     commitizen
     csscomb
     eslint

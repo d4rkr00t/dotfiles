@@ -4,12 +4,9 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 pkgs=(
-  anki
   dropbox
   firefox
-  firefoxdeveloperedition
   google-chrome
-  google-chrome-canary
   imagealpha
   imageoptim
   iterm2
@@ -17,13 +14,11 @@ pkgs=(
   miro-video-converter
   numi
   opera
-  opera-developer
   skype
   spectacle
   transmission
   tunnelblick
   vlc
-  xmind
 
   # QuickLook plugins
   betterzipql

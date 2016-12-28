@@ -3,36 +3,40 @@
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# Easier navigation: .., ..., ...., ....., ~ and -
+#
+# Navigation
+#
+
 alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+#
 # Shortcuts
-alias d="cd ~/Dropbox"
+#
+
+alias dr="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Development/dotfiles"
 alias p="cd ~/Development"
-alias pj="cd ~/Development/JavaScript"
 alias g="git"
-alias h="history"
 alias _="sudo"
 alias +x="chmod +x"
 
-# Easily re-execute the last history command.
-alias r="fc -s"
-
+#
 # File size / info
+#
+
 alias fs="stat -f '%z bytes'"
 alias fsd="du -hd 0 2> /dev/null"
 alias df="df -h"
 alias ds="du -hd 1 2> /dev/null"
 alias imginfo='identify -verbose'
 
-# tmux aliases
+#
+# Tmux
+#
+
 alias ta='tmux attach'
 alias tls='tmux ls 2> /dev/null'
 alias tat='tmux attach -t'
@@ -50,8 +54,6 @@ alias docker_kill_all='docker kill $(docker ps -q)'
 #
 # NODE / NPM
 #
-
-command -v node > /dev/null && alias node="node --harmony"
 
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 alias nup="npm update --save-dev && npm update --save"
@@ -87,6 +89,9 @@ alias ls="command ls ${colorflag}"
 #
 # Misc
 #
+
+# Easily re-execute the last history command.
+alias r="fc -s"
 
 # Move export GREP_OPTIONS="--color=auto" (which is deprecated in GNU grep) from
 # .exports to .aliases
@@ -127,9 +132,9 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
-# Trim new lines and copy to clipboard
+# Copy
 alias c="pbcopy"
-alias cn="tr -d '\n' | pbcopy"
+alias cn="tr -d '\n' | pbcopy" # Trim new lines and copy to clipboard
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -159,14 +164,6 @@ alias reload="exec $SHELL -l"
 
 # <hr/> for bash
 alias hr="printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -"
-
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode/decode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'

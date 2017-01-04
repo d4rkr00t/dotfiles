@@ -63,7 +63,7 @@ fi
 #
 
 # Set up symbols
-prompt_symbol="❯"
+prompt_symbol="λ"
 
 synced_symbol=""
 dirty_synced_symbol="*"

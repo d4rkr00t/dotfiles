@@ -13,6 +13,7 @@ pkgs=(
     fpp
     gifsicle
     git
+    git-when-merged
     hh
     homebrew/dupes/grep
     imagemagick --with-webp

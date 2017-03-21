@@ -7,6 +7,7 @@ pkgs=(
     csscomb
     eslint
     generator-np
+    git-stats
     greenkeeper
     gulp
     hicat
@@ -17,6 +18,7 @@ pkgs=(
     npm-check-updates
     peerflix
     pmm
+    recursive-blame
     svgexport
     svgo
     vtop

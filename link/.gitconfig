@@ -208,7 +208,7 @@
 	# (git 2.9+) Set this option to `true` to enable an experimental heuristic that
 	# shifts the hunk boundary in an attempt to make the resulting
 	# patch easier to read.
-	compactionHeuristic = true
+	indentHeuristic = true
 
 # URL shorthands
 [url "git@github.com:"]

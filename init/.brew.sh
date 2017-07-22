@@ -16,11 +16,12 @@ pkgs=(
     git-when-merged
     hh
     homebrew/dupes/grep
+    homebrew/dupes/less
     imagemagick --with-webp
     ncdu
     nvm
     rename
-    speedtest_cli
+    speedtest-cli
     the_silver_searcher
     tmux
     tree

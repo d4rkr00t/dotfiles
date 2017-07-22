@@ -6,10 +6,6 @@ pkgs=(
     commitizen
     csscomb
     eslint
-    generator-np
-    git-stats
-    greenkeeper
-    gulp
     hicat
     imageoptim-cli
     is-up
@@ -23,6 +19,7 @@ pkgs=(
     svgo
     vtop
     yo
+    yarn
 )
 
 for pkg in "${pkgs[@]}"; do

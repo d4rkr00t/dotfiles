@@ -21,8 +21,8 @@ pkgs=(
     ncdu
     nvm
     rename
+    ripgrep
     speedtest-cli
-    the_silver_searcher
     tmux
     tree
     vim --override-system-vi

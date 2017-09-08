@@ -17,7 +17,6 @@ Thumbs.db
 .vscode
 jsconfig.json
 typings
-.flowconfig
 
 node_modules
 .node-bin/node_modules

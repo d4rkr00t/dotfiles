@@ -118,6 +118,12 @@ alias week='date +%V'
 # hicat — command-line syntax highlighter
 alias hi=hicat
 
+# vim -> nvim
+alias vim=nvim
+
+# ag -> rg
+alias ag=rg
+
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 

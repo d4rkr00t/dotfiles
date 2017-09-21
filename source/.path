@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Add `~/bin` to the `$PATH`
-export PATH="$DOTFILES/bin:$DOTFILES/bin/git:$HOME/bin:$PATH"
+# Add more locations to PATH
+export PATH="$DOTFILES/bin:$DOTFILES/bin/git:$PATH:./node_modules/.bin"
 
 if hash brew 2>/dev/null; then
     if [ -f $(brew --prefix nvm)/nvm.sh ]; then

@@ -16,7 +16,6 @@ Thumbs.db
 .idea
 .vscode
 jsconfig.json
-typings
 
 node_modules
 .node-bin/node_modules

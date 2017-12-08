@@ -118,6 +118,7 @@
 	# Misc
 	#
 
+  resref = "!r() { git reset --hard HEAD@{$1}; }; r"
 	cleanit = clean -fd
 
 	# Instantly clean a git repo from extraneous files in a non-blocking fashion

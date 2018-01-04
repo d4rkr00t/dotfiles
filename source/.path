@@ -10,3 +10,7 @@ if hash brew 2>/dev/null; then
 else
     [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 fi
+
+if hash cargo 2>/dev/null; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+wr() {
+  about 'Watch and run'
+  param '1: pattern to watch'
+  param 'rest: command to run'
+  example '$ wr ./somefile.js node ./somefile.js'
+  group 'utils'
+
+  local pattern=$1
+  shift
+
+  eval "$@"
+
+  fswatch $pattern | xargs -n1 -I{} bash -c "echo '' && echo 'Change in \"$pattern\". Running: \"$@\":' && echo '' && $@" bash
+}

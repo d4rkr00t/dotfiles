@@ -90,6 +90,9 @@ alias ls="command ls ${colorflag}"
 # Misc
 #
 
+# Clear
+alias cl="clear"
+
 # Easily re-execute the last history command.
 alias r="fc -s"
 

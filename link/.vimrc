@@ -38,6 +38,9 @@ Plug 'easymotion/vim-easymotion'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
 
+" Undo tree
+Plug 'mbbill/undotree'
+
 " Initialize all plugins
 call plug#end()
 
@@ -112,6 +115,14 @@ set encoding=utf-8 nobomb      " Use UTF-8 without BOM
 " if exists("&undodir")
 "   set undodir=~/.vim/undo
 " endif
+
+"
+" Save undo history
+"
+if has("persistent_undo")
+  set undodir=~/.undodir/
+  set undofile
+endif
 
 "
 " netrw
@@ -198,6 +209,9 @@ map <Esc><Esc> :w<CR>
 noremap <leader>y "*y
 noremap <leader>p "*p
 
+" Quickly edit/reload this configuration file
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 
@@ -226,3 +240,6 @@ nnoremap <silent> <leader>/ :History<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
+
+" undotree
+nnoremap <silent> <leader>u :UndotreeShow<CR>

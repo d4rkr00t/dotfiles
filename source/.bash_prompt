@@ -27,7 +27,7 @@ if tput setaf 1 &> /dev/null; then
     color_user="$(tput setaf 14)"
     color_preposition="$(tput setaf 8)"
     color_host="$(tput setaf 14)"
-    color_dir="$(tput setaf 6)"
+    color_dir="$(tput setaf 5)"
     color_git_status="$(tput setaf 10)"
     color_git_progress="$(tput setaf 9)"
   else

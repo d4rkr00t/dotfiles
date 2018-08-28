@@ -213,6 +213,8 @@
 	# shifts the hunk boundary in an attempt to make the resulting
 	# patch easier to read.
 	indentHeuristic = true
+  # Moved lines of code are colored differently.
+  colorMoved = default
 
 # URL shorthands
 [url "git@github.com:"]

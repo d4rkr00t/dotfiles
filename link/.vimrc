@@ -38,6 +38,9 @@ Plug 'easymotion/vim-easymotion'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
 
+" JavaScript
+Plug 'pangloss/vim-javascript'
+
 " Undo tree
 Plug 'mbbill/undotree'
 
@@ -74,7 +77,6 @@ set shortmess=atI " Remove all useless messages like intro screen and use abbrev
 set noswapfile    " Disable swp files
 set history=1000  " Default is 20, I'd rather set this to ∞
 
-
 set noerrorbells    " Disable error bells
 set nostartofline   " Don’t reset cursor to start of line when moving around.
 set noshowmode      " Showmode is useless with airline
@@ -86,6 +88,7 @@ set showmatch       " highlight matching [{()}]
 set matchpairs+=<:> " Make < and > match as well
 set cursorline      " highlight current line
 set scrolloff=3     " Start scrolling N lines before the horizontal window border
+set sidescroll=1    " Enables side scroll
 set guifont="SFMono:13"
 
 set tabstop=2     " number of visual spaces per TAB
@@ -167,6 +170,9 @@ autocmd BufRead * normal zz
 
 let mapleader="," " leader is comma
 
+" Q exists too
+:command! Q q
+
 " turn off search highlight by pressing Enter
 nnoremap <CR> :noh<CR><CR>
 
@@ -209,12 +215,25 @@ map <Esc><Esc> :w<CR>
 noremap <leader>y "*y
 noremap <leader>p "*p
 
+" Keep cursor where I expect it to be after yanking – http://ddrscott.github.io/blog/2016/yank-without-jank/
+vnoremap <expr>y "my\"" . v:register . "y`y"
+
 " Quickly edit/reload this configuration file
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
+function! ToggleMovement(firstOp, thenOp)
+  let pos = getpos('.')
+  execute "normal! " . a:firstOp
+  if pos == getpos('.')
+    execute "normal! " . a:thenOp
+  endif
+endfunction
 
+" 0 firsts move to the first non-blank character and on second click all the
+" way to the first character in the line
+nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
 
 
 "-------------------------
@@ -231,7 +250,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_theme='violet'
 
 " fzf
-let $FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+let $FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 imap <C-f> <plug>(fzf-complete-line)
 nnoremap <silent> <leader><space> :Files<CR>
@@ -243,3 +262,7 @@ nnoremap <silent> <leader>ft :Filetypes<CR>
 
 " undotree
 nnoremap <silent> <leader>u :UndotreeShow<CR>
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1 " Syntax highlighting for jsdoc
+let g:javascript_plugin_flow = 1  " Syntax highlighting for flow

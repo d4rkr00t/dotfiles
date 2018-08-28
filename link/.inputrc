@@ -1,3 +1,7 @@
+# vi shortcuts in terminal
+# set editing-mode vi
+# set keymap vi-command
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 

@@ -122,7 +122,7 @@ alias week='date +%V'
 alias hi=hicat
 
 # vim -> nvim
-alias vim=nvim
+# alias vim=nvim
 
 # ag -> rg
 alias ag=rg

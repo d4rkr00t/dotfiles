@@ -16,15 +16,10 @@ call plug#begin('~/.vim/plugged')
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rainglow/vim', { 'as': 'rainglow' }
 
 " FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-" Airline – Status line plugin
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Surround selection with anything
 Plug 'tpope/vim-surround'
@@ -90,11 +85,23 @@ set cursorline      " highlight current line
 set scrolloff=3     " Start scrolling N lines before the horizontal window border
 set sidescroll=1    " Enables side scroll
 set guifont="SFMono:13"
+set laststatus=2
+set shortmess+=Icm
+set diffopt+=vertical
+
+" Show block cursor in Normal mode and line cursor in Insert mode
+" (use odd numbers for blinking cursor):
+let &t_ti.="\e[2 q"
+let &t_SI.="\e[6 q"
+let &t_SR.="\e[4 q"
+let &t_EI.="\e[2 q"
+let &t_te.="\e[0 q"
 
 set tabstop=2     " number of visual spaces per TAB
 set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2  " number of spaces to use for each step of indent
 set expandtab     " tabs are spaces
+set smarttab
 set shiftround    " Round indent to multiple of 'shiftwidth'.
 
 set foldenable    " disable folding
@@ -104,11 +111,23 @@ set hlsearch      " highlight matches
 set smartcase     " don't ignore capitals in searches
 set ignorecase
 set gdefault      " Add the g flag to search/replace by default
+if executable('rg')
+  set grepprg=rg\ -i\ --vimgrep
+endif
+set grepformat^=%f:%l:%c:%m
 
 set backspace=indent,eol,start " Backspace
-" set esckeys                    " Allow cursor keys in insert mode
+" set esckeys                  " Allow cursor keys in insert mode
 set encoding=utf-8 nobomb      " Use UTF-8 without BOM
+set fileformats=unix,mac,dos
 
+" Editing
+set autoindent                  " Use indentation of the first-line when reflowing a paragraph
+set shiftround                  " Round indent to multiple of shiftwidth (applies to < and >)
+set backspace=indent,eol,start  " Intuitive backspacing in insert mode
+set whichwrap=b,~,<,>,[,],h,l   " More intuitive arrow movements
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set formatoptions+=1j           " Do not wrap after a one-letter word and remove extra comment when joining lines
 
 "
 " Backups
@@ -205,6 +224,18 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 
+" Window navigation
+nnoremap <leader>1 1<c-w>w
+nnoremap <leader>2 2<c-w>w
+nnoremap <leader>3 3<c-w>w
+nnoremap <leader>4 4<c-w>w
+nnoremap <leader>5 5<c-w>w
+nnoremap <leader>6 6<c-w>w
+nnoremap <leader>7 7<c-w>w
+nnoremap <leader>8 8<c-w>w
+nnoremap <leader>9 9<c-w>w
+nnoremap <leader>0 10<c-w>w
+
 " Toggle pasting mode
 set pastetoggle=<leader>P
 
@@ -222,6 +253,8 @@ vnoremap <expr>y "my\"" . v:register . "y`y"
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" Change to the directory of the current file
+nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
 
 function! ToggleMovement(firstOp, thenOp)
   let pos = getpos('.')
@@ -235,6 +268,89 @@ endfunction
 " way to the first character in the line
 nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
 
+" Status line {{
+  " See :h mode()
+  let g:mode_map = {
+        \ 'n': ['N', 'NormalMode' ], 'i': ['I', 'InsertMode' ],      'R': ['R', 'ReplaceMode'],
+        \ 'v': ['V', 'VisualMode' ], 'V': ['V', 'VisualMode' ], "\<c-v>": ['V', 'VisualMode' ],
+        \ 's': ['S', 'VisualMode' ], 'S': ['S', 'VisualMode' ], "\<c-s>": ['S', 'VisualMode' ],
+        \ 'c': ['C','CommandMode'],  'r': ['P', 'CommandMode'],      't': ['T','CommandMode'],
+        \ '!': ['!',  'CommandMode']}
+
+  " newMode may be a value as returned by mode() or the name of a highlight group
+  " Note: setting highlight groups while computing the status line may cause the
+  " startup screen to disappear. See: https://github.com/powerline/powerline/issues/250
+  fun! s:updateStatusLineHighlight(newMode)
+    execute 'hi! link CurrMode' get(g:mode_map, a:newMode, ["", a:newMode])[1]
+    return 1
+  endf
+
+  " nr is always the number of the currently active window. In a %{} context, winnr()
+  " always refers to the window to which the status line being drawn belongs. Since this
+  " function is invoked in a %{} context, winnr() may be different from a:nr. We use this
+  " fact to detect whether we are drawing in the active window or in an inactive window.
+  fun! SetupStl(nr)
+    return get(extend(w:, {
+          \ "lf_active": winnr() != a:nr
+            \ ? 0
+            \ : (mode() ==# get(g:, "lf_cached_mode", "")
+              \ ? 1
+              \ : s:updateStatusLineHighlight(get(extend(g:, { "lf_cached_mode": mode() }), "lf_cached_mode"))
+              \ ),
+          \ "lf_winwd": winwidth(winnr())
+          \ }), "", "")
+  endf
+
+  " Build the status line the way I want - no fat light plugins!
+  fun! BuildStatusLine(nr)
+    return '%{SetupStl('.a:nr.')}
+          \%#CurrMode#%{w:["lf_active"] ? "  " . get(g:mode_map, mode(), [mode()])[0] . (&paste ? " PASTE " : " ") : ""}%*
+          \ %{winnr()} %{&modified ? "◦" : " "} %t (%n) %{&modifiable ? (&readonly ? "▪" : " ") : "✗"}
+          \ %<%{empty(&buftype) ? (w:["lf_winwd"] < 80 ? (w:["lf_winwd"] < 50 ? "" : expand("%:p:h:t")) : expand("%:p:~:h")) : ""}
+          \ %=
+          \ %w %{&ft} %{w:["lf_winwd"] < 80 ? "" : " " . (strlen(&fenc) ? &fenc : &enc) . (&bomb ? ",BOM " : " ")
+          \ . &ff . (&expandtab ? "" : " ⇥ ")} %l:%v %P
+          \ %#Warnings#%{w:["lf_active"] ? get(b:, "lf_stl_warnings", "") : ""}%*'
+  endf
+
+  fun! s:enableStatusLine()
+    if exists("g:default_stl") | return | endif
+    augroup lf_warnings
+      autocmd!
+      autocmd BufReadPost,BufWritePost * call <sid>update_warnings()
+    augroup END
+    set noshowmode " Do not show the current mode because it is displayed in the status line
+    set noruler
+    let g:default_stl = &statusline
+    let g:default_tal = &tabline
+    set statusline=%!BuildStatusLine(winnr()) " winnr() is always the number of the *active* window
+    set tabline=%!BuildTabLine()
+  endf
+
+  " Update trailing space and mixed indent warnings for the current buffer.
+  fun! s:update_warnings()
+    if exists('b:lf_no_warnings')
+      unlet! b:lf_stl_warnings
+      return
+    endif
+    if exists('b:lf_large_file')
+      let b:lf_stl_warnings = '  Large file '
+      return
+    endif
+    let l:trail  = search('\s$',       'cnw')
+    let l:spaces = search('^\s\{-} ',  'cnw')
+    let l:tabs   = search('^\s\{-}\t', 'cnw')
+    if l:trail || (l:spaces && l:tabs)
+      let b:lf_stl_warnings = ' '
+            \ . (l:trail            ? 'Trailing space ('.l:trail.') '           : '')
+            \ . (l:spaces && l:tabs ? 'Mixed indent ('.l:spaces.'/'.l:tabs.') ' : '')
+    else
+      unlet! b:lf_stl_warnings
+    endif
+  endf
+  
+  call <sid>enableStatusLine()
+" }}
 
 "-------------------------
 "
@@ -246,8 +362,8 @@ nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
 colorscheme dracula
 
 " Airline config
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='violet'
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline_theme='violet'
 
 " fzf
 let $FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'

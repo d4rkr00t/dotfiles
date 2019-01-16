@@ -35,6 +35,7 @@ Plug 'leafgarland/typescript-vim'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " Undo tree
 Plug 'mbbill/undotree'

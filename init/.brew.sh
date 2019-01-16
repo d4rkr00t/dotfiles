@@ -8,13 +8,14 @@ pkgs=(
     bash
     bash_completion
     coreutils
+    fd
     ffmpeg
     findutils
-    fpp
     gifsicle
     git
     git-when-merged
     hh
+    httpie
     homebrew/dupes/grep
     homebrew/dupes/less
     imagemagick --with-webp

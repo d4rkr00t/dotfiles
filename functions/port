@@ -1,0 +1,10 @@
+#!/bin/sh
+
+port() {
+  about 'Outputs a process that is listening to a port'
+  param '1: port'
+  example '$ port 8080'
+  group 'net'
+
+  lsof -nP -i4TCP:$@ | grep LISTEN
+}

@@ -8,6 +8,7 @@ pkgs=(
     bash
     bash_completion
     coreutils
+    exa
     fd
     ffmpeg
     findutils
@@ -28,6 +29,9 @@ pkgs=(
     tree
     vim --override-system-vi
     wget --with-iri
+    zsh
+    zsh-completions
+    zsh-history-substring-search
 )
 
 for pkg in "${pkgs[@]}"; do

@@ -14,6 +14,7 @@ pkgs=(
     npm-check-updates
     peerflix
     pmm
+    pure-prompt
     recursive-blame
     svgexport
     svgo

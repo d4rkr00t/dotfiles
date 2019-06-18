@@ -1,0 +1,12 @@
+#!/bin/sh
+# Compiles and runs given rust file
+
+rustrun() {
+  about 'Compiles and runs given rust file'
+  param '1: file.rs'
+  example '$ rustrun 1-two-sum.rs'
+  group 'other'
+
+  name=$(basename $1 .rs)
+  rustc $@ && ./$name && rm $name
+}

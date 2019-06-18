@@ -86,6 +86,3 @@ up() {
   # usage
   echo -e "usage: up [dir|num|-]\npwd: $PWD"
 }
-
-# tab-completion
-complete -o nospace -F _up up

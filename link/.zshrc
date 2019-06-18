@@ -102,7 +102,6 @@ setopt INC_APPEND_HISTORY
 # Share history between all sessions.
 setopt SHARE_HISTORY
 
-
 # Source all files in "source"
 for file in $DOTFILES/source/(.)*; do
     source "$file"

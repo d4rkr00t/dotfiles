@@ -2,17 +2,12 @@
 npm update
 
 pkgs=(
-    aik
-    commitizen
-    csscomb
-    eslint
     hicat
     imageoptim-cli
     is-up
     live-server
     ngrok
     npm-check-updates
-    peerflix
     pmm
     pure-prompt
     recursive-blame

@@ -19,7 +19,7 @@ pkgs=(
     httpie
     homebrew/dupes/grep
     homebrew/dupes/less
-    imagemagick --with-webp
+    imagemagick
     ncdu
     nvm
     rename

@@ -29,7 +29,6 @@ pkgs=(
   quicklook-csv
   quicklook-json
   suspicious-package
-  webp-quicklook
 )
 
 for pkg in "${pkgs[@]}"; do

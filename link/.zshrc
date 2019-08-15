@@ -31,7 +31,7 @@ select-word-style bash
 #
 
 # zsh.sourceforge.net/Doc/Release/Completion-System.html
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 # case insensitive (all), partial-word and substring completion
@@ -101,6 +101,11 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 # Share history between all sessions.
 setopt SHARE_HISTORY
+
+#
+# Navigation
+#
+setopt autocd autopushd
 
 # Source all files in "source"
 for file in $DOTFILES/source/(.)*; do

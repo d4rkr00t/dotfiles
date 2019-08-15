@@ -7,9 +7,9 @@ alias sudo='sudo '
 # Navigation
 #
 
-alias ..="cd .."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd $OLDPWD"
+# alias ..="cd .."
+ alias ~="cd ~" # `cd` is probably faster to type though
+ alias -- -="cd -"
 
 #
 # Shortcuts

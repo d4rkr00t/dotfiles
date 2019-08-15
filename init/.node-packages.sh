@@ -14,7 +14,6 @@ pkgs=(
     svgexport
     svgo
     vtop
-    yo
     yarn
 )
 

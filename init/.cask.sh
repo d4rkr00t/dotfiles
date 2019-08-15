@@ -10,15 +10,12 @@ pkgs=(
   imagealpha
   imageoptim
   iterm2
-  macclean
   miro-video-converter
   numi
   opera
   skype
   spectacle
   transmission
-  tunnelblick
-  vlc
 
   # QuickLook plugins
   betterzipql
@@ -28,7 +25,6 @@ pkgs=(
   qlstephen
   quicklook-csv
   quicklook-json
-  suspicious-package
 )
 
 for pkg in "${pkgs[@]}"; do

@@ -1,5 +1,6 @@
 # making zsh default
 # https://stackoverflow.com/questions/31034870/making-zsh-default-shell-in-macosx
+sudo echo "$(which zsh)" >> /etc/shells
 chsh -s /bin/zsh
 
 # zsh compinit: insecure directories

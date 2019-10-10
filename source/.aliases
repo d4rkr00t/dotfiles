@@ -57,6 +57,7 @@ alias docker_kill_all='docker kill $(docker ps -q)'
 
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 alias nup="npm update --save-dev && npm update --save"
+alias y="yarn"
 
 #
 # Listing — LS

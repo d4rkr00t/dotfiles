@@ -222,6 +222,8 @@
   indentHeuristic = true
   # Moved lines of code are colored differently.
   colorMoved = default
+  # removes a/ and b/ prefixes from file names
+  noprefix = true
 
 # URL shorthands
 [url "git@github.com:"]

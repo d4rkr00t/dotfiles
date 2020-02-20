@@ -14,7 +14,7 @@ pkgs=(
   numi
   opera
   skype
-  spectacle
+  rectangle
   transmission
 
   # QuickLook plugins

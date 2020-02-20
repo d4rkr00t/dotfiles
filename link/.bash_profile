@@ -48,3 +48,5 @@ unset file
 
 # Extra dotfiles
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
+
+export PATH="$HOME/.cargo/bin:$PATH"

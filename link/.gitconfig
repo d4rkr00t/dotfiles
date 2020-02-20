@@ -60,8 +60,12 @@
   # Info
   #
 
-  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f" # Credit an author on the latest commit
+  # Credit an author on the latest commit
+  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
   conflict = "!f(){ git ls-files -u | awk '{print $4}' | sort -u; }; f"
+
+  # get closest parent branch
+  parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 
   # git in / git out — смотреть какие коммиты придут/уйдут перед выполнением pull/push
   in = "!git remote update -p; git log ..@{u}"
@@ -103,8 +107,7 @@
   r = rebase
   ri = "!r() { git rebase -i HEAD~$1; }; r"
   rom = "!r() { git rebase origin/master; }; r"
-  rud = "!r() { git rebase upstream/dev; }; r"
-  rum = "!r() { git rebase upstream/master; }; r"
+  rod = "!r() { git rebase origin/develop; }; r"
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 

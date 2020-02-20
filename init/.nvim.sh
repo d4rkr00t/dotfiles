@@ -7,4 +7,4 @@ echo "Setup neovim"
 cd $CONFIG
 mkdir nvim 2> /dev/null
 
-ln -sfF $DIR/link/.nvimrc $CONFIG/nvim/init.vim
+ln -sfF $DIR/link/.vimrc $CONFIG/nvim/init.vim

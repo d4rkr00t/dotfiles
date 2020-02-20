@@ -22,6 +22,7 @@ alias p="cd ~/Development"
 alias g="git"
 alias _="sudo"
 alias xx="chmod +x"
+alias oni="/Applications/Onivim2.App/Contents/MacOS/oni2"
 
 #
 # File size / info
@@ -58,6 +59,13 @@ alias docker_kill_all='docker kill $(docker ps -q)'
 alias nom="rm -rf node_modules && npm cache clear && npm i"
 alias nup="npm update --save-dev && npm update --save"
 alias y="yarn"
+
+
+#
+# Python
+#
+
+alias p3="python3"
 
 #
 # Listing — LS

@@ -18,13 +18,15 @@ pkgs=(
   transmission
 
   # QuickLook plugins
-  betterzipql
   qlcolorcode
   qlmarkdown
   qlprettypatch
   qlstephen
+  qlimagesize
+  qlvideo
   quicklook-csv
   quicklook-json
+  webpquicklook
 )
 
 for pkg in "${pkgs[@]}"; do

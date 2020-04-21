@@ -15,6 +15,7 @@ pkgs=(
     gifsicle
     git
     git-when-merged
+    git-absorb
     hh
     httpie
     homebrew/dupes/grep

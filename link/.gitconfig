@@ -6,6 +6,7 @@
   a   = add
   all = add -A :/
   ai = add --interactive
+  abr = absorb --and-rebase
   ame = commit --amend
   amq = commit --amend --reuse-message=HEAD
   ci = commit -m
@@ -106,8 +107,8 @@
 
   r = rebase
   ri = "!r() { git rebase -i HEAD~$1; }; r"
-  rom = "!r() { git rebase origin/master; }; r"
-  rod = "!r() { git rebase origin/develop; }; r"
+  rom = "!r() { git fetch origin master && git rebase origin/master; }; r"
+  rod = "!r() { git fetch origin develop && git rebase origin/develop; }; r"
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
@@ -124,12 +125,6 @@
 
   resref = "!r() { git reset --hard HEAD@{$1}; }; r"
   cleanit = clean -fd
-
-  #
-  # Update current branch
-  #
-  up = "!r() { git fetch origin master && git rebase origin/master; }; r"
-  uped = "!r() { git fetch origin editor-next-release && git rebase origin/editor-next-release; }; r"
 
   # Instantly clean a git repo from extraneous files in a non-blocking fashion
    purge = "!f() { \

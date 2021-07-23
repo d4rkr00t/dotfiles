@@ -3,14 +3,6 @@
 # Add more locations to PATH
 export PATH="$DOTFILES/bin:$DOTFILES/bin/git:$PATH:./node_modules/.bin"
 
-if hash brew 2>/dev/null; then
-    if [ -f $(brew --prefix nvm)/nvm.sh ]; then
-        source $(brew --prefix nvm)/nvm.sh
-    fi
-else
-    [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
-fi
-
 if hash cargo 2>/dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
@@ -18,3 +10,6 @@ fi
 if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
+
+
+eval "$(fnm env)"

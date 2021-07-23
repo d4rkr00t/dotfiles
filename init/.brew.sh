@@ -12,6 +12,7 @@ pkgs=(
     fd
     ffmpeg
     findutils
+    fnm
     gifsicle
     git
     git-when-merged
@@ -22,7 +23,6 @@ pkgs=(
     homebrew/dupes/less
     imagemagick
     ncdu
-    nvm
     rename
     ripgrep
     speedtest-cli

@@ -204,6 +204,9 @@
 [branch]
   autosetuprebase = always
 
+  # Show most recently changed branches first.
+  sort = -committerdate
+
 [user]
   email = "d4rkr00t@gmail.com"
   name = "Stanislav Sysoev"

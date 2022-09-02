@@ -83,6 +83,13 @@ alias lsd="ls -lFd"
 # Misc
 #
 
+# TypeScript Tree Map
+# https://effectivetypescript.com/2022/07/30/treemap-for-source-files/
+alias tscmap="tsc --noEmit --listFiles | xargs stat -f \"%z %N\" | npx webtreemap-cli"
+
+# SSH
+alias sad="ssh-add --apple-use-keychain"
+
 # Clear
 alias cl="clear"
 
@@ -110,9 +117,6 @@ alias gurl='curl --compressed'
 
 # Get week number
 alias week='date +%V'
-
-# hicat — command-line syntax highlighter
-alias hi=hicat
 
 # vim -> nvim
 # alias vim=nvim

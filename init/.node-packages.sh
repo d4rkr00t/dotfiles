@@ -2,7 +2,6 @@
 npm update
 
 pkgs=(
-    hicat
     imageoptim-cli
     is-up
     live-server

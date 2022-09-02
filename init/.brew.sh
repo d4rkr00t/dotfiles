@@ -7,13 +7,13 @@ brew upgrade --all
 pkgs=(
     bash
     bash_completion
+    bat
     coreutils
     exa
     fd
     ffmpeg
     findutils
     fnm
-    gifsicle
     git
     git-when-merged
     git-absorb
@@ -25,8 +25,6 @@ pkgs=(
     ncdu
     rename
     ripgrep
-    speedtest-cli
-    tmux
     tree
     vim --override-system-vi
     wget --with-iri

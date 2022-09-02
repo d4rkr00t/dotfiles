@@ -12,6 +12,7 @@ git clone https://github.com/d4rkr00t/dotfiles.git && cd dotfiles && ./sync.sh
 ```
 
 Install and init settings for some apps:
+
 ```bash
 ./init/.osx.sh
 ./init/.brew.sh

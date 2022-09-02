@@ -7,15 +7,8 @@ pkgs=(
   dropbox
   firefox
   google-chrome
-  imagealpha
-  imageoptim
-  iterm2
-  miro-video-converter
   numi
-  opera
-  skype
   rectangle
-  transmission
 
   # QuickLook plugins
   qlcolorcode
@@ -31,7 +24,7 @@ pkgs=(
 
 for pkg in "${pkgs[@]}"; do
     echo "Installing $pkg"
-    brew cask install $pkg
+    brew install $pkg --cask
 done
 
-brew cask cleanup
+brew cleanup

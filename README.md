@@ -17,11 +17,7 @@ Install and init settings for some apps:
 ./init/.brew.sh
 ./init/.cask.sh
 ./init/.npm.sh
-./init/.node-packages.sh
-./init/.tmux.sh
 ./init/.bashmarks.sh
-./init/.atom.sh
-./init/.vscode.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:

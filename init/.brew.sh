@@ -2,7 +2,7 @@
 brew update
 
 # Upgrade any already-installed formulae
-brew upgrade --all
+brew upgrade
 
 pkgs=(
     bash
@@ -19,12 +19,11 @@ pkgs=(
     git-absorb
     hh
     httpie
-    homebrew/dupes/grep
-    homebrew/dupes/less
     imagemagick
     ncdu
     rename
     ripgrep
+    pure
     tree
     vim --override-system-vi
     wget --with-iri

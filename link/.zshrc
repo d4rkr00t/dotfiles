@@ -9,13 +9,13 @@ source ~/.dotfiles
 
 # As per `brew info zsh-completions`
 fpath=(/usr/local/share/zsh-completions $fpath)
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 #
 # Prompt theme
 # https://github.com/sindresorhus/pure
 #
-autoload -U promptinit
-promptinit
+autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL=λ
 

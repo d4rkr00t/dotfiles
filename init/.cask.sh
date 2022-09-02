@@ -1,8 +1,5 @@
 # Install native apps
 
-brew install caskroom/cask/brew-cask
-brew tap caskroom/versions
-
 pkgs=(
   dropbox
   firefox

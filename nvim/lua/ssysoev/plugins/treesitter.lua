@@ -37,4 +37,29 @@ treesitter.setup({
 	},
 	-- auto install above language parsers
 	auto_install = true,
+
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gnn",
+			node_incremental = "grn", -- increment to the upper named parent
+			scope_incremental = "grc", -- increment to the upper scope
+			node_decremental = "grm", -- decrement to the previous node
+		},
+	},
+
+	textobjects = {
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]f"] = "@function.outer",
+				["]c"] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[f"] = "@function.outer",
+				["[c"] = "@class.outer",
+			},
+		},
+	},
 })

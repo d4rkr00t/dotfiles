@@ -1,7 +1,7 @@
 local setup, cmp = pcall(require, "cmp")
 
 if not setup then
-  return
+	return
 end
 
 -- import luasnip plugin safely
@@ -28,7 +28,7 @@ local has_words_before = function()
 end
 
 cmp.setup({
-  snippet = {
+	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
 		end,
@@ -70,11 +70,11 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
-    { name = "luasnip" }, -- snippets
-    { name = "nvim_lsp" }
+		{ name = "luasnip" }, -- snippets
+		{ name = "nvim_lsp" }, -- lsp data completion
 	}),
 
-  -- configure lspkind for vs-code like icons
+	-- configure lspkind for vs-code like icons
 	formatting = {
 		format = lspkind.cmp_format({
 			maxwidth = 50,
@@ -82,4 +82,3 @@ cmp.setup({
 		}),
 	},
 })
-

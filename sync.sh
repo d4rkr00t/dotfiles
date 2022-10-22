@@ -13,3 +13,6 @@ for file in $DIR/link/*; do
     ln -sfF "$file" "$HOME/"
 done
 unset file
+
+# link nvim config
+ln -sf "$DIR/nvim" "$HOME/.config/nvim"

@@ -103,7 +103,6 @@ set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2  " number of spaces to use for each step of indent
 set expandtab     " tabs are spaces
 set smarttab
-set shiftround    " Round indent to multiple of 'shiftwidth'.
 
 set foldenable    " disable folding
 
@@ -349,7 +348,7 @@ nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
       unlet! b:lf_stl_warnings
     endif
   endf
-  
+
   call <sid>enableStatusLine()
 " }}
 

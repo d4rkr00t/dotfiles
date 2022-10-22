@@ -17,6 +17,7 @@ pkgs=(
     git
     git-when-merged
     git-absorb
+    git-lfs
     hh
     httpie
     imagemagick

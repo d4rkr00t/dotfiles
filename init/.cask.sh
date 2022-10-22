@@ -9,9 +9,7 @@ pkgs=(
 
   # QuickLook plugins
   qlcolorcode
-  qlmarkdown
   qlprettypatch
-  qlstephen
   qlimagesize
   qlvideo
   quicklook-csv

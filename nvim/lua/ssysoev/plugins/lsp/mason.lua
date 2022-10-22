@@ -1,7 +1,7 @@
 local setup, mason = pcall(require, "mason")
 
 if not setup then
-  return
+	return
 end
 
 -- import mason-lspconfig plugin safely
@@ -19,17 +19,20 @@ end
 mason.setup()
 
 mason_lspconfig.setup({
-  ensure_installed = {
-    "tsserver",
-    "html",
-    "cssls",
-    "sumneko_lua"
-  }
+	ensure_installed = {
+		"tsserver",
+		"html",
+		"cssls",
+		"sumneko_lua",
+		"gopls",
+	},
 })
 
 mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
+		"goimports", -- go automatic imports
+		"goimports-reviser", -- sort goimports by 3 groups: std, general and project dependencies
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
 		"eslint_d", -- ts/js linter

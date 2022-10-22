@@ -1,7 +1,7 @@
 local setup, nvimtree = pcall(require, "nvim-tree")
 
 if not setup then
-  return
+	return
 end
 
 -- configure nvim-tree
@@ -26,5 +26,10 @@ nvimtree.setup({
 				enable = false,
 			},
 		},
+	},
+
+	view = {
+		side = "right",
+		width = 40,
 	},
 })

@@ -49,6 +49,16 @@ treesitter.setup({
 	},
 
 	textobjects = {
+		select = {
+			enable = true,
+
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ab"] = "@block.outer",
+				["ib"] = "@block.inner",
+			},
+		},
 		move = {
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist

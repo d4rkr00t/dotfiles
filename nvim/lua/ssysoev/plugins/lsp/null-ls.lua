@@ -15,14 +15,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	-- setup formatters & linters
 	sources = {
-		--  to disable file types use
-		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-		formatting.prettier, -- js/ts formatter
-		formatting.stylua, -- lua formatter
-		diagnostics.eslint_d, -- js/ts linter
-		formatting.gofmt, -- go formatter
-		formatting.goimports, -- go autoimports
-		formatting.goimports_reviser, -- sort goimports by 3 groups: std, general and project dependencies.
+		formatting["prettier"], -- js/ts formatter
+		formatting["stylua"], -- lua formatter
+		diagnostics["eslint_d"], -- js/ts linter
+		formatting["gofmt"], -- go formatter
+		formatting["goimports"], -- go autoimports
+		formatting["goimports_reviser"], -- sort goimports by 3 groups: std, general and project dependencies.
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

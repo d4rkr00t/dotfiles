@@ -21,7 +21,7 @@ local keymap = vim.keymap
 -- enable keybindings for attached lsp servers
 local on_attach = function(client, buffer)
 	-- keybind options
-	local opts = { noremap = true, silent = true, buffer = bufnr }
+	local opts = { noremap = true, silent = true, buffer = buffer }
 
 	-- set keybinds
 	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references

@@ -91,6 +91,7 @@ return require("packer").startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" }) -- generates shareable link to a git repo, similar to open-in-github vscode plugin
 
 	-- per project config
 	use("gpanders/editorconfig.nvim") -- support .editorconfig files

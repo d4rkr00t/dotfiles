@@ -21,10 +21,14 @@ keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>")
 keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>")
 
 -- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>")
 keymap.set("n", "<leader>fp", "<cmd>Telescope oldfiles<CR>")
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 keymap.set("n", "<leader>fo", "<cmd>Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>")
 -- keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter<CR>")
+
+-- gitlinker
+keymap.set("n", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', { silent = true })
+keymap.set("v", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>', { silent = true })

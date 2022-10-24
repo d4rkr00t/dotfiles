@@ -11,6 +11,7 @@ require("ssysoev.plugins.lsp.null-ls")
 require("ssysoev.plugins.autopairs")
 require("ssysoev.plugins.treesitter")
 require("ssysoev.plugins.gitsigns")
+require("ssysoev.plugins.alpha")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

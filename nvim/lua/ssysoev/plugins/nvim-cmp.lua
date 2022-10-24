@@ -38,9 +38,9 @@ cmp.setup({
 		["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<M-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+		["<C-\\>"] = cmp.mapping.complete(), -- show completion suggestions
 		["<C-e>"] = cmp.mapping.abort(), -- close completion window
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 		-- super tab functionality (not in youtube nvim video)
 		["<Tab>"] = cmp.mapping(function(fallback) -- use tab for next suggestion
@@ -68,10 +68,11 @@ cmp.setup({
 
 	-- sources for autocompletion
 	sources = cmp.config.sources({
+		{ name = "nvim_lsp" }, -- lsp data completion
+		{ name = "nvim_lsp_signature_help" }, -- lsp signature data completion
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
 		{ name = "luasnip" }, -- snippets
-		{ name = "nvim_lsp" }, -- lsp data completion
 	}),
 
 	-- configure lspkind for vs-code like icons

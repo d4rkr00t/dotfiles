@@ -1,1 +1,1 @@
-pcall(vim.cmd, "colorscheme nightfly")
+pcall(vim.cmd, "colorscheme catppuccin")

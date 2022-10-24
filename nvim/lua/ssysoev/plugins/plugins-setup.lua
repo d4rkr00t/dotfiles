@@ -26,7 +26,11 @@ return require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	-- theme
-	use("bluz71/vim-nightfly-guicolors")
+	-- use("bluz71/vim-nightfly-guicolors")
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
 
 	-- icons
 	use("nvim-tree/nvim-tree.lua")

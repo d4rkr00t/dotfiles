@@ -20,7 +20,6 @@ null_ls.setup({
 		diagnostics["eslint_d"], -- js/ts linter
 		formatting["gofmt"], -- go formatter
 		formatting["goimports"], -- go autoimports
-		formatting["goimports_reviser"], -- sort goimports by 3 groups: std, general and project dependencies.
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

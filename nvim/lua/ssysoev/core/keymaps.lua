@@ -30,5 +30,11 @@ keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>")
 -- keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter<CR>")
 
 -- gitlinker
-keymap.set("n", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', { silent = true })
-keymap.set("v", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>', { silent = true })
+keymap.set("n", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("n")<CR>', { silent = true })
+keymap.set("v", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("v")<CR>', { silent = true })
+
+-- null-ls
+keymap.set("n", "<leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>")
+
+-- trouble
+keymap.set("n", "<leader>xx", "<cmd>Trouble document_diagnostics<CR>")

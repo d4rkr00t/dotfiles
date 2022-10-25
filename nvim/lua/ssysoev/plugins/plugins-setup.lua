@@ -29,7 +29,6 @@ return require("packer").startup(function(use)
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
 	-- theme
-	-- use("bluz71/vim-nightfly-guicolors")
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -71,7 +70,7 @@ return require("packer").startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- list view for diagnostics
 
 	-- linters & formatting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -84,7 +83,7 @@ return require("packer").startup(function(use)
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,
 	})
-	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/nvim-treesitter-textobjects") -- additional text objects from treesitter
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

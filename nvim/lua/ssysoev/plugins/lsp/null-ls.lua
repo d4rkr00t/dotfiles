@@ -15,7 +15,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	-- setup formatters & linters
 	sources = {
-		formatting["prettier"], -- js/ts formatter
+		formatting["prettier"].with({
+			extra_filetypes = { "map" },
+		}), -- js/ts formatter
 		formatting["stylua"], -- lua formatter
 		diagnostics["eslint_d"], -- js/ts linter
 		formatting["gofmt"], -- go formatter

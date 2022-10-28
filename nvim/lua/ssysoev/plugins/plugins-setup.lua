@@ -1,4 +1,4 @@
--- Ensure packer is install or automatically install it
+-- Ensure packer is install or automatically install itpluginsse
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -84,6 +84,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/nvim-treesitter-textobjects") -- additional text objects from treesitter
+	use("JoosepAlviste/nvim-ts-context-commentstring") -- setting commentstring settings depending on cursor position in a file
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

@@ -1,3 +1,5 @@
+pcall(require, "impatient")
+
 require("ssysoev.plugins.plugins-setup")
 require("ssysoev.plugins.comment")
 require("ssysoev.plugins.nvim-tree")

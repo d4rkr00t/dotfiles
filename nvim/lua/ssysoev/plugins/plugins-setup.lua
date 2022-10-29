@@ -24,6 +24,7 @@ vim.cmd([[
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+	use("lewis6991/impatient.nvim") -- several optimisations improving start up time
 
 	-- startup screen
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })

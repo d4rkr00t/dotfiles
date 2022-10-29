@@ -9,6 +9,11 @@ keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
 keymap.set("n", "q", "<nop>") -- disable recording macros
 
+-- remap W -> w
+vim.api.nvim_create_user_command("W", function()
+	vim.cmd("w")
+end, { nargs = 0 })
+
 -- split windows
 keymap.set("n", "<leader>w", "<C-w>") -- same as Control+W
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically

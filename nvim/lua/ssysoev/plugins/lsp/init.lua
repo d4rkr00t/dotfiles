@@ -101,6 +101,15 @@ local config = {
 		end,
 	},
 
+	["pylsp"] = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["pylsp"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+			}))
+		end,
+	},
+
 	goimports = {
 		type = "formatter",
 		setup_formatter = function(null_ls)

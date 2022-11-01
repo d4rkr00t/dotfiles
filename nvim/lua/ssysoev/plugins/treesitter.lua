@@ -57,8 +57,11 @@ treesitter.setup({
 				["if"] = "@function.inner",
 				["ab"] = "@block.outer",
 				["ib"] = "@block.inner",
+				["aa"] = "@parameter.outer",
+				["ia"] = "@parameter.inner",
 			},
 		},
+
 		move = {
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist

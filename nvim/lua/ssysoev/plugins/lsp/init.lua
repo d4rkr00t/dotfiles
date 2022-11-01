@@ -93,19 +93,28 @@ local config = {
 		end,
 	},
 
-	gopls = {
+	["pylsp"] = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)
-			lspconfig["gopls"].setup(merge_tables(defaults, {
+			lspconfig["pylsp"].setup(merge_tables(defaults, {
 				on_attach = on_attach,
 			}))
 		end,
 	},
 
-	["pylsp"] = {
+	["rust_analyzer"] = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)
-			lspconfig["pylsp"].setup(merge_tables(defaults, {
+			lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+			}))
+		end,
+	},
+
+	gopls = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["gopls"].setup(merge_tables(defaults, {
 				on_attach = on_attach,
 			}))
 		end,

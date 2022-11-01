@@ -7,7 +7,10 @@ vim.g.mapleader = ","
 keymap.set("n", "<CR>", ":nohl<CR>") -- remove search highlight on enter
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
-keymap.set("n", "q", "<nop>") -- disable recording macros
+-- keymap.set("n", "q", "<nop>") -- disable recording macros
+
+-- replace a word under cursor [repetable]
+keymap.set("n", "<leader>cw", "<cmd>let @/='\\<'.expand('<cword>').'\\>'<cr>\"_ciw")
 
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()

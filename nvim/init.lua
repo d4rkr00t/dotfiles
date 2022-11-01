@@ -13,6 +13,7 @@ require("ssysoev.plugins.treesitter-context")
 require("ssysoev.plugins.gitsigns")
 require("ssysoev.plugins.alpha")
 require("ssysoev.plugins.gitlinker")
+require("ssysoev.plugins.nvim-window")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

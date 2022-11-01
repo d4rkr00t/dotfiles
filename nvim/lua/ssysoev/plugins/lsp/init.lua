@@ -22,6 +22,7 @@ local on_attach = function(client, buffer)
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 end
 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local config = {
 	tsserver = {
 		type = "lsp",

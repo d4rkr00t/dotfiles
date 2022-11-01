@@ -14,8 +14,10 @@ vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")
 end, { nargs = 0 })
 
+-- nvim-window
+keymap.set("n", "<leader>w", ":lua require('nvim-window').pick()<CR>") -- same as Control+W
+
 -- split windows
-keymap.set("n", "<leader>w", "<C-w>") -- same as Control+W
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal size

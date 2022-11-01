@@ -79,6 +79,13 @@ function bootstrap(config)
 		--
 		--
 		require("ssysoev.plugins.lsp.trouble")
+
+		--
+		--
+		-- setup symbols-outline
+		--
+		--
+		require("ssysoev.plugins.lsp.symbols-outline")
 	end)
 end
 

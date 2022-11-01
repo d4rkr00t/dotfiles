@@ -73,6 +73,7 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- list view for diagnostics
+	use({ "simrat39/symbols-outline.nvim" })
 
 	-- linters & formatting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -81,6 +82,7 @@ return require("packer").startup(function(use)
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		commit = "80503a99104e461599ef8810a64bce1b6d235f6a",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,

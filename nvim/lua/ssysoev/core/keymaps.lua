@@ -48,3 +48,6 @@ keymap.set("n", "<leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>")
 
 -- trouble
 keymap.set("n", "<leader>xx", "<cmd>Trouble document_diagnostics<CR>")
+
+-- symbols outline
+keymap.set("n", "<leader>so", "<cmd>SymbolsOutline<CR>")

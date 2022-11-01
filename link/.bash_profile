@@ -50,3 +50,4 @@ unset file
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+. "$HOME/.cargo/env"

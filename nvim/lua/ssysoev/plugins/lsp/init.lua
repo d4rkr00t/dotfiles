@@ -111,6 +111,13 @@ local config = {
 		end,
 	},
 
+	["rustfmt"] = {
+		type = "formatter",
+		setup_formatter = function(null_ls)
+			return null_ls.builtins.formatting.rustfmt
+		end,
+	},
+
 	gopls = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)

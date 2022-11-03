@@ -246,6 +246,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",

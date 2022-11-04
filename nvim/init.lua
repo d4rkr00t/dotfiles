@@ -19,3 +19,5 @@ require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.colorscheme")
 require("ssysoev.core.filetype")
+
+require("ssysoev.core.plugins.telescope-null-ls-toggle")

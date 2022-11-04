@@ -1,4 +1,4 @@
--- Ensure packer is install or automatically install itpluginsse
+-- Ensure packer is install or automatically install it
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -84,7 +84,6 @@ return require("packer").startup(function(use)
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		commit = "80503a99104e461599ef8810a64bce1b6d235f6a",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,

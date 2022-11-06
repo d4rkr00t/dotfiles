@@ -20,18 +20,16 @@ local on_attach = function(client, buffer)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 
-	if client.resolved_capabilities.document_highlight then
-		keymap.set("n", "<leader>hh", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts) -- highlight occurences of the word under cursor
-		vim.api.nvim_exec(
-			[[
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-            ]],
-			false
-		)
-	end
+	keymap.set("n", "<leader>hh", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts) -- highlight occurences of the word under cursor
+	vim.api.nvim_exec(
+		[[
+		          augroup lsp_document_highlight
+		              autocmd! * <buffer>
+		              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+		          augroup END
+		          ]],
+		false
+	)
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

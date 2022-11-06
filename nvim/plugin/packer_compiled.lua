@@ -246,6 +246,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-window.git",
     url = "https://gitlab.com/yorickpeterse/nvim-window"
   },
+  ["oh-lucy.nvim"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/oh-lucy.nvim",
+    url = "https://github.com/Yazeed1s/oh-lucy.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/packer.nvim",

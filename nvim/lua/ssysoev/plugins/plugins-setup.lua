@@ -32,6 +32,7 @@ return require("packer").startup(function(use)
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
 	-- theme
+	use("Yazeed1s/oh-lucy.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	use({
 		"catppuccin/nvim",

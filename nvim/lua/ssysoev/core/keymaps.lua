@@ -33,11 +33,12 @@ keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>")
+keymap.set("n", "<leader><leader>f", "<cmd>Telescope buffers only_cwd=true<CR>")
 keymap.set("n", "<leader>fp", "<cmd>Telescope oldfiles cwd_only=true<CR>")
 keymap.set("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-keymap.set("n", "<leader><leader>f", "<cmd>Telescope buffers only_cwd=true<CR>")
 keymap.set("n", "<leader>fo", "<cmd>Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>")
+keymap.set("n", "<leader>fr", "<cmd>Telescope resume<CR>")
 -- keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter<CR>")
 
 -- gitlinker

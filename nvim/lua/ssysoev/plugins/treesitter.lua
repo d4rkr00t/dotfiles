@@ -34,6 +34,7 @@ treesitter.setup({
 		"go",
 		"rust",
 		"python",
+		"swift",
 	},
 	-- auto install above language parsers
 	auto_install = true,

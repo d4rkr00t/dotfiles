@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
+	use("nvim-telescope/telescope-live-grep-args.nvim") -- enables passing arguments to the grep command
 
 	-- completion
 	use("hrsh7th/nvim-cmp") -- completion plugin

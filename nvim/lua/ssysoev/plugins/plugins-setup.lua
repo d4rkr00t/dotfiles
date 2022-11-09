@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
 	use("lewis6991/impatient.nvim") -- several optimisations improving start up time
 	use("https://gitlab.com/yorickpeterse/nvim-window.git") -- visual window switcher
 	use("samjwill/nvim-unception") -- simplify opening files from within Neovim's terminal emulator
+	use("karb94/neoscroll.nvim") -- smooth scrolling
 
 	-- startup screen
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })

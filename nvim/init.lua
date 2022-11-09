@@ -15,6 +15,7 @@ require("ssysoev.plugins.alpha")
 require("ssysoev.plugins.gitlinker")
 require("ssysoev.plugins.nvim-window")
 require("ssysoev.plugins.iswap")
+require("ssysoev.plugins.neoscroll")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

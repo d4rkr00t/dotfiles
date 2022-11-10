@@ -49,9 +49,10 @@ return require("packer").startup(function(use)
 	-- status line
 	use("nvim-lualine/lualine.nvim")
 
-	-- quick editing
+	-- quick editing / editing niceties
 	use("tpope/vim-surround") -- add, delete, change surroundings
 	use("numToStr/Comment.nvim") -- commenting with gc
+	use("folke/todo-comments.nvim") -- highlight and list todos
 
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance

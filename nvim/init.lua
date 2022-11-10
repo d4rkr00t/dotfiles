@@ -16,11 +16,13 @@ require("ssysoev.plugins.gitlinker")
 require("ssysoev.plugins.nvim-window")
 require("ssysoev.plugins.iswap")
 require("ssysoev.plugins.neoscroll")
+require("ssysoev.plugins.todo-comments")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.colorscheme")
 require("ssysoev.core.filetype")
+require("ssysoev.core.autocommands")
 
 -- TODO: figure out what overrides a mapping
 require("ssysoev.core.plugins.telescope-null-ls-toggle")

@@ -19,6 +19,11 @@ vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")
 end, { nargs = 0 })
 
+-- remap Q -> q
+vim.api.nvim_create_user_command("Q", function()
+	vim.cmd("q")
+end, { nargs = 0 })
+
 -- nvim-window
 keymap.set("n", "<leader>w", ":lua require('nvim-window').pick()<CR>") -- same as Control+W
 

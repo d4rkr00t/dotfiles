@@ -105,6 +105,16 @@ return require("packer").startup(function(use)
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 	use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" }) -- generates shareable link to a git repo, similar to open-in-github vscode plugin
 
+	-- winbar, top panel with context like in vscode
+	use({
+		"utilyre/barbecue.nvim",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"smiteshp/nvim-navic",
+			"kyazdani42/nvim-web-devicons",
+		},
+	})
+
 	-- per project config
 	use("gpanders/editorconfig.nvim") -- support .editorconfig files
 

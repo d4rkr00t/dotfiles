@@ -17,6 +17,7 @@ require("ssysoev.plugins.nvim-window")
 require("ssysoev.plugins.iswap")
 require("ssysoev.plugins.neoscroll")
 require("ssysoev.plugins.todo-comments")
+require("ssysoev.plugins.barbecue")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

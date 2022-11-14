@@ -45,6 +45,7 @@ keymap.set("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_gre
 keymap.set("n", "<leader>fo", "<cmd>Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>")
 keymap.set("n", "<leader>fr", "<cmd>Telescope resume<CR>")
+keymap.set({ "n", "v" }, "<leader>yh", "<cmd>Telescope yank_history<CR>")
 -- keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter<CR>")
 
 -- gitlinker
@@ -59,3 +60,10 @@ keymap.set("n", "<leader>xx", "<cmd>Trouble document_diagnostics<CR>")
 
 -- symbols outline
 keymap.set("n", "<leader>so", "<cmd>SymbolsOutline<CR>")
+
+-- yanky
+keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")

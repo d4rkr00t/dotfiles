@@ -16,6 +16,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions" }, function(mods)
 					-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				},
 			},
+			dynamic_preview_title = true,
 			prompt_prefix = "   ",
 			selection_caret = "  ",
 			entry_prefix = "  ",
@@ -47,4 +48,5 @@ safe_require({ "telescope", "telescope-live-grep-args.actions" }, function(mods)
 	})
 
 	telescope.load_extension("fzf")
+	telescope.load_extension("yank_history")
 end)

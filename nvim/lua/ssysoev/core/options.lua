@@ -12,6 +12,9 @@ opt.autoindent = true
 -- line wrapping
 opt.wrap = false
 
+-- preview s/from/to replacements
+opt.inccommand = "nosplit"
+
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true

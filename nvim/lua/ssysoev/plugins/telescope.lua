@@ -13,7 +13,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions" }, function(mods)
 					["<C-k>"] = actions.move_selection_previous,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-i>"] = lga_actions.quote_prompt(),
-					-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+					["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				},
 			},
 			dynamic_preview_title = true,

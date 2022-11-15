@@ -24,6 +24,10 @@ safe_require({ "catppuccin" }, function(mods)
 			treesitter = true,
 			treesitter_context = true,
 			lsp_trouble = true,
+			navic = {
+				enabled = true,
+				custom_bg = "NONE",
+			},
 			-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 		},
 	})

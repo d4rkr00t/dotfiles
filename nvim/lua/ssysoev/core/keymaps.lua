@@ -32,6 +32,10 @@ keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal size
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+keymap.set("n", "<M-9>", "<cmd>vert resize -2<cr>") -- reduce the split width
+keymap.set("n", "<M-0>", "<cmd>vert resize +2<cr>") -- increase the split width
+keymap.set("n", "<M-(>", "<cmd>resize -2<cr>") -- reduce the split height
+keymap.set("n", "<M-)>", "<cmd>resize +2<cr>") -- increase the split height
 
 -- nvim tree
 keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>")

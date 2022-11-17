@@ -12,7 +12,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Autocommand to re-read this file when changed
+-- autocommand to re-read this file when changed
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -57,6 +57,10 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 	use("nvim-telescope/telescope-live-grep-args.nvim") -- enables passing arguments to the grep command
+	use({
+		"FeiyouG/command_center.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+	})
 
 	-- completion
 	use("hrsh7th/nvim-cmp") -- completion plugin

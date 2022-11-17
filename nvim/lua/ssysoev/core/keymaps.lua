@@ -1,3 +1,4 @@
+local safe_reqiure = require("ssysoev.utils.safe-require")
 local keymap = vim.keymap
 
 -- leader
@@ -7,12 +8,6 @@ vim.g.mapleader = ","
 keymap.set("n", "<CR>", ":nohl<CR>") -- remove search highlight on enter
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
--- keymap.set("n", "<esc><esc>", "<cmd>w<cr>") -- save file on double escape1
--- keymap.set("n", "q", "<nop>") -- disable recording macros
-keymap.set("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]]) -- open link under cursor
-
--- replace a word under cursor [repetable]
-keymap.set("n", "<leader>cw", "<cmd>let @/='\\<'.expand('<cword>').'\\>'<cr>\"_ciw")
 
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
@@ -24,50 +19,228 @@ vim.api.nvim_create_user_command("Q", function()
 	vim.cmd("q")
 end, { nargs = 0 })
 
--- nvim-window
-keymap.set("n", "<leader>w", ":lua require('nvim-window').pick()<CR>") -- same as Control+W
+safe_reqiure({ "command_center" }, function(mods)
+	local cc = mods.command_center
+	local noremap = { noremap = true, silent = true }
 
--- split windows
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal size
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
-keymap.set("n", "<M-9>", "<cmd>vert resize -2<cr>") -- reduce the split width
-keymap.set("n", "<M-0>", "<cmd>vert resize +2<cr>") -- increase the split width
-keymap.set("n", "<M-(>", "<cmd>resize -2<cr>") -- reduce the split height
-keymap.set("n", "<M-)>", "<cmd>resize +2<cr>") -- increase the split height
+	cc.add({
+		{
+			desc = "Open command_center",
+			cmd = "<CMD>Telescope command_center<CR>",
+			keys = {
+				{ "n", "<Leader>fc", noremap },
+				{ "v", "<Leader>fc", noremap },
 
--- nvim tree
-keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>")
-keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>")
+				-- If ever hesitate when using telescope start with <leader>f,
+				-- also open command center
+				{ "n", "<Leader>f", noremap },
+				{ "v", "<Leader>f", noremap },
+			},
+		},
 
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>")
-keymap.set("n", "<leader><leader>f", "<cmd>Telescope buffers only_cwd=true<CR>")
-keymap.set("n", "<leader>fp", "<cmd>Telescope oldfiles cwd_only=true<CR>")
-keymap.set("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-keymap.set("n", "<leader>fo", "<cmd>Telescope lsp_document_symbols<CR>")
-keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>")
-keymap.set("n", "<leader>fr", "<cmd>Telescope resume<CR>")
-keymap.set({ "n", "v" }, "<leader>yh", "<cmd>Telescope yank_history<CR>")
--- keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter<CR>")
+		{
+			desc = "Open link under cursor",
+			cmd = [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]],
+			keys = { "n", "gx", noremap },
+		},
 
--- gitlinker
-keymap.set("n", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("n")<CR>', { silent = true })
-keymap.set("v", "<leader>gl", '<cmd>lua require"gitlinker".get_buf_range_url("v")<CR>', { silent = true })
+		{
+			desc = "Replace a word under cursor [repetable]",
+			cmd = "<cmd>let @/='\\<'.expand('<cword>').'\\>'<cr>\"_ciw",
+			keys = { "n", "<leader>cw", noremap },
+		},
 
--- null-ls
-keymap.set("n", "<leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>")
+		-- nvim-window
+		{
+			desc = "Switch between splits",
+			cmd = ":lua require('nvim-window').pick()<CR>",
+			keys = { "n", "<leader>w", noremap },
+		},
 
--- trouble
-keymap.set("n", "<leader>xx", "<cmd>Trouble document_diagnostics<CR>")
+		-- split windows
+		{
+			desc = "Split window vertically",
+			cmd = "<C-w>v",
+			keys = { "n", "<leader>sv", noremap },
+		},
 
--- symbols outline
-keymap.set("n", "<leader>so", "<cmd>SymbolsOutline<CR>")
+		{
+			desc = "Split window horizontally",
+			cmd = "<C-w>s",
+			keys = { "n", "<leader>sh", noremap },
+		},
+
+		{
+			desc = "Make split windows equal size",
+			cmd = "<C-w>=",
+			keys = { "n", "<leader>se", noremap },
+		},
+
+		{
+			desc = "Close current split window",
+			cmd = ":close<CR>",
+			keys = { "n", "<leader>sx", noremap },
+		},
+
+		{
+			desc = "Reduce the split width",
+			cmd = "<cmd>vert resize -2<CR>",
+			keys = { "n", "<M-9>", noremap },
+		},
+
+		{
+			desc = "Increase the split width",
+			cmd = "<cmd>vert resize +2<CR>",
+			keys = { "n", "<M-0>", noremap },
+		},
+
+		{
+			desc = "Reduce the split height",
+			cmd = "<cmd>resize -2<CR>",
+			keys = { "n", "<M-(>", noremap },
+		},
+
+		{
+			desc = "Increase the split height",
+			cmd = "<cmd>resize +2<CR>",
+			keys = { "n", "<M-)>", noremap },
+		},
+
+		-- nvim tree
+		{
+			desc = "Toggle NvimTree",
+			cmd = ":NvimTreeToggle<CR>",
+			keys = { "n", "<leader>ee", noremap },
+		},
+
+		{
+			desc = "Open NvimTree and focus current file",
+			cmd = ":NvimTreeFindFile<CR>",
+			keys = { "n", "<leader>ef", noremap },
+		},
+
+		-- telescope
+		{
+			desc = "Telescope find files",
+			cmd = "<cmd>Telescope find_files hidden=true<CR>",
+			keys = { "n", "<leader>ff", noremap },
+		},
+
+		{
+			desc = "Telescope buffers",
+			cmd = "<cmd>Telescope buffers only_cwd=true<CR>",
+			keys = { "n", "<leader><leader>f", noremap },
+		},
+
+		{
+			desc = "Telescope old find",
+			cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+			keys = { "n", "<leader>fp", noremap },
+		},
+
+		{
+
+			desc = "Telescope live grep",
+			cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+			keys = { "n", "<leader>fs", noremap },
+		},
+
+		{
+			desc = "Telescope document symbols",
+			cmd = "<cmd>Telescope lsp_document_symbols<CR>",
+			keys = { "n", "<leader>fo", noremap },
+		},
+
+		{
+			desc = "Telescope diagnostics",
+			cmd = "<cmd>Telescope diagnostics<CR>",
+			keys = { "n", "<leader>fd", noremap },
+		},
+
+		{
+			desc = "Telescope restore previous picker",
+			cmd = "<cmd>Telescope resume<CR>",
+			keys = { "n", "<leader>fr", noremap },
+		},
+
+		{
+			desc = "Telescope yank history",
+			cmd = "<cmd>Telescope yank_history<CR>",
+			keys = { "n", "<leader>yh", noremap },
+		},
+
+		-- gitlinker
+		{
+			desc = "Open in Github",
+			cmd = '<cmd>lua require"gitlinker".get_buf_range_url("n")<CR>',
+			keys = { "n", "<leader>gl", noremap },
+		},
+
+		{
+			desc = "Open in Github",
+			cmd = '<cmd>lua require"gitlinker".get_buf_range_url("v")<CR>',
+			keys = { "v", "<leader>gl", noremap },
+			mode = cc.mode.SET,
+		},
+
+		-- null-ls
+		{
+			desc = "Format with lsp client",
+			cmd = ":lua vim.lsp.buf.format({ async = true })<CR>",
+			keys = { "n", "<leader>lf", noremap },
+		},
+
+		-- trouble
+		{
+			desc = "Trouble document diagnostics",
+			cmd = "<cmd>Trouble document_diagnostics<CR>",
+			keys = { "n", "<leader>xx", noremap },
+		},
+
+		-- symbols outline
+		{
+			desc = "Symbols outline",
+			cmd = "<cmd>SymbolsOutline<CR>",
+			keys = { "n", "<leader>so", noremap },
+		},
+
+		-- yanky
+		{
+			desc = "Yanky Cycle Forward",
+			cmd = "<Plug>(YankyCycleForward)",
+			keys = {
+				{ "n", "<c-n>", noremap },
+				{ "x", "<c-n>", noremap },
+			},
+		},
+
+		{
+			desc = "Yanky Cycle Backward",
+			cmd = "<Plug>(YankyCycleBackward)",
+			keys = {
+				{ "n", "<c-p>", noremap },
+				{ "x", "<c-p>", noremap },
+			},
+		},
+
+		-- commenter
+		{
+			desc = "Toggle line comment",
+			cmd = "<Plug>(comment_toggle_linewise_current)<cr>",
+			keys = { "n", "gcc", noremap },
+			mode = cc.mode.ADD,
+		},
+
+		{
+			desc = "Toggle block comment",
+			cmd = "<Plug>(comment_toggle_blockwise_visual)<cr>",
+			keys = { "n", "gbc", noremap },
+			mode = cc.mode.ADD,
+		},
+	})
+end)
 
 -- yanky
 keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
-keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")

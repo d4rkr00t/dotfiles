@@ -24,6 +24,8 @@ safe_require({ "catppuccin" }, function(mods)
 			treesitter = true,
 			treesitter_context = true,
 			lsp_trouble = true,
+			lsp_saga = true,
+			mason = true,
 			navic = {
 				enabled = true,
 				custom_bg = "NONE",

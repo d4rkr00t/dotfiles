@@ -1,6 +1,9 @@
 pcall(require, "impatient")
 
 require("ssysoev.plugins.plugins-setup")
+
+require("ssysoev.core.colorscheme")
+
 require("ssysoev.plugins.comment")
 require("ssysoev.plugins.nvim-tree")
 require("ssysoev.plugins.lualine")
@@ -21,7 +24,6 @@ require("ssysoev.plugins.yanki")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
-require("ssysoev.core.colorscheme")
 require("ssysoev.core.filetype")
 require("ssysoev.core.autocommands")
 

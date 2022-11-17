@@ -5,29 +5,89 @@ local safe_require = require("ssysoev.utils.safe-require")
 local on_attach = function(client, buffer)
 	local keymap = vim.keymap
 
-	-- keybind options
-	local opts = { noremap = true, silent = true, buffer = buffer }
-
 	-- set keybinds
-	keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- go to declaration
-	keymap.set("n", "gpd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
+	safe_require({ "command_center" }, function(mods)
+		local cc = mods.command_center
 
-	keymap.set("n", "<leader>hh", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts) -- highlight occurences of the word under cursor
+		-- keybind options
+		local opts = { noremap = true, silent = true, buffer = buffer }
+
+		cc.add({
+			{
+				desc = "Show definitions, references",
+				cmd = "<cmd>Lspsaga lsp_finder<CR>",
+				keys = { "n", "gd", opts },
+			},
+
+			{
+				desc = "Go to declaration",
+				cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
+				keys = { "n", "gD", opts },
+			},
+
+			{
+				desc = "Peek definition",
+				cmd = "<cmd>Lspsaga peek_definition<CR>",
+				keys = { "n", "gpd", opts },
+			},
+
+			{
+				desc = "Go to implementation",
+				cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
+				keys = { "n", "gi", opts },
+			},
+
+			{
+				desc = "Code actions",
+				cmd = "<cmd>Lspsaga code_action<CR>",
+				keys = { "n", "<leader>ca", opts },
+			},
+
+			{
+				desc = "Smart rename",
+				cmd = "<cmd>Lspsaga rename<CR>",
+				keys = { "n", "<leader>rn", opts },
+			},
+
+			{
+				desc = "Show line diagnostics",
+				cmd = "<cmd>Lspsaga show_line_diagnostics<CR>",
+				keys = { "n", "<leader>d", opts },
+			},
+
+			{
+				desc = "Jump to previous diagnostic",
+				cmd = "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+				keys = { "n", "[d", opts },
+			},
+
+			{
+				desc = "Jump to next diagnostic",
+				cmd = "<cmd>Lspsaga diagnostic_jump_next<CR>",
+				keys = { "n", "]d", opts },
+			},
+
+			{
+				desc = "Show documentation",
+				cmd = "<cmd>Lspsaga hover_doc<CR>",
+				keys = { "n", "K", opts },
+			},
+
+			{
+				desc = "Highlight occurences of the word under cursor",
+				cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
+				keys = { "n", "<leader>hh", opts },
+			},
+		})
+	end)
+
 	vim.api.nvim_exec(
 		[[
-		          augroup lsp_document_highlight
-		              autocmd! * <buffer>
-		              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-		          augroup END
-		          ]],
+          augroup lsp_document_highlight
+          autocmd! * <buffer>
+          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+          augroup END
+    ]],
 		false
 	)
 end

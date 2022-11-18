@@ -1,7 +1,8 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-safe_require({ "null-ls", "telescope" }, function(mods)
+safe_require({ "null-ls", "telescope", "command_center" }, function(mods)
 	local nullLs = mods["null-ls"]
+	local cc = mods.command_center
 	local pickers = require("telescope.pickers")
 	local finders = require("telescope.finders")
 	local conf = require("telescope.config").values
@@ -40,7 +41,16 @@ safe_require({ "null-ls", "telescope" }, function(mods)
 			:find()
 	end
 
-	vim.keymap.set("n", "<leader>nt", function()
-		sources(require("telescope.themes").get_dropdown({}))
-	end)
+	cc.add({
+		{
+			desc = "Telescope null-ls sources",
+			cmd = function()
+				sources(require("telescope.themes").get_dropdown({}))
+			end,
+			keys = { "n", "<leader>nt", noremap },
+		},
+	})
+	-- vim.keymap.set("n", "<leader>nt", function()
+	-- 	sources(require("telescope.themes").get_dropdown({}))
+	-- end)
 end)

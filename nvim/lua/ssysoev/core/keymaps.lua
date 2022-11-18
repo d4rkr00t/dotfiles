@@ -237,6 +237,12 @@ safe_reqiure({ "command_center" }, function(mods)
 			keys = { "n", "gbc", noremap },
 			mode = cc.mode.ADD,
 		},
+
+		-- iswap
+		{
+			desc = "Swap function arguments/parameters",
+			cmd = "<cmd>ISwap<cr>",
+		},
 	})
 end)
 

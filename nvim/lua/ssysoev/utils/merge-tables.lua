@@ -1,4 +1,4 @@
-function merge_tables(table1, table2)
+local function merge_tables(table1, table2)
 	local result = {}
 
 	for k, v in pairs(table1) do

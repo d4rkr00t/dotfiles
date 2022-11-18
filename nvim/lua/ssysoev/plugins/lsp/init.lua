@@ -1,10 +1,9 @@
-local boostrap = require("ssysoev.plugins.lsp.bootstrap")
+local bootstrap = require("ssysoev.plugins.lsp.bootstrap")
+local merge_tables = require("ssysoev.utils.merge-tables")
 local safe_require = require("ssysoev.utils.safe-require")
 
 -- enable keybindings for attached lsp servers
 local on_attach = function(client, buffer)
-	local keymap = vim.keymap
-
 	-- set keybinds
 	safe_require({ "command_center" }, function(mods)
 		local cc = mods.command_center

@@ -1,4 +1,4 @@
-function safe_require(path, cb)
+local function safe_require(path, cb)
 	local res = {}
 
 	for i, name in pairs(path) do

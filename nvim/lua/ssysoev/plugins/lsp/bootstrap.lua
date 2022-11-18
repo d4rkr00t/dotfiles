@@ -1,8 +1,7 @@
 local safe_require = require("ssysoev.utils.safe-require")
-local merge_tables = require("ssysoev.utils.merge-tables")
 local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
-function bootstrap(config)
+local function bootstrap(config)
 	safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp" }, function(mods)
 		--
 		--

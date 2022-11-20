@@ -12,14 +12,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- autocommand to re-read this file when changed
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
-]])
-
 -- plugins
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")

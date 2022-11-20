@@ -25,7 +25,7 @@ opt.background = "dark"
 opt.signcolumn = "yes"
 opt.title = true -- show filename in the window titlebar
 opt.cursorline = true -- highlight current line
-opt.scrolloff = 5 -- lines above/below cusor to preferably be visible
+opt.scrolloff = 10 -- lines above/below cusor to preferably be visible
 opt.ch = 0 -- height of a command line
 
 -- backspace

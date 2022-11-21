@@ -28,8 +28,8 @@ safe_reqiure({ "command_center" }, function(mods)
 			desc = "Open command_center",
 			cmd = "<CMD>Telescope command_center<CR>",
 			keys = {
-				{ "n", "<Leader>fc", noremap },
-				{ "v", "<Leader>fc", noremap },
+				{ "n", "<Leader>cc", noremap },
+				{ "v", "<Leader>cc", noremap },
 
 				-- If ever hesitate when using telescope start with <leader>f,
 				-- also open command center

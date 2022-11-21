@@ -129,13 +129,13 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Telescope buffers",
 			cmd = "<cmd>Telescope buffers only_cwd=true<CR>",
-			keys = { "n", "<leader><leader>f", noremap },
+			keys = { "n", "<leader>b", noremap },
 		},
 
 		{
 			desc = "Telescope old find",
 			cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
-			keys = { "n", "<leader>fp", noremap },
+			keys = { "n", "<leader>o", noremap },
 		},
 
 		{
@@ -250,3 +250,6 @@ end)
 keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+
+-- Delete a word backwards
+keymap.set("n", "dw", 'vb"_d')

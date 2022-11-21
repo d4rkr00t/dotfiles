@@ -9,9 +9,13 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
+		disable = {},
 	},
 	-- enable indentation
-	indent = { enable = true },
+	indent = {
+		enable = true,
+		disable = {},
+	},
 	-- enable autotagging (w/ nvim-ts-autotag plugin)
 	autotag = { enable = true },
 	-- ensure these language parsers are installed

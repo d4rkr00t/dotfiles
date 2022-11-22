@@ -151,7 +151,7 @@ local config = {
 		end,
 	},
 
-	prettier = {
+	prettierd = {
 		type = "formatter",
 		setup_formatter = function(null_ls)
 			return null_ls.builtins.formatting.prettier.with({

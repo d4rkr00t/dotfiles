@@ -9,6 +9,7 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
+		additional_vim_regex_highlighting = false,
 		disable = {},
 	},
 	-- enable indentation

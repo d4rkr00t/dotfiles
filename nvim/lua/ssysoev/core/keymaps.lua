@@ -252,4 +252,4 @@ keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 
 -- Delete a word backwards
-keymap.set("n", "dw", 'vb"_d')
+-- keymap.set("n", "dw", 'vb"_d')

@@ -42,5 +42,10 @@ opt.splitbelow = true
 opt.iskeyword:append("-") -- makes - a part of a word
 
 -- folding
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldtext = "substitute(getline(v:foldstart),'\\t',repeat(' ',&tabstop),'g').'...'.trim(getline(v:foldend))"
+opt.fillchars = "fold: "
+opt.foldnestmax = 3
+opt.foldminlines = 1
+opt.foldlevel = 99

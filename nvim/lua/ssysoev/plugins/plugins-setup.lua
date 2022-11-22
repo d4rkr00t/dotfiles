@@ -91,6 +91,7 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- setting commentstring settings depending on cursor position in a file
 	use("nvim-treesitter/nvim-treesitter-context") -- keeps current context visible e.g. function declaration, same as in vscode
 	use("mizlan/iswap.nvim") -- Interactively select and swap: function arguments, list elements, function parameters, and more.
+	use("Dkendal/nvim-treeclimber") -- treesitter based navigation and selection
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

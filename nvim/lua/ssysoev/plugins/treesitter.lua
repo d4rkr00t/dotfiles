@@ -44,13 +44,8 @@ treesitter.setup({
 	auto_install = true,
 
 	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = "gnn",
-			node_incremental = "grn", -- increment to the upper named parent
-			scope_incremental = "grc", -- increment to the upper scope
-			node_decremental = "grm", -- decrement to the previous node
-		},
+		enable = false,
+		keymaps = {},
 	},
 
 	textobjects = {

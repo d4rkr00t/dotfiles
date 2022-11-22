@@ -154,8 +154,8 @@ local config = {
 	prettierd = {
 		type = "formatter",
 		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.prettier.with({
-				prettier = {
+			return null_ls.builtins.formatting.prettierd.with({
+				prettierd = {
 					extra_filetypes = { "map" },
 				},
 			})

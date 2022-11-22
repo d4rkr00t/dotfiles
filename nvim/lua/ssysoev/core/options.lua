@@ -40,3 +40,8 @@ opt.splitbelow = true
 
 -- other
 opt.iskeyword:append("-") -- makes - a part of a word
+
+-- folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false

@@ -91,6 +91,8 @@ local on_attach = function(client, buffer)
 	)
 end
 
+local util = require("lspconfig.util")
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local config = {
 	tsserver = {
@@ -103,6 +105,9 @@ local config = {
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
 						on_attach = on_attach,
+						root_dir = function(fname)
+							return util.root_pattern(".git/")(fname)
+						end,
 					},
 				})
 			end)

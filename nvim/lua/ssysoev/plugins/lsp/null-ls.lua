@@ -13,6 +13,8 @@ function setup_null_ls(null_ls_setup_functions)
 			table.insert(sources, value(null_ls))
 		end
 
+		table.insert(sources, require("typescript.extensions.null-ls.code-actions"))
+
 		-- configure null_ls
 		null_ls.setup({
 			-- setup formatters & linters

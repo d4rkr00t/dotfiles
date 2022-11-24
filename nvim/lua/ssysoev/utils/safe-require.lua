@@ -4,12 +4,12 @@ local function safe_require(path, cb)
 	for i, name in pairs(path) do
 		local exist, mod = pcall(require, name)
 		if not exist then
-			return
+			return false
 		end
 		res[name] = mod
 	end
 
-	cb(res)
+	return cb(res)
 end
 
 return safe_require

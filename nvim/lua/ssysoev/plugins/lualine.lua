@@ -1,3 +1,4 @@
+local safe_require = require("ssysoev.utils.safe-require")
 local setup, lualine = pcall(require, "lualine")
 
 if not setup then
@@ -7,21 +8,65 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Color table for highlights
--- stylua: ignore
+-- Default colors
 local colors = {
-  bg       = '#101019',
-  fg       = '#cdd6f4',
-  yellow   = '#f9e2af',
-  cyan     = '#89dceb',
-  darkblue = '#45475a',
-  green    = '#a6e3a1',
-  orange   = '#fab387',
-  violet   = '#cba6f7',
-  magenta  = '#f5c2e7',
-  blue     = '#89b4fa',
-  red      = '#f38ba8',
+	bg = "#101019",
+	fg = "#cdd6f4",
+	yellow = "#f9e2af",
+	cyan = "#89dceb",
+	darkblue = "#45475a",
+	green = "#a6e3a1",
+	orange = "#fab387",
+	violet = "#cba6f7",
+	magenta = "#f5c2e7",
+	blue = "#89b4fa",
+	red = "#f38ba8",
+	git = {
+		added = "#a6e3a1",
+		modified = "#fab387",
+		removed = "#f38ba8",
+	},
+	diag = {
+		error = "#f38ba8",
+		warn = "#fab387",
+		info = "#89dceb",
+	},
 }
+
+local themed_colors = safe_require({ "nightfox" }, function()
+	local theme_name = vim.api.nvim_command_output("colorscheme")
+	local status, s = pcall(require("nightfox.spec").load, theme_name)
+	if not status then
+		s = require("nightfox.spec").load("nightfox")
+	end
+	return {
+		bg = s.bg0,
+		fg = s.fg1,
+		yellow = s.palette.yellow.base,
+		cyan = s.palette.cyan.base,
+		darkblue = s.palette.blue.dim,
+		green = s.palette.green.base,
+		orange = s.palette.orange.base,
+		pink = s.palette.pink.base,
+		magenta = s.palette.magenta.base,
+		blue = s.palette.blue.base,
+		red = s.palette.red.base,
+		git = {
+			added = s.git.add,
+			modified = s.git.changed,
+			removed = s.git.removed,
+		},
+		diag = {
+			error = s.diag.error,
+			warn = s.diag.warn,
+			info = s.diag.info,
+		},
+	}
+end)
+
+if themed_colors then
+	colors = themed_colors
+end
 
 local conditions = {
 	buffer_not_empty = function()
@@ -105,8 +150,8 @@ ins_left({
 			S = colors.orange,
 			[""] = colors.orange,
 			ic = colors.yellow,
-			R = colors.violet,
-			Rv = colors.violet,
+			R = colors.pink,
+			Rv = colors.pink,
 			cv = colors.red,
 			ce = colors.red,
 			r = colors.cyan,
@@ -141,9 +186,9 @@ ins_left({
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", info = " " },
 	diagnostics_color = {
-		color_error = { fg = colors.red },
-		color_warn = { fg = colors.yellow },
-		color_info = { fg = colors.cyan },
+		color_error = { fg = colors.diag.error },
+		color_warn = { fg = colors.diag.warn },
+		color_info = { fg = colors.diag.info },
 	},
 })
 
@@ -173,7 +218,7 @@ ins_left({
 		return msg
 	end,
 	icon = " LSP:",
-	color = { fg = "#ffffff", gui = "bold" },
+	color = { fg = colors.fg, gui = "bold" },
 })
 
 -- Add components to right sections
@@ -194,7 +239,7 @@ ins_right({
 ins_right({
 	"branch",
 	icon = "",
-	color = { fg = colors.violet, gui = "bold" },
+	color = { fg = colors.pink, gui = "bold" },
 })
 
 ins_right({
@@ -202,9 +247,9 @@ ins_right({
 	-- Is it me or the symbol for modified us really weird
 	symbols = { added = " ", modified = "柳", removed = " " },
 	diff_color = {
-		added = { fg = colors.green },
-		modified = { fg = colors.orange },
-		removed = { fg = colors.red },
+		added = { fg = colors.git.add },
+		modified = { fg = colors.git.changed },
+		removed = { fg = colors.git.removed },
 	},
 	cond = conditions.hide_in_width,
 })

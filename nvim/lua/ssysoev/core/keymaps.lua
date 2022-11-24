@@ -196,6 +196,10 @@ safe_reqiure({ "command_center" }, function(mods)
 			cmd = "<cmd>Trouble document_diagnostics<CR>",
 			keys = { "n", "<leader>xx", noremap },
 		},
+		{
+			desc = "Trouble project diagnostics",
+			cmd = "<cmd>Trouble workspace_diagnostics<CR>",
+		},
 
 		-- symbols outline
 		{
@@ -242,6 +246,12 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Swap function arguments/parameters",
 			cmd = "<cmd>ISwap<cr>",
+		},
+
+		-- todo-comments
+		{
+			desc = "Show todo comments in a project",
+			cmd = "<cmd>TodoTelescope<cr>",
 		},
 	})
 end)

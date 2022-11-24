@@ -26,6 +26,8 @@ end
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
+require("cmp-npm").setup({})
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -71,6 +73,7 @@ cmp.setup({
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
 		{ name = "luasnip" }, -- snippets
+		{ name = "npm", keyword_length = 4 }, -- npm packages
 	}),
 
 	-- configure lspkind for vs-code like icons

@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-npm"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-npm",
+    url = "https://github.com/David-Kunz/cmp-npm"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -188,6 +193,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,

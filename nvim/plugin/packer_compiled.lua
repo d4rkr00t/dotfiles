@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-navic",
     url = "https://github.com/smiteshp/nvim-navic"
   },
+  ["nvim-pqf.git"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-pqf.git",
+    url = "https://gitlab.com/yorickpeterse/nvim-pqf"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",

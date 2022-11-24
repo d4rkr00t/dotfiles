@@ -9,6 +9,10 @@ keymap.set("n", "<CR>", ":nohl<CR>") -- remove search highlight on enter
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
 
+vim.cmd([[augroup quickfix_enter]])
+vim.cmd([[  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>]])
+vim.cmd([[augroup END]])
+
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")
@@ -175,7 +179,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
 		{
 			desc = "Telescope restore previous picker",
-			cmd = "<cmd>Telescope resume<CR>",
+			cmd = "<cmd>Telescope pickers<CR>",
 			keys = { "n", "<leader>fr", noremap },
 		},
 

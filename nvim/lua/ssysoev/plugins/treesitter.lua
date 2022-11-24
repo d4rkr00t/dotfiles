@@ -21,6 +21,7 @@ treesitter.setup({
 	autotag = { enable = true },
 	-- ensure these language parsers are installed
 	ensure_installed = {
+		"bash",
 		"json",
 		"javascript",
 		"typescript",
@@ -52,6 +53,7 @@ treesitter.setup({
 	textobjects = {
 		select = {
 			enable = true,
+			lookahead = true,
 
 			keymaps = {
 				["af"] = "@function.outer",

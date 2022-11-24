@@ -19,6 +19,16 @@ vim.api.nvim_create_user_command("Q", function()
 	vim.cmd("q")
 end, { nargs = 0 })
 
+-- close all floating windows
+local function close_floating()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local config = vim.api.nvim_win_get_config(win)
+		if config.relative ~= "" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end
+
 safe_reqiure({ "command_center" }, function(mods)
 	local cc = mods.command_center
 	local noremap = { noremap = true, silent = true }
@@ -50,6 +60,12 @@ safe_reqiure({ "command_center" }, function(mods)
 			keys = { "n", "<leader>cw", noremap },
 		},
 
+		{
+			desc = "Close all floating windows",
+			cmd = function()
+				close_floating()
+			end,
+		},
 		-- nvim-window
 		{
 			desc = "Switch between splits",

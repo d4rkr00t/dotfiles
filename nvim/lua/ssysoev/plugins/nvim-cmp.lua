@@ -16,6 +16,8 @@ if not lspkind_status then
 	return
 end
 
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
 -- load vs-code like snippets from plugins (e.g. friendly-snippets)
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -41,7 +43,10 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-\\>"] = cmp.mapping.complete(), -- show completion suggestions
 		["<C-e>"] = cmp.mapping.abort(), -- close completion window
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -82,6 +87,18 @@ cmp.setup({
 			with_text = false,
 			maxwidth = 50,
 			ellipsis_char = "...",
+			before = function(entry, vim_item)
+				vim_item.menu = ({
+					nvim_lsp = "[LSP]",
+					luasnip = "[Snip]",
+					path = "[PATH]",
+					buffer = "[BUF]",
+					npm = "[NPM]",
+				})[entry.source.name]
+				return vim_item
+			end,
 		}),
 	},
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

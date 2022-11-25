@@ -313,5 +313,5 @@ keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 -- keymap.set("n", "dw", 'vb"_d')
 
 -- move lines visual mode maps
-keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gv=gv", { noremap = true })
-keymap.set("v", "<M-UP>", ":m '<-2<CR>gv=gv", { noremap = true })
+keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gvgv=gv", { noremap = true, silent = true })
+keymap.set("v", "<M-UP>", ":m '<-2<CR>gvgv=gv", { noremap = true, silent = true })

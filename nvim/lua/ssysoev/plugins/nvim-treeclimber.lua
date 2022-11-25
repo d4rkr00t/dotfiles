@@ -12,9 +12,9 @@ safe_require({ "nvim-treeclimber", "command_center" }, function(mods)
 				tc.select_shrink()
 			end,
 			keys = {
-				{ "n", "<M-k>", noremap },
-				{ "x", "<M-k>", noremap },
-				{ "v", "<M-k>", noremap },
+				{ "n", "<M-j>", noremap },
+				{ "x", "<M-j>", noremap },
+				{ "v", "<M-j>", noremap },
 			},
 		},
 		{
@@ -23,9 +23,9 @@ safe_require({ "nvim-treeclimber", "command_center" }, function(mods)
 				tc.select_expand()
 			end,
 			keys = {
-				{ "n", "<M-j>", noremap },
-				{ "x", "<M-j>", noremap },
-				{ "v", "<M-j>", noremap },
+				{ "n", "<M-k>", noremap },
+				{ "x", "<M-k>", noremap },
+				{ "v", "<M-k>", noremap },
 			},
 		},
 

@@ -106,6 +106,7 @@ return require("packer").startup(function(use)
 	-- winbar, top panel with context like in vscode
 	use({
 		"utilyre/barbecue.nvim",
+		commit = "91da47d44b70dd9cad05fe6831d0238fb971077f",
 		requires = {
 			"neovim/nvim-lspconfig",
 			"smiteshp/nvim-navic",

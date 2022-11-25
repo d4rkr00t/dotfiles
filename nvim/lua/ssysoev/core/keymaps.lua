@@ -70,6 +70,34 @@ safe_reqiure({ "command_center" }, function(mods)
 				close_floating()
 			end,
 		},
+
+		-- move lines
+		{
+			desc = "Move lines up",
+			cmd = "<cmd>m .-2<cr>==",
+			keys = { "n", "<M-UP>", noremap },
+		},
+
+		{
+			desc = "Move lines up",
+			cmd = "<Esc><cmd>m .-2<CR>==gi",
+			keys = { "i", "<M-UP>", noremap },
+			mode = cc.mode.SET,
+		},
+
+		{
+			desc = "Move lines down",
+			cmd = "<cmd>m .+1<CR>==",
+			keys = { "n", "<M-DOWN>", noremap },
+		},
+
+		{
+			desc = "Move lines down",
+			cmd = "<Esc><cmd>m .+1<CR>==gi",
+			keys = { "i", "<M-DOWN>", noremap },
+			mode = cc.mode.SET,
+		},
+
 		-- nvim-window
 		{
 			desc = "Switch between splits",
@@ -283,3 +311,7 @@ keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 
 -- Delete a word backwards
 -- keymap.set("n", "dw", 'vb"_d')
+
+-- move lines visual mode maps
+keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gv=gv", { noremap = true })
+keymap.set("v", "<M-UP>", ":m '<-2<CR>gv=gv", { noremap = true })

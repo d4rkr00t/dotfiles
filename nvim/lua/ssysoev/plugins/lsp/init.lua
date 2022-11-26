@@ -93,7 +93,6 @@ end
 
 local util = require("lspconfig.util")
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local config = {
 	tsserver = {
 		type = "lsp",
@@ -228,6 +227,16 @@ local config = {
 			return null_ls.builtins.diagnostics.eslint_d
 		end,
 	},
+
+	gitsigns = {
+		type = "formatter",
+		setup_formatter = function(null_ls)
+			return null_ls.builtins.code_actions.gitsigns
+		end,
+	},
 }
 
 bootstrap(config)
+
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md

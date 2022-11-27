@@ -17,14 +17,12 @@ nvimtree.setup({
 			},
 		},
 	},
-	-- disable window_picker for
-	-- explorer to work well with
-	-- window splits
+
 	actions = {
 		open_file = {
 			resize_window = false,
 			window_picker = {
-				enable = false,
+				enable = true,
 			},
 		},
 	},

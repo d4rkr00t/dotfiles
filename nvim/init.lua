@@ -25,6 +25,7 @@ require("ssysoev.plugins.yanki")
 require("ssysoev.plugins.luasnip")
 require("ssysoev.plugins.nvim-treeclimber")
 require("ssysoev.plugins.nvim-pqf")
+require("ssysoev.plugins.colorizer")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

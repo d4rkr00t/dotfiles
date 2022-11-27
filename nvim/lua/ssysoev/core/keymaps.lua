@@ -65,6 +65,11 @@ safe_reqiure({ "command_center" }, function(mods)
 		},
 
 		{
+			desc = "Clear buffers",
+			cmd = "<cmd>silent %bd|e#<cr>",
+		},
+
+		{
 			desc = "Close all floating windows",
 			cmd = function()
 				close_floating()

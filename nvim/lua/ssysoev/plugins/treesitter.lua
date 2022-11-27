@@ -18,7 +18,18 @@ treesitter.setup({
 		disable = {},
 	},
 	-- enable autotagging (w/ nvim-ts-autotag plugin)
-	autotag = { enable = true },
+	autotag = {
+		enable = true,
+		filetypes = {
+			"html",
+			"xml",
+			"javascript",
+			"javascriptreact",
+			"typescriptreact",
+			"svelte",
+			"vue",
+		},
+	},
 	-- ensure these language parsers are installed
 	ensure_installed = {
 		"bash",

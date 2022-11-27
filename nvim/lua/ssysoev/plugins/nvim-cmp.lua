@@ -28,8 +28,6 @@ end
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
-require("cmp-npm").setup({})
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -75,10 +73,9 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp data completion
 		{ name = "nvim_lsp_signature_help" }, -- lsp signature data completion
-		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
 		{ name = "luasnip" }, -- snippets
-		{ name = "npm", keyword_length = 4 }, -- npm packages
+		{ name = "buffer" }, -- text within current buffer
 	}),
 
 	-- configure lspkind for vs-code like icons
@@ -93,7 +90,6 @@ cmp.setup({
 					luasnip = "[Snip]",
 					path = "[PATH]",
 					buffer = "[BUF]",
-					npm = "[NPM]",
 				})[entry.source.name]
 				return vim_item
 			end,

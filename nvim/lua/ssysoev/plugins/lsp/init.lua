@@ -13,9 +13,25 @@ local on_attach = function(client, buffer)
 
 		cc.add({
 			{
-				desc = "Show definitions, references",
-				cmd = "<cmd>Lspsaga lsp_finder<CR>",
+				desc = "Show definitions",
+				cmd = "<cmd>Glance definitions<CR>",
 				keys = { "n", "gd", opts },
+			},
+
+			{
+				desc = "Show references",
+				cmd = "<cmd>Glance references<CR>",
+				keys = { "n", "gr", opts },
+			},
+
+			{
+				desc = "Show implementation",
+				cmd = "<cmd>Glance implementations<CR>",
+			},
+
+			{
+				desc = "Show type definitions",
+				cmd = "<cmd>Glance type_definitions<CR>",
 			},
 
 			{
@@ -104,9 +120,9 @@ local config = {
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
 						on_attach = on_attach,
-						root_dir = function(fname)
-							return util.root_pattern(".git/")(fname)
-						end,
+						-- root_dir = function(fname)
+						-- 	return util.root_pattern(".git/")(fname)
+						-- end,
 					},
 				})
 			end)

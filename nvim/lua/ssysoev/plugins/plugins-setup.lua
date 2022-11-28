@@ -77,6 +77,7 @@ return require("packer").startup(function(use)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- list view for diagnostics
 	use({ "simrat39/symbols-outline.nvim" })
+	use({ "dnlhc/glance.nvim" }) -- pretty ui for references / definitions / etc...
 
 	-- linters & formatting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters

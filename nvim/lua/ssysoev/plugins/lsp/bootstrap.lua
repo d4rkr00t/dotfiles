@@ -2,7 +2,7 @@ local safe_require = require("ssysoev.utils.safe-require")
 local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
 local function bootstrap(config)
-	safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp" }, function(mods)
+	safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp", "glance" }, function(mods)
 		--
 		--
 		-- preprocess config
@@ -50,6 +50,20 @@ local function bootstrap(config)
 		--
 		--
 		require("ssysoev.plugins.lsp.lspsaga")
+
+		--
+		--
+		-- setup glance
+		--
+		--
+		mods.glance.setup({
+			border = {
+				enable = true,
+			},
+			winbar = {
+				enable = false,
+			},
+		})
 
 		--
 		--

@@ -107,8 +107,6 @@ local on_attach = function(client, buffer)
 	)
 end
 
-local util = require("lspconfig.util")
-
 local config = {
 	tsserver = {
 		type = "lsp",
@@ -119,10 +117,21 @@ local config = {
 				typescript.setup({
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
-						on_attach = on_attach,
-						-- root_dir = function(fname)
-						-- 	return util.root_pattern(".git/")(fname)
-						-- end,
+						on_attach = function(client, bufrn)
+							safe_require({ "twoslash-queries", "command_center" }, function(mods)
+								local cc = mods["command_center"]
+								mods["twoslash-queries"].attach(client, bufrn)
+
+								cc.add({
+									{
+										desc = "Inspect with TwoslashQueries",
+										cmd = "<cmd>InspectTwoslashQueries<CR>",
+										keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = buffer } },
+									},
+								})
+							end)
+							on_attach(client, bufrn)
+						end,
 					},
 				})
 			end)

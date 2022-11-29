@@ -78,6 +78,7 @@ return require("packer").startup(function(use)
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- list view for diagnostics
 	use({ "simrat39/symbols-outline.nvim" })
 	use({ "dnlhc/glance.nvim" }) -- pretty ui for references / definitions / etc...
+	use("marilari88/twoslash-queries.nvim") -- print typescript types as inline virtual text and dynamically update it
 
 	-- linters & formatting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters

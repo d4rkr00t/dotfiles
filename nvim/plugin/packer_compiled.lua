@@ -336,6 +336,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["twoslash-queries.nvim"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/twoslash-queries.nvim",
+    url = "https://github.com/marilari88/twoslash-queries.nvim"
+  },
   ["typescript.nvim"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/typescript.nvim",

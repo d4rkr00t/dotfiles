@@ -38,4 +38,8 @@ nvimtree.setup({
 		enable = true,
 		update_root = true,
 	},
+
+	diagnostics = {
+		enable = true,
+	},
 })

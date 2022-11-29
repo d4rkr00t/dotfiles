@@ -126,6 +126,9 @@ return require("packer").startup(function(use)
 	-- better quickfix list
 	use("https://gitlab.com/yorickpeterse/nvim-pqf.git")
 
+	-- better buffers delete
+	use("kazhala/close-buffers.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

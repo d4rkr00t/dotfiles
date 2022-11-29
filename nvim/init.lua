@@ -26,6 +26,7 @@ require("ssysoev.plugins.luasnip")
 require("ssysoev.plugins.nvim-treeclimber")
 require("ssysoev.plugins.nvim-pqf")
 require("ssysoev.plugins.colorizer")
+require("ssysoev.plugins.close-buffers")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

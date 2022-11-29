@@ -66,7 +66,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
 		{
 			desc = "Clear buffers",
-			cmd = "<cmd>silent %bd|e#<cr>",
+			cmd = "<cmd>lua require('close_buffers').delete({type = 'hidden'})<CR>",
 		},
 
 		{

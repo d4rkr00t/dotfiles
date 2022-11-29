@@ -46,6 +46,7 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim") -- commenting with gc
 	use("folke/todo-comments.nvim") -- highlight and list todos
 	use("norcalli/nvim-colorizer.lua") -- highlight colors
+	use({ "jghauser/mkdir.nvim" }) -- automatically create missing folders on file save
 
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance

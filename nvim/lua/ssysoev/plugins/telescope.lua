@@ -10,7 +10,6 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
 		defaults = {
 			mappings = {
 				i = {
-					["<C-u>"] = false, -- clear prompt
 					["<C-k>"] = actions.move_selection_previous,
 					["<C-j>"] = actions.move_selection_next,
 					["<C-i>"] = lga_actions.quote_prompt(),

@@ -198,7 +198,6 @@ safe_reqiure({ "command_center" }, function(mods)
 		},
 
 		{
-
 			desc = "Telescope live grep",
 			cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
 			keys = { "n", "<leader>fs", noremap },

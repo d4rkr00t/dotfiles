@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
 	use("EdenEast/nightfox.nvim")
 
 	-- icons
-	use("nvim-tree/nvim-tree.lua")
+	use({ "nvim-tree/nvim-tree.lua", tag = "nightly" })
 
 	-- vs-code like icons
 	use("kyazdani42/nvim-web-devicons")

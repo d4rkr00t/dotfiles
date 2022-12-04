@@ -22,7 +22,7 @@ opt.smartcase = true
 -- appearance
 opt.termguicolors = true
 opt.background = "dark"
-opt.signcolumn = "yes"
+opt.signcolumn = "yes:1" -- always show signcolumns
 opt.title = true -- show filename in the window titlebar
 opt.cursorline = true -- highlight current line
 opt.scrolloff = 10 -- lines above/below cusor to preferably be visible
@@ -40,6 +40,8 @@ opt.splitbelow = true
 
 -- other
 opt.iskeyword:append("-") -- makes - a part of a word
+opt.joinspaces = false -- No double spaces with join
+opt.autoread = true -- Deal with file loads after updating via git etc
 
 -- folding
 opt.foldmethod = "expr"
@@ -49,3 +51,7 @@ opt.fillchars = "fold: "
 opt.foldnestmax = 10
 opt.foldminlines = 1
 opt.foldlevel = 99
+
+-- invisible characters
+-- opt.list = true -- Show some invisible characters
+opt.listchars = { tab = " ", trail = "·" }

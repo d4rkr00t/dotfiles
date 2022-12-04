@@ -10,7 +10,18 @@ local theme = "nightfox"
 if theme == "nightfox" then
 	safe_require({ "nightfox" }, function(mods)
 		local nightfox = mods.nightfox
-		nightfox.setup()
+		nightfox.setup({
+			options = {
+				styles = {
+					comments = "italic",
+					keywords = "bold",
+					functions = "italic,bold",
+				},
+				inverse = {
+					search = true,
+				},
+			},
+		})
 
 		pcall(vim.cmd, "colorscheme carbonfox")
 	end)

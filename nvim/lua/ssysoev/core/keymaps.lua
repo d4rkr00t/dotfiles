@@ -5,7 +5,7 @@ local keymap = vim.keymap
 vim.g.mapleader = ","
 
 -- general keymaps
-keymap.set("n", "<CR>", ":nohl<CR>") -- remove search highlight on enter
+keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
 
@@ -74,6 +74,12 @@ safe_reqiure({ "command_center" }, function(mods)
 			cmd = function()
 				close_floating()
 			end,
+		},
+
+		{
+			desc = "Toggle hidden characters",
+			cmd = "<cmd>set list!<cr>",
+			keys = { "n", "<leader>th", noremap },
 		},
 
 		-- move lines
@@ -208,6 +214,12 @@ safe_reqiure({ "command_center" }, function(mods)
 			desc = "Telescope diagnostics",
 			cmd = "<cmd>Telescope diagnostics<CR>",
 			keys = { "n", "<leader>fd", noremap },
+		},
+
+		{
+			desc = "Telescope git status",
+			cmd = "<cmd>Telescope git_status<CR>",
+			keys = { "n", "<leader>gs", noremap },
 		},
 
 		{

@@ -18,6 +18,11 @@ safe_require({ "gitsigns", "command_center" }, function(mods)
 		},
 
 		{
+			desc = "Toggle current line diff",
+			cmd = "<cmd>Gitsigns toggle_current_line_blame<cr>",
+		},
+
+		{
 			desc = "Blame line",
 			cmd = function()
 				gitsigns.blame_line({ full = true })

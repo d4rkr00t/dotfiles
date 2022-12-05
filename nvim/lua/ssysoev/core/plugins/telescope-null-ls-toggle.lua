@@ -50,7 +50,4 @@ safe_require({ "null-ls", "telescope", "command_center" }, function(mods)
 			keys = { "n", "<leader>nt", noremap },
 		},
 	})
-	-- vim.keymap.set("n", "<leader>nt", function()
-	-- 	sources(require("telescope.themes").get_dropdown({}))
-	-- end)
 end)

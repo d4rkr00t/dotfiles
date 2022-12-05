@@ -1,9 +1,6 @@
 local safe_reqiure = require("ssysoev.utils.safe-require")
 local keymap = vim.keymap
 
--- leader
-vim.g.mapleader = ","
-
 -- general keymaps
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char

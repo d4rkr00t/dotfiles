@@ -63,6 +63,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-path") -- source for file system paths
 	use("hrsh7th/cmp-nvim-lsp-signature-help") -- source for function signature completion
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion from lsp servers
+	use("ray-x/cmp-treesitter")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine

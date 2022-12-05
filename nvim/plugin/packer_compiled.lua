@@ -170,8 +170,11 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["iswap.nvim"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/iswap.nvim",
+    commands = { "ISwap" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/iswap.nvim",
     url = "https://github.com/mizlan/iswap.nvim"
   },
   ["lspkind.nvim"] = {
@@ -379,6 +382,18 @@ time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
 time([[Sequenced loading]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'ISwap', function(cmdargs)
+          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap' }, _G.packer_plugins)
+          vim.api.nvim_input('<space><bs><tab>')
+      end})
+time([[Defining lazy-load commands]], false)
+
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

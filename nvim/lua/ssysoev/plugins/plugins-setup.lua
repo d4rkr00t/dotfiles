@@ -96,7 +96,14 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-textobjects") -- additional text objects from treesitter
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- setting commentstring settings depending on cursor position in a file
 	use("nvim-treesitter/nvim-treesitter-context") -- keeps current context visible e.g. function declaration, same as in vscode
-	use("mizlan/iswap.nvim") -- Interactively select and swap: function arguments, list elements, function parameters, and more.
+	use({
+		"mizlan/iswap.nvim",
+		opt = true,
+		cmd = { "ISwap" },
+		config = function()
+			require("ssysoev.plugins.iswap")
+		end,
+	}) -- Interactively select and swap: function arguments, list elements, function parameters, and more.
 	use("Dkendal/nvim-treeclimber") -- treesitter based navigation and selection
 
 	-- auto closing

@@ -314,6 +314,31 @@ safe_reqiure({ "command_center" }, function(mods)
 			desc = "Show todo comments in a project",
 			cmd = "<cmd>TodoTelescope<cr>",
 		},
+
+		-- bufferline
+		{
+			desc = "New tab",
+			cmd = "<cmd>tabnew<cr>",
+			keys = { "n", "<leader>tt", noremap },
+		},
+
+		{
+			desc = "Pick tab",
+			cmd = "<cmd>BufferLinePick<cr>",
+			keys = { "n", "<leader>tp", noremap },
+		},
+
+		{
+			desc = "Next tab",
+			cmd = "<cmd>BufferLineCycleNext<cr>",
+			keys = { "n", "]t", noremap },
+		},
+
+		{
+			desc = "Prev tab",
+			cmd = "<cmd>BufferLineCyclePrev<cr>",
+			keys = { "n", "[t", noremap },
+		},
 	})
 end)
 

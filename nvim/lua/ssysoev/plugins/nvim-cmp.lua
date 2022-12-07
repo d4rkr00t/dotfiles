@@ -53,10 +53,10 @@ cmp.setup({
 		ghost_text = true,
 	},
 
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
+	-- window = {
+	-- 	completion = cmp.config.window.bordered(),
+	-- 	documentation = cmp.config.window.bordered(),
+	-- },
 
 	-- configure lspkind for vs-code like icons
 	formatting = {

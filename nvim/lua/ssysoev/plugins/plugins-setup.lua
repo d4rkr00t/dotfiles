@@ -152,6 +152,9 @@ return require("packer").startup(function(use)
 		requires = "nvim-tree/nvim-web-devicons",
 	})
 
+	-- scrollbar
+	use("petertriho/nvim-scrollbar")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

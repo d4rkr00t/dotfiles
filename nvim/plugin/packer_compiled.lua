@@ -258,6 +258,11 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-pqf.git",
     url = "https://gitlab.com/yorickpeterse/nvim-pqf"
   },
+  ["nvim-scrollbar"] = {
+    loaded = true,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
+    url = "https://github.com/petertriho/nvim-scrollbar"
+  },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeFindFile" },
     config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30ssysoev.plugins.nvim-tree\frequire\0" },

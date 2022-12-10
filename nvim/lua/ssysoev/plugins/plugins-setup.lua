@@ -50,7 +50,11 @@ return require("packer").startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 
 	-- quick editing / editing niceties
-	use("tpope/vim-surround") -- add, delete, change surroundings
+	use({ "tpope/vim-surround", keys = {
+		{ "n", "cs" },
+		{ "n", "ds" },
+		{ "n", "ys" },
+	} }) -- add, delete, change surroundings
 	use("numToStr/Comment.nvim") -- commenting with gc
 	use("folke/todo-comments.nvim") -- highlight and list todos
 	use({
@@ -92,9 +96,35 @@ return require("packer").startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- list view for diagnostics
-	use({ "simrat39/symbols-outline.nvim" })
-	use({ "dnlhc/glance.nvim" }) -- pretty ui for references / definitions / etc...
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		cmd = { "Trouble" },
+		config = function()
+			require("ssysoev.plugins.lsp.trouble")
+		end,
+	}) -- list view for diagnostics
+	use({
+		"simrat39/symbols-outline.nvim",
+		cmd = { "SymbolsOutline" },
+		config = function()
+			require("ssysoev.plugins.lsp.symbols-outline")
+		end,
+	})
+	use({
+		"dnlhc/glance.nvim",
+		cmd = { "Glance" },
+		config = function()
+			require("glance").setup({
+				border = {
+					enable = true,
+				},
+				winbar = {
+					enable = false,
+				},
+			})
+		end,
+	}) -- pretty ui for references / definitions / etc...vim
 	use("marilari88/twoslash-queries.nvim") -- print typescript types as inline virtual text and dynamically update it
 
 	-- linters & formatting
@@ -126,7 +156,7 @@ return require("packer").startup(function(use)
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration
-	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use({ "lewis6991/gitsigns.nvim" }) -- show line modifications on left hand side
 	use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" }) -- generates shareable link to a git repo, similar to open-in-github vscode plugin
 
 	-- winbar, top panel with context like in vscode

@@ -80,8 +80,11 @@ _G.packer_plugins = {
     url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    after = { "friendly-snippets" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["alpha-nvim"] = {
@@ -110,8 +113,13 @@ _G.packer_plugins = {
     url = "https://github.com/kazhala/close-buffers.nvim"
   },
   ["cmp-buffer"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    after_files = { "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-nvim-lsp"] = {
@@ -120,23 +128,43 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lsp-signature-help"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    after_files = { "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help/after/plugin/cmp_nvim_lsp_signature_help.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
   },
   ["cmp-path"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-path",
+    after_files = { "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-treesitter"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp-treesitter",
+    after_files = { "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-treesitter/after/plugin/cmp_treesitter.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp-treesitter",
     url = "https://github.com/ray-x/cmp-treesitter"
   },
   cmp_luasnip = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    after_files = { "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["command_center.nvim"] = {
@@ -150,8 +178,12 @@ _G.packer_plugins = {
     url = "https://github.com/gpanders/editorconfig.nvim"
   },
   ["friendly-snippets"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    load_after = {
+      LuaSnip = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["gitlinker.nvim"] = {
@@ -238,8 +270,12 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    loaded = true,
-    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    after = { "cmp-path", "cmp-nvim-lsp-signature-help", "cmp-buffer", "cmp-treesitter", "cmp_luasnip" },
+    config = { "\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29ssysoev.plugins.nvim-cmp\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
@@ -411,6 +447,37 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+local module_lazy_loads = {
+  ["^LuaSnip"] = "LuaSnip",
+  ["^cmp"] = "nvim-cmp",
+  ["^luasnip"] = "LuaSnip",
+  ["^nvim%-cmp"] = "nvim-cmp"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
@@ -419,13 +486,6 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'ISwap', function(cmdargs)
-          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap' }, _G.packer_plugins)
-          return vim.fn.getcompletion('ISwap ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'Glance', function(cmdargs)
           require('packer.load')({'glance.nvim'}, { cmd = 'Glance', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -439,6 +499,13 @@ pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble' }, _G.packer_plugins)
           return vim.fn.getcompletion('Trouble ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'SymbolsOutline', function(cmdargs)
+          require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline' }, _G.packer_plugins)
+          return vim.fn.getcompletion('SymbolsOutline ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -454,13 +521,6 @@ pcall(vim.api.nvim_create_user_command, 'NvimTreeFindFile', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeFindFile' }, _G.packer_plugins)
           return vim.fn.getcompletion('NvimTreeFindFile ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'SymbolsOutline', function(cmdargs)
-          require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline' }, _G.packer_plugins)
-          return vim.fn.getcompletion('SymbolsOutline ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'ColorizerToggle', function(cmdargs)
           require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -468,15 +528,29 @@ pcall(vim.api.nvim_create_user_command, 'ColorizerToggle', function(cmdargs)
           require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle' }, _G.packer_plugins)
           return vim.fn.getcompletion('ColorizerToggle ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'ISwap', function(cmdargs)
+          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'iswap.nvim'}, { cmd = 'ISwap' }, _G.packer_plugins)
+          return vim.fn.getcompletion('ISwap ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
 vim.cmd [[nnoremap <silent> cs <cmd>lua require("packer.load")({'vim-surround'}, { keys = "cs", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> ys <cmd>lua require("packer.load")({'vim-surround'}, { keys = "ys", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[nnoremap <silent> ds <cmd>lua require("packer.load")({'vim-surround'}, { keys = "ds", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> ys <cmd>lua require("packer.load")({'vim-surround'}, { keys = "ys", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

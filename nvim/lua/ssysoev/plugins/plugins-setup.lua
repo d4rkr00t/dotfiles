@@ -77,17 +77,39 @@ return require("packer").startup(function(use)
 	})
 
 	-- completion
-	use("hrsh7th/nvim-cmp") -- completion plugin
-	use("hrsh7th/cmp-buffer") -- source for text in buffer
-	use("hrsh7th/cmp-path") -- source for file system paths
-	use("hrsh7th/cmp-nvim-lsp-signature-help") -- source for function signature completion
-	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion from lsp servers
-	use("ray-x/cmp-treesitter")
+	use({
+		{
+			"hrsh7th/nvim-cmp",
+			module = { "nvim-cmp", "cmp" },
+			config = function()
+				require("ssysoev.plugins.nvim-cmp")
+			end,
+			event = "InsertEnter *",
+		},
+
+		-- sources
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
+		{ "ray-x/cmp-treesitter", after = "nvim-cmp" },
+		{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+
+		-- snippets
+		{ "L3MON4D3/LuaSnip", module = { "luasnip", "LuaSnip" } },
+		{ "rafamadriz/friendly-snippets", after = "LuaSnip" },
+	})
+	-- use("hrsh7th/nvim-cmp") -- completion plugin
+	-- use("hrsh7th/cmp-buffer") -- source for text in buffer
+	-- use("hrsh7th/cmp-path") -- source for file system paths
+	-- use("hrsh7th/cmp-nvim-lsp-signature-help") -- source for function signature completion
+	-- use("hrsh7th/cmp-nvim-lsp") -- for autocompletion from lsp servers
+	-- use("ray-x/cmp-treesitter")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
-	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
+	-- use("L3MON4D3/LuaSnip") -- snippet engine
+	-- use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	-- use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- lsp
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters

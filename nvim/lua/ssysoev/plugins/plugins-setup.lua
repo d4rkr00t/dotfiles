@@ -168,13 +168,7 @@ return require("packer").startup(function(use)
 	use("Dkendal/nvim-treeclimber") -- treesitter based navigation and selection
 
 	-- auto closing
-	use({
-		"windwp/nvim-autopairs",
-		after = { "nvim-cmp" },
-		config = function()
-			require("ssysoev.plugins.autopairs")
-		end,
-	}) -- autoclose parens, brackets, quotes, etc...
+	use({ "windwp/nvim-autopairs" }) -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration

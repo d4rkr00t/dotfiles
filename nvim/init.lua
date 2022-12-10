@@ -28,6 +28,7 @@ require("ssysoev.plugins.nvim-pqf")
 require("ssysoev.plugins.close-buffers")
 require("ssysoev.plugins.bufferline")
 require("ssysoev.plugins.scrollbar")
+require("ssysoev.plugins.autopairs")
 
 require("ssysoev.core.plugins.telescope-null-ls-toggle")
 

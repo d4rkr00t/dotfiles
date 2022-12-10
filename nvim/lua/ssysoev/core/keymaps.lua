@@ -344,7 +344,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
 		{
 			desc = "Toggle color highlighting",
-			cmd = "<>ColorizerToggle<cr>",
+			cmd = "<cmd>ColorizerToggle<cr>",
 			keys = { "n", "<leader>hc", noremap },
 		},
 	})

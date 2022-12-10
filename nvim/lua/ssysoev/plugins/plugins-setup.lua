@@ -37,7 +37,6 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-tree/nvim-tree.lua",
 		tag = "nightly",
-		opt = true,
 		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
 		config = function()
 			require("ssysoev.plugins.nvim-tree")
@@ -60,7 +59,6 @@ return require("packer").startup(function(use)
 	use("folke/todo-comments.nvim") -- highlight and list todos
 	use({
 		"norcalli/nvim-colorizer.lua", -- highlight colors
-		opt = true,
 		cmd = { "ColorizerToggle" },
 		config = function()
 			require("ssysoev.plugins.colorizer")
@@ -162,7 +160,6 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-context") -- keeps current context visible e.g. function declaration, same as in vscode
 	use({
 		"mizlan/iswap.nvim",
-		opt = true,
 		cmd = { "ISwap" },
 		config = function()
 			require("ssysoev.plugins.iswap")
@@ -171,7 +168,13 @@ return require("packer").startup(function(use)
 	use("Dkendal/nvim-treeclimber") -- treesitter based navigation and selection
 
 	-- auto closing
-	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use({
+		"windwp/nvim-autopairs",
+		after = { "nvim-cmp" },
+		config = function()
+			require("ssysoev.plugins.autopairs")
+		end,
+	}) -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration

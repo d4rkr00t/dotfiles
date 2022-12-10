@@ -53,7 +53,14 @@ return require("packer").startup(function(use)
 	use("tpope/vim-surround") -- add, delete, change surroundings
 	use("numToStr/Comment.nvim") -- commenting with gc
 	use("folke/todo-comments.nvim") -- highlight and list todos
-	use("norcalli/nvim-colorizer.lua") -- highlight colors
+	use({
+		"norcalli/nvim-colorizer.lua", -- highlight colors
+		opt = true,
+		cmd = { "ColorizerToggle" },
+		config = function()
+			require("ssysoev.plugins.colorizer")
+		end,
+	})
 	use({ "jghauser/mkdir.nvim" }) -- automatically create missing folders on file save
 
 	-- fuzzy finder

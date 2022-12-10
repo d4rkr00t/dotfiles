@@ -339,6 +339,14 @@ safe_reqiure({ "command_center" }, function(mods)
 			cmd = "<cmd>BufferLineCyclePrev<cr>",
 			keys = { "n", "[t", noremap },
 		},
+
+		-- colorizer
+
+		{
+			desc = "Toggle color highlighting",
+			cmd = "<cmd>ColorizerToggle<cr>",
+			keys = { "n", "<leader>hc", noremap },
+		},
 	})
 end)
 

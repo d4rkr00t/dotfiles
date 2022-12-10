@@ -2,7 +2,7 @@ local safe_require = require("ssysoev.utils.safe-require")
 
 safe_require({ "colorizer" }, function(mods)
 	local colorizer = mods.colorizer
-	colorizer.setup({ "*" }, {
+	colorizer.setup({}, {
 		RGB = true, -- #RGB hex codes
 		RRGGBB = true, -- #RRGGBB hex codes
 		names = true, -- "Name" codes like Blue

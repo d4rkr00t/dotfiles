@@ -178,55 +178,55 @@ safe_reqiure({ "command_center" }, function(mods)
 		-- telescope
 		{
 			desc = "Telescope find files",
-			cmd = "<cmd>Telescope find_files hidden=true<CR>",
+			cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
 			keys = { "n", "<leader>ff", noremap },
 		},
 
 		{
 			desc = "Telescope buffers",
-			cmd = "<cmd>Telescope buffers only_cwd=true<CR>",
+			cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
 			keys = { "n", "<leader>b", noremap },
 		},
 
 		{
 			desc = "Telescope old find",
-			cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+			cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
 			keys = { "n", "<leader>o", noremap },
 		},
 
 		{
 			desc = "Telescope live grep",
-			cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+			cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({ theme = 'ivy' })<CR>",
 			keys = { "n", "<leader>fs", noremap },
 		},
 
 		{
 			desc = "Telescope document symbols",
-			cmd = "<cmd>Telescope lsp_document_symbols<CR>",
+			cmd = "<cmd>Telescope lsp_document_symbols theme=ivy<CR>",
 			keys = { "n", "<leader>fo", noremap },
 		},
 
 		{
 			desc = "Telescope diagnostics",
-			cmd = "<cmd>Telescope diagnostics<CR>",
+			cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
 			keys = { "n", "<leader>fd", noremap },
 		},
 
 		{
 			desc = "Telescope git status",
-			cmd = "<cmd>Telescope git_status<CR>",
+			cmd = "<cmd>Telescope git_status theme=ivy<CR>",
 			keys = { "n", "<leader>gs", noremap },
 		},
 
 		{
 			desc = "Telescope restore previous picker",
-			cmd = "<cmd>Telescope pickers<CR>",
+			cmd = "<cmd>Telescope pickers theme=ivy<CR>",
 			keys = { "n", "<leader>fr", noremap },
 		},
 
 		{
 			desc = "Telescope yank history",
-			cmd = "<cmd>Telescope yank_history<CR>",
+			cmd = "<cmd>Telescope yank_history theme=ivy<CR>",
 			keys = { "n", "<leader>yh", noremap },
 		},
 

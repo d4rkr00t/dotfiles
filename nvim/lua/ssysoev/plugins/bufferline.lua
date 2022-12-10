@@ -8,8 +8,6 @@ safe_require({ "bufferline" }, function(mods)
 			mode = "tabs",
 			separator_style = "thick",
 			diagnostics = "nvim_lsp",
-			show_buffer_close_icons = false,
-			show_close_icon = false,
 			color_icons = true,
 			always_show_bufferline = false,
 		},

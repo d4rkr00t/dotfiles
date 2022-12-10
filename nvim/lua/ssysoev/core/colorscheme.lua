@@ -28,11 +28,20 @@ if theme == "nightfox" then
 
 --
 --
+-- oxocarbon
+--
+--
+elseif theme == "oxocarbon" then
+	safe_require({ "oxocarbon" }, function()
+		pcall(vim.cmd, "colorscheme oxocarbon")
+	end)
+--
+--
 -- oh lucy
 --
 --
 elseif theme == "oh-lucy" then
-	safe_require({ "oh-lucy" }, function(mods)
+	safe_require({ "oh-lucy" }, function()
 		pcall(vim.cmd, "colorscheme oh-lucy")
 	end)
 

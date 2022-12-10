@@ -20,7 +20,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
 				num_pickers = 5,
 			},
 			dynamic_preview_title = true,
-			prompt_prefix = "   ",
+			prompt_prefix = " ?  ",
 			selection_caret = "  ",
 			entry_prefix = "  ",
 			sorting_strategy = "ascending",

@@ -31,6 +31,7 @@ return require("packer").startup(function(use)
 		as = "catppuccin",
 	})
 	use("EdenEast/nightfox.nvim")
+	use({ "nyoom-engineering/oxocarbon.nvim" })
 
 	-- icons
 	use({

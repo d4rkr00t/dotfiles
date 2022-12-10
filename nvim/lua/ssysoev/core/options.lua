@@ -53,5 +53,5 @@ opt.foldminlines = 1
 opt.foldlevel = 99
 
 -- invisible characters
--- opt.list = true -- Show some invisible characters
+opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }

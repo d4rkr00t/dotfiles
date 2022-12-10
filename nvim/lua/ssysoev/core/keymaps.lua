@@ -331,20 +331,20 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Next tab",
 			cmd = "<cmd>BufferLineCycleNext<cr>",
-			keys = { "n", "]t", noremap },
+			keys = { "n", "<C-l>", noremap },
 		},
 
 		{
 			desc = "Prev tab",
 			cmd = "<cmd>BufferLineCyclePrev<cr>",
-			keys = { "n", "[t", noremap },
+			keys = { "n", "<C-h>", noremap },
 		},
 
 		-- colorizer
 
 		{
 			desc = "Toggle color highlighting",
-			cmd = "<cmd>ColorizerToggle<cr>",
+			cmd = "<>ColorizerToggle<cr>",
 			keys = { "n", "<leader>hc", noremap },
 		},
 	})

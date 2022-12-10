@@ -46,13 +46,6 @@ local function bootstrap(config)
 
 		--
 		--
-		-- setup lspsaga
-		--
-		--
-		require("ssysoev.plugins.lsp.lspsaga")
-
-		--
-		--
 		-- setup lspconfig
 		--
 		--

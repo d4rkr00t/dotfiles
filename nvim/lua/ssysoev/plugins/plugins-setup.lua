@@ -55,7 +55,7 @@ return require("packer").startup(function(use)
 		{ "n", "ds" },
 		{ "n", "ys" },
 	} }) -- add, delete, change surroundings
-	use("numToStr/Comment.nvim") -- commenting with gc
+	use({ "numToStr/Comment.nvim" }) -- commenting with gc
 	use("folke/todo-comments.nvim") -- highlight and list todos
 	use({
 		"norcalli/nvim-colorizer.lua", -- highlight colors
@@ -99,23 +99,19 @@ return require("packer").startup(function(use)
 		{ "L3MON4D3/LuaSnip", module = { "luasnip", "LuaSnip" } },
 		{ "rafamadriz/friendly-snippets", after = "LuaSnip" },
 	})
-	-- use("hrsh7th/nvim-cmp") -- completion plugin
-	-- use("hrsh7th/cmp-buffer") -- source for text in buffer
-	-- use("hrsh7th/cmp-path") -- source for file system paths
-	-- use("hrsh7th/cmp-nvim-lsp-signature-help") -- source for function signature completion
-	-- use("hrsh7th/cmp-nvim-lsp") -- for autocompletion from lsp servers
-	-- use("ray-x/cmp-treesitter")
-
-	-- snippets
-	-- use("L3MON4D3/LuaSnip") -- snippet engine
-	-- use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	-- use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- lsp
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 	use("neovim/nvim-lspconfig") -- easily configure language servers
-	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		cmd = { "Lspsaga" },
+		config = function()
+			require("ssysoev.plugins.lsp.lspsaga")
+		end,
+	}) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use({
@@ -196,7 +192,7 @@ return require("packer").startup(function(use)
 	use("gpanders/editorconfig.nvim") -- support .editorconfig files
 
 	-- better yanking
-	use("gbprod/yanky.nvim")
+	use({ "gbprod/yanky.nvim" })
 
 	-- better quickfix list
 	use("https://gitlab.com/yorickpeterse/nvim-pqf.git")

@@ -17,8 +17,8 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 	use("lewis6991/impatient.nvim") -- several optimisations improving start up time
-	use("https://gitlab.com/yorickpeterse/nvim-window.git") -- visual window switcher
-	use("samjwill/nvim-unception") -- simplify opening files from within Neovim's terminal emulator
+	use("https://gitlab.com/yorickpeterse/nvim-window.git") -- visual window switcherpluse
+	use("samjwill/nvim-unception") -- simplify opening files from within Neovim's terminal emulatorpluse
 
 	-- startup screen
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
@@ -188,9 +188,6 @@ return require("packer").startup(function(use)
 
 	-- per project config
 	use("gpanders/editorconfig.nvim") -- support .editorconfig files
-
-	-- better yanking
-	use({ "gbprod/yanky.nvim" })
 
 	-- better quickfix list
 	use("https://gitlab.com/yorickpeterse/nvim-pqf.git")

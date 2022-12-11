@@ -55,6 +55,5 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
 	})
 
 	telescope.load_extension("fzf")
-	telescope.load_extension("yank_history")
 	telescope.load_extension("command_center")
 end)

@@ -5,10 +5,11 @@ local keymap = vim.keymap
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
+keymap.set("v", "p", '"_dP') -- do not yank if pasting over something
 
-vim.cmd([[augroup quickfix_enter]])
-vim.cmd([[  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>]])
-vim.cmd([[augroup END]])
+-- stay in indent mode
+keymap.set("v", ">", ">gv")
+keymap.set("v", "<", "<gv")
 
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
@@ -224,12 +225,6 @@ safe_reqiure({ "command_center" }, function(mods)
 			keys = { "n", "<leader>fr", noremap },
 		},
 
-		{
-			desc = "Telescope yank history",
-			cmd = "<cmd>Telescope yank_history theme=ivy<CR>",
-			keys = { "n", "<leader>yh", noremap },
-		},
-
 		-- gitlinker
 		{
 			desc = "Open in Github",
@@ -349,14 +344,6 @@ safe_reqiure({ "command_center" }, function(mods)
 		},
 	})
 end)
-
--- yanky
-keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-
--- Delete a word backwards
--- keymap.set("n", "dw", 'vb"_d')
 
 -- move lines visual mode maps
 keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gvgv=gv", { noremap = true, silent = true })

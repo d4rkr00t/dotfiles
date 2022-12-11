@@ -1,6 +1,6 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-function setup_null_ls(null_ls_setup_functions)
+local function setup_null_ls(null_ls_setup_functions)
 	safe_require({ "null-ls" }, function(mods)
 		local null_ls = mods["null-ls"]
 

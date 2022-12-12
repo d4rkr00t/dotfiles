@@ -15,6 +15,13 @@ keymap.set("v", "<", "<gv")
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- Search and n N to stay in the middle of the screen
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
+keymap.set("c", "<CR>", function()
+	return vim.fn.getcmdtype() == "/" and "<CR>zzzv" or "<CR>"
+end, { expr = true })
+
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")

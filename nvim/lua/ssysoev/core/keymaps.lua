@@ -11,6 +11,10 @@ keymap.set("v", "p", '"_dP') -- do not yank if pasting over something
 keymap.set("v", ">", ">gv")
 keymap.set("v", "<", "<gv")
 
+-- <C-D> <C-U> to stay in the middle of the screen
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")

@@ -132,14 +132,7 @@ return require("packer").startup(function(use)
 		"dnlhc/glance.nvim",
 		cmd = { "Glance" },
 		config = function()
-			require("glance").setup({
-				border = {
-					enable = true,
-				},
-				winbar = {
-					enable = false,
-				},
-			})
+			require("ssysoev.plugins.glance")
 		end,
 	}) -- pretty ui for references / definitions / etc...vim
 	use("marilari88/twoslash-queries.nvim") -- print typescript types as inline virtual text and dynamically update it

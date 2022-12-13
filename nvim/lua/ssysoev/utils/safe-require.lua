@@ -1,9 +1,12 @@
 local function safe_require(path, cb)
 	local res = {}
 
-	for i, name in pairs(path) do
+	for _, name in pairs(path) do
 		local exist, mod = pcall(require, name)
 		if not exist then
+			if vim.g.VERBOSE_LOG then
+				print("Plugin ", name, " failed to load!")
+			end
 			return false
 		end
 		res[name] = mod

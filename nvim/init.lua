@@ -1,5 +1,9 @@
 pcall(require, "impatient")
 
+-- verbose mode for logging [custom]
+vim.g.VERBOSE_LOG = true
+--
+
 -- leader
 vim.g.mapleader = ","
 --
@@ -21,7 +25,6 @@ require("ssysoev.plugins.gitlinker")
 require("ssysoev.plugins.nvim-window")
 require("ssysoev.plugins.todo-comments")
 require("ssysoev.plugins.barbecue")
-require("ssysoev.plugins.luasnip")
 require("ssysoev.plugins.nvim-treeclimber")
 require("ssysoev.plugins.nvim-pqf")
 require("ssysoev.plugins.close-buffers")

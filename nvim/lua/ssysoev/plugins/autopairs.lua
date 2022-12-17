@@ -11,5 +11,15 @@ safe_require({ "nvim-autopairs" }, function(mods)
 			javascript = { "template_string" }, -- don't add pairs in javascript template_string treesitter nodes
 			java = false, -- don't check treesitter on java
 		},
+		fast_wrap = {
+			map = "<M-e>",
+			chars = { "{", "[", "(", '"', "'" },
+			pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+			end_key = "$",
+			keys = "qwertyuiopzxcvbnmasdfghjkl",
+			check_comma = true,
+			highlight = "Search",
+			highlight_grey = "Comment",
+		},
 	})
 end)

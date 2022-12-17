@@ -195,6 +195,12 @@ safe_reqiure({ "command_center" }, function(mods)
 		},
 
 		{
+			desc = "Telescope git files",
+			cmd = "<cmd>Telescope git_files show_untracked=true theme=ivy<CR>",
+			keys = { "n", "<leader>fg", noremap },
+		},
+
+		{
 			desc = "Telescope buffers",
 			cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
 			keys = { "n", "<leader>b", noremap },

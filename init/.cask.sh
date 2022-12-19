@@ -8,7 +8,7 @@ pkgs=(
   rectangle
 
   # QuickLook plugins
-  qlcolorcode
+  # qlcolorcode
   qlprettypatch
   qlimagesize
   qlvideo

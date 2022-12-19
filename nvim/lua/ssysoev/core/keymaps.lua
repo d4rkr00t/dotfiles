@@ -263,7 +263,7 @@ safe_reqiure({ "command_center" }, function(mods)
 					previewer = false,
 				}))
 			end,
-			keys = { "n", "<leader>s", noremap },
+			keys = { "n", "<leader>/", noremap },
 		},
 		-- gitlinker
 		{
@@ -374,6 +374,19 @@ safe_reqiure({ "command_center" }, function(mods)
 			desc = "Toggle color highlighting",
 			cmd = "<cmd>ColorizerToggle<cr>",
 			keys = { "n", "<leader>hc", noremap },
+		},
+
+		-- gitsigns
+		{
+			desc = "Gitsigns go to next hunk",
+			cmd = "<cmd>Gitsigns next_hunk<cr>",
+			keys = { "n", "]h", noremap },
+		},
+
+		{
+			desc = "Gitsigns go to prev hunk",
+			cmd = "<cmd>Gitsigns prev_hunk<cr>",
+			keys = { "n", "[h", noremap },
 		},
 	})
 end)

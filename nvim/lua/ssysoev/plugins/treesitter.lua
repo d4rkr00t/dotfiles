@@ -59,6 +59,10 @@ safe_require({ "nvim-treesitter.configs" }, function(mods)
 			keymaps = {},
 		},
 
+		playground = {
+			enable = true,
+		},
+
 		textobjects = {
 			select = {
 				enable = true,

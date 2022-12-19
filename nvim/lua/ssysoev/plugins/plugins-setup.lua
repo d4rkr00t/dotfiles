@@ -90,8 +90,6 @@ return require("packer").startup(function(use)
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-		{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
-		{ "ray-x/cmp-treesitter", after = "nvim-cmp" },
 		{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 
 		-- snippets
@@ -113,6 +111,7 @@ return require("packer").startup(function(use)
 	}) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	use("j-hui/fidget.nvim") -- UI for nvim-lsp progress
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -151,13 +150,6 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-textobjects") -- additional text objects from treesitter
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- setting commentstring settings depending on cursor position in a file
 	use("nvim-treesitter/nvim-treesitter-context") -- keeps current context visible e.g. function declaration, same as in vscode
-	use({
-		"mizlan/iswap.nvim",
-		cmd = { "ISwap" },
-		config = function()
-			require("ssysoev.plugins.iswap")
-		end,
-	}) -- Interactively select and swap: function arguments, list elements, function parameters, and more.
 	use("Dkendal/nvim-treeclimber") -- treesitter based navigation and selection
 
 	-- auto closing

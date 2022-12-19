@@ -5,7 +5,7 @@ safe_require(
 		local cmp = mods.cmp
 		local luasnip = mods.luasnip
 		local lspkind = mods.lspkind
-		local cmp_autopairs = mods["nvim-autopairs.completion.cmp"]
+		-- local cmp_autopairs = mods["nvim-autopairs.completion.cmp"]
 		local vscode_lazy_loader = mods["luasnip/loaders/from_vscode"]
 
 		luasnip.setup({
@@ -36,15 +36,34 @@ safe_require(
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-\\>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<CR>"] = cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = true,
+				}),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
 
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" }, -- lsp data completion
-				{ name = "nvim_lsp_signature_help" }, -- lsp signature data completion
 				{ name = "luasnip" }, -- snippets
-				{ name = "treesitter" },
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 			}),
@@ -78,6 +97,6 @@ safe_require(
 			},
 		})
 
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end
 )

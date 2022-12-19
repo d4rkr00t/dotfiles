@@ -93,6 +93,12 @@ local on_attach = function(client, buffer)
 				cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
 				keys = { "n", "<leader>hh", opts },
 			},
+
+			{
+				desc = "Signature documentation",
+				cmd = vim.lsp.buf.signature_help,
+				keys = { "i", "<C-k>", opts },
+			},
 		})
 	end)
 
@@ -107,6 +113,8 @@ local on_attach = function(client, buffer)
 	)
 end
 
+local util = require("lspconfig.util")
+
 local config = {
 	tsserver = {
 		type = "lsp",
@@ -115,6 +123,9 @@ local config = {
 				local typescript = mods.typescript
 				local cmp_nvim_lsp = mods.cmp_nvim_lsp
 				typescript.setup({
+					root_dir = function(fname)
+						return util.root_pattern(".git")(fname)
+					end,
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
 						on_attach = function(client, bufrn)
@@ -135,6 +146,15 @@ local config = {
 					},
 				})
 			end)
+		end,
+	},
+
+	jsonls = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["jsonls"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+			}))
 		end,
 	},
 

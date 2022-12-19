@@ -29,7 +29,7 @@ safe_require({ "null-ls", "telescope", "command_center" }, function(mods)
 					results = get_souces(),
 				}),
 				sorter = conf.generic_sorter(opts),
-				attach_mappings = function(prompt_bufnr, map)
+				attach_mappings = function(prompt_bufnr)
 					actions.select_default:replace(function()
 						actions.close(prompt_bufnr)
 						local selection = action_state.get_selected_entry()
@@ -41,6 +41,7 @@ safe_require({ "null-ls", "telescope", "command_center" }, function(mods)
 			:find()
 	end
 
+	local noremap = { noremap = true, silent = true }
 	cc.add({
 		{
 			desc = "Telescope null-ls sources",

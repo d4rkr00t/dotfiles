@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+-- Decrease update time
+opt.updatetime = 250
+
 -- mouse
 opt.mouse = "a"
 
@@ -30,6 +33,9 @@ opt.title = true -- show filename in the window titlebar
 opt.cursorline = true -- highlight current line
 opt.scrolloff = 10 -- lines above/below cusor to preferably be visible
 opt.ch = 0 -- height of a command line
+
+-- Set completeopt to have a better completion experience
+opt.completeopt = "menuone,noselect"
 
 -- backspace
 opt.backspace = "indent,eol,start"

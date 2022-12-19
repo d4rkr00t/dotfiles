@@ -5,6 +5,7 @@ local keymap = vim.keymap
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
+keymap.set("n", "q:", "<cmd>q<cr>")
 keymap.set("v", "p", '"_dP') -- do not yank if pasting over something
 
 -- stay in indent mode
@@ -196,7 +197,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
 		{
 			desc = "Telescope git files",
-			cmd = "<cmd>Telescope git_files show_untracked=true theme=ivy<CR>",
+			cmd = "<cmd>Telescope git_files theme=ivy<CR>",
 			keys = { "n", "<leader>fg", noremap },
 		},
 
@@ -227,7 +228,6 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Telescope diagnostics",
 			cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
-			keys = { "n", "<leader>fd", noremap },
 		},
 
 		{
@@ -242,6 +242,29 @@ safe_reqiure({ "command_center" }, function(mods)
 			keys = { "n", "<leader>fr", noremap },
 		},
 
+		{
+			desc = "Telescope search help tags",
+			cmd = "<cmd>Telescope help_tags theme=ivy<CR>",
+			keys = { "n", "<leader>fh", noremap },
+		},
+
+		{
+			desc = "Telescope search commands",
+			cmd = "<cmd>Telescope commands theme=dropdown<CR>",
+			keys = { "n", "<leader>fc", noremap },
+		},
+
+		{
+			desc = "Telescope search in current buffer",
+			cmd = function()
+				-- You can pass additional configuration to telescope to change theme, layout, etc.
+				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+					winblend = 10,
+					previewer = false,
+				}))
+			end,
+			keys = { "n", "<leader>s", noremap },
+		},
 		-- gitlinker
 		{
 			desc = "Open in Github",
@@ -315,12 +338,6 @@ safe_reqiure({ "command_center" }, function(mods)
 			mode = cc.mode.ADD,
 		},
 
-		-- iswap
-		{
-			desc = "Swap function arguments/parameters",
-			cmd = "<cmd>ISwap<cr>",
-		},
-
 		-- todo-comments
 		{
 			desc = "Show todo comments in a project",
@@ -353,7 +370,6 @@ safe_reqiure({ "command_center" }, function(mods)
 		},
 
 		-- colorizer
-
 		{
 			desc = "Toggle color highlighting",
 			cmd = "<cmd>ColorizerToggle<cr>",

@@ -30,7 +30,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
 				},
 				preview_cutoff = 120,
 			},
-			file_ignore_patterns = { "node_modules/", ".git/" },
+			file_ignore_patterns = { "node_modules/", ".git/", "**/*.snap" },
 			path_display = { "truncate" },
 			winblend = 0,
 			border = {},

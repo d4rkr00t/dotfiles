@@ -5,5 +5,8 @@ safe_require({ "lspkind" }, function(mods)
 	lspkind.init({
 		mode = "symbol",
 		preset = "codicons",
+		symbol_map = {
+			Copilot = "",
+		},
 	})
 end)

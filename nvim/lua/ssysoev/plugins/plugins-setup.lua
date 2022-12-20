@@ -75,6 +75,17 @@ return require("packer").startup(function(use)
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
 
+	-- copilot
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "InsertEnter",
+		config = function()
+			vim.schedule(function()
+				require("ssysoev.plugins.copilot")
+			end)
+		end,
+	})
+
 	-- completion
 	use({
 		{
@@ -91,6 +102,14 @@ return require("packer").startup(function(use)
 		{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 		{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+
+		{
+			"zbirenbaum/copilot-cmp",
+			after = { "copilot.lua", "nvim-cmp" },
+			config = function()
+				require("copilot_cmp").setup()
+			end,
+		},
 
 		-- snippets
 		{ "L3MON4D3/LuaSnip", module = { "luasnip", "LuaSnip" } },
@@ -159,7 +178,7 @@ return require("packer").startup(function(use)
 
 	-- git integration
 	use({ "lewis6991/gitsigns.nvim" }) -- show line modifications on left hand side
-	use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" }) -- generates shareable link to a git repo, similar to open-in-github vscode plugin
+	use({ "d4rkr00t/gitlinker.nvim", branch = "timeout", requires = "nvim-lua/plenary.nvim" }) -- generates shareable link to a git repo, similar to open-in-github vscode plugin
 
 	-- winbar, top panel with context like in vscode
 	use({

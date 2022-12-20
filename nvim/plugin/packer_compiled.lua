@@ -152,6 +152,26 @@ _G.packer_plugins = {
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/command_center.nvim",
     url = "https://github.com/FeiyouG/command_center.nvim"
   },
+  ["copilot-cmp"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0" },
+    load_after = {
+      ["copilot.lua"] = true,
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    after = { "copilot-cmp" },
+    config = { "\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28ssysoev.plugins.copilot\frequire)\1\0\3\0\3\0\0056\0\0\0009\0\1\0003\2\2\0B\0\2\1K\0\1\0\0\rschedule\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/opt/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["editorconfig.nvim"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/editorconfig.nvim",
@@ -174,7 +194,7 @@ _G.packer_plugins = {
   ["gitlinker.nvim"] = {
     loaded = true,
     path = "/Users/ssysoev/.local/share/nvim/site/pack/packer/start/gitlinker.nvim",
-    url = "https://github.com/ruifm/gitlinker.nvim"
+    url = "https://github.com/d4rkr00t/gitlinker.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -250,7 +270,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-path", "cmp_luasnip" },
+    after = { "cmp_luasnip", "cmp-path", "copilot-cmp", "cmp-buffer" },
     config = { "\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29ssysoev.plugins.nvim-cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -471,19 +491,12 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'Glance', function(cmdargs)
-          require('packer.load')({'glance.nvim'}, { cmd = 'Glance', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'Lspsaga', function(cmdargs)
+          require('packer.load')({'lspsaga.nvim'}, { cmd = 'Lspsaga', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'glance.nvim'}, { cmd = 'Glance' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Glance ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'ColorizerToggle', function(cmdargs)
-          require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('ColorizerToggle ', 'cmdline')
+          require('packer.load')({'lspsaga.nvim'}, { cmd = 'Lspsaga' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Lspsaga ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'SymbolsOutline', function(cmdargs)
           require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -506,6 +519,13 @@ pcall(vim.api.nvim_create_user_command, 'NvimTreeFindFile', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeFindFile' }, _G.packer_plugins)
           return vim.fn.getcompletion('NvimTreeFindFile ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'Glance', function(cmdargs)
+          require('packer.load')({'glance.nvim'}, { cmd = 'Glance', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'glance.nvim'}, { cmd = 'Glance' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Glance ', 'cmdline')
+      end})
 pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
           require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -513,12 +533,12 @@ pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
           require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble' }, _G.packer_plugins)
           return vim.fn.getcompletion('Trouble ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'Lspsaga', function(cmdargs)
-          require('packer.load')({'lspsaga.nvim'}, { cmd = 'Lspsaga', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'ColorizerToggle', function(cmdargs)
+          require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'lspsaga.nvim'}, { cmd = 'Lspsaga' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Lspsaga ', 'cmdline')
+          require('packer.load')({'nvim-colorizer.lua'}, { cmd = 'ColorizerToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('ColorizerToggle ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 
@@ -533,7 +553,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp', 'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

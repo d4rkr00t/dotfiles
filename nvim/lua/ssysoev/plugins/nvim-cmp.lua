@@ -62,6 +62,7 @@ safe_require(
 
 			-- sources for autocompletion
 			sources = cmp.config.sources({
+				{ name = "copilot" }, -- copilot data source
 				{ name = "nvim_lsp" }, -- lsp data completion
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
@@ -83,16 +84,6 @@ safe_require(
 					mode = "symbol_text",
 					maxwidth = 60,
 					ellipsis_char = "...",
-					before = function(entry, vim_item)
-						vim_item.menu = ({
-							nvim_lsp = "ﲳ",
-							treesitter = "",
-							luasnip = "",
-							path = "ﱮ",
-							buffer = "﬘",
-						})[entry.source.name]
-						return vim_item
-					end,
 				}),
 			},
 		})

@@ -263,7 +263,7 @@ safe_reqiure({ "command_center" }, function(mods)
 					previewer = false,
 				}))
 			end,
-			keys = { "n", "<leader>/", noremap },
+			keys = { "n", "<leader>q", noremap },
 		},
 		-- gitlinker
 		{

@@ -24,7 +24,9 @@ safe_require({ "gitsigns", "command_center" }, function(mods)
 
 		{
 			desc = "Blame line",
-			cmd = "<cmd>Gitsigns blame_line<cr>",
+			cmd = function()
+				gitsigns.blame_line({ full = true })
+			end,
 		},
 	})
 end)

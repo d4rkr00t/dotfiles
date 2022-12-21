@@ -1,7 +1,7 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
 safe_require({ "bufferline" }, function(mods)
-	local bufferline = mods.bufferline
+	local bufferline = mods["bufferline"]
 
 	bufferline.setup({
 		options = {

@@ -5,7 +5,9 @@ local function safe_require(path, cb)
 		local exist, mod = pcall(require, name)
 		if not exist then
 			if vim.g.VERBOSE_LOG then
+        print()
 				print("Plugin ", name, " failed to load!")
+        print()
 			end
 			return false
 		end

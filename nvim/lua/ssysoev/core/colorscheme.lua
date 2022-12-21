@@ -1,13 +1,13 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-local theme = "nightfox"
+local theme = vim.g.THEME
 
 --
 --
--- nightfox
+-- nightfox - carbonfox variant
 --
 --
-if theme == "nightfox" then
+if theme == "carbonfox" then
 	safe_require({ "nightfox" }, function(mods)
 		local nightfox = mods.nightfox
 		nightfox.setup({

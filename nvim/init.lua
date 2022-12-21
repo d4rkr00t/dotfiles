@@ -1,5 +1,3 @@
-pcall(require, "impatient")
-
 -- verbose mode for logging [custom]
 vim.g.VERBOSE_LOG = true
 --
@@ -8,33 +6,17 @@ vim.g.VERBOSE_LOG = true
 vim.g.mapleader = ","
 --
 
-require("ssysoev.plugins.plugins-setup")
+-- colorscheme
+vim.g.THEME = "carbonfox"
+--
 
-require("ssysoev.core.colorscheme")
+require("ssysoev.lazy")
+require("lazy").setup("ssysoev.plugins-setup")
 
-require("ssysoev.plugins.comment")
-require("ssysoev.plugins.lualine")
-require("ssysoev.plugins.telescope")
-require("ssysoev.plugins.lsp.init")
-require("ssysoev.plugins.lspkind")
 require("ssysoev.plugins.treesitter")
-require("ssysoev.plugins.treesitter-context")
-require("ssysoev.plugins.gitsigns")
-require("ssysoev.plugins.alpha")
-require("ssysoev.plugins.gitlinker")
-require("ssysoev.plugins.nvim-window")
-require("ssysoev.plugins.todo-comments")
-require("ssysoev.plugins.barbecue")
-require("ssysoev.plugins.nvim-treeclimber")
-require("ssysoev.plugins.nvim-pqf")
-require("ssysoev.plugins.close-buffers")
-require("ssysoev.plugins.bufferline")
-require("ssysoev.plugins.scrollbar")
-require("ssysoev.plugins.autopairs")
-require("ssysoev.plugins.fidget")
-
 require("ssysoev.core.plugins.telescope-null-ls-toggle")
 
+require("ssysoev.core.colorscheme")
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")

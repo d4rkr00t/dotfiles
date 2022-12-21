@@ -34,7 +34,7 @@ local colors = {
 }
 
 local themed_colors = safe_require({ "nightfox" }, function()
-	local theme_name = vim.api.nvim_command_output("colorscheme")
+	local theme_name = vim.g.THEME
 	local status, s = pcall(require("nightfox.spec").load, theme_name)
 	if not status then
 		s = require("nightfox.spec").load("nightfox")

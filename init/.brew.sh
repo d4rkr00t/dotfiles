@@ -26,7 +26,9 @@ pkgs=(
     ripgrep
     pure
     tree
+    starship
     vim --override-system-vi
+    nvim
     wget --with-iri
     zsh
     zsh-completions

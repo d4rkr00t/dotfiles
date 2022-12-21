@@ -16,3 +16,6 @@ unset file
 
 # link nvim config
 ln -sf "$DIR/nvim" "$HOME/.config/nvim"
+
+# link nvim config
+ln -sf "$DIR/starship.toml" "$HOME/.config/starship.toml"

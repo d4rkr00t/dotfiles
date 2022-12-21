@@ -62,8 +62,8 @@ safe_require(
 
 			-- sources for autocompletion
 			sources = cmp.config.sources({
-				{ name = "copilot" }, -- copilot data source
 				{ name = "nvim_lsp" }, -- lsp data completion
+				{ name = "copilot" }, -- copilot data source
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths

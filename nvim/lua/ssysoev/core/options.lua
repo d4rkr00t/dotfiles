@@ -64,3 +64,7 @@ opt.foldlevel = 99
 -- invisible characters
 opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }
+
+-- undo
+opt.undofile = true
+opt.undodir = vim.fn.stdpath("config") .. "/undo"

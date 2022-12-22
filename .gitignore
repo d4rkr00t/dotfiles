@@ -3,3 +3,4 @@ npm-debug.log
 link/.dotfiles
 .tmux-plugins
 vim.log
+nvim/undo

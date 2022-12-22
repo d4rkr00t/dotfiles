@@ -14,6 +14,11 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
 					["<C-j>"] = actions.move_selection_next,
 					["<C-i>"] = lga_actions.quote_prompt(),
 					["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
+					["<M-q>"] = function(prompt_bufnr)
+						vim.fn.setqflist({})
+						actions.smart_add_to_qflist(prompt_bufnr)
+						require("telescope.builtin").quickfix()
+					end,
 				},
 			},
 			cache_picker = {

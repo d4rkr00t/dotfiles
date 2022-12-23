@@ -253,7 +253,7 @@ local config = {
 	},
 
 	gofmt = {
-		type = "formatters",
+		type = "formatter",
 		setup_formatter = function(null_ls)
 			return null_ls.builtins.formatting.gofmt
 		end,

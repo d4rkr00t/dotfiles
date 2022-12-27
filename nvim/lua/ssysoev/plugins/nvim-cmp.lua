@@ -76,8 +76,8 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 		-- sources for autocompletion
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" }, -- lsp data completion
-			{ name = "copilot" }, -- copilot data source
 			{ name = "luasnip" }, -- snippets
+			{ name = "copilot" }, -- copilot data source
 			{ name = "buffer" }, -- text within current buffer
 			{ name = "path" }, -- file system paths
 		}),

@@ -50,6 +50,7 @@ safe_require({ "nvim-treesitter.configs" }, function(mods)
 			"rust",
 			"python",
 			"swift",
+			"glsl",
 		},
 		-- auto install above language parsers
 		auto_install = true,

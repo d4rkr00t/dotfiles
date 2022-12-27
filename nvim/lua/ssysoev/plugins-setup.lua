@@ -31,6 +31,10 @@ return {
 
 	-- colorscheme
 	{ "EdenEast/nightfox.nvim", lazy = true },
+	{ "Yazeed1s/oh-lucy.nvim", lazy = true },
+	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
+	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
+	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
 
 	{
 		-- winbar, top panel with context like in vscode
@@ -354,4 +358,11 @@ return {
 
 	-- support .editorconfig files
 	"gpanders/editorconfig.nvim",
+
+	--
+	-- Other
+	--
+
+	-- improved terminal support
+	{ "samjwill/nvim-unception" },
 }

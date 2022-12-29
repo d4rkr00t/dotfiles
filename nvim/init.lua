@@ -11,7 +11,13 @@ vim.g.THEME = "carbonfox"
 --
 
 require("ssysoev.lazy")
-require("lazy").setup("ssysoev.plugins-setup")
+require("lazy").setup("ssysoev.plugins-setup", {
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = true,
+		notify = false, -- get a notification when changes are found
+	},
+})
 
 require("ssysoev.plugins.treesitter")
 require("ssysoev.core.plugins.telescope-null-ls-toggle")

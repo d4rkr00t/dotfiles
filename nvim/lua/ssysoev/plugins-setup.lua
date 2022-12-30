@@ -95,6 +95,14 @@ return {
 		end,
 	},
 
+	{
+		--  indentation guides to all lines
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ssysoev.plugins.indent-blankline")
+		end,
+	},
+
 	--
 	-- fuzzy finder
 	--

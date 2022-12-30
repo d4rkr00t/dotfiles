@@ -9,6 +9,7 @@ safe_require({ "barbecue", "nvim-navic" }, function(mods)
 
 	navic.setup({
 		highlight = true,
+		safe_output = true,
 		icons = {
 			File = " ",
 			Module = " ",

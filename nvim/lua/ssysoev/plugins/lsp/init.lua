@@ -205,7 +205,7 @@ local config = {
 		setup_formatter = function(null_ls)
 			return null_ls.builtins.formatting.prettierd.with({
 				prettierd = {
-					extra_filetypes = { "map" },
+					extra_filetypes = { "map", "svelte" },
 				},
 			})
 		end,
@@ -233,6 +233,15 @@ local config = {
 		type = "formatter",
 		setup_formatter = function(null_ls)
 			return null_ls.builtins.formatting.rustfmt
+		end,
+	},
+
+	svelte = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["svelte"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+			}))
 		end,
 	},
 

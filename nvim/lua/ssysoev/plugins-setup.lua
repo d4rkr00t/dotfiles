@@ -53,6 +53,7 @@ return {
 	{
 		-- better quickfix list
 		url = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.nvim-pqf")
 		end,
@@ -61,6 +62,7 @@ return {
 	{
 		-- tabs
 		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
 		tag = "v3.1.0",
 		config = function()
 			require("ssysoev.plugins.bufferline")
@@ -71,6 +73,7 @@ return {
 	{
 		-- scrollbar
 		"petertriho/nvim-scrollbar",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.scrollbar")
 		end,
@@ -82,6 +85,7 @@ return {
 	{
 		-- vs-code like icons for autocompletion
 		"onsails/lspkind.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.lspkind")
 		end,
@@ -134,13 +138,20 @@ return {
 	{
 		-- commenting with gc
 		"numToStr/Comment.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.comment")
 		end,
 	},
 
 	-- highlight and list todos
-	"folke/todo-comments.nvim",
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTelescope" },
+		config = function()
+			require("ssysoev.plugins.todo-comments")
+		end,
+	},
 
 	{
 		-- highlight colors
@@ -206,6 +217,7 @@ return {
 	{
 		-- in charge of managing lsp servers, linters & formatters
 		"williamboman/mason.nvim",
+		event = { "VeryLazy" },
 		config = function()
 			require("ssysoev.plugins.lsp.init")
 		end,
@@ -337,6 +349,7 @@ return {
 	{
 		-- show line modifications on left hand side
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.gitsigns")
 		end,
@@ -345,6 +358,7 @@ return {
 	{
 		-- generates shareable link to a git repo, similar to open-in-github vscode plugin
 		"d4rkr00t/gitlinker.nvim",
+		event = "VeryLazy",
 		branch = "timeout",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
@@ -355,6 +369,7 @@ return {
 	-- visual window switcher
 	{
 		url = "https://gitlab.com/yorickpeterse/nvim-window.git",
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.nvim-window")
 		end,
@@ -372,5 +387,8 @@ return {
 	--
 
 	-- improved terminal support
-	{ "samjwill/nvim-unception" },
+	{
+		"samjwill/nvim-unception",
+		event = "VeryLazy",
+	},
 }

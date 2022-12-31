@@ -7,7 +7,7 @@ safe_require({ "nvim-treeclimber", "command_center" }, function(mods)
 
 	cc.add({
 		{
-			desc = "Shring selection [treesitter nodes]",
+			desc = "Shrink selection [treesitter nodes]",
 			cmd = function()
 				tc.select_shrink()
 			end,
@@ -26,18 +26,6 @@ safe_require({ "nvim-treeclimber", "command_center" }, function(mods)
 				{ "n", "<M-k>", noremap },
 				{ "x", "<M-k>", noremap },
 				{ "v", "<M-k>", noremap },
-			},
-		},
-
-		{
-			desc = "Select top level node from current position [treesitter nodes]",
-			cmd = function()
-				tc.select_top_level()
-			end,
-			keys = {
-				{ "n", "<M-g>", noremap },
-				{ "x", "<M-g>", noremap },
-				{ "v", "<M-g>", noremap },
 			},
 		},
 

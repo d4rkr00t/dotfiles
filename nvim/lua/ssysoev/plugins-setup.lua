@@ -285,7 +285,12 @@ return {
 	},
 
 	-- print typescript types as inline virtual text and dynamically update it
-	"marilari88/twoslash-queries.nvim",
+	{
+		"marilari88/twoslash-queries.nvim",
+		config = function()
+			require("ssysoev.plugins.twoslash")
+		end,
+	},
 
 	--
 	--

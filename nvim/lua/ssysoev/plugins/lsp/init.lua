@@ -129,15 +129,15 @@ local config = {
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
 						on_attach = function(client, bufrn)
-							safe_require({ "twoslash-queries", "command_center" }, function(mods)
-								local cc = mods["command_center"]
-								mods["twoslash-queries"].attach(client, bufrn)
+							safe_require({ "twoslash-queries", "command_center" }, function(nested_mods)
+								local cc = nested_mods["command_center"]
+								nested_mods["twoslash-queries"].attach(client, bufrn)
 
 								cc.add({
 									{
 										desc = "Inspect with TwoslashQueries",
 										cmd = "<cmd>InspectTwoslashQueries<CR>",
-										keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = buffer } },
+										keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = bufrn } },
 									},
 								})
 							end)

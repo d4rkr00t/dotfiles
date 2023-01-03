@@ -149,6 +149,15 @@ local config = {
 		end,
 	},
 
+	astro = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["astro"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+			}))
+		end,
+	},
+
 	jsonls = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)

@@ -122,3 +122,10 @@ unset file
 
 # Extra dotfiles
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
+
+# bun completions
+[ -s "/Users/ssysoev/.bun/_bun" ] && source "/Users/ssysoev/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

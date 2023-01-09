@@ -21,19 +21,18 @@ local function setup_null_ls(null_ls_setup_functions)
 			sources = sources,
 
 			-- configure format on save
-			on_attach = function(current_client, bufnr)
-				if current_client.supports_method("textDocument/formatting") then
+			on_attach = function(client, bufnr)
+				if client.supports_method("textDocument/formatting") then
 					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
 							vim.lsp.buf.format({
-								filter = function(client)
-									--  only use null-ls for formatting instead of lsp server
-									return client.name == "null-ls"
-								end,
 								bufnr = bufnr,
+								filter = function(local_client)
+									return local_client.name == "null-ls"
+								end,
 							})
 						end,
 					})

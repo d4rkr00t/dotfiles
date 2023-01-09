@@ -42,6 +42,7 @@ local function bootstrap(config)
 			ensure_installed = mason_null_ls_ensure_installed,
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
+      automatic_setup = true
 		})
 
 		--

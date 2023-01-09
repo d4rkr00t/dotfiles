@@ -255,3 +255,7 @@
 [lfs]
   batch = true
   concurrenttransfers = 15
+[trace2]
+	eventTarget = /Users/ssysoev/.gittrace/dump
+	configparams = custom.metacommands
+	eventBrief = true

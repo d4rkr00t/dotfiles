@@ -119,9 +119,11 @@ local config = {
 	tsserver = {
 		type = "lsp",
 		setup_lsp = function()
-			safe_require({ "typescript", "cmp_nvim_lsp" }, function(mods)
+			safe_require({ "typescript", "cmp_nvim_lsp", "null-ls" }, function(mods)
 				local typescript = mods.typescript
 				local cmp_nvim_lsp = mods.cmp_nvim_lsp
+				local null_ls = mods["null-ls"]
+
 				typescript.setup({
 					root_dir = function(fname)
 						return util.root_pattern(".git")(fname)
@@ -145,6 +147,9 @@ local config = {
 						end,
 					},
 				})
+
+				-- custom sources
+				null_ls.register(require("typescript.extensions.null-ls.code-actions"))
 			end)
 		end,
 	},
@@ -211,12 +216,13 @@ local config = {
 
 	prettierd = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.prettierd.with({
+		setup_formatter = function()
+			local null_ls = require("null-ls")
+			null_ls.register(null_ls.builtins.formatting.prettierd.with({
 				prettierd = {
 					extra_filetypes = { "map", "svelte" },
 				},
-			})
+			}))
 		end,
 	},
 
@@ -240,9 +246,6 @@ local config = {
 
 	["rustfmt"] = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.rustfmt
-		end,
 	},
 
 	svelte = {
@@ -265,37 +268,22 @@ local config = {
 
 	goimports = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.goimports
-		end,
 	},
 
 	gofmt = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.gofmt
-		end,
 	},
 
 	stylua = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.formatting.stylua
-		end,
 	},
 
 	eslint_d = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.diagnostics.eslint_d
-		end,
 	},
 
 	gitsigns = {
 		type = "formatter",
-		setup_formatter = function(null_ls)
-			return null_ls.builtins.code_actions.gitsigns
-		end,
 	},
 }
 

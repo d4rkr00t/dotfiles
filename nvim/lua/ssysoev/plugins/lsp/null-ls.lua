@@ -7,19 +7,8 @@ local function setup_null_ls(null_ls_setup_functions)
 		-- to setup format on save
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-		-- sources
-		local sources = {}
-		for key, value in pairs(null_ls_setup_functions) do
-			table.insert(sources, value(null_ls))
-		end
-
-		table.insert(sources, require("typescript.extensions.null-ls.code-actions"))
-
 		-- configure null_ls
 		null_ls.setup({
-			-- setup formatters & linters
-			sources = sources,
-
 			-- configure format on save
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

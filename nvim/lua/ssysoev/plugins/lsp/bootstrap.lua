@@ -1,4 +1,5 @@
 local safe_require = require("ssysoev.utils.safe-require")
+local merge_tables = require("ssysoev.utils.merge-tables")
 local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
 local function bootstrap(config)
@@ -16,10 +17,14 @@ local function bootstrap(config)
 		for key, value in pairs(config) do
 			if value.type == "lsp" then
 				table.insert(mason_ensure_installed, key)
-				table.insert(lsp_setup_functions, value.setup_lsp)
+				if value.setup_lsp then
+					table.insert(lsp_setup_functions, value.setup_lsp)
+				end
 			elseif value.type == "formatter" then
 				table.insert(mason_null_ls_ensure_installed, key)
-				table.insert(null_ls_setup_functions, value.setup_formatter)
+				if value.setup_formatter then
+					null_ls_setup_functions[key] = value.setup_formatter
+				end
 			end
 		end
 
@@ -37,13 +42,24 @@ local function bootstrap(config)
 			ensure_installed = mason_ensure_installed,
 		})
 
+		--
+		--
+		-- setup mason null-ls
+		--
+		--
 		mason_null_ls.setup({
 			-- list of formatters & linters for mason to install
 			ensure_installed = mason_null_ls_ensure_installed,
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
-      automatic_setup = true
 		})
+
+		mason_null_ls.setup_handlers(merge_tables({
+			function(source_name, methods)
+				-- To keep the original functionality of `automatic_setup = true`.
+				require("mason-null-ls.automatic_setup")(source_name, methods)
+			end,
+		}, null_ls_setup_functions))
 
 		--
 		--

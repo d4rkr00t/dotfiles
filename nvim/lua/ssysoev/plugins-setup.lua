@@ -5,13 +5,13 @@ return {
 	--
 	-- startup screen
 	--
-	{
-		"goolord/alpha-nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("ssysoev.plugins.alpha")
-		end,
-	},
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	dependencies = { "kyazdani42/nvim-web-devicons" },
+	-- 	config = function()
+	-- 		require("ssysoev.plugins.alpha")
+	-- 	end,
+	-- },
 
 	--
 	-- file tree

@@ -3,7 +3,7 @@ local merge_tables = require("ssysoev.utils.merge-tables")
 local safe_require = require("ssysoev.utils.safe-require")
 
 -- enable keybindings for attached lsp servers
-local on_attach = function(client, buffer)
+local on_attach = function(ient, buffer)
 	-- set keybinds
 	safe_require({ "command_center" }, function(mods)
 		local cc = mods.command_center
@@ -154,42 +154,6 @@ local config = {
 		end,
 	},
 
-	astro = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["astro"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	jsonls = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["jsonls"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	html = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["html"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	cssls = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["cssls"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
 	sumneko_lua = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)
@@ -226,68 +190,20 @@ local config = {
 		end,
 	},
 
-	["pylsp"] = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["pylsp"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	["rust_analyzer"] = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	["rustfmt"] = {
-		type = "formatter",
-	},
-
-	svelte = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["svelte"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	gopls = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["gopls"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-			}))
-		end,
-	},
-
-	goimports = {
-		type = "formatter",
-	},
-
-	gofmt = {
-		type = "formatter",
-	},
-
-	stylua = {
-		type = "formatter",
-	},
-
-	eslint_d = {
-		type = "formatter",
-	},
-
-	gitsigns = {
-		type = "formatter",
-	},
+	jsonls = { type = "lsp" },
+	html = { type = "lsp" },
+	cssls = { type = "lsp" },
+	pylsp = { type = "lsp" },
+	rust_analyzer = { type = "lsp" },
+	rustfmt = { type = "formatter" },
+	gopls = { type = "lsp" },
+	goimports = { type = "formatter" },
+	gofmt = { type = "formatter" },
+	eslint_d = { type = "formatter" },
+	gitsigns = { type = "formatter" },
 }
 
-bootstrap(config)
+bootstrap(config, on_attach)
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md

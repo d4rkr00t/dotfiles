@@ -2,8 +2,20 @@ local safe_require = require("ssysoev.utils.safe-require")
 local merge_tables = require("ssysoev.utils.merge-tables")
 local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
-local function bootstrap(config)
+local function bootstrap(config, on_attach)
 	safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp" }, function(mods)
+		print(on_attach)
+		--
+		--
+		-- setup lspconfig
+		--
+		--
+		local lspconfig = mods.lspconfig
+		local cmp_nvim_lsp = mods.cmp_nvim_lsp
+		local lspconfig_defaults = {
+			capabilities = cmp_nvim_lsp.default_capabilities(),
+		}
+
 		--
 		--
 		-- preprocess config
@@ -18,7 +30,9 @@ local function bootstrap(config)
 			if value.type == "lsp" then
 				table.insert(mason_ensure_installed, key)
 				if value.setup_lsp then
-					table.insert(lsp_setup_functions, value.setup_lsp)
+					lsp_setup_functions[key] = function()
+						return value.setup_lsp(lspconfig, lspconfig_defaults)
+					end
 				end
 			elseif value.type == "formatter" then
 				table.insert(mason_null_ls_ensure_installed, key)
@@ -41,6 +55,11 @@ local function bootstrap(config)
 			-- list of lsp servers to install
 			ensure_installed = mason_ensure_installed,
 		})
+		mason_lspconfig.setup_handlers(merge_tables({
+			function(server_name) -- default handler (optional)
+				require("lspconfig")[server_name].setup({ on_attach = on_attach })
+			end,
+		}, lsp_setup_functions))
 
 		--
 		--
@@ -63,24 +82,10 @@ local function bootstrap(config)
 
 		--
 		--
-		-- setup lspconfig
-		--
-		--
-		local lspconfig = mods.lspconfig
-		local cmp_nvim_lsp = mods.cmp_nvim_lsp
-		local lspconfig_defaults = {
-			capabilities = cmp_nvim_lsp.default_capabilities(),
-		}
-		for key, value in pairs(lsp_setup_functions) do
-			pcall(value, lspconfig, lspconfig_defaults)
-		end
-
-		--
-		--
 		-- setup null-ls
 		--
 		--
-		setup_null_ls(null_ls_setup_functions)
+		setup_null_ls()
 	end)
 end
 

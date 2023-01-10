@@ -235,6 +235,7 @@ return {
 			-- UI for nvim-lsp progress
 			{
 				"j-hui/fidget.nvim",
+				event = "VeryLazy",
 				config = function()
 					require("ssysoev.plugins.fidget")
 				end,

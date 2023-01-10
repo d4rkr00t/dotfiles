@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+opt.shortmess:append("I")
+
 -- Decrease update time
 opt.updatetime = 250
 

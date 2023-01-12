@@ -178,12 +178,12 @@ local config = {
 		end,
 	},
 
-	prettierd = {
+	prettier = {
 		type = "formatter",
 		setup_formatter = function()
 			local null_ls = require("null-ls")
-			null_ls.register(null_ls.builtins.formatting.prettierd.with({
-				prettierd = {
+			null_ls.register(null_ls.builtins.formatting.prettier.with({
+				prettier = {
 					extra_filetypes = { "map", "svelte" },
 				},
 			}))

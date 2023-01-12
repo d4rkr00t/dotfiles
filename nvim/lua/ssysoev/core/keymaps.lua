@@ -7,6 +7,10 @@ keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>") -- disable ex mode
 keymap.set("n", "q:", "<cmd>q<cr>")
 keymap.set("v", "p", '"_dP') -- do not yank if pasting over something
+keymap.set("n", "U", "<C-r>") -- redo
+keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
+keymap.set("n", "gl", "$") -- jump to the last char of the line
+keymap.set("n", "gh", "^") -- jump to the first char of the line
 
 -- stay in indent mode
 keymap.set("v", ">", ">gv")

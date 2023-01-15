@@ -196,13 +196,13 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Telescope find files",
 			cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
-			keys = { "n", "<leader>fa", noremap },
+			keys = { "n", "<leader>ff", noremap },
 		},
 
 		{
-			desc = "Telescope find files",
+			desc = "Telescope smart open",
 			cmd = "<cmd>Telescope smart_open cwd_only=true theme=ivy<CR>",
-			keys = { "n", "<leader>ff", noremap },
+			keys = { "n", "<leader>o", noremap },
 		},
 
 		{
@@ -220,7 +220,7 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Telescope old find",
 			cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
-			keys = { "n", "<leader>o", noremap },
+			keys = { "n", "<leader>fp", noremap },
 		},
 
 		{

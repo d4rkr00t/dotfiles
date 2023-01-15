@@ -196,6 +196,12 @@ safe_reqiure({ "command_center" }, function(mods)
 		{
 			desc = "Telescope find files",
 			cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
+			keys = { "n", "<leader>fa", noremap },
+		},
+
+		{
+			desc = "Telescope find files",
+			cmd = "<cmd>Telescope smart_open cwd_only=true theme=ivy<CR>",
 			keys = { "n", "<leader>ff", noremap },
 		},
 

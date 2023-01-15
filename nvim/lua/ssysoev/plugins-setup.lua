@@ -120,6 +120,10 @@ return {
 			"nvim-telescope/telescope-live-grep-args.nvim",
 			-- keymaps util and help
 			"FeiyouG/command_center.nvim",
+			{
+				"danielfalk/smart-open.nvim",
+				dependencies = { "tami5/sqlite.lua" },
+			},
 		},
 		config = function()
 			require("ssysoev.plugins.telescope")
@@ -254,6 +258,7 @@ return {
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		cmd = { "Lspsaga" },
+		commit = "b7b4777369b441341b2dcd45c738ea4167c11c9e",
 		config = function()
 			require("ssysoev.plugins.lsp.lspsaga")
 		end,

@@ -258,7 +258,6 @@ return {
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		cmd = { "Lspsaga" },
-		commit = "b7b4777369b441341b2dcd45c738ea4167c11c9e",
 		config = function()
 			require("ssysoev.plugins.lsp.lspsaga")
 		end,

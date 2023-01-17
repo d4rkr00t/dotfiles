@@ -11,13 +11,6 @@ $git_state\
 $git_status\
 $git_metrics\
 $fill\
-$bun\
-$deno\
-$golang\
-$nodejs\
-$python\
-$rust\
-$swift\
 $cmd_duration\
 $line_break\
 $character"""
@@ -52,24 +45,3 @@ disabled = false
 format = "[$duration]($style)"
 style = "yellow"
 
-[bun]
-format = "via [$symbol]($style)"
-
-[deno]
-format = "via [$symbol]($style)"
-
-[golang]
-format = 'via [$symbol]($style)'
-
-[nodejs]
-format = 'via [$symbol]($style)'
-
-[python]
-format = 'via [$symbol]($style)'
-
-[rust]
-format = 'via [$symbol]($style)'
-symbol = " "
-
-[swift]
-format = 'via [$symbol]($style)'

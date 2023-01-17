@@ -22,6 +22,10 @@ safe_require({ "lspsaga" }, function(mods)
 		symbol_in_winbar = {
 			enable = false,
 		},
+
+		diagnostic = {
+			show_code_action = false,
+		},
 	})
 
 	vim.diagnostic.config({

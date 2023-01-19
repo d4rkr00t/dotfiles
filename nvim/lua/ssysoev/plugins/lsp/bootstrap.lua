@@ -4,7 +4,6 @@ local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
 local function bootstrap(config, on_attach)
 	safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp" }, function(mods)
-		print(on_attach)
 		--
 		--
 		-- setup lspconfig

@@ -245,15 +245,6 @@ return {
 			-- additional functionality for typescript server (e.g. rename file & update imports)
 			"jose-elias-alvarez/typescript.nvim",
 
-			-- UI for nvim-lsp progress
-			{
-				"j-hui/fidget.nvim",
-				event = "VeryLazy",
-				config = function()
-					require("ssysoev.plugins.fidget")
-				end,
-			},
-
 			-- configure formatters & linters
 			"jose-elias-alvarez/null-ls.nvim",
 

@@ -107,6 +107,15 @@ return {
 		end,
 	},
 
+	{
+		-- extra nice uis for popup menus / inputs / etc
+		"folke/noice.nvim",
+		config = function()
+			require("ssysoev.plugins.noice")
+		end,
+		dependencies = { "MunifTanjim/nui.nvim" },
+	},
+
 	--
 	-- fuzzy finder
 	--

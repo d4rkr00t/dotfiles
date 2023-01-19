@@ -254,16 +254,6 @@ return {
 	},
 
 	{
-		-- enhanced lsp uis
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		cmd = { "Lspsaga" },
-		config = function()
-			require("ssysoev.plugins.lsp.lspsaga")
-		end,
-	},
-
-	{
 		-- list view for diagnostics
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",

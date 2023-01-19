@@ -41,12 +41,6 @@ local on_attach = function(ient, buffer)
 			},
 
 			{
-				desc = "Peek definition",
-				cmd = "<cmd>Lspsaga peek_definition<CR>",
-				keys = { "n", "gpd", opts },
-			},
-
-			{
 				desc = "Go to implementation",
 				cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
 				keys = { "n", "gi", opts },
@@ -54,37 +48,55 @@ local on_attach = function(ient, buffer)
 
 			{
 				desc = "Code actions",
-				cmd = "<cmd>Lspsaga code_action<CR>",
+				cmd = function()
+					vim.lsp.buf.code_action()
+				end,
 				keys = { "n", "<leader>ca", opts },
 			},
 
 			{
 				desc = "Smart rename",
-				cmd = "<cmd>Lspsaga rename<CR>",
+				cmd = vim.lsp.buf.rename,
 				keys = { "n", "<leader>rn", opts },
 			},
 
 			{
 				desc = "Show line diagnostics",
-				cmd = "<cmd>Lspsaga show_line_diagnostics<CR>",
+				cmd = function()
+					local float_opts = {
+						focusable = true,
+						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+						border = "rounded",
+						source = "always",
+						prefix = " ",
+						scope = "line",
+					}
+					vim.diagnostic.open_float(nil, float_opts)
+				end,
 				keys = { "n", "<leader>d", opts },
 			},
 
 			{
 				desc = "Jump to previous diagnostic",
-				cmd = "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+				cmd = function()
+					vim.diagnostic.goto_prev()
+				end,
 				keys = { "n", "[d", opts },
 			},
 
 			{
 				desc = "Jump to next diagnostic",
-				cmd = "<cmd>Lspsaga diagnostic_jump_next<CR>",
+				cmd = function()
+					vim.diagnostic.goto_next()
+				end,
 				keys = { "n", "]d", opts },
 			},
 
 			{
 				desc = "Show documentation",
-				cmd = "<cmd>Lspsaga hover_doc<CR>",
+				cmd = function()
+					vim.lsp.buf.hover()
+				end,
 				keys = { "n", "K", opts },
 			},
 
@@ -114,6 +126,23 @@ local on_attach = function(ient, buffer)
 end
 
 local util = require("lspconfig.util")
+
+vim.diagnostic.config({
+	signs = true,
+	update_in_insert = true,
+	underline = true,
+	float = {
+		focusable = true,
+		style = "full",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
+	virtual_text = {
+		severity = vim.diagnostic.severity.ERROR,
+	},
+})
 
 local config = {
 	tsserver = {

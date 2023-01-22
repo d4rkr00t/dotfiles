@@ -140,6 +140,8 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 	virtual_text = {
+		spacing = 4,
+		prefix = "",
 		severity = vim.diagnostic.severity.ERROR,
 	},
 })

@@ -18,11 +18,17 @@ local function setup_null_ls()
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
+							local buf = vim.api.nvim_get_current_buf()
+							local ft = vim.bo[bufnr].filetype
+							local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+
 							vim.lsp.buf.format({
 								bufnr = bufnr,
 								filter = function(local_client)
-									-- print(local_client.name)
-									return local_client.name == "null-ls"
+									if have_nls then
+										return local_client.name == "null-ls"
+									end
+									return local_client.name ~= "null-ls"
 								end,
 							})
 						end,

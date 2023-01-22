@@ -3,17 +3,6 @@ return {
 	"nvim-lua/plenary.nvim",
 
 	--
-	-- startup screen
-	--
-	-- {
-	-- 	"goolord/alpha-nvim",
-	-- 	dependencies = { "kyazdani42/nvim-web-devicons" },
-	-- 	config = function()
-	-- 		require("ssysoev.plugins.alpha")
-	-- 	end,
-	-- },
-
-	--
 	-- file tree
 	--
 	{
@@ -43,7 +32,7 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 			"smiteshp/nvim-navic",
-			"kyazdani42/nvim-web-devicons",
+			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
 			require("ssysoev.plugins.barbecue")
@@ -67,7 +56,7 @@ return {
 		config = function()
 			require("ssysoev.plugins.bufferline")
 		end,
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	{
@@ -80,7 +69,7 @@ return {
 	},
 
 	-- icons
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 
 	{
 		-- vs-code like icons for autocompletion
@@ -256,7 +245,7 @@ return {
 	{
 		-- list view for diagnostics
 		"folke/trouble.nvim",
-		dependencies = "kyazdani42/nvim-web-devicons",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		cmd = { "Trouble" },
 		config = function()
 			require("ssysoev.plugins.lsp.trouble")

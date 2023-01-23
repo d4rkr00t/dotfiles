@@ -83,7 +83,9 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 		}),
 
 		experimental = {
-			ghost_text = true,
+			ghost_text = {
+				hl_group = "LspCodeLens",
+			},
 		},
 
 		-- configure lspkind for vs-code like icons

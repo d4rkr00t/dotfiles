@@ -105,6 +105,15 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
 
+	-- better vim.ui
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			require("ssysoev.plugins.dressing")
+		end,
+	},
+
 	--
 	-- fuzzy finder
 	--

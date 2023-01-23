@@ -1,15 +1,11 @@
--- local safe_require = require("ssysoev.utils.safe-require")
--- safe_require({ "Comment", "ts_context_commentstring.integrations.comment_nvim" }, function(mods)
--- 	local comment = mods.Comment
--- 	local tsContextCommentString = mods["ts_context_commentstring.integrations.comment_nvim"]
--- 	comment.setup({
--- 		pre_hook = tsContextCommentString.create_pre_hook(),
--- 	})
--- end)
-
 local safe_require = require("ssysoev.utils.safe-require")
-safe_require({ "Comment" }, function(mods)
-	local comment = mods.Comment
+safe_require({ "mini.comment" }, function(mods)
+	local comment = mods["mini.comment"]
 	comment.setup({
+		hooks = {
+			pre = function()
+				require("ts_context_commentstring.internal").update_commentstring({})
+			end,
+		},
 	})
 end)

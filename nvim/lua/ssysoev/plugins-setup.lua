@@ -146,11 +146,14 @@ return {
 
 	{
 		-- commenting with gc
-		"numToStr/Comment.nvim",
+		"echasnovski/mini.comment",
 		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.comment")
 		end,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
 	},
 
 	-- highlight and list todos
@@ -293,9 +296,6 @@ return {
 
 	-- additional text objects from treesitter
 	"nvim-treesitter/nvim-treesitter-textobjects",
-
-	-- setting commentstring settings depending on cursor position in a file
-	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	{
 		-- keeps current context visible e.g. function declaration, same as in vscode

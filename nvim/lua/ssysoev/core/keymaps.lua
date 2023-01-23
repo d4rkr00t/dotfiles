@@ -341,13 +341,6 @@ safe_reqiure({ "command_center" }, function(mods)
 			mode = cc.mode.ADD,
 		},
 
-		{
-			desc = "Toggle block comment",
-			cmd = "<Plug>(comment_toggle_blockwise_visual)<cr>",
-			keys = { "n", "gbc", noremap },
-			mode = cc.mode.ADD,
-		},
-
 		-- todo-comments
 		{
 			desc = "Show todo comments in a project",

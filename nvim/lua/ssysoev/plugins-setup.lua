@@ -20,8 +20,6 @@ return {
 
 	-- colorscheme
 	{ "EdenEast/nightfox.nvim", lazy = true },
-	{ "Yazeed1s/oh-lucy.nvim", lazy = true },
-	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
 
@@ -69,7 +67,7 @@ return {
 	},
 
 	-- icons
-	"nvim-tree/nvim-web-devicons",
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
 	{
 		-- vs-code like icons for autocompletion
@@ -266,15 +264,6 @@ return {
 		cmd = { "SymbolsOutline" },
 		config = function()
 			require("ssysoev.plugins.lsp.symbols-outline")
-		end,
-	},
-
-	{
-		-- pretty ui for references / definitions / etc...
-		"dnlhc/glance.nvim",
-		cmd = { "Glance" },
-		config = function()
-			require("ssysoev.plugins.glance")
 		end,
 	},
 

@@ -35,15 +35,6 @@ elseif theme == "oxocarbon" then
 	safe_require({ "oxocarbon" }, function()
 		pcall(vim.cmd, "colorscheme oxocarbon")
 	end)
---
---
--- oh lucy
---
---
-elseif theme == "oh-lucy" then
-	safe_require({ "oh-lucy" }, function()
-		pcall(vim.cmd, "colorscheme oh-lucy")
-	end)
 
 --
 --
@@ -79,22 +70,6 @@ elseif theme == "catppuccin" then
 				},
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
-		})
-	end)
-
---
---
--- rose-pine
---
---
-elseif theme == "rose-pine" then
-	safe_require({ "rose-pine" }, function(mods)
-		local rose = mods["rose-pine"]
-
-		pcall(vim.cmd, "colorscheme rose-pine")
-
-		rose.setup({
-			dark_variant = "moon",
 		})
 	end)
 end

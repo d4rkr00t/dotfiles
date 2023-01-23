@@ -14,24 +14,19 @@ local on_attach = function(ient, buffer)
 		cc.add({
 			{
 				desc = "Show definitions",
-				cmd = "<cmd>Glance definitions<CR>",
+				cmd = "<cmd>Telescope lsp_definitions<CR>",
 				keys = { "n", "gd", opts },
 			},
 
 			{
 				desc = "Show references",
-				cmd = "<cmd>Glance references<CR>",
+				cmd = "<cmd>Telescope lsp_references<CR>",
 				keys = { "n", "gr", opts },
 			},
 
 			{
 				desc = "Show implementation",
-				cmd = "<cmd>Glance implementations<CR>",
-			},
-
-			{
-				desc = "Show type definitions",
-				cmd = "<cmd>Glance type_definitions<CR>",
+				cmd = "<cmd>Telescope lsp_implementations<CR>",
 			},
 
 			{

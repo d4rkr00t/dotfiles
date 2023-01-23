@@ -64,35 +64,6 @@ safe_require({ "nvim-treesitter.configs" }, function(mods)
 			enable = true,
 		},
 
-		textobjects = {
-			select = {
-				enable = true,
-				lookahead = true,
-
-				keymaps = {
-					["af"] = "@function.outer",
-					["if"] = "@function.inner",
-					["ab"] = "@block.outer",
-					["ib"] = "@block.inner",
-					["aa"] = "@parameter.outer",
-					["ia"] = "@parameter.inner",
-				},
-			},
-
-			move = {
-				enable = true,
-				set_jumps = true, -- whether to set jumps in the jumplist
-				goto_next_start = {
-					["]f"] = "@function.outer",
-					["]c"] = "@class.outer",
-				},
-				goto_previous_start = {
-					["[f"] = "@function.outer",
-					["[c"] = "@class.outer",
-				},
-			},
-		},
-
 		context_commentstring = {
 			enable = true,
 		},

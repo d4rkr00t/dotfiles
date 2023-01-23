@@ -147,7 +147,7 @@ return {
 	{
 		-- commenting with gc
 		"echasnovski/mini.comment",
-		event = "VeryLazy",
+		keys = { "gc" },
 		config = function()
 			require("ssysoev.plugins.comment")
 		end,
@@ -176,6 +176,27 @@ return {
 
 	-- automatically create missing folders on file save
 	{ "jghauser/mkdir.nvim" },
+
+	-- better text-objects
+	{
+		"echasnovski/mini.ai",
+		keys = {
+			{ "a", mode = { "x", "o" } },
+			{ "i", mode = { "x", "o" } },
+		},
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				init = function()
+					-- no need to load the plugin, since we only need its queries
+					require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+				end,
+			},
+		},
+		config = function()
+			require("ssysoev.plugins.mini-ai")
+		end,
+	},
 
 	--
 	-- copilot
@@ -293,9 +314,6 @@ return {
 			require("ssysoev.plugins.treesitter")
 		end,
 	},
-
-	-- additional text objects from treesitter
-	"nvim-treesitter/nvim-treesitter-textobjects",
 
 	{
 		-- keeps current context visible e.g. function declaration, same as in vscode

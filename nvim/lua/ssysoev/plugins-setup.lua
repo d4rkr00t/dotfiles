@@ -147,22 +147,13 @@ return {
 	{
 		-- commenting with gc
 		"echasnovski/mini.comment",
-		keys = { "gc" },
+		event = "VeryLazy",
 		config = function()
 			require("ssysoev.plugins.comment")
 		end,
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
-	},
-
-	-- highlight and list todos
-	{
-		"folke/todo-comments.nvim",
-		cmd = { "TodoTelescope" },
-		config = function()
-			require("ssysoev.plugins.todo-comments")
-		end,
 	},
 
 	{

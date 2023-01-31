@@ -24,20 +24,6 @@ return {
 	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
 
 	{
-		-- winbar, top panel with context like in vscode
-		"utilyre/barbecue.nvim",
-		commit = "91da47d44b70dd9cad05fe6831d0238fb971077f",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"smiteshp/nvim-navic",
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("ssysoev.plugins.barbecue")
-		end,
-	},
-
-	{
 		-- better quickfix list
 		url = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
 		event = "VeryLazy",
@@ -261,6 +247,15 @@ return {
 
 			-- bridges gap b/w mason & null-ls
 			"jayp0521/mason-null-ls.nvim",
+
+			{
+				"glepnir/lspsaga.nvim",
+				event = "BufRead",
+				config = function()
+					require("ssysoev.plugins.lsp.lspsaga")
+				end,
+				dependencies = { { "nvim-tree/nvim-web-devicons" } },
+			},
 		},
 	},
 

@@ -89,9 +89,7 @@ local on_attach = function(ient, buffer)
 
 			{
 				desc = "Show documentation",
-				cmd = function()
-					vim.lsp.buf.hover()
-				end,
+				cmd = "<cmd>Lspsaga hover_doc<CR>",
 				keys = { "n", "K", opts },
 			},
 
@@ -121,9 +119,18 @@ local on_attach = function(ient, buffer)
 end
 
 local util = require("lspconfig.util")
+local diagnostics_signs = {
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
+}
+
+for _, sign in ipairs(diagnostics_signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
 
 vim.diagnostic.config({
-	signs = true,
 	update_in_insert = true,
 	underline = true,
 	float = {
@@ -133,6 +140,9 @@ vim.diagnostic.config({
 		source = "always",
 		header = "",
 		prefix = "",
+	},
+	signs = {
+		active = diagnostics_signs,
 	},
 	virtual_text = {
 		spacing = 4,
@@ -154,6 +164,12 @@ local config = {
 					root_dir = function(fname)
 						return util.root_pattern(".git")(fname)
 					end,
+					init_options = {
+						maxTsServerMemory = 12288,
+						preferences = {
+							importModuleSpecifierPreference = "relative",
+						},
+					},
 					server = {
 						capabilities = cmp_nvim_lsp.default_capabilities(),
 						on_attach = function(client, bufrn)
@@ -183,20 +199,25 @@ local config = {
 	sumneko_lua = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)
+			local runtime_path = vim.split(package.path, ";")
+			table.insert(runtime_path, "lua/?.lua")
+			table.insert(runtime_path, "lua/?/init.lua")
+
 			lspconfig["sumneko_lua"].setup(merge_tables(defaults, {
 				on_attach = on_attach,
 				settings = { -- custom settings for lua
 					Lua = {
+						runtime = {
+							version = "LuaJIT",
+							path = runtime_path,
+						},
 						-- make the language server recognize "vim" global
 						diagnostics = {
 							globals = { "vim" },
 						},
 						workspace = {
-							-- make language server aware of runtime files
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
-							},
+							library = vim.api.nvim_get_runtime_file("", true),
+							checkThirdParty = false,
 						},
 					},
 				},

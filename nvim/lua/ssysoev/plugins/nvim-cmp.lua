@@ -78,7 +78,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 			{ name = "nvim_lsp" }, -- lsp data completion
 			{ name = "luasnip" }, -- snippets
 			{ name = "copilot" }, -- copilot data source
-			{ name = "buffer" }, -- text within current buffer
+			{ name = "buffer", keyword_length = 5 }, -- text within current buffer
 			{ name = "path" }, -- file system paths
 		}),
 
@@ -99,6 +99,12 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 				mode = "symbol_text",
 				maxwidth = 60,
 				ellipsis_char = "...",
+				menu = {
+					buffer = "[buf]",
+					nvim_lsp = "[lsp]",
+					copilot = "[copilot]",
+					luasnip = "[snip]",
+				},
 			}),
 		},
 	})

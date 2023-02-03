@@ -19,9 +19,21 @@ local on_attach = function(ient, buffer)
 			},
 
 			{
+				desc = "Peek definitions",
+				cmd = "<cmd>Lspsaga peek_definition<CR>",
+				keys = { "n", "gpd", opts },
+			},
+
+			{
 				desc = "Show references",
 				cmd = "<cmd>Telescope lsp_references<CR>",
 				keys = { "n", "gr", opts },
+			},
+
+			{
+				desc = "Show references [lspsaga]",
+				cmd = "<cmd>Lspsaga lsp_finder<CR>",
+				keys = { "n", "gR", opts },
 			},
 
 			{
@@ -89,7 +101,9 @@ local on_attach = function(ient, buffer)
 
 			{
 				desc = "Show documentation",
-				cmd = "<cmd>Lspsaga hover_doc<CR>",
+				cmd = function()
+					vim.lsp.buf.hover()
+				end,
 				keys = { "n", "K", opts },
 			},
 
@@ -225,6 +239,22 @@ local config = {
 		end,
 	},
 
+	rust_analyzer = {
+		type = "lsp",
+		setup_lsp = function(lspconfig, defaults)
+			lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
+				on_attach = on_attach,
+				settings = {
+					["rust-analyzer"] = {
+						files = {
+							excludeDirs = { "__example__" },
+						},
+					},
+				},
+			}))
+		end,
+	},
+
 	prettier = {
 		type = "formatter",
 		setup_formatter = function()
@@ -239,7 +269,6 @@ local config = {
 	html = { type = "lsp" },
 	cssls = { type = "lsp" },
 	pylsp = { type = "lsp" },
-	rust_analyzer = { type = "lsp" },
 	rustfmt = { type = "formatter" },
 	gopls = { type = "lsp" },
 	goimports = { type = "formatter" },

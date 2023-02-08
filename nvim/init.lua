@@ -7,7 +7,8 @@ vim.g.mapleader = ","
 --
 
 -- colorscheme
-vim.g.THEME = "carbonfox"
+vim.g.THEME = "material"
+-- vim.g.THEME = "carbonfox"
 -- vim.g.THEME = "catppuccin"
 --
 

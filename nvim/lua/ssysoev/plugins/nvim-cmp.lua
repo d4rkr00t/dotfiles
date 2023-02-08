@@ -88,6 +88,11 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 			},
 		},
 
+		window = {
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		},
+
 		-- configure lspkind for vs-code like icons
 		formatting = {
 			fields = {
@@ -96,7 +101,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 				cmp.ItemField.Menu,
 			},
 			format = lspkind.cmp_format({
-				mode = "symbol_text",
 				maxwidth = 60,
 				ellipsis_char = "...",
 				menu = {

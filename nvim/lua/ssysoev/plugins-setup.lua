@@ -22,6 +22,7 @@ return {
 	{ "EdenEast/nightfox.nvim", lazy = true },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
+	{ "marko-cerovac/material.nvim", lazy = true },
 
 	{
 		-- better quickfix list

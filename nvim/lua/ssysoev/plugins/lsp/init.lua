@@ -273,7 +273,7 @@ local config = {
 	gopls = { type = "lsp" },
 	goimports = { type = "formatter" },
 	gofmt = { type = "formatter" },
-	eslint_d = { type = "formatter" },
+	eslint = { type = "formatter" },
 	gitsigns = { type = "formatter" },
 }
 

@@ -3,7 +3,7 @@ local merge_tables = require("ssysoev.utils.merge-tables")
 local safe_require = require("ssysoev.utils.safe-require")
 
 -- enable keybindings for attached lsp servers
-local on_attach = function(ient, buffer)
+local on_attach = function(client, buffer)
 	-- set keybinds
 	safe_require({ "command_center" }, function(mods)
 		local cc = mods.command_center
@@ -210,14 +210,14 @@ local config = {
 		end,
 	},
 
-	sumneko_lua = {
+	lua_ls = {
 		type = "lsp",
 		setup_lsp = function(lspconfig, defaults)
 			local runtime_path = vim.split(package.path, ";")
 			table.insert(runtime_path, "lua/?.lua")
 			table.insert(runtime_path, "lua/?/init.lua")
 
-			lspconfig["sumneko_lua"].setup(merge_tables(defaults, {
+			lspconfig["lua_ls"].setup(merge_tables(defaults, {
 				on_attach = on_attach,
 				settings = { -- custom settings for lua
 					Lua = {

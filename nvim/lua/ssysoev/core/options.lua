@@ -70,3 +70,5 @@ opt.listchars = { tab = " ", trail = "·" }
 -- undo
 opt.undofile = true
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
+
+vim.cmd("highlight Normal ctermbg=none guibg=none")

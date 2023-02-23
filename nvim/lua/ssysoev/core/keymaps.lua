@@ -195,32 +195,26 @@ safe_reqiure({ "command_center" }, function(mods)
 		-- telescope
 		{
 			desc = "Telescope find files",
-			cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
+			cmd = "<cmd>Telescope find_files hidden=true previewer=false<CR>",
 			keys = { "n", "<leader>ff", noremap },
 		},
 
 		{
 			desc = "Telescope smart open",
-			cmd = "<cmd>Telescope smart_open cwd_only=true theme=ivy<CR>",
+			cmd = "<cmd>Telescope smart_open cwd_only=true previewer=false<CR>",
 			keys = { "n", "<leader>o", noremap },
 		},
 
 		{
 			desc = "Telescope git files",
-			cmd = "<cmd>Telescope git_files theme=ivy<CR>",
+			cmd = "<cmd>Telescope git_files previewer=false<CR>",
 			keys = { "n", "<leader>fg", noremap },
 		},
 
 		{
 			desc = "Telescope buffers",
-			cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
+			cmd = "<cmd>Telescope buffers only_cwd=true<CR>",
 			keys = { "n", "<leader>b", noremap },
-		},
-
-		{
-			desc = "Telescope old find",
-			cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
-			keys = { "n", "<leader>fp", noremap },
 		},
 
 		{
@@ -237,30 +231,30 @@ safe_reqiure({ "command_center" }, function(mods)
 
 		{
 			desc = "Telescope diagnostics",
-			cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
+			cmd = "<cmd>Telescope diagnostics<CR>",
 		},
 
 		{
 			desc = "Telescope git status",
-			cmd = "<cmd>Telescope git_status theme=ivy<CR>",
+			cmd = "<cmd>Telescope git_status<CR>",
 			keys = { "n", "<leader>gs", noremap },
 		},
 
 		{
 			desc = "Telescope restore previous picker",
-			cmd = "<cmd>Telescope pickers theme=ivy<CR>",
+			cmd = "<cmd>Telescope pickers<CR>",
 			keys = { "n", "<leader>fr", noremap },
 		},
 
 		{
 			desc = "Telescope search help tags",
-			cmd = "<cmd>Telescope help_tags theme=ivy<CR>",
+			cmd = "<cmd>Telescope help_tags<CR>",
 			keys = { "n", "<leader>fh", noremap },
 		},
 
 		{
 			desc = "Telescope search commands",
-			cmd = "<cmd>Telescope commands theme=dropdown<CR>",
+			cmd = "<cmd>Telescope commands<CR>",
 			keys = { "n", "<leader>fc", noremap },
 		},
 

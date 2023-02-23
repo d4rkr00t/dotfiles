@@ -228,7 +228,7 @@
   # Moved lines of code are colored differently.
   colorMoved = default
   # removes a/ and b/ prefixes from file names
-  noprefix = true
+  noprefix = false
 
 # URL shorthands
 [url "git@github.com:"]

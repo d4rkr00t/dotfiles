@@ -72,14 +72,6 @@ return {
 	},
 
 	{
-		--  indentation guides to all lines
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("ssysoev.plugins.indent-blankline")
-		end,
-	},
-
-	{
 		-- extra nice uis for popup menus / inputs / etc
 		"folke/noice.nvim",
 		config = function()

@@ -21,6 +21,7 @@ return {
 	-- colorscheme
 	{ "EdenEast/nightfox.nvim", lazy = true },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
+	{ "folke/tokyonight.nvim", lazy = true },
 
 	{
 		-- better quickfix list

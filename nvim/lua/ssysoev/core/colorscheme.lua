@@ -28,6 +28,19 @@ if theme == "carbonfox" then
 
 --
 --
+-- tokyonight
+--
+--
+elseif theme == "tokyonight" then
+	safe_require({ "tokyonight" }, function(mods)
+		mods.tokyonight.setup({
+			style = "night",
+		})
+		pcall(vim.cmd, "colorscheme tokyonight")
+	end)
+
+--
+--
 -- catppuccin
 --
 --

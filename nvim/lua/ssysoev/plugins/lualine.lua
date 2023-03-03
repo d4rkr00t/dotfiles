@@ -5,6 +5,8 @@ if not setup then
 	return
 end
 
+local theme = vim.g.THEME
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -33,39 +35,41 @@ local colors = {
 	},
 }
 
-local themed_colors = safe_require({ "nightfox" }, function()
-	local theme_name = vim.g.THEME
-	local status, s = pcall(require("nightfox.spec").load, theme_name)
-	if not status then
-		s = require("nightfox.spec").load("nightfox")
-	end
-	return {
-		bg = s.bg0,
-		fg = s.fg1,
-		yellow = s.palette.yellow.base,
-		cyan = s.palette.cyan.base,
-		darkblue = s.palette.blue.dim,
-		green = s.palette.green.base,
-		orange = s.palette.orange.base,
-		pink = s.palette.pink.base,
-		magenta = s.palette.magenta.base,
-		blue = s.palette.blue.base,
-		red = s.palette.red.base,
-		git = {
-			added = s.git.add,
-			modified = s.git.changed,
-			removed = s.git.removed,
-		},
-		diag = {
-			error = s.diag.error,
-			warn = s.diag.warn,
-			info = s.diag.info,
-		},
-	}
-end)
+if theme == "carbonfox" then
+	local themed_colors = safe_require({ "nightfox" }, function()
+		local theme_name = vim.g.THEME
+		local status, s = pcall(require("nightfox.spec").load, theme_name)
+		if not status then
+			s = require("nightfox.spec").load("nightfox")
+		end
+		return {
+			bg = s.bg0,
+			fg = s.fg1,
+			yellow = s.palette.yellow.base,
+			cyan = s.palette.cyan.base,
+			darkblue = s.palette.blue.dim,
+			green = s.palette.green.base,
+			orange = s.palette.orange.base,
+			pink = s.palette.pink.base,
+			magenta = s.palette.magenta.base,
+			blue = s.palette.blue.base,
+			red = s.palette.red.base,
+			git = {
+				added = s.git.add,
+				modified = s.git.changed,
+				removed = s.git.removed,
+			},
+			diag = {
+				error = s.diag.error,
+				warn = s.diag.warn,
+				info = s.diag.info,
+			},
+		}
+	end)
 
-if themed_colors then
-	colors = themed_colors
+	if themed_colors then
+		colors = themed_colors
+	end
 end
 
 local conditions = {

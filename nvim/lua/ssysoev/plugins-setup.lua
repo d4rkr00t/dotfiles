@@ -20,8 +20,8 @@ return {
 
   -- colorscheme
   { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "folke/tokyonight.nvim", lazy = true },
+  { "catppuccin/nvim",        name = "catppuccin", lazy = true },
+  { "folke/tokyonight.nvim",  lazy = true },
 
   {
     -- better quickfix list
@@ -103,10 +103,10 @@ return {
       "nvim-telescope/telescope-live-grep-args.nvim",
       -- keymaps util and help
       "FeiyouG/command_center.nvim",
-      {
-        "danielfalk/smart-open.nvim",
-        dependencies = { "tami5/sqlite.lua" },
-      },
+      -- {
+      --   "danielfalk/smart-open.nvim",
+      --   dependencies = { "tami5/sqlite.lua" },
+      -- },
     },
     config = function()
       require("ssysoev.plugins.telescope")
@@ -170,16 +170,16 @@ return {
   --
   -- copilot
   --
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = { "Copilot" },
-    event = "InsertEnter",
-    config = function()
-      vim.schedule(function()
-        require("ssysoev.plugins.copilot")
-      end)
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = { "Copilot" },
+  --   event = "InsertEnter",
+  --   config = function()
+  --     vim.schedule(function()
+  --       require("ssysoev.plugins.copilot")
+  --     end)
+  --   end,
+  -- },
 
   --
   -- completion

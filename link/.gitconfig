@@ -259,3 +259,5 @@
 	eventTarget = /Users/ssysoev/.gittrace/dump
 	configparams = custom.metacommands
 	eventBrief = true
+[init]
+	defaultBranch = main

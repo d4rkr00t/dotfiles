@@ -66,6 +66,7 @@ alias y="yarn"
 #
 
 alias p3="python3"
+alias python="python3"
 
 #
 # Listing — LS

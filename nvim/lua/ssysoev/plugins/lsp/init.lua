@@ -4,6 +4,9 @@ local safe_require = require("ssysoev.utils.safe-require")
 
 -- enable keybindings for attached lsp servers
 local on_attach = function(client, buffer)
+  -- disable semantic highlighting
+  client.server_capabilities.semanticTokensProvider = nil
+
   -- set keybinds
   safe_require({ "command_center" }, function(mods)
     local cc = mods.command_center

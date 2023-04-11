@@ -195,25 +195,25 @@ safe_reqiure({ "command_center" }, function(mods)
     -- telescope
     {
       desc = "Telescope find files",
-      cmd = "<cmd>Telescope find_files hidden=true<CR>",
+      cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
       keys = { "n", "<leader>ff", noremap },
     },
 
     {
       desc = "Telescope open recent",
-      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 
     {
       desc = "Telescope git files",
-      cmd = "<cmd>Telescope git_files<CR>",
+      cmd = "<cmd>Telescope git_files theme=ivy<CR>",
       keys = { "n", "<leader>fg", noremap },
     },
 
     {
       desc = "Telescope buffers",
-      cmd = "<cmd>Telescope buffers only_cwd=true<CR>",
+      cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
       keys = { "n", "<leader>b", noremap },
     },
 
@@ -231,30 +231,30 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Telescope diagnostics",
-      cmd = "<cmd>Telescope diagnostics<CR>",
+      cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
     },
 
     {
       desc = "Telescope git status",
-      cmd = "<cmd>Telescope git_status<CR>",
+      cmd = "<cmd>Telescope git_status theme=ivy<CR>",
       keys = { "n", "<leader>gs", noremap },
     },
 
     {
       desc = "Telescope restore previous picker",
-      cmd = "<cmd>Telescope pickers<CR>",
+      cmd = "<cmd>Telescope pickers theme=ivy<CR>",
       keys = { "n", "<leader>fr", noremap },
     },
 
     {
       desc = "Telescope search help tags",
-      cmd = "<cmd>Telescope help_tags<CR>",
+      cmd = "<cmd>Telescope help_tags theme=ivy<CR>",
       keys = { "n", "<leader>fh", noremap },
     },
 
     {
       desc = "Telescope search commands",
-      cmd = "<cmd>Telescope commands<CR>",
+      cmd = "<cmd>Telescope commands theme=ivy<CR>",
       keys = { "n", "<leader>fc", noremap },
     },
 

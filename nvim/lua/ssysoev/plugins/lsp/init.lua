@@ -135,9 +135,9 @@ end
 local util = require("lspconfig.util")
 local diagnostics_signs = {
   { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn",  text = "" },
-  { name = "DiagnosticSignHint",  text = "" },
-  { name = "DiagnosticSignInfo",  text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(diagnostics_signs) do
@@ -272,6 +272,8 @@ local config = {
   gofmt = { type = "formatter" },
   eslint = { type = "formatter" },
   gitsigns = { type = "formatter" },
+  stylua = { type = "formatter" },
+  autopep8 = { type = "formatter" },
 }
 
 bootstrap(config, on_attach)

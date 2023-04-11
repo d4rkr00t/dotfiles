@@ -22,6 +22,12 @@ return {
   { "EdenEast/nightfox.nvim", lazy = true },
   { "catppuccin/nvim",        name = "catppuccin", lazy = true },
   { "folke/tokyonight.nvim",  lazy = true },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({})
+    end
+  },
 
   {
     -- better quickfix list
@@ -170,16 +176,17 @@ return {
   --
   -- copilot
   --
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = { "Copilot" },
-  --   event = "InsertEnter",
-  --   config = function()
-  --     vim.schedule(function()
-  --       require("ssysoev.plugins.copilot")
-  --     end)
-  --   end,
-  -- },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = { "Copilot" },
+    event = "InsertEnter",
+    cond = false,
+    config = function()
+      vim.schedule(function()
+        require("ssysoev.plugins.copilot")
+      end)
+    end,
+  },
 
   --
   -- completion

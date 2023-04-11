@@ -4,277 +4,274 @@ local safe_require = require("ssysoev.utils.safe-require")
 
 -- enable keybindings for attached lsp servers
 local on_attach = function(client, buffer)
-	-- set keybinds
-	safe_require({ "command_center" }, function(mods)
-		local cc = mods.command_center
+  -- set keybinds
+  safe_require({ "command_center" }, function(mods)
+    local cc = mods.command_center
 
-		-- keybind options
-		local opts = { noremap = true, silent = true, buffer = buffer }
+    -- keybind options
+    local opts = { noremap = true, silent = true, buffer = buffer }
 
-		cc.add({
-			{
-				desc = "Show definitions",
-				cmd = "<cmd>Telescope lsp_definitions<CR>",
-				keys = { "n", "gd", opts },
-			},
+    cc.add({
+      {
+        desc = "Show definitions",
+        cmd = "<cmd>Telescope lsp_definitions<CR>",
+        keys = { "n", "gd", opts },
+      },
 
-			{
-				desc = "Peek definitions",
-				cmd = "<cmd>Lspsaga peek_definition<CR>",
-				keys = { "n", "gpd", opts },
-			},
+      {
+        desc = "Peek definitions",
+        cmd = "<cmd>Lspsaga peek_definition<CR>",
+        keys = { "n", "gpd", opts },
+      },
 
-			{
-				desc = "Show references",
-				cmd = "<cmd>Telescope lsp_references<CR>",
-				keys = { "n", "gr", opts },
-			},
+      {
+        desc = "Show references",
+        cmd = "<cmd>Telescope lsp_references<CR>",
+        keys = { "n", "gr", opts },
+      },
 
-			{
-				desc = "Show references [lspsaga]",
-				cmd = "<cmd>Lspsaga lsp_finder<CR>",
-				keys = { "n", "gR", opts },
-			},
+      {
+        desc = "Show references [lspsaga]",
+        cmd = "<cmd>Lspsaga lsp_finder<CR>",
+        keys = { "n", "gR", opts },
+      },
 
-			{
-				desc = "Show implementation",
-				cmd = "<cmd>Telescope lsp_implementations<CR>",
-			},
+      {
+        desc = "Show implementation",
+        cmd = "<cmd>Telescope lsp_implementations<CR>",
+      },
 
-			{
-				desc = "Go to declaration",
-				cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
-				keys = { "n", "gD", opts },
-			},
+      {
+        desc = "Go to declaration",
+        cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
+        keys = { "n", "gD", opts },
+      },
 
-			{
-				desc = "Go to implementation",
-				cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
-				keys = { "n", "gi", opts },
-			},
+      {
+        desc = "Go to implementation",
+        cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
+        keys = { "n", "gi", opts },
+      },
 
-			{
-				desc = "Code actions",
-				cmd = function()
-					vim.lsp.buf.code_action()
-				end,
-				keys = { "n", "<leader>ca", opts },
-			},
+      {
+        desc = "Code actions",
+        cmd = function()
+          vim.lsp.buf.code_action()
+        end,
+        keys = { "n", "<leader>ca", opts },
+      },
 
-			{
-				desc = "Smart rename",
-				cmd = vim.lsp.buf.rename,
-				keys = { "n", "<leader>rn", opts },
-			},
+      {
+        desc = "Smart rename",
+        cmd = vim.lsp.buf.rename,
+        keys = { "n", "<leader>rn", opts },
+      },
 
-			{
-				desc = "Show line diagnostics",
-				cmd = function()
-					local float_opts = {
-						focusable = true,
-						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-						border = "rounded",
-						source = "always",
-						prefix = " ",
-						scope = "line",
-					}
-					vim.diagnostic.open_float(nil, float_opts)
-				end,
-				keys = { "n", "<leader>d", opts },
-			},
+      {
+        desc = "Show line diagnostics",
+        cmd = function()
+          local float_opts = {
+            focusable = true,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = "rounded",
+            source = "always",
+            prefix = " ",
+            scope = "line",
+          }
+          vim.diagnostic.open_float(nil, float_opts)
+        end,
+        keys = { "n", "<leader>d", opts },
+      },
 
-			{
-				desc = "Jump to previous diagnostic",
-				cmd = function()
-					vim.diagnostic.goto_prev()
-				end,
-				keys = { "n", "[d", opts },
-			},
+      {
+        desc = "Jump to previous diagnostic",
+        cmd = function()
+          vim.diagnostic.goto_prev()
+        end,
+        keys = { "n", "[d", opts },
+      },
 
-			{
-				desc = "Jump to next diagnostic",
-				cmd = function()
-					vim.diagnostic.goto_next()
-				end,
-				keys = { "n", "]d", opts },
-			},
+      {
+        desc = "Jump to next diagnostic",
+        cmd = function()
+          vim.diagnostic.goto_next()
+        end,
+        keys = { "n", "]d", opts },
+      },
 
-			{
-				desc = "Show documentation",
-				cmd = function()
-					vim.lsp.buf.hover()
-				end,
-				keys = { "n", "K", opts },
-			},
+      {
+        desc = "Show documentation",
+        cmd = function()
+          vim.lsp.buf.hover()
+        end,
+        keys = { "n", "K", opts },
+      },
 
-			{
-				desc = "Highlight occurences of the word under cursor",
-				cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
-				keys = { "n", "<leader>hh", opts },
-			},
+      {
+        desc = "Highlight occurences of the word under cursor",
+        cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
+        keys = { "n", "<leader>hh", opts },
+      },
 
-			{
-				desc = "Signature documentation",
-				cmd = vim.lsp.buf.signature_help,
-				keys = { "i", "<C-k>", opts },
-			},
-		})
-	end)
+      {
+        desc = "Signature documentation",
+        cmd = vim.lsp.buf.signature_help,
+        keys = { "i", "<C-k>", opts },
+      },
+    })
+  end)
 
-	vim.api.nvim_exec(
-		[[
+  vim.api.nvim_exec(
+    [[
           augroup lsp_document_highlight
           autocmd! * <buffer>
           autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
           augroup END
     ]],
-		false
-	)
+    false
+  )
 end
 
 local util = require("lspconfig.util")
 local diagnostics_signs = {
-	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "" },
 }
 
 for _, sign in ipairs(diagnostics_signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
 vim.diagnostic.config({
-	update_in_insert = true,
-	underline = true,
-	float = {
-		focusable = true,
-		style = "full",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-	signs = {
-		active = diagnostics_signs,
-	},
-	virtual_text = {
-		spacing = 4,
-		prefix = "",
-		severity = vim.diagnostic.severity.ERROR,
-	},
+  update_in_insert = true,
+  underline = true,
+  float = {
+    focusable = true,
+    style = "full",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+  signs = {
+    active = diagnostics_signs,
+  },
+  virtual_text = {
+    spacing = 4,
+    prefix = "",
+    severity = vim.diagnostic.severity.ERROR,
+  },
 })
 
 local config = {
-	tsserver = {
-		type = "lsp",
-		setup_lsp = function()
-			safe_require({ "typescript", "cmp_nvim_lsp", "null-ls" }, function(mods)
-				local typescript = mods.typescript
-				local cmp_nvim_lsp = mods.cmp_nvim_lsp
-				local null_ls = mods["null-ls"]
+  tsserver = {
+    type = "lsp",
+    setup_lsp = function()
+      safe_require({ "typescript", "cmp_nvim_lsp", "null-ls" }, function(mods)
+        local typescript = mods.typescript
+        local cmp_nvim_lsp = mods.cmp_nvim_lsp
+        local null_ls = mods["null-ls"]
 
-				typescript.setup({
-					root_dir = function(fname)
-						return util.root_pattern(".git")(fname)
-					end,
-					init_options = {
-						maxTsServerMemory = 12288,
-						preferences = {
-							importModuleSpecifierPreference = "relative",
-						},
-					},
-					server = {
-						capabilities = cmp_nvim_lsp.default_capabilities(),
-						on_attach = function(client, bufrn)
-							safe_require({ "twoslash-queries", "command_center" }, function(nested_mods)
-								local cc = nested_mods["command_center"]
-								nested_mods["twoslash-queries"].attach(client, bufrn)
+        typescript.setup({
+          init_options = {
+            maxTsServerMemory = 12288,
+            preferences = {
+              importModuleSpecifierPreference = "relative",
+            },
+          },
+          server = {
+            root_dir = function(fname)
+              return util.root_pattern(".git")(fname)
+            end,
+            capabilities = cmp_nvim_lsp.default_capabilities(),
+            on_attach = function(client, bufrn)
+              safe_require({ "twoslash-queries", "command_center" }, function(nested_mods)
+                local cc = nested_mods["command_center"]
+                nested_mods["twoslash-queries"].attach(client, bufrn)
 
-								cc.add({
-									{
-										desc = "Inspect with TwoslashQueries",
-										cmd = "<cmd>InspectTwoslashQueries<CR>",
-										keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = bufrn } },
-									},
-								})
-							end)
-							on_attach(client, bufrn)
-						end,
-					},
-				})
+                cc.add({
+                  {
+                    desc = "Inspect with TwoslashQueries",
+                    cmd = "<cmd>InspectTwoslashQueries<CR>",
+                    keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = bufrn } },
+                  },
+                })
+              end)
+              on_attach(client, bufrn)
+            end,
+          },
+        })
 
-				-- custom sources
-				null_ls.register(require("typescript.extensions.null-ls.code-actions"))
-			end)
-		end,
-	},
+        -- custom sources
+        null_ls.register(require("typescript.extensions.null-ls.code-actions"))
+      end)
+    end,
+  },
+  lua_ls = {
+    type = "lsp",
+    setup_lsp = function(lspconfig, defaults)
+      local runtime_path = vim.split(package.path, ";")
+      table.insert(runtime_path, "lua/?.lua")
+      table.insert(runtime_path, "lua/?/init.lua")
 
-	lua_ls = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			local runtime_path = vim.split(package.path, ";")
-			table.insert(runtime_path, "lua/?.lua")
-			table.insert(runtime_path, "lua/?/init.lua")
-
-			lspconfig["lua_ls"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-				settings = { -- custom settings for lua
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-							path = runtime_path,
-						},
-						-- make the language server recognize "vim" global
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							library = vim.api.nvim_get_runtime_file("", true),
-							checkThirdParty = false,
-						},
-					},
-				},
-			}))
-		end,
-	},
-
-	rust_analyzer = {
-		type = "lsp",
-		setup_lsp = function(lspconfig, defaults)
-			lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
-				on_attach = on_attach,
-				settings = {
-					["rust-analyzer"] = {
-						files = {
-							excludeDirs = { "__example__" },
-						},
-					},
-				},
-			}))
-		end,
-	},
-
-	prettier = {
-		type = "formatter",
-		setup_formatter = function()
-			local null_ls = require("null-ls")
-			null_ls.register(null_ls.builtins.formatting.prettier.with({
-				extra_filetypes = { "map", "svelte" },
-			}))
-		end,
-	},
-
-	jsonls = { type = "lsp" },
-	html = { type = "lsp" },
-	cssls = { type = "lsp" },
-	pylsp = { type = "lsp" },
-	rustfmt = { type = "formatter" },
-	gopls = { type = "lsp" },
-	goimports = { type = "formatter" },
-	gofmt = { type = "formatter" },
-	eslint = { type = "formatter" },
-	gitsigns = { type = "formatter" },
+      lspconfig["lua_ls"].setup(merge_tables(defaults, {
+        on_attach = on_attach,
+        settings = {
+          -- custom settings for lua
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+              path = runtime_path,
+            },
+            -- make the language server recognize "vim" global
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+          },
+        },
+      }))
+    end,
+  },
+  rust_analyzer = {
+    type = "lsp",
+    setup_lsp = function(lspconfig, defaults)
+      lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
+        on_attach = on_attach,
+        settings = {
+          ["rust-analyzer"] = {
+            files = {
+              excludeDirs = { "__example__" },
+            },
+          },
+        },
+      }))
+    end,
+  },
+  prettier = {
+    type = "formatter",
+    setup_formatter = function()
+      local null_ls = require("null-ls")
+      null_ls.register(null_ls.builtins.formatting.prettier.with({
+        extra_filetypes = { "map", "svelte" },
+      }))
+    end,
+  },
+  jsonls = { type = "lsp" },
+  html = { type = "lsp" },
+  cssls = { type = "lsp" },
+  pylsp = { type = "lsp" },
+  rustfmt = { type = "formatter" },
+  gopls = { type = "lsp" },
+  goimports = { type = "formatter" },
+  gofmt = { type = "formatter" },
+  eslint = { type = "formatter" },
+  gitsigns = { type = "formatter" },
 }
 
 bootstrap(config, on_attach)

@@ -63,6 +63,8 @@ local config = {
   },
   extensions = {
     "nvim-tree",
+    "symbols-outline",
+    "trouble",
   },
 }
 

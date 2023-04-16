@@ -1,115 +1,115 @@
 local safe_require = require("ssysoev.utils.safe-require")
 safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
-	local cmp = mods.cmp
-	local luasnip = mods.luasnip
-	local lspkind = mods.lspkind
-	local vscode_lazy_loader = require("luasnip/loaders/from_vscode")
-	local types = require("luasnip.util.types")
+  local cmp = mods.cmp
+  local luasnip = mods.luasnip
+  local lspkind = mods.lspkind
+  local vscode_lazy_loader = require("luasnip/loaders/from_vscode")
+  local types = require("luasnip.util.types")
 
-	luasnip.setup({
-		history = true,
-		region_check_events = "CursorHold,InsertLeave",
-		delete_check_events = "TextChanged,InsertEnter",
-		updateevents = "TextChanged,TextChangedI",
-		-- Show virtual text hints for node types
-		ext_opts = {
-			[types.insertNode] = {
-				active = {
-					virt_text = { { "●", "Operator" } },
-				},
-			},
-			[types.choiceNode] = {
-				active = {
-					virt_text = { { "●", "Constant" } },
-				},
-			},
-		},
-	})
+  luasnip.setup({
+    history = true,
+    region_check_events = "CursorHold,InsertLeave",
+    delete_check_events = "TextChanged,InsertEnter",
+    updateevents = "TextChanged,TextChangedI",
+    -- Show virtual text hints for node types
+    ext_opts = {
+      [types.insertNode] = {
+        active = {
+          virt_text = { { "●", "Operator" } },
+        },
+      },
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { "●", "Constant" } },
+        },
+      },
+    },
+  })
 
-	-- load vs-code like snippets from plugins (e.g. friendly-snippets)
-	vscode_lazy_loader.lazy_load()
-	local vscode_snippets = "~/Dropbox/Apps/vscode/snippets"
-	local vscode_loader_status = pcall(vscode_lazy_loader.lazy_load, { paths = { vscode_snippets } })
-	if not vscode_loader_status then
-		print("Couldn't load vscode snippets")
-	end
+  -- load vs-code like snippets from plugins (e.g. friendly-snippets)
+  vscode_lazy_loader.lazy_load()
+  local vscode_snippets = "~/Dropbox/Apps/vscode/snippets"
+  local vscode_loader_status = pcall(vscode_lazy_loader.lazy_load, { paths = { vscode_snippets } })
+  if not vscode_loader_status then
+    print("Couldn't load vscode snippets")
+  end
 
-	vim.opt.completeopt = "menu,menuone,noselect"
+  vim.opt.completeopt = "menu,menuone,noselect"
 
-	cmp.setup({
-		snippet = {
-			expand = function(args)
-				luasnip.lsp_expand(args.body)
-			end,
-		},
-		mapping = cmp.mapping.preset.insert({
-			["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-			["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-			["<C-b>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<M- >"] = cmp.mapping.complete(), -- show completion suggestions
-			["<C-e>"] = cmp.mapping.abort(), -- close completion window
-			["<CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
-		}),
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+      ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<M- >"] = cmp.mapping.complete(), -- show completion suggestions
+      ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+      ["<CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+    }),
 
-		-- sources for autocompletion
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp" }, -- lsp data completion
-			{ name = "luasnip" }, -- snippets
-			{ name = "copilot" }, -- copilot data source
-			{ name = "buffer", keyword_length = 5 }, -- text within current buffer
-			{ name = "path" }, -- file system paths
-		}),
+    -- sources for autocompletion
+    sources = cmp.config.sources({
+      { name = "nvim_lsp", max_item_count = 10, keyword_length = 2 }, -- lsp data completion
+      { name = "luasnip", keyword_length = 2, max_item_count = 10 }, -- snippets
+      { name = "copilot" }, -- copilot data source
+      { name = "buffer", keyword_length = 5, max_item_count = 5 }, -- text within current buffer
+      { name = "path", keyword_length = 5, max_item_count = 4 }, -- file system paths
+    }),
 
-		experimental = {
-			ghost_text = {
-				hl_group = "LspCodeLens",
-			},
-		},
+    experimental = {
+      ghost_text = {
+        hl_group = "LspCodeLens",
+      },
+    },
 
-		window = {
-			completion = cmp.config.window.bordered(),
-			documentation = cmp.config.window.bordered(),
-		},
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
 
-		-- configure lspkind for vs-code like icons
-		formatting = {
-			fields = {
-				cmp.ItemField.Abbr,
-				cmp.ItemField.Kind,
-				cmp.ItemField.Menu,
-			},
-			format = lspkind.cmp_format({
-				maxwidth = 60,
-				ellipsis_char = "...",
-				menu = {
-					buffer = "[buf]",
-					nvim_lsp = "[lsp]",
-					copilot = "[copilot]",
-					luasnip = "[snip]",
-				},
-			}),
-		},
-	})
+    -- configure lspkind for vs-code like icons
+    formatting = {
+      fields = {
+        cmp.ItemField.Abbr,
+        cmp.ItemField.Kind,
+        cmp.ItemField.Menu,
+      },
+      format = lspkind.cmp_format({
+        maxwidth = 60,
+        ellipsis_char = "...",
+        menu = {
+          buffer = "[buf]",
+          nvim_lsp = "[lsp]",
+          copilot = "[copilot]",
+          luasnip = "[snip]",
+        },
+      }),
+    },
+  })
 end)

@@ -20,13 +20,13 @@ return {
 
   -- colorscheme
   { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim",        name = "catppuccin", lazy = true },
-  { "folke/tokyonight.nvim",  lazy = true },
+  { "catppuccin/nvim", name = "catppuccin", lazy = true },
+  { "folke/tokyonight.nvim", lazy = true },
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("indent_blankline").setup({})
-    end
+    end,
   },
 
   {

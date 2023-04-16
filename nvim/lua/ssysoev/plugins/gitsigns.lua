@@ -1,32 +1,52 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
 safe_require({ "gitsigns", "command_center" }, function(mods)
-	local gitsigns = mods.gitsigns
-	local cc = mods.command_center
+  local gitsigns = mods.gitsigns
+  local cc = mods.command_center
 
-	gitsigns.setup()
+  gitsigns.setup()
 
-	cc.add({
-		{
-			desc = "Preview hunk",
-			cmd = "<cmd>Gitsigns preview_hunk<cr>",
-		},
+  cc.add({
+    {
+      desc = "Preview hunk",
+      cmd = "<cmd>Gitsigns preview_hunk<cr>",
+      keys = { "n", "<leader>hp" },
+    },
 
-		{
-			desc = "Diff this",
-			cmd = "<cmd>Gitsigns diffthis<cr>",
-		},
+    {
+      desc = "Reset hunk",
+      cmd = "<cmd>Gitsigns reset_hunk<cr>",
+      keys = { "n", "<leader>hr" },
+    },
 
-		{
-			desc = "Toggle current line diff",
-			cmd = "<cmd>Gitsigns toggle_current_line_blame<cr>",
-		},
+    {
+      desc = "Stage hunk",
+      cmd = "<cmd>Gitsigns stage_hunk<cr>",
+      keys = { "n", "<leader>hs" },
+    },
 
-		{
-			desc = "Blame line",
-			cmd = function()
-				gitsigns.blame_line({ full = true })
-			end,
-		},
-	})
+    {
+      desc = "Unstage hunk",
+      cmd = "<cmd>Gitsigns stage_hunk<cr>",
+      keys = { "n", "<leader>hu" },
+    },
+
+    {
+      desc = "Diff this",
+      cmd = "<cmd>Gitsigns diffthis<cr>",
+      keys = { "n", "<leader>hd" },
+    },
+
+    {
+      desc = "Toggle current line diff",
+      cmd = "<cmd>Gitsigns toggle_current_line_blame<cr>",
+    },
+
+    {
+      desc = "Blame line",
+      cmd = function()
+        gitsigns.blame_line({ full = true })
+      end,
+    },
+  })
 end)

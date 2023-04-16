@@ -1,6 +1,7 @@
 local opt = vim.opt
 
 opt.shortmess:append("I")
+opt.shortmess:append("C")
 
 -- Decrease update time
 opt.updatetime = 250
@@ -48,6 +49,7 @@ opt.clipboard:append("unnamedplus") -- make nvim use system clipboard for copyin
 -- split windows
 opt.splitright = true
 opt.splitbelow = true
+opt.splitkeep = "screen"
 
 -- other
 opt.iskeyword:append("-") -- makes - a part of a word

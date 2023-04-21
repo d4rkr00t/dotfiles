@@ -21,9 +21,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
           end,
         },
       },
-      cache_picker = {
-        num_pickers = 5,
-      },
+      cache_picker = { num_pickers = 2 },
       dynamic_preview_title = true,
       selection_caret = "  ",
       entry_prefix = "  ",
@@ -59,7 +57,5 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
     },
   })
 
-  telescope.load_extension("fzf")
   telescope.load_extension("command_center")
-  -- telescope.load_extension("smart_open")
 end)

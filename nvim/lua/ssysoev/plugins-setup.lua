@@ -100,19 +100,19 @@ return {
   -- fuzzy finder
   --
   {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = { "FzfLua" },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = {
-      -- dependency for better sorting performance
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       -- enables passing arguments to the grep command
       "nvim-telescope/telescope-live-grep-args.nvim",
       -- keymaps util and help
       "FeiyouG/command_center.nvim",
-      -- {
-      --   "danielfalk/smart-open.nvim",
-      --   dependencies = { "tami5/sqlite.lua" },
-      -- },
     },
     config = function()
       require("ssysoev.plugins.telescope")

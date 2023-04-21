@@ -192,83 +192,156 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>ef", noremap },
     },
 
-    -- telescope
+    -- fzf
     {
-      desc = "Telescope find files",
-      cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
+      desc = "Fzf find files",
+      cmd = "<cmd>FzfLua files<CR>",
       keys = { "n", "<leader>ff", noremap },
     },
 
     {
-      desc = "Telescope open recent",
-      cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
+      desc = "Fzf open recent",
+      cmd = "<cmd>FzfLua oldfiles<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 
     {
-      desc = "Telescope git files",
-      cmd = "<cmd>Telescope git_files theme=ivy<CR>",
+      desc = "Fzf git files",
+      cmd = "<cmd>FzfLua git_files<CR>",
       keys = { "n", "<leader>fg", noremap },
     },
 
     {
-      desc = "Telescope buffers",
-      cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
-      keys = { "n", "<leader>b", noremap },
+      desc = "Fzf buffers",
+      cmd = "<cmd>FzfLua buffers<CR>",
+      keys = { "n", "<leader>fb", noremap },
     },
 
     {
-      desc = "Telescope live grep",
-      cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({ theme = 'ivy' })<CR>",
+      desc = "Fzf live grep",
+      cmd = "<cmd>FzfLua live_grep_glob<CR>",
       keys = { "n", "<leader>fs", noremap },
     },
 
     {
-      desc = "Telescope document symbols",
-      cmd = "<cmd>Telescope lsp_document_symbols theme=ivy<CR>",
+      desc = "Fzf document symbols",
+      cmd = "<cmd>FzfLua lsp_document_symbols<CR>",
       keys = { "n", "<leader>fo", noremap },
     },
 
     {
-      desc = "Telescope diagnostics",
-      cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
+      desc = "Fzf diagnostics",
+      cmd = "<cmd>FzfLua diagnostics_document<CR>",
+      keys = { "n", "<leader>fd", noremap },
     },
 
     {
-      desc = "Telescope git status",
-      cmd = "<cmd>Telescope git_status theme=ivy<CR>",
+      desc = "Fzf git status",
+      cmd = "<cmd>FzfLua git_status<CR>",
       keys = { "n", "<leader>gs", noremap },
     },
 
     {
-      desc = "Telescope restore previous picker",
-      cmd = "<cmd>Telescope pickers theme=ivy<CR>",
+      desc = "Fzf restore previous picker",
+      cmd = "<cmd>FzfLua resume<CR>",
       keys = { "n", "<leader>fr", noremap },
     },
 
     {
-      desc = "Telescope search help tags",
-      cmd = "<cmd>Telescope help_tags theme=ivy<CR>",
+      desc = "Fzf search help tags",
+      cmd = "<cmd>FzfLua help_tags<CR>",
       keys = { "n", "<leader>fh", noremap },
     },
 
     {
-      desc = "Telescope search commands",
-      cmd = "<cmd>Telescope commands theme=ivy<CR>",
+      desc = "Fzf search commands",
+      cmd = "<cmd>FzfLua commands<CR>",
       keys = { "n", "<leader>fc", noremap },
     },
-
     {
-      desc = "Telescope search in current buffer",
-      cmd = function()
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          winblend = 10,
-          previewer = false,
-        }))
-      end,
+
+      desc = "Fzf search in current buffer",
+      cmd = "<cmd>FzfLua lgrep_curbuf<CR>",
       keys = { "n", "<leader>q", noremap },
     },
+
+    -- telescope
+    -- {
+    --   desc = "Telescope find files",
+    --   cmd = "<cmd>Telescope find_files hidden=true theme=ivy<CR>",
+    --   keys = { "n", "<leader>ff", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope open recent",
+    --   cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
+    --   keys = { "n", "<leader>o", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope git files",
+    --   cmd = "<cmd>Telescope git_files theme=ivy<CR>",
+    --   keys = { "n", "<leader>fg", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope buffers",
+    --   cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
+    --   keys = { "n", "<leader>b", noremap },
+    -- },
+    --
+    -- {
+    --   desc = "Telescope live grep",
+    --   cmd = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({ theme = 'ivy' })<CR>",
+    --   keys = { "n", "<leader>fs", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope document symbols",
+    --   cmd = "<cmd>Telescope lsp_document_symbols theme=ivy<CR>",
+    --   keys = { "n", "<leader>fo", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope diagnostics",
+    --   cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
+    -- },
+
+    -- {
+    --   desc = "Telescope git status",
+    --   cmd = "<cmd>Telescope git_status theme=ivy<CR>",
+    --   keys = { "n", "<leader>gs", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope restore previous picker",
+    --   cmd = "<cmd>Telescope pickers theme=ivy<CR>",
+    --   keys = { "n", "<leader>fr", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope search help tags",
+    --   cmd = "<cmd>Telescope help_tags theme=ivy<CR>",
+    --   keys = { "n", "<leader>fh", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope search commands",
+    --   cmd = "<cmd>Telescope commands theme=ivy<CR>",
+    --   keys = { "n", "<leader>fc", noremap },
+    -- },
+
+    -- {
+    --   desc = "Telescope search in current buffer",
+    --   cmd = function()
+    --     -- You can pass additional configuration to telescope to change theme, layout, etc.
+    --     require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+    --       winblend = 10,
+    --       previewer = false,
+    --     }))
+    --   end,
+    --   keys = { "n", "<leader>q", noremap },
+    -- },
     -- gitlinker
     {
       desc = "Open in Github",

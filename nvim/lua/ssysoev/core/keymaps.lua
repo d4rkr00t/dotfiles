@@ -212,12 +212,6 @@ safe_reqiure({ "command_center" }, function(mods)
     },
 
     {
-      desc = "Fzf buffers",
-      cmd = "<cmd>FzfLua buffers<CR>",
-      keys = { "n", "<leader>fb", noremap },
-    },
-
-    {
       desc = "Fzf live grep",
       cmd = "<cmd>FzfLua live_grep_glob<CR>",
       keys = { "n", "<leader>fs", noremap },
@@ -233,12 +227,6 @@ safe_reqiure({ "command_center" }, function(mods)
       desc = "Fzf diagnostics",
       cmd = "<cmd>FzfLua diagnostics_document<CR>",
       keys = { "n", "<leader>fd", noremap },
-    },
-
-    {
-      desc = "Fzf git status",
-      cmd = "<cmd>FzfLua git_status<CR>",
-      keys = { "n", "<leader>gs", noremap },
     },
 
     {
@@ -284,11 +272,11 @@ safe_reqiure({ "command_center" }, function(mods)
     --   keys = { "n", "<leader>fg", noremap },
     -- },
 
-    -- {
-    --   desc = "Telescope buffers",
-    --   cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
-    --   keys = { "n", "<leader>b", noremap },
-    -- },
+    {
+      desc = "Telescope buffers",
+      cmd = "<cmd>Telescope buffers only_cwd=true theme=ivy<CR>",
+      keys = { "n", "<leader>b", noremap },
+    },
     --
     -- {
     --   desc = "Telescope live grep",
@@ -307,11 +295,11 @@ safe_reqiure({ "command_center" }, function(mods)
     --   cmd = "<cmd>Telescope diagnostics theme=ivy<CR>",
     -- },
 
-    -- {
-    --   desc = "Telescope git status",
-    --   cmd = "<cmd>Telescope git_status theme=ivy<CR>",
-    --   keys = { "n", "<leader>gs", noremap },
-    -- },
+    {
+      desc = "Telescope git status",
+      cmd = "<cmd>Telescope git_status theme=ivy<CR>",
+      keys = { "n", "<leader>gs", noremap },
+    },
 
     -- {
     --   desc = "Telescope restore previous picker",
@@ -406,12 +394,6 @@ safe_reqiure({ "command_center" }, function(mods)
       cmd = "<Plug>(comment_toggle_linewise_current)<cr>",
       keys = { "n", "gcc", noremap },
       mode = cc.mode.ADD,
-    },
-
-    -- todo-comments
-    {
-      desc = "Show todo comments in a project",
-      cmd = "<cmd>TodoTelescope<cr>",
     },
 
     -- bufferline

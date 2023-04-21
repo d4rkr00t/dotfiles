@@ -17,7 +17,7 @@ local on_attach = function(client, buffer)
     cc.add({
       {
         desc = "Show definitions",
-        cmd = "<cmd>Telescope lsp_definitions<CR>",
+        cmd = "<cmd>FzfLua lsp_definitions<CR>",
         keys = { "n", "gd", opts },
       },
 
@@ -29,7 +29,7 @@ local on_attach = function(client, buffer)
 
       {
         desc = "Show references",
-        cmd = "<cmd>Telescope lsp_references<CR>",
+        cmd = "<cmd>FzfLua lsp_references<CR>",
         keys = { "n", "gr", opts },
       },
 
@@ -41,7 +41,7 @@ local on_attach = function(client, buffer)
 
       {
         desc = "Show implementation",
-        cmd = "<cmd>Telescope lsp_implementations<CR>",
+        cmd = "<cmd>FzfLua lsp_implementations<CR>",
       },
 
       {

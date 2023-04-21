@@ -369,9 +369,6 @@ return {
   -- per project config
   --
 
-  -- support .editorconfig files
-  "gpanders/editorconfig.nvim",
-
   --
   -- Other
   --

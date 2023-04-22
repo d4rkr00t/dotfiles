@@ -201,7 +201,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Fzf open recent",
-      cmd = "<cmd>FzfLua oldfiles<CR>",
+      cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd = vim.fn.getcwd() })<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 

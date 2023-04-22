@@ -75,6 +75,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 
     -- sources for autocompletion
     sources = cmp.config.sources({
+      { name = "nvim_lsp_signature_help" },
       { name = "nvim_lsp", max_item_count = 10, keyword_length = 2 }, -- lsp data completion
       { name = "luasnip", keyword_length = 2, max_item_count = 10 }, -- snippets
       { name = "copilot" }, -- copilot data source

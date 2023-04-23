@@ -11,8 +11,10 @@ local function bootstrap(config, on_attach)
     --
     local lspconfig = mods.lspconfig
     local cmp_nvim_lsp = mods.cmp_nvim_lsp
+    local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
     local lspconfig_defaults = {
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
     }
 
     --
@@ -75,7 +77,7 @@ local function bootstrap(config, on_attach)
           -- To keep the original functionality of `automatic_setup = true`.
           require("mason-null-ls.automatic_setup")(source_name, methods)
         end,
-      }, null_ls_setup_functions)
+      }, null_ls_setup_functions),
     })
 
     --

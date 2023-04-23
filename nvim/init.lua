@@ -14,11 +14,11 @@ vim.g.THEME = "tokyonight"
 
 require("ssysoev.lazy")
 require("lazy").setup("ssysoev.plugins-setup", {
-	change_detection = {
-		-- automatically check for config file changes and reload the ui
-		enabled = true,
-		notify = false, -- get a notification when changes are found
-	},
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
 })
 
 require("ssysoev.plugins.treesitter")

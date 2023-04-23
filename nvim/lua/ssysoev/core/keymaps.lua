@@ -199,11 +199,11 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>ff", noremap },
     },
 
-    {
-      desc = "Fzf open recent",
-      cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd = vim.fn.getcwd() })<CR>",
-      keys = { "n", "<leader>o", noremap },
-    },
+    -- {
+    --   desc = "Fzf open recent",
+    --   cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd = vim.fn.getcwd() })<CR>",
+    --   keys = { "n", "<leader>o", noremap },
+    -- },
 
     {
       desc = "Fzf git files",
@@ -260,11 +260,11 @@ safe_reqiure({ "command_center" }, function(mods)
     --   keys = { "n", "<leader>ff", noremap },
     -- },
 
-    -- {
-    --   desc = "Telescope open recent",
-    --   cmd = "<cmd>Telescope oldfiles cwd_only=true theme=ivy<CR>",
-    --   keys = { "n", "<leader>o", noremap },
-    -- },
+    {
+      desc = "Telescope open recent",
+      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      keys = { "n", "<leader>o", noremap },
+    },
 
     -- {
     --   desc = "Telescope git files",

@@ -169,20 +169,6 @@ vim.diagnostic.config({
 })
 
 local config = {
-  cssls = {
-    type = "lsp",
-    setup_lsp = function(lspconfig)
-      safe_require({ "cmp_nvim_lsp" }, function(mods)
-        local cmp_nvim_lsp = mods.cmp_nvim_lsp
-        local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-        lspconfig["cssls"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-      end)
-    end,
-  },
   tsserver = {
     type = "lsp",
     setup_lsp = function()
@@ -281,6 +267,7 @@ local config = {
   },
   jsonls = { type = "lsp" },
   html = { type = "lsp" },
+  cssls = { type = "lsp" },
   pylsp = { type = "lsp" },
   rustfmt = { type = "formatter" },
   gopls = { type = "lsp" },

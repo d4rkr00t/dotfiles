@@ -58,7 +58,7 @@ local function bootstrap(config, on_attach)
     })
     mason_lspconfig.setup_handlers(merge_tables({
       function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup({ on_attach = on_attach })
+        require("lspconfig")[server_name].setup({ on_attach = on_attach, capabilities = capabilities })
       end,
     }, lsp_setup_functions))
 

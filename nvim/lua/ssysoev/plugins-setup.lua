@@ -25,7 +25,9 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("indent_blankline").setup({})
+      require("indent_blankline").setup({
+        show_current_context = true,
+      })
     end,
   },
 
@@ -104,6 +106,9 @@ return {
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = { "FzfLua" },
+    init = function()
+      require("fzf-lua").setup({ "max-perf" })
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",

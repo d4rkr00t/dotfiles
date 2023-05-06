@@ -48,6 +48,16 @@ config.keys = {
     mods = "CMD",
     action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
   },
+  {
+    key = "LeftArrow",
+    mods = "ALT|SHIFT",
+    action = wezterm.action.MoveTabRelative(-1),
+  },
+  {
+    key = "RightArrow",
+    mods = "ALT|SHIFT",
+    action = wezterm.action.MoveTabRelative(1),
+  },
 }
 
 --

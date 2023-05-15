@@ -104,6 +104,7 @@ local on_attach = function(client, buffer)
 
       {
         desc = "Show documentation",
+        -- cmd = "<cmd>Lspsaga hover_doc<cr>",
         cmd = function()
           vim.lsp.buf.hover()
         end,

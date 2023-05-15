@@ -83,10 +83,18 @@ return {
   {
     -- extra nice uis for popup menus / inputs / etc
     "folke/noice.nvim",
+    cond = false,
     config = function()
       require("ssysoev.plugins.noice")
     end,
     dependencies = { "MunifTanjim/nui.nvim" },
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end,
   },
 
   -- better vim.ui
@@ -383,5 +391,14 @@ return {
   {
     "samjwill/nvim-unception",
     event = "VeryLazy",
+  },
+
+  -- smart autoclose buffers
+  {
+    "axkirillov/hbac.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("hbac").setup()
+    end,
   },
 }

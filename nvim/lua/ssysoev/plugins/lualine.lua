@@ -6,18 +6,37 @@ end
 
 -- Color table for highlights
 -- stylua: ignore
+-- local colors = {
+--   bg       = '#202328',
+--   fg       = '#bbc2cf',
+--   yellow   = '#ECBE7B',
+--   cyan     = '#008080',
+--   darkblue = '#081633',
+--   green    = '#98be65',
+--   orange   = '#FF8800',
+--   violet   = '#a9a1e1',
+--   magenta  = '#c678dd',
+--   blue     = '#51afef',
+--   red      = '#ec5f67',
+-- }
+
+-- local current_colors = vim.api.nvim_get_hl_by_name("Comment", true)
+-- print(vim.inspect(current_colors))
+local current_bg = string.format("%06x", 1710886)
+local current_fg = string.format("%06x", 5660553)
+
 local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+  bg = current_bg,
+  fg = current_fg,
+  yellow = current_fg,
+  cyan = current_fg,
+  darkblue = current_fg,
+  green = current_fg,
+  orange = current_fg,
+  violet = current_fg,
+  magenta = current_fg,
+  blue = current_fg,
+  red = current_fg,
 }
 
 local conditions = {
@@ -173,7 +192,7 @@ ins_left({
     return msg
   end,
   icon = " LSP:",
-  color = { fg = "#ffffff", gui = "bold" },
+  color = { fg = colors.fg, gui = "bold" },
 })
 
 -- Add components to right sections

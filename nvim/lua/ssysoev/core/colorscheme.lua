@@ -36,7 +36,7 @@ elseif theme == "tokyonight" then
     mods.tokyonight.setup({
       style = "night",
       on_colors = function(colors)
-        colors.border = "#545C7E"
+        colors.border = "#384062"
       end,
     })
     pcall(vim.cmd, "colorscheme tokyonight")

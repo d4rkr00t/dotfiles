@@ -96,6 +96,18 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>th", noremap },
     },
 
+    -- copy file path
+    {
+      desc = "Copy Realtive Path",
+      cmd = "<cmd>CopyRelPath<cr>",
+      keys = { "n", "<leader>cr", noremap },
+    },
+    {
+      desc = "Copy Absolute Path",
+      cmd = "<cmd>CopyAbsPath<cr>",
+      keys = { "n", "<leader>ca", noremap },
+    },
+
     -- move lines
     {
       desc = "Move lines up",
@@ -306,13 +318,6 @@ safe_reqiure({ "command_center" }, function(mods)
     {
       desc = "Trouble project diagnostics",
       cmd = "<cmd>Trouble workspace_diagnostics<CR>",
-    },
-
-    -- symbols outline
-    {
-      desc = "Symbols outline",
-      cmd = "<cmd>SymbolsOutline<CR>",
-      keys = { "n", "<leader>so", noremap },
     },
 
     -- yanky

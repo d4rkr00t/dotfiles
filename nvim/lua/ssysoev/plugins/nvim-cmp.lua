@@ -83,6 +83,17 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       { name = "path", keyword_length = 5, max_item_count = 4 }, -- file system paths
     },
 
+    sorting = {
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        -- require("cmp-under-comparator").under,
+        cmp.config.compare.kind,
+      },
+    },
+
     experimental = {
       ghost_text = {
         hl_group = "LspCodeLens",

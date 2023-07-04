@@ -173,43 +173,13 @@ local config = {
   tsserver = {
     type = "lsp",
     setup_lsp = function()
-      safe_require({ "typescript", "cmp_nvim_lsp", "null-ls" }, function(mods)
-        local typescript = mods.typescript
-        local cmp_nvim_lsp = mods.cmp_nvim_lsp
-        local null_ls = mods["null-ls"]
-
-        typescript.setup({
-          init_options = {
-            maxTsServerMemory = 12288,
-            preferences = {
-              importModuleSpecifierPreference = "relative",
-            },
-          },
-          server = {
-            root_dir = function(fname)
-              return util.root_pattern(".git")(fname)
-            end,
-            capabilities = cmp_nvim_lsp.default_capabilities(),
-            on_attach = function(client, bufrn)
-              safe_require({ "twoslash-queries", "command_center" }, function(nested_mods)
-                local cc = nested_mods["command_center"]
-                nested_mods["twoslash-queries"].attach(client, bufrn)
-
-                cc.add({
-                  {
-                    desc = "Inspect with TwoslashQueries",
-                    cmd = "<cmd>InspectTwoslashQueries<CR>",
-                    keys = { "n", "<leader>ii", { noremap = true, silent = true, buffer = bufrn } },
-                  },
-                })
-              end)
-              on_attach(client, bufrn)
-            end,
-          },
+      safe_require({ "typescript-tools" }, function(mods)
+        mods["typescript-tools"].setup({
+          on_attach = on_attach,
+          root_dir = function(fname)
+            return util.root_pattern(".git")(fname)
+          end,
         })
-
-        -- custom sources
-        null_ls.register(require("typescript.extensions.null-ls.code-actions"))
       end)
     end,
   },

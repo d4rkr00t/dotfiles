@@ -44,7 +44,6 @@ return {
     -- tabs
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    tag = "v3.1.0",
     config = function()
       require("ssysoev.plugins.bufferline")
     end,
@@ -81,16 +80,6 @@ return {
   },
 
   {
-    -- extra nice uis for popup menus / inputs / etc
-    "folke/noice.nvim",
-    cond = false,
-    config = function()
-      require("ssysoev.plugins.noice")
-    end,
-    dependencies = { "MunifTanjim/nui.nvim" },
-  },
-
-  {
     "j-hui/fidget.nvim",
     config = function()
       require("fidget").setup()
@@ -115,7 +104,14 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = { "FzfLua" },
     init = function()
-      require("fzf-lua").setup({ "max-perf" })
+      require("fzf-lua").setup({
+        "max-perf",
+        keymap = {
+          fzf = {
+            ["CTRL-Q"] = "select-all+accept",
+          },
+        },
+      })
     end,
   },
   {
@@ -193,7 +189,6 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = { "Copilot" },
     event = "InsertEnter",
-    cond = false,
     config = function()
       vim.schedule(function()
         require("ssysoev.plugins.copilot")
@@ -253,7 +248,11 @@ return {
       "neovim/nvim-lspconfig",
 
       -- additional functionality for typescript server (e.g. rename file & update imports)
-      "jose-elias-alvarez/typescript.nvim",
+      {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        config = function() end,
+      },
 
       -- configure formatters & linters
       "jose-elias-alvarez/null-ls.nvim",
@@ -279,23 +278,6 @@ return {
     cmd = { "Trouble" },
     config = function()
       require("ssysoev.plugins.lsp.trouble")
-    end,
-  },
-
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline" },
-    config = function()
-      require("ssysoev.plugins.lsp.symbols-outline")
-    end,
-  },
-
-  -- print typescript types as inline virtual text and dynamically update it
-  {
-    "marilari88/twoslash-queries.nvim",
-    lazy = true,
-    config = function()
-      require("ssysoev.plugins.twoslash")
     end,
   },
 
@@ -328,6 +310,34 @@ return {
     config = function()
       require("ssysoev.plugins.nvim-treeclimber")
     end,
+  },
+
+  --
+  -- navigation
+  --
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+    },
   },
 
   --
@@ -376,29 +386,6 @@ return {
     event = "VeryLazy",
     config = function()
       require("ssysoev.plugins.nvim-window")
-    end,
-  },
-
-  --
-  -- per project config
-  --
-
-  --
-  -- Other
-  --
-
-  -- improved terminal support
-  {
-    "samjwill/nvim-unception",
-    event = "VeryLazy",
-  },
-
-  -- smart autoclose buffers
-  {
-    "axkirillov/hbac.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("hbac").setup()
     end,
   },
 }

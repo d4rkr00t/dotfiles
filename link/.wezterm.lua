@@ -54,6 +54,11 @@ config.keys = {
     action = wezterm.action.MoveTabRelative(-1),
   },
   {
+    key = "RightArrow",
+    mods = "ALT|SHIFT",
+    action = wezterm.action.MoveTabRelative(1),
+  },
+  {
     key = "UpArrow",
     mods = "CMD",
     action = wezterm.action.ScrollToTop,

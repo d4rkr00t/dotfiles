@@ -101,6 +101,7 @@
   r = rebase
   ri = "!r() { git rebase -i HEAD~$1; }; r"
   rom = "!r() { git fetch origin master && git rebase origin/master; }; r"
+  rum = "!r() { git fetch upstream master && rebase upstream/master; }; r"
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
@@ -246,8 +247,9 @@
 
 [filter "lfs"]
   required = true
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge --skip %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 
 [lfs]
   batch = true

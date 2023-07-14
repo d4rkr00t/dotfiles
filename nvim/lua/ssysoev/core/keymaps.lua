@@ -1,5 +1,6 @@
 local safe_reqiure = require("ssysoev.utils.safe-require")
 local keymap = vim.keymap
+local noremap = { noremap = true, silent = true }
 
 -- general keymaps
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
@@ -27,6 +28,14 @@ keymap.set("c", "<CR>", function()
   return vim.fn.getcmdtype() == "/" and "<CR>zzzv" or "<CR>"
 end, { expr = true })
 
+-- move lines visual mode maps
+keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gvgv=gv", noremap)
+keymap.set("v", "<M-UP>", ":m '<-2<CR>gvgv=gv", noremap)
+
+-- H and L to start/end of line
+keymap.set({ "n", "x", "o" }, "H", "^", noremap)
+keymap.set({ "n", "x", "o" }, "L", "$", noremap)
+
 -- remap W -> w
 vim.api.nvim_create_user_command("W", function()
   vim.cmd("w")
@@ -49,20 +58,19 @@ end
 
 safe_reqiure({ "command_center" }, function(mods)
   local cc = mods.command_center
-  local noremap = { noremap = true, silent = true }
 
   cc.add({
     {
       desc = "Open command_center",
       cmd = "<CMD>Telescope command_center<CR>",
       keys = {
-        { "n", "<Leader>cc", noremap },
-        { "v", "<Leader>cc", noremap },
+        { "n", "<leader>cc", noremap },
+        { "v", "<leader>cc", noremap },
 
         -- If ever hesitate when using telescope start with <leader>f,
         -- also open command center
-        { "n", "<Leader>f", noremap },
-        { "v", "<Leader>f", noremap },
+        { "n", "<leader>f", noremap },
+        { "v", "<leader>f", noremap },
       },
     },
 
@@ -274,7 +282,7 @@ safe_reqiure({ "command_center" }, function(mods)
     {
       desc = "Fzf search in current buffer",
       cmd = "<cmd>FzfLua lgrep_curbuf<CR>",
-      keys = { "n", "<leader>q", noremap },
+      keys = { "n", "<leader>/", noremap },
     },
 
     {
@@ -393,7 +401,3 @@ safe_reqiure({ "command_center" }, function(mods)
     },
   })
 end)
-
--- move lines visual mode maps
-keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gvgv=gv", { noremap = true, silent = true })
-keymap.set("v", "<M-UP>", ":m '<-2<CR>gvgv=gv", { noremap = true, silent = true })

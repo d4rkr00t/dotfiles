@@ -25,6 +25,16 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
+      vim.g.indent_blankline_filetype_exclude = {
+        "lspinfo",
+        "packer",
+        "checkhealth",
+        "help",
+        "man",
+        "NvimTree",
+        "",
+      }
+
       require("indent_blankline").setup({
         show_current_context = true,
       })

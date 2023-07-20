@@ -4,6 +4,11 @@
 alias sudo='sudo '
 
 #
+# Editors
+#
+alias v="nvim"
+
+#
 # Navigation
 #
 

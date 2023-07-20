@@ -310,7 +310,7 @@ safe_reqiure({ "command_center" }, function(mods)
       mode = cc.mode.SET,
     },
 
-    -- null-ls
+    -- formatters
     {
       desc = "Format with lsp client",
       cmd = ":lua vim.lsp.buf.format({ async = true })<CR>",

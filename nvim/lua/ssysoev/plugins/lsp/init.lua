@@ -227,27 +227,13 @@ local config = {
       }))
     end,
   },
-  prettier = {
-    type = "formatter",
-    setup_formatter = function()
-      local null_ls = require("null-ls")
-      null_ls.register(null_ls.builtins.formatting.prettier.with({
-        extra_filetypes = { "map", "svelte" },
-      }))
-    end,
-  },
   jsonls = { type = "lsp" },
   html = { type = "lsp" },
   cssls = { type = "lsp" },
   pylsp = { type = "lsp" },
-  rustfmt = { type = "formatter" },
   gopls = { type = "lsp" },
-  goimports = { type = "formatter" },
-  gofmt = { type = "formatter" },
-  eslint = { type = "formatter" },
-  gitsigns = { type = "formatter" },
+  eslint = { type = "lsp" },
   stylua = { type = "formatter" },
-  autopep8 = { type = "formatter" },
 }
 
 bootstrap(config, on_attach)

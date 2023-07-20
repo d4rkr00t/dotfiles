@@ -91,6 +91,8 @@ return {
 
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
     config = function()
       require("fidget").setup()
     end,
@@ -265,10 +267,13 @@ return {
       },
 
       -- configure formatters & linters
-      "jose-elias-alvarez/null-ls.nvim",
-
-      -- bridges gap b/w mason & null-ls
-      "jayp0521/mason-null-ls.nvim",
+      {
+        "nvimdev/guard.nvim",
+        event = "BufRead",
+        config = function()
+          require("ssysoev.plugins.guard")
+        end,
+      },
 
       {
         "glepnir/lspsaga.nvim",

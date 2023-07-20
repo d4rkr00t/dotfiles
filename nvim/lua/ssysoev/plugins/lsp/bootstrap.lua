@@ -1,9 +1,8 @@
 local safe_require = require("ssysoev.utils.safe-require")
 local merge_tables = require("ssysoev.utils.merge-tables")
-local setup_null_ls = require("ssysoev.plugins.lsp.null-ls")
 
 local function bootstrap(config, on_attach)
-  safe_require({ "mason", "mason-lspconfig", "mason-null-ls", "lspconfig", "cmp_nvim_lsp" }, function(mods)
+  safe_require({ "mason", "mason-lspconfig", "lspconfig", "cmp_nvim_lsp" }, function(mods)
     --
     --
     -- setup lspconfig
@@ -23,22 +22,15 @@ local function bootstrap(config, on_attach)
     --
     --
     local mason_ensure_installed = {}
-    local mason_null_ls_ensure_installed = {}
     local lsp_setup_functions = {}
-    local null_ls_setup_functions = {}
 
     for key, value in pairs(config) do
+      table.insert(mason_ensure_installed, key)
       if value.type == "lsp" then
-        table.insert(mason_ensure_installed, key)
         if value.setup_lsp then
           lsp_setup_functions[key] = function()
             return value.setup_lsp(lspconfig, lspconfig_defaults)
           end
-        end
-      elseif value.type == "formatter" then
-        table.insert(mason_null_ls_ensure_installed, key)
-        if value.setup_formatter then
-          null_ls_setup_functions[key] = value.setup_formatter
         end
       end
     end
@@ -50,7 +42,6 @@ local function bootstrap(config, on_attach)
     --
     local mason = mods.mason
     local mason_lspconfig = mods["mason-lspconfig"]
-    local mason_null_ls = mods["mason-null-ls"]
     mason.setup()
     mason_lspconfig.setup({
       -- list of lsp servers to install
@@ -61,31 +52,6 @@ local function bootstrap(config, on_attach)
         require("lspconfig")[server_name].setup({ on_attach = on_attach, capabilities = capabilities })
       end,
     }, lsp_setup_functions))
-
-    --
-    --
-    -- setup mason null-ls
-    --
-    --
-    mason_null_ls.setup({
-      -- list of formatters & linters for mason to install
-      ensure_installed = mason_null_ls_ensure_installed,
-      -- auto-install configured formatters & linters (with null-ls)
-      automatic_installation = true,
-      handlers = merge_tables({
-        function(source_name, methods)
-          -- To keep the original functionality of `automatic_setup = true`.
-          require("mason-null-ls.automatic_setup")(source_name, methods)
-        end,
-      }, null_ls_setup_functions),
-    })
-
-    --
-    --
-    -- setup null-ls
-    --
-    --
-    setup_null_ls()
   end)
 end
 

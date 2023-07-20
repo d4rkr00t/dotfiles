@@ -22,7 +22,7 @@ require("lazy").setup("ssysoev.plugins-setup", {
 })
 
 require("ssysoev.plugins.treesitter")
-require("ssysoev.core.plugins.telescope-null-ls-toggle")
+-- require("ssysoev.core.plugins.telescope-null-ls-toggle")
 
 require("ssysoev.core.colorscheme")
 require("ssysoev.core.options")

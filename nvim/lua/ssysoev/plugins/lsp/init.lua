@@ -61,7 +61,7 @@ local on_attach = function(client, buffer)
         cmd = function()
           vim.lsp.buf.code_action()
         end,
-        keys = { "n", "<leader>ca", opts },
+        keys = { "n", "<leader>la", opts },
       },
 
       {
@@ -179,6 +179,10 @@ local config = {
           root_dir = function(fname)
             return util.root_pattern(".git")(fname)
           end,
+          settings = {
+            separate_diagnostic_server = true,
+            tsserver_max_memory = 12288,
+          },
         })
       end)
     end,

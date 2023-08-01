@@ -43,7 +43,7 @@ return {
 
   {
     -- better quickfix list
-    url = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    "yorickpeterse/nvim-pqf",
     event = "VeryLazy",
     config = function()
       require("ssysoev.plugins.nvim-pqf")
@@ -70,7 +70,10 @@ return {
   },
 
   -- icons
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
+  },
 
   {
     -- vs-code like icons for autocompletion
@@ -106,6 +109,16 @@ return {
       require("ssysoev.plugins.dressing")
     end,
   },
+
+  -- keymaps
+  -- {
+  --   "folke/which-key.nvim",
+  --   event = "VeryLazy",
+  --   init = function()
+  --     vim.o.timeout = true
+  --     vim.o.timeoutlen = 300
+  --   end,
+  -- },
 
   --
   -- fuzzy finder
@@ -277,6 +290,7 @@ return {
 
       {
         "glepnir/lspsaga.nvim",
+        commit = "20eef6d",
         event = "BufRead",
         config = function()
           require("ssysoev.plugins.lsp.lspsaga")
@@ -332,6 +346,7 @@ return {
   --
   {
     "folke/flash.nvim",
+    cond = false,
     event = "VeryLazy",
     ---@type Flash.Config
     opts = {},

@@ -75,12 +75,12 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 
     -- sources for autocompletion
     sources = {
+      { name = "nvim_lsp", keyword_length = 1 }, -- lsp data completion
+      { name = "buffer", keyword_length = 2, max_item_count = 10 }, -- text within current buffer
+      { name = "path", keyword_length = 3, max_item_count = 4 }, -- file system paths
+      { name = "luasnip", keyword_length = 2, max_item_count = 5 }, -- snippets
       { name = "nvim_lsp_signature_help" },
-      { name = "nvim_lsp", max_item_count = 10, keyword_length = 2 }, -- lsp data completion
-      { name = "luasnip", keyword_length = 2, max_item_count = 10 }, -- snippets
       { name = "copilot" }, -- copilot data source
-      { name = "buffer", keyword_length = 2, max_item_count = 5 }, -- text within current buffer
-      { name = "path", keyword_length = 5, max_item_count = 4 }, -- file system paths
     },
 
     sorting = {

@@ -41,14 +41,8 @@ return {
     end,
   },
 
-  {
-    -- better quickfix list
-    "yorickpeterse/nvim-pqf",
-    event = "VeryLazy",
-    config = function()
-      require("ssysoev.plugins.nvim-pqf")
-    end,
-  },
+  -- better quickfix list
+  { "kevinhwang91/nvim-bqf" },
 
   {
     -- tabs

@@ -225,17 +225,29 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>fa", noremap },
     },
 
+    -- {
+    --   desc = "Open recent",
+    --   cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+    --   keys = { "n", "<leader>o", noremap },
+    -- },
+
     {
-      desc = "Open recent",
-      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      desc = "Fzf open recent",
+      cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd_only = vim.fn.getcwd(), show_cwd_header=true })<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 
-    -- {
-    --   desc = "Fzf open recent",
-    --   cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd_only = vim.fn.getcwd(), show_cwd_header=true })<CR>",
-    --   keys = { "n", "<leader>o", noremap },
-    -- },
+    {
+      desc = "Fzf quickfix list",
+      cmd = "<cmd>FzfLua quickfix<CR>",
+      keys = { "n", "<leader>fq", noremap },
+    },
+
+    {
+      desc = "Fzf git files",
+      cmd = "<cmd>FzfLua git_files<CR>",
+      keys = { "n", "<leader>fg", noremap },
+    },
 
     {
       desc = "Fzf git files",

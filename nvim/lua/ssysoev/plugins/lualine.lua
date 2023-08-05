@@ -157,6 +157,18 @@ ins_left({ "location" })
 ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
 
 ins_left({
+  function()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+      return ""
+    else
+      return "Recording @" .. recording_register
+    end
+  end,
+  color = { fg = colors.fg, gui = "bold" },
+})
+
+ins_left({
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = { error = " ", warn = " ", info = " " },

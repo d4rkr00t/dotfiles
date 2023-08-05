@@ -237,7 +237,6 @@ local config = {
   pylsp = { type = "lsp" },
   gopls = { type = "lsp" },
   eslint = { type = "lsp" },
-  stylua = { type = "formatter" },
 }
 
 bootstrap(config, on_attach)

@@ -46,6 +46,11 @@ vim.api.nvim_create_user_command("Q", function()
   vim.cmd("q")
 end, { nargs = 0 })
 
+-- remap E -> e
+-- vim.api.nvim_create_user_command("E", function()
+--   vim.cmd("e")
+-- end, { nargs = 1 })
+
 -- close all floating windows
 local function close_floating()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -225,17 +230,17 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>fa", noremap },
     },
 
-    -- {
-    --   desc = "Open recent",
-    --   cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
-    --   keys = { "n", "<leader>o", noremap },
-    -- },
-
     {
-      desc = "Fzf open recent",
-      cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd_only = vim.fn.getcwd(), show_cwd_header=true })<CR>",
+      desc = "Open recent",
+      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },
+
+    -- {
+    --   desc = "Fzf open recent",
+    --   cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd_only = vim.fn.getcwd(), show_cwd_header=true })<CR>",
+    --   keys = { "n", "<leader>o", noremap },
+    -- },
 
     {
       desc = "Fzf quickfix list",

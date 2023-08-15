@@ -242,4 +242,3 @@ local config = {
 bootstrap(config, on_attach)
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md

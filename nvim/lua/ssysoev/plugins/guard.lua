@@ -3,6 +3,7 @@ local ft = require("guard.filetype")
 ft("javascript"):fmt("prettier")
 ft("typescript"):fmt("prettier")
 ft("typescriptreact"):fmt("prettier")
+ft("json"):fmt("prettier")
 ft("map"):fmt("prettier")
 ft("svelte"):fmt("prettier")
 

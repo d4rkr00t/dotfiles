@@ -19,9 +19,11 @@ return {
   --
 
   -- colorscheme
+  { "oxfist/night-owl.nvim", lazy = true },
   { "EdenEast/nightfox.nvim", lazy = true },
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
   { "folke/tokyonight.nvim", lazy = true },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
@@ -146,7 +148,10 @@ return {
       -- enables passing arguments to the grep command
       "nvim-telescope/telescope-live-grep-args.nvim",
       -- keymaps util and help
-      "FeiyouG/command_center.nvim",
+      {
+        "FeiyouG/command_center.nvim",
+        commit = "0d820c438c871fe31ed942bc592a070da1564141",
+      },
     },
     config = function()
       require("ssysoev.plugins.telescope")
@@ -184,7 +189,9 @@ return {
   },
 
   -- automatically create missing folders on file save
-  { "jghauser/mkdir.nvim" },
+  {
+    "jghauser/mkdir.nvim",
+  },
 
   -- better text-objects
   {
@@ -339,35 +346,6 @@ return {
     config = function()
       require("ssysoev.plugins.nvim-treeclimber")
     end,
-  },
-
-  --
-  -- navigation
-  --
-  {
-    "folke/flash.nvim",
-    cond = false,
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "S",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-    },
   },
 
   --

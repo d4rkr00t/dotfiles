@@ -221,6 +221,9 @@ local config = {
     setup_lsp = function(lspconfig, defaults)
       lspconfig["rust_analyzer"].setup(merge_tables(defaults, {
         on_attach = on_attach,
+        -- root_dir = function(fname)
+        --   return util.root_pattern("Cargo.toml")(fname)
+        -- end,
         settings = {
           ["rust-analyzer"] = {
             files = {

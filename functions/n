@@ -6,12 +6,15 @@ n() {
   example '$ n eslint .'
   group 'npm'
 
-  if [ -d $(npm bin) ]; then
-    local prog="$1"
-    shift
-    $(npm bin)/$prog "$@"
+  if [[ -f bun.lockb ]] then
+    command bun "$@"
+  elif [[ -f pnpm-lock.yaml ]] then
+    command pnpm "$@"
+  elif [[ -f yarn.lock ]] then
+    command yarn "$@"
+  elif [[ -f package-lock.json ]] then
+    command npm "$@"
   else
-    echo 'No node_modules in any dir of current path' 1>&2
-    return 1
+    command pnpm "$@"
   fi
 }

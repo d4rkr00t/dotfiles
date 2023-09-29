@@ -16,4 +16,5 @@ ft("rust"):fmt("rustfmt")
 -- call setup LAST
 require("guard").setup({
   fmt_on_save = true,
+  lsp_as_default_formatter = true,
 })

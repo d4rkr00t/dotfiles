@@ -176,12 +176,10 @@ local config = {
       safe_require({ "typescript-tools" }, function(mods)
         mods["typescript-tools"].setup({
           on_attach = on_attach,
-          root_dir = function(fname)
-            return util.root_pattern(".git")(fname)
-          end,
           settings = {
-            separate_diagnostic_server = true,
-            tsserver_max_memory = 12288,
+            publish_diagnostic_on = "insert_leave",
+            separate_diagnostic_server = false,
+            tsserver_max_memory = "auto",
           },
         })
       end)

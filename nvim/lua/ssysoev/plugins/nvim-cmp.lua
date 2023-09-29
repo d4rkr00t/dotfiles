@@ -34,11 +34,10 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
     print("Couldn't load vscode snippets")
   end
 
-  vim.opt.completeopt = "menu,menuone,noselect"
-
   cmp.setup({
     completion = {
-      autocomplete = false,
+      completeopt = "menu,menuone,preview,noselect",
+      -- autocomplete = false,
     },
 
     snippet = {
@@ -87,16 +86,16 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       { name = "copilot" }, -- copilot data source
     },
 
-    sorting = {
-      comparators = {
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.score,
-        cmp.config.compare.recently_used,
-        -- require("cmp-under-comparator").under,
-        cmp.config.compare.kind,
-      },
-    },
+    -- sorting = {
+    --   comparators = {
+    --     cmp.config.compare.offset,
+    --     cmp.config.compare.exact,
+    --     cmp.config.compare.score,
+    --     cmp.config.compare.recently_used,
+    --     -- require("cmp-under-comparator").under,
+    --     cmp.config.compare.kind,
+    --   },
+    -- },
 
     experimental = {
       ghost_text = {
@@ -104,10 +103,10 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       },
     },
 
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
+    -- window = {
+    --   completion = cmp.config.window.bordered(),
+    --   documentation = cmp.config.window.bordered(),
+    -- },
 
     -- configure lspkind for vs-code like icons
     formatting = {

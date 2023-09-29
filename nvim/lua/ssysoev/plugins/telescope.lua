@@ -21,26 +21,7 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
           end,
         },
       },
-      cache_picker = { num_pickers = 2 },
-      dynamic_preview_title = true,
-      selection_caret = "  ",
-      entry_prefix = "  ",
-      sorting_strategy = "ascending",
-      layout_strategy = "horizontal",
-      layout_config = {
-        horizontal = {
-          prompt_position = "top",
-        },
-        preview_cutoff = 120,
-      },
-      file_ignore_patterns = { "^node_modules/", "^.git/", "**/*.snap$" },
       path_display = { "truncate" },
-      winblend = 0,
-      border = {},
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      color_devicons = true,
-      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-      file_sorter = require("telescope.sorters").get_fzy_sorter,
     },
     extensions = {
       command_center = {
@@ -58,4 +39,5 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
   })
 
   telescope.load_extension("command_center")
+  telescope.load_extension("fzf")
 end)

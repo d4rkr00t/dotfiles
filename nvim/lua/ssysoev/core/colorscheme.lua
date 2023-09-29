@@ -27,12 +27,12 @@ if theme == "carbonfox" then
   end)
 --
 --
--- night-owl
+-- nightfly
 --
 --
-elseif theme == "night-owl" then
-  safe_require({ "night-owl" }, function()
-    pcall(vim.cmd, "colorscheme night-owl")
+elseif theme == "nightfly" then
+  safe_require({ "nightfly" }, function()
+    pcall(vim.cmd, "colorscheme nightfly")
   end)
 --
 --

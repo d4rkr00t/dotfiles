@@ -19,26 +19,38 @@ return {
   --
 
   -- colorscheme
-  { "oxfist/night-owl.nvim", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "folke/tokyonight.nvim", lazy = true },
+  { "EdenEast/nightfox.nvim", lazy = false, cond = vim.g.THEME == "carbonfox" },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    cond = vim.g.THEME == "catppuccin",
+  },
+  { "folke/tokyonight.nvim", lazy = false, cond = vim.g.THEME == "tokyonight" },
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, cond = vim.g.THEME == "nightfly" },
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    cond = false,
+    main = "ibl",
     config = function()
-      vim.g.indent_blankline_filetype_exclude = {
-        "lspinfo",
-        "packer",
-        "checkhealth",
-        "help",
-        "man",
-        "NvimTree",
-        "",
-      }
+      require("ibl").setup({
+        debounce = 400,
 
-      require("indent_blankline").setup({
-        show_current_context = true,
+        scope = {
+          enabled = false,
+        },
+
+        exclude = {
+          filetypes = {
+            "lspinfo",
+            "checkhealth",
+            "help",
+            "man",
+            "NvimTree",
+            "",
+          },
+        },
       })
     end,
   },
@@ -100,7 +112,7 @@ return {
   -- better vim.ui
   {
     "stevearc/dressing.nvim",
-    lazy = true,
+    event = "VeryLazy",
     init = function()
       require("ssysoev.plugins.dressing")
     end,
@@ -147,6 +159,7 @@ return {
     dependencies = {
       -- enables passing arguments to the grep command
       "nvim-telescope/telescope-live-grep-args.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       -- keymaps util and help
       {
         "FeiyouG/command_center.nvim",
@@ -290,6 +303,9 @@ return {
       {
         "nvimdev/guard.nvim",
         event = "BufRead",
+        dependencies = {
+          "nvimdev/guard-collection",
+        },
         config = function()
           require("ssysoev.plugins.guard")
         end,

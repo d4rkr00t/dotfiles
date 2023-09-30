@@ -287,7 +287,6 @@ return {
 
       {
         "glepnir/lspsaga.nvim",
-        commit = "20eef6d",
         event = "BufRead",
         config = function()
           require("ssysoev.plugins.lsp.lspsaga")

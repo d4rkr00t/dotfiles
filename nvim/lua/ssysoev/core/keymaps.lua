@@ -328,13 +328,6 @@ safe_reqiure({ "command_center" }, function(mods)
       mode = cc.mode.SET,
     },
 
-    -- formatters
-    {
-      desc = "Format with lsp client",
-      cmd = ":lua vim.lsp.buf.format({ async = true })<CR>",
-      keys = { "n", "<leader>lf", noremap },
-    },
-
     -- trouble
     {
       desc = "Trouble document diagnostics",

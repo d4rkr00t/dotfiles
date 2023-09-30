@@ -136,7 +136,6 @@ local on_attach = function(client, buffer)
   )
 end
 
-local util = require("lspconfig.util")
 local diagnostics_signs = {
   { name = "DiagnosticSignError", text = "" },
   { name = "DiagnosticSignWarn", text = "" },
@@ -237,7 +236,7 @@ local config = {
   cssls = { type = "lsp" },
   pylsp = { type = "lsp" },
   gopls = { type = "lsp" },
-  eslint = { type = "lsp" },
+  eslint_d = { type = "lint" },
 }
 
 bootstrap(config, on_attach)

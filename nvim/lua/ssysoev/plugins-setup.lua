@@ -20,12 +20,7 @@ return {
 
   -- colorscheme
   { "EdenEast/nightfox.nvim", lazy = false, cond = vim.g.THEME == "carbonfox" },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    cond = vim.g.THEME == "catppuccin",
-  },
+  { "catppuccin/nvim", name = "catppuccin", lazy = false, cond = vim.g.THEME == "catppuccin" },
   { "folke/tokyonight.nvim", lazy = false, cond = vim.g.THEME == "tokyonight" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, cond = vim.g.THEME == "nightfly" },
 
@@ -275,13 +270,17 @@ return {
 
       -- configure formatters & linters
       {
-        "nvimdev/guard.nvim",
-        event = "BufRead",
-        dependencies = {
-          "nvimdev/guard-collection",
-        },
+        "stevearc/conform.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
-          require("ssysoev.plugins.guard")
+          require("ssysoev.plugins.conform")
+        end,
+      },
+      {
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+          require("ssysoev.plugins.nvim-lint")
         end,
       },
 

@@ -221,7 +221,7 @@ safe_reqiure({ "command_center" }, function(mods)
     -- fzf
     {
       desc = "Fzf find files",
-      cmd = "<cmd>lua require('fzf-lua').files(function() return {show_cwd_header=true, cwd=vim.loop.cwd()} end)<CR>",
+      cmd = "<cmd>lua require('fzf-lua').files(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
       keys = { "n", "<leader>ff", noremap },
     },
 
@@ -233,7 +233,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Open recent",
-      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      cmd = "<cmd>lua require('fzf-lua').oldfiles(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 

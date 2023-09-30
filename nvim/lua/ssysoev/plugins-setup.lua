@@ -29,32 +29,6 @@ return {
   { "folke/tokyonight.nvim", lazy = false, cond = vim.g.THEME == "tokyonight" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, cond = vim.g.THEME == "nightfly" },
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    cond = false,
-    main = "ibl",
-    config = function()
-      require("ibl").setup({
-        debounce = 400,
-
-        scope = {
-          enabled = false,
-        },
-
-        exclude = {
-          filetypes = {
-            "lspinfo",
-            "checkhealth",
-            "help",
-            "man",
-            "NvimTree",
-            "",
-          },
-        },
-      })
-    end,
-  },
-
   -- better quickfix list
   { "kevinhwang91/nvim-bqf" },
 
@@ -160,6 +134,7 @@ return {
       -- enables passing arguments to the grep command
       "nvim-telescope/telescope-live-grep-args.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+
       -- keymaps util and help
       {
         "FeiyouG/command_center.nvim",
@@ -255,7 +230,6 @@ return {
       "hrsh7th/cmp-buffer",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       {
@@ -318,7 +292,7 @@ return {
         config = function()
           require("ssysoev.plugins.lsp.lspsaga")
         end,
-        dependencies = { { "nvim-tree/nvim-web-devicons" } },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
       },
     },
   },

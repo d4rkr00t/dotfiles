@@ -21,7 +21,17 @@ safe_require({ "telescope", "telescope-live-grep-args.actions", "command_center"
           end,
         },
       },
+      sorting_strategy = "ascending",
+      layout_strategy = "horizontal",
+      layout_config = {
+        horizontal = {
+          prompt_position = "top",
+        },
+        preview_cutoff = 120,
+      },
+      file_ignore_patterns = { "^node_modules/", "^.git/", "**/*.snap$" },
       path_display = { "truncate" },
+      color_devicons = true,
     },
     extensions = {
       command_center = {

@@ -15,8 +15,7 @@ alias v="nvim"
 # alias ..="cd .."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
-alias f='cd $(zoxide query -l | fzf)'
-alias fv='nvim $(zoxide query -l | fzf)'
+alias f='file=$(zoxide query -l | fzf); if [[ ! -z $file  ]] ; then cd $file ; fi'
 
 #
 # Shortcuts

@@ -126,10 +126,6 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = {
-      -- enables passing arguments to the grep command
-      "nvim-telescope/telescope-live-grep-args.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
       -- keymaps util and help
       {
         "FeiyouG/command_center.nvim",

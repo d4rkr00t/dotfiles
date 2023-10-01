@@ -237,12 +237,6 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>o", noremap },
     },
 
-    -- {
-    --   desc = "Fzf open recent",
-    --   cmd = "<cmd>lua require'fzf-lua'.oldfiles({ cwd_only = vim.fn.getcwd(), show_cwd_header=true })<CR>",
-    --   keys = { "n", "<leader>o", noremap },
-    -- },
-
     {
       desc = "Fzf quickfix list",
       cmd = "<cmd>FzfLua quickfix<CR>",
@@ -356,6 +350,13 @@ safe_reqiure({ "command_center" }, function(mods)
         { "n", "<c-p>", noremap },
         { "x", "<c-p>", noremap },
       },
+    },
+
+    -- treesj
+    {
+      desc = "Split/join block of code",
+      cmd = "<cmd>TSJToggle<cr>",
+      keys = { { "n", "<leader>m", noremap } },
     },
 
     -- commenter

@@ -12,14 +12,10 @@ alias v="nvim"
 # Navigation
 #
 
-# alias ..="cd .."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias f='file=$(zoxide query -l | fzf); if [[ ! -z $file  ]] ; then cd $file ; fi'
-
-#
-# Shortcuts
-#
+alias fv='file=$(zoxide query -l | fzf); if [[ ! -z $file  ]] ; then cd $file && nvim; fi'
 
 alias dr="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
@@ -28,7 +24,6 @@ alias p="cd ~/Development"
 alias g="git"
 alias _="sudo"
 alias xx="chmod +x"
-alias oni="/Applications/Onivim2.App/Contents/MacOS/oni2"
 
 #
 # File size / info

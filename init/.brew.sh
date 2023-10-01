@@ -8,6 +8,7 @@ pkgs=(
     bash
     bash_completion
     bat
+    cloc
     coreutils
     exa
     fd
@@ -15,21 +16,22 @@ pkgs=(
     findutils
     fnm
     git
-    git-when-merged
     git-absorb
     git-lfs
+    git-when-merged
     hh
     httpie
     imagemagick
     ncdu
+    nvim
+    pure
     rename
     ripgrep
-    pure
-    tree
     starship
+    tree
     vim --override-system-vi
-    nvim
     wget --with-iri
+    zoxide
     zsh
     zsh-completions
     zsh-history-substring-search

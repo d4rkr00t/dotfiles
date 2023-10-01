@@ -120,6 +120,9 @@ for file in $DOTFILES/functions/*; do
 done
 unset file
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # Extra dotfiles
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
 
@@ -129,3 +132,4 @@ unset file
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+

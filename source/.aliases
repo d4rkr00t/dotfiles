@@ -98,13 +98,6 @@ alias cl="clear"
 # Easily re-execute the last history command.
 alias r="fc -s"
 
-# Move export GREP_OPTIONS="--color=auto" (which is deprecated in GNU grep) from
-# .exports to .aliases
-# Always enable colored `grep` output
-alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
-
 # History stats
 alias hstat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head -n 50"
 

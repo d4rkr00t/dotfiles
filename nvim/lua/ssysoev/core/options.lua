@@ -39,6 +39,7 @@ opt.ch = 0 -- height of a command line
 
 -- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,noselect"
+opt.pumheight = 15 -- completion height
 
 -- backspace
 opt.backspace = "indent,eol,start"

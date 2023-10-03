@@ -59,12 +59,13 @@ opt.autoread = true -- Deal with file loads after updating via git etc
 
 -- folding
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldtext = "substitute(getline(v:foldstart),'\\t',repeat(' ',&tabstop),'g').'...'.trim(getline(v:foldend))"
-opt.fillchars = "fold: "
+opt.fillchars = "fold: ,foldopen:,foldclose:,foldsep: "
 opt.foldnestmax = 10
 opt.foldminlines = 1
 opt.foldlevel = 99
+opt.foldenable = true
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 -- invisible characters
 opt.list = true -- Show some invisible characters

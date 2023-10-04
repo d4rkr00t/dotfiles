@@ -27,6 +27,15 @@ if theme == "carbonfox" then
   end)
 --
 --
+-- rose-pine
+--
+--
+elseif theme == "rose-pine" then
+  safe_require({ "rose-pine" }, function()
+    pcall(vim.cmd, "colorscheme rose-pine-moon")
+  end)
+--
+--
 -- nightfly
 --
 --

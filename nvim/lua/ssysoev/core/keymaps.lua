@@ -360,6 +360,13 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { { "n", "<leader>m", noremap } },
     },
 
+    -- lspsaga
+    {
+      desc = "Lspsaga outline",
+      cmd = "<cmd>Lspsaga outline<CR>",
+      keys = { "n", "<leader>lo", noremap },
+    },
+
     -- commenter
     {
       desc = "Toggle line comment",

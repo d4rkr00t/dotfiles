@@ -2,6 +2,12 @@ local safe_require = require("ssysoev.utils.safe-require")
 safe_require({ "nvim-tree" }, function(mods)
   local nvimtree = mods["nvim-tree"]
 
+  -- local api = require("nvim-tree.api")
+  -- local Event = api.events.Event
+  -- api.events.subscribe(Event.FileCreated, function(data)
+  --   vim.cmd("edit " .. data.fname)
+  -- end)
+
   -- configure nvim-tree
   nvimtree.setup({
     git = {
@@ -9,6 +15,9 @@ safe_require({ "nvim-tree" }, function(mods)
     },
     -- change folder arrow icons
     renderer = {
+      indent_markers = {
+        enable = true,
+      },
       icons = {
         glyphs = {
           folder = {

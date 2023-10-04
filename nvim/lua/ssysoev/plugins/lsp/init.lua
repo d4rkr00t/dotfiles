@@ -231,12 +231,24 @@ local config = {
       }))
     end,
   },
-  jsonls = { type = "lsp" },
+  jsonls = {
+    type = "lsp",
+    setup_lsp = function(lspconfig, defaults)
+      lspconfig["jsonls"].setup(merge_tables(defaults, {
+        on_attach = on_attach,
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      }))
+    end,
+  },
   html = { type = "lsp" },
   cssls = { type = "lsp" },
   pylsp = { type = "lsp" },
   gopls = { type = "lsp" },
-  eslint_d = { type = "lint" },
 }
 
 bootstrap(config, on_attach)

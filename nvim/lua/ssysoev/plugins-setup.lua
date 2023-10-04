@@ -23,6 +23,7 @@ return {
   { "catppuccin/nvim", name = "catppuccin", lazy = false, cond = vim.g.THEME == "catppuccin" },
   { "folke/tokyonight.nvim", lazy = false, cond = vim.g.THEME == "tokyonight" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, cond = vim.g.THEME == "nightfly" },
+  { "rose-pine/neovim", name = "rose-pine", lazy = false, cond = vim.g.THEME == "rose-pine" },
 
   -- better quickfix list
   { "kevinhwang91/nvim-bqf" },
@@ -263,6 +264,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         config = function() end,
       },
+
+      -- plugin providing access to the SchemaStore catalog.
+      "b0o/schemastore.nvim",
 
       -- configure formatters & linters
       {

@@ -1,5 +1,5 @@
 -- verbose mode for logging [custom]
-vim.g.VERBOSE_LOG = true
+vim.g.VERBOSE_LOG = false
 --
 
 -- leader
@@ -7,9 +7,8 @@ vim.g.mapleader = ","
 --
 
 -- colorscheme
--- vim.g.THEME = "nightfly"
+-- vim.g.THEME = "noirbuddy"
 vim.g.THEME = "tokyonight"
--- vim.g.THEME = "rose-pine"
 -- vim.g.THEME = "carbonfox"
 -- vim.g.THEME = "catppuccin"
 --
@@ -25,7 +24,6 @@ require("lazy").setup("ssysoev.plugins-setup", {
 
 require("ssysoev.plugins.treesitter")
 
-require("ssysoev.core.colorscheme")
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")

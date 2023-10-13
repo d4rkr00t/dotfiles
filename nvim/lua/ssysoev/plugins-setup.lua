@@ -19,11 +19,89 @@ return {
   --
 
   -- colorscheme
-  { "EdenEast/nightfox.nvim", lazy = false, cond = vim.g.THEME == "carbonfox" },
-  { "catppuccin/nvim", name = "catppuccin", lazy = false, cond = vim.g.THEME == "catppuccin" },
-  { "folke/tokyonight.nvim", lazy = false, cond = vim.g.THEME == "tokyonight" },
-  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, cond = vim.g.THEME == "nightfly" },
-  { "rose-pine/neovim", name = "rose-pine", lazy = false, cond = vim.g.THEME == "rose-pine" },
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    cond = vim.g.THEME == "carbonfox",
+    config = function()
+      local nightfox = require("nightfox")
+      nightfox.setup({
+        options = {
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            functions = "italic,bold",
+          },
+          inverse = {
+            search = true,
+          },
+        },
+      })
+
+      pcall(vim.cmd, "colorscheme carbonfox")
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    cond = vim.g.THEME == "catppuccin",
+    config = function()
+      local catppuccin = require("catppuccin")
+
+      pcall(vim.cmd, "colorscheme catppuccin")
+
+      catppuccin.setup({
+        dim_inactive = {
+          enabled = true,
+          shade = "dark",
+          percentage = 0.5,
+        },
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          symbols_outline = true,
+          telescope = true,
+          treesitter = true,
+          treesitter_context = true,
+          lsp_trouble = true,
+          lsp_saga = true,
+          mason = true,
+          navic = {
+            enabled = true,
+            custom_bg = "NONE",
+          },
+          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+        },
+      })
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    cond = vim.g.THEME == "tokyonight",
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        on_colors = function(colors)
+          colors.border = "#384062"
+        end,
+      })
+      pcall(vim.cmd, "colorscheme tokyonight")
+    end,
+  },
+  {
+    "jesseleite/nvim-noirbuddy",
+    lazy = false,
+    cond = vim.g.THEME == "noirbuddy",
+    dependencies = { { "tjdevries/colorbuddy.nvim", branch = "dev" } },
+    config = function()
+      require("noirbuddy").setup({
+        preset = "miami-nights",
+      })
+    end,
+  },
 
   -- better quickfix list
   { "kevinhwang91/nvim-bqf" },
@@ -385,6 +463,11 @@ return {
     config = function()
       require("ssysoev.plugins.gitlinker")
     end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   },
 
   -- visual window switcher

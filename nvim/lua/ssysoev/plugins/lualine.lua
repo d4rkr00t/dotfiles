@@ -25,6 +25,12 @@ end
 local current_bg = string.format("%06x", 1710886)
 local current_fg = string.format("%06x", 5660553)
 
+if vim.g.THEME == "noirbuddy" then
+  local noirbuddy = require("noirbuddy.colors").all()
+  current_bg = string.sub(noirbuddy.gray0, 2)
+  current_fg = string.sub(noirbuddy.primary, 2)
+end
+
 local colors = {
   bg = current_bg,
   fg = current_fg,

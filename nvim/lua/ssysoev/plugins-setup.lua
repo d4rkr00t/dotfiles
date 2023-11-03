@@ -116,15 +116,6 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
-  {
-    -- scrollbar
-    "petertriho/nvim-scrollbar",
-    event = "VeryLazy",
-    config = function()
-      require("ssysoev.plugins.scrollbar")
-    end,
-  },
-
   -- icons
   {
     "nvim-tree/nvim-web-devicons",

@@ -261,6 +261,10 @@
 	eventTarget = /Users/ssysoev/.gittrace/dump
 	configparams = custom.metacommands
 	eventBrief = true
+	maxFiles = 2000
 
 [init]
 	defaultBranch = main
+[maintenance]
+	repo = /Users/ssysoev/Work/confluence-frontend
+	repo = /Users/ssysoev/Work/atlassian-frontend

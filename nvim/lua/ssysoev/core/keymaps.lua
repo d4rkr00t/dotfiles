@@ -200,6 +200,13 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<M-)>", noremap },
     },
 
+    -- oil
+    {
+      desc = "Open parent directory",
+      cmd = ":Oil<CR>",
+      keys = { "n", "-", noremap },
+    },
+
     -- nvim tree
     {
       desc = "Toggle NvimTree",

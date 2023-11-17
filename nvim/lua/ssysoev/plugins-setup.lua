@@ -53,21 +53,24 @@ return {
 
       catppuccin.setup({
         dim_inactive = {
-          enabled = true,
-          shade = "dark",
-          percentage = 0.5,
+          enabled = false,
         },
         integrations = {
+          bufferline = true,
           cmp = true,
+          fidget = true,
           gitsigns = true,
+          lsp_saga = true,
+          lsp_trouble = true,
+          mason = true,
+          noice = true,
           nvimtree = true,
           symbols_outline = true,
-          telescope = true,
+          telescope = {
+            enabled = true,
+            -- style = "nvchad",
+          },
           treesitter = true,
-          treesitter_context = true,
-          lsp_trouble = true,
-          lsp_saga = true,
-          mason = true,
           navic = {
             enabled = true,
             custom_bg = "NONE",
@@ -141,7 +144,6 @@ return {
 
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     event = "LspAttach",
     config = function()
       require("fidget").setup()

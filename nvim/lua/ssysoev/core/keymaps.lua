@@ -93,11 +93,6 @@ safe_reqiure({ "command_center" }, function(mods)
     },
 
     {
-      desc = "Clear buffers",
-      cmd = "<cmd>lua require('close_buffers').delete({type = 'hidden'})<CR>",
-    },
-
-    {
       desc = "Close all floating windows",
       cmd = function()
         close_floating()

@@ -8,9 +8,9 @@ vim.g.mapleader = ","
 
 -- colorscheme
 -- vim.g.THEME = "noirbuddy"
-vim.g.THEME = "tokyonight"
+-- vim.g.THEME = "tokyonight"
 -- vim.g.THEME = "carbonfox"
--- vim.g.THEME = "catppuccin"
+vim.g.THEME = "catppuccin"
 --
 
 require("ssysoev.lazy")

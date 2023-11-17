@@ -58,9 +58,7 @@ local on_attach = function(client, buffer)
 
       {
         desc = "Code actions",
-        cmd = function()
-          vim.lsp.buf.code_action()
-        end,
+        cmd = "<cmd>Lspsaga code_action<cr>",
         keys = { "n", "<leader>la", opts },
       },
 

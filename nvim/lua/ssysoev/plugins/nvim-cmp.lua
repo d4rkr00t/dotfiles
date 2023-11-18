@@ -158,24 +158,55 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
     --   completion = cmp.config.window.bordered(),
     --   documentation = cmp.config.window.bordered(),
     -- },
+    window = {
+      completion = cmp.config.window.bordered({
+        col_offset = -3,
+        side_padding = 0,
+        top_padding = 0,
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+      }),
+      documentation = cmp.config.window.bordered({
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+      }),
+    },
 
     -- configure lspkind for vs-code like icons
     formatting = {
-      fields = {
-        cmp.ItemField.Abbr,
-        cmp.ItemField.Kind,
-        cmp.ItemField.Menu,
-      },
-      format = lspkind.cmp_format({
-        maxwidth = 60,
-        ellipsis_char = "...",
-        menu = {
-          buffer = "[buf]",
-          nvim_lsp = "[lsp]",
-          copilot = "[copilot]",
-          luasnip = "[snip]",
-        },
-      }),
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        local kind = lspkind.cmp_format({
+          mode = "symbol_text",
+          maxwidth = 50,
+          menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[lsp]",
+            copilot = "[copilot]",
+            luasnip = "[snip]",
+          },
+        })(entry, vim_item)
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.kind = " " .. strings[1] .. " "
+        kind.menu = " (" .. strings[2] .. ") " .. kind.menu
+
+        return kind
+      end,
     },
+    -- formatting = {
+    --   fields = {
+    --     cmp.ItemField.Abbr,
+    --     cmp.ItemField.Kind,
+    --     cmp.ItemField.Menu,
+    --   },
+    --   format = lspkind.cmp_format({
+    --     maxwidth = 55,
+    --     ellipsis_char = "...",
+    --     menu = {
+    --       buffer = "[buf]",
+    --       nvim_lsp = "[lsp]",
+    --       copilot = "[copilot]",
+    --       luasnip = "[snip]",
+    --     },
+    --   }),
+    -- },
   })
 end)

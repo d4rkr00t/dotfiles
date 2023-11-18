@@ -18,7 +18,11 @@ return {
     "stevearc/oil.nvim",
     lazy = true,
     cmd = { "Oil" },
-    opts = {},
+    opts = {
+      keymaps = {
+        ["<Esc><Esc>"] = { callback = "actions.close", mode = "n" },
+      },
+    },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },

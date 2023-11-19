@@ -7,9 +7,7 @@ vim.g.mapleader = ","
 --
 
 -- colorscheme
--- vim.g.THEME = "noirbuddy"
 -- vim.g.THEME = "tokyonight"
--- vim.g.THEME = "carbonfox"
 vim.g.THEME = "catppuccin"
 --
 

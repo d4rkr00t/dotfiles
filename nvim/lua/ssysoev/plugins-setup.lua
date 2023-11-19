@@ -33,28 +33,6 @@ return {
 
   -- colorscheme
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    cond = vim.g.THEME == "carbonfox",
-    config = function()
-      local nightfox = require("nightfox")
-      nightfox.setup({
-        options = {
-          styles = {
-            comments = "italic",
-            keywords = "bold",
-            functions = "italic,bold",
-          },
-          inverse = {
-            search = true,
-          },
-        },
-      })
-
-      pcall(vim.cmd, "colorscheme carbonfox")
-    end,
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,
@@ -86,11 +64,6 @@ return {
             style = "nvchad",
           },
           treesitter = true,
-          navic = {
-            enabled = true,
-            custom_bg = "NONE",
-          },
-          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
         custom_highlights = function(C)
           return {
@@ -137,17 +110,6 @@ return {
         end,
       })
       pcall(vim.cmd, "colorscheme tokyonight")
-    end,
-  },
-  {
-    "jesseleite/nvim-noirbuddy",
-    lazy = false,
-    cond = vim.g.THEME == "noirbuddy",
-    dependencies = { { "tjdevries/colorbuddy.nvim", branch = "dev" } },
-    config = function()
-      require("noirbuddy").setup({
-        preset = "miami-nights",
-      })
     end,
   },
 

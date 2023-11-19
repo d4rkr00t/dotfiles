@@ -63,9 +63,5 @@ safe_require({ "nvim-treesitter.configs" }, function(mods)
     playground = {
       enable = true,
     },
-
-    context_commentstring = {
-      enable = true,
-    },
   })
 end)

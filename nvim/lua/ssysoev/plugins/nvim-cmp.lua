@@ -186,7 +186,13 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
         })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. strings[1] .. " "
-        kind.menu = " (" .. strings[2] .. ") " .. kind.menu
+
+        local menu = " (" .. strings[2] .. ") "
+        if kind.menu then
+          menu = menu .. kind.menu
+        end
+
+        kind.menu = menu
 
         return kind
       end,

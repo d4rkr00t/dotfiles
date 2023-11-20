@@ -10,13 +10,13 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
   local lspkind_comparator = function(conf)
     local lsp_types = require("cmp.types").lsp
     return function(entry1, entry2)
-      if entry1.source.name ~= "nvim_lsp" then
-        if entry2.source.name == "nvim_lsp" then
-          return false
-        else
-          return nil
-        end
-      end
+      -- if entry1.source.name ~= "nvim_lsp" then
+      --   if entry2.source.name == "nvim_lsp" then
+      --     return false
+      --   else
+      --     return nil
+      --   end
+      -- end
       local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
       local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
 
@@ -104,7 +104,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       { name = "nvim_lsp" }, -- lsp data completion
       { name = "buffer", keyword_length = 2, max_item_count = 5 }, -- text within current buffer
       { name = "path", keyword_length = 3, max_item_count = 4 }, -- file system paths
-      { name = "luasnip", keyword_length = 2, max_item_count = 4 }, -- snippets
+      { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- snippets
       { name = "nvim_lsp_signature_help" },
       { name = "copilot" }, -- copilot data source
     },
@@ -113,6 +113,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       comparators = {
         lspkind_comparator({
           kind_priority = {
+            Snippet = 11,
             Field = 11,
             Property = 11,
             Constant = 10,
@@ -133,7 +134,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
             Keyword = 2,
             Constructor = 1,
             Interface = 1,
-            Snippet = 0,
             Text = 1,
             TypeParameter = 1,
             Unit = 1,

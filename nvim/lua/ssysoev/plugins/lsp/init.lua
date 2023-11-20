@@ -28,6 +28,12 @@ local on_attach = function(client, buffer)
       },
 
       {
+        desc = "Open definition in a split",
+        cmd = "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+        keys = { "n", "gs", opts },
+      },
+
+      {
         desc = "Show references",
         cmd = "<cmd>FzfLua lsp_references<CR>",
         keys = { "n", "gr", opts },
@@ -35,7 +41,7 @@ local on_attach = function(client, buffer)
 
       {
         desc = "Show references [lspsaga]",
-        cmd = "<cmd>Lspsaga lsp_finder<CR>",
+        cmd = "<cmd>Lspsaga finder<CR>",
         keys = { "n", "gR", opts },
       },
 

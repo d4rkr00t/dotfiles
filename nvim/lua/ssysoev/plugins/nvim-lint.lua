@@ -5,11 +5,11 @@ safe_reqiure({ "command_center", "lint" }, function(mods)
   local lint = mods.lint
 
   lint.linters_by_ft = {
-    javascript = { "eslint" },
-    typescript = { "eslint" },
-    javascriptreact = { "eslint" },
-    typescriptreact = { "eslint" },
-    svelte = { "eslint" },
+    -- javascript = { "eslint" },
+    -- typescript = { "eslint" },
+    -- javascriptreact = { "eslint" },
+    -- typescriptreact = { "eslint" },
+    -- svelte = { "eslint" },
     json = {},
   }
 

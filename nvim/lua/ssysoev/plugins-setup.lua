@@ -20,7 +20,8 @@ return {
     cmd = { "Oil" },
     opts = {
       keymaps = {
-        ["<Esc><Esc>"] = { callback = "actions.close", mode = "n" },
+        ["qq"] = { callback = "actions.close", mode = "n" },
+        ["<C-v>"] = { callback = "actions.select_vsplit" },
       },
     },
     -- Optional dependencies
@@ -39,9 +40,6 @@ return {
     cond = vim.g.THEME == "catppuccin",
     config = function()
       local catppuccin = require("catppuccin")
-
-      pcall(vim.cmd, "colorscheme catppuccin")
-
       catppuccin.setup({
         compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
         dim_inactive = {
@@ -96,6 +94,8 @@ return {
           }
         end,
       })
+
+      pcall(vim.cmd, "colorscheme catppuccin")
     end,
   },
   {
@@ -373,6 +373,7 @@ return {
           require("ssysoev.plugins.conform")
         end,
       },
+
       {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },

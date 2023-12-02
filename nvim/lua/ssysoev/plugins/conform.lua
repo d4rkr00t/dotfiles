@@ -3,8 +3,10 @@ local safe_reqiure = require("ssysoev.utils.safe-require")
 safe_reqiure({ "command_center", "conform" }, function(mods)
   local cc = mods.command_center
   local conform = mods.conform
+  local should_format_on_save = true
 
   conform.setup({
+    log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
@@ -22,11 +24,15 @@ safe_reqiure({ "command_center", "conform" }, function(mods)
 
       rust = { "rustfmt" },
     },
+  })
 
-    format_on_save = {
-      lsp_fallback = true,
-      async = false,
-    },
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*",
+    callback = function(args)
+      if should_format_on_save then
+        conform.format({ bufnr = args.buf, async = true, timeout_ms = 5000, lsp_fallback = true })
+      end
+    end,
   })
 
   cc.add({
@@ -39,6 +45,12 @@ safe_reqiure({ "command_center", "conform" }, function(mods)
         })
       end,
       keys = { "n", "<leader>lf", { noremap = true, silent = true } },
+    },
+    {
+      desc = "Toggle format on save",
+      cmd = function()
+        should_format_on_save = not should_format_on_save
+      end,
     },
   })
 end)

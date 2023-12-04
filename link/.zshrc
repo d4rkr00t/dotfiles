@@ -15,10 +15,11 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 # Prompt theme
 # https://github.com/sindresorhus/pure
 #
-# autoload -U promptinit; promptinit
-# prompt pure
-# PURE_PROMPT_SYMBOL=λ
-eval "$(starship init zsh)"
+autoload -U promptinit; promptinit
+prompt pure
+PURE_PROMPT_SYMBOL=λ
+# eval "$(starship init zsh)"
+# source $(brew --prefix)/opt/spaceship/spaceship.zsh
 
 #
 # Word style: directory delimiter

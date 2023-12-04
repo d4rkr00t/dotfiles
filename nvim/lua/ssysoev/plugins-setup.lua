@@ -114,7 +114,10 @@ return {
   },
 
   -- better quickfix list
-  { "kevinhwang91/nvim-bqf" },
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
+  },
 
   {
     -- tabs
@@ -168,6 +171,7 @@ return {
 
   {
     "gelguy/wilder.nvim",
+    keys = { ":", "/", "?" },
     config = function()
       local wilder = require("wilder")
       wilder.setup({ modes = { ":", "/", "?" } })
@@ -331,6 +335,7 @@ return {
       -- snippets
       {
         "L3MON4D3/LuaSnip",
+        commit = "1182638",
         dependencies = {
           "rafamadriz/friendly-snippets",
         },
@@ -358,6 +363,7 @@ return {
       -- additional functionality for typescript server (e.g. rename file & update imports)
       {
         "pmizio/typescript-tools.nvim",
+        cond = false,
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         config = function() end,
       },

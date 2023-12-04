@@ -12,7 +12,9 @@ keymap.set("n", "U", "<C-r>") -- redo
 keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
 keymap.set("n", "gl", "$") -- jump to the last char of the line
 keymap.set("n", "gh", "^") -- jump to the first char of the line
+keymap.set("n", "<leader><leader>", "<cmd>w<cr>")
 keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>")
+-- keymap.set("n", "<Esc><Esc>", ":w<cr>")
 
 -- stay in indent mode
 keymap.set("v", ">", ">gv")

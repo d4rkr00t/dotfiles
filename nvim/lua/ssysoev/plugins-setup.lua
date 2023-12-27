@@ -34,6 +34,18 @@ return {
 
   -- colorscheme
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    cond = vim.g.THEME == "rose-pine",
+    config = function()
+      require("rose-pine").setup({
+        disable_italics = true,
+      })
+      pcall(vim.cmd, "colorscheme rose-pine-moon")
+    end,
+  },
+
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,

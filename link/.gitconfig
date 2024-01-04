@@ -258,10 +258,11 @@
   concurrenttransfers = 15
 
 [trace2]
-	eventTarget = /Users/ssysoev/.gittrace/dump
+	eventTarget = af_unix:/Users/ssysoev/.gittrace/trace.sock
 	configparams = custom.metacommands
 	eventBrief = true
 	maxFiles = 2000
+	eventNesting = 1
 
 [init]
 	defaultBranch = main

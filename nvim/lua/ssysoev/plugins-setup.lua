@@ -20,7 +20,7 @@ return {
     cmd = { "Oil" },
     opts = {
       keymaps = {
-        ["qq"] = { callback = "actions.close", mode = "n" },
+        ["<Esc><Esc>"] = { callback = "actions.close", mode = "n" },
         ["<C-v>"] = { callback = "actions.select_vsplit" },
       },
     },
@@ -44,7 +44,6 @@ return {
       pcall(vim.cmd, "colorscheme rose-pine-moon")
     end,
   },
-
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -205,8 +204,9 @@ return {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = true,
     cmd = { "FzfLua" },
-    init = function()
+    config = function()
       require("fzf-lua").setup({
         "max-perf",
         keymap = {
@@ -219,6 +219,7 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
     branch = "0.1.x",
     dependencies = {
       -- keymaps util and help
@@ -244,7 +245,7 @@ return {
   {
     -- commenting with gc
     "echasnovski/mini.comment",
-    event = "VeryLazy",
+    event = "InsertEnter",
     config = function()
       require("ssysoev.plugins.comment")
     end,
@@ -265,6 +266,7 @@ return {
   -- automatically create missing folders on file save
   {
     "jghauser/mkdir.nvim",
+    event = "VeryLazy",
   },
 
   {
@@ -440,6 +442,7 @@ return {
   {
     -- keeps current context visible e.g. function declaration, same as in vscode
     "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
     config = function()
       require("ssysoev.plugins.treesitter-context")
     end,
@@ -448,6 +451,7 @@ return {
   {
     -- treesitter based navigation and selection
     "Dkendal/nvim-treeclimber",
+    event = "InsertEnter",
     config = function()
       require("ssysoev.plugins.nvim-treeclimber")
     end,
@@ -470,6 +474,7 @@ return {
   {
     -- autoclose parens, brackets, quotes, etc...
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function()
       require("ssysoev.plugins.autopairs")
     end,
@@ -478,6 +483,7 @@ return {
   {
     -- autoclose tags
     "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
@@ -517,4 +523,10 @@ return {
       require("ssysoev.plugins.nvim-window")
     end,
   },
+
+  -- experiments
+  -- {
+  --   "tris203/hawtkeys.nvim",
+  --   config = true,
+  -- },
 }

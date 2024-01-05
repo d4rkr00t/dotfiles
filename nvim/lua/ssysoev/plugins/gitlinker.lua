@@ -6,7 +6,7 @@ safe_require({ "gitlinker" }, function(mods)
   local function stash_matcher(url_data)
     local url = "https://stash.atlassian.com/projects/"
     local repo = split(url_data.repo, "/")
-    url = url .. repo[0] .. "/repos/" .. repo[1]
+    url = url .. repo[0] .. "/repos/" .. repo[1]:gsub("%.git", "")
     url = url .. "/browse/" .. url_data.file
     url = url .. "?at=" .. url_data.rev
     if url_data.lend then
@@ -18,9 +18,13 @@ safe_require({ "gitlinker" }, function(mods)
   end
 
   gitlinker.setup({
-    callbacks = {
-      ["bitbucket-mirror-au.internal.atlassian.com"] = stash_matcher,
-      ["stash.atlassian.com"] = stash_matcher,
+    router = {
+      browse = {
+        ["^bitbucket%-mirror%-au%.internal%.atlassian%.com"] = stash_matcher,
+      },
+      blame = {
+        ["^bitbucket%-mirror%-au%.internal%.atlassian%.com"] = stash_matcher,
+      },
     },
   })
 end)

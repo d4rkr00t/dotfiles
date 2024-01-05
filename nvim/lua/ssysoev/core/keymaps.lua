@@ -255,12 +255,6 @@ safe_reqiure({ "command_center" }, function(mods)
     },
 
     {
-      desc = "Fzf git files",
-      cmd = "<cmd>FzfLua git_files<CR>",
-      keys = { "n", "<leader>fg", noremap },
-    },
-
-    {
       desc = "Fzf live grep",
       cmd = "<cmd>FzfLua live_grep_glob<CR>",
       keys = { "n", "<leader>fs", noremap },
@@ -316,15 +310,8 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Open in Github",
-      cmd = '<cmd>lua require"gitlinker".get_buf_range_url("n")<CR>',
-      keys = { "n", "<leader>gl", noremap },
-    },
-
-    {
-      desc = "Open in Github",
-      cmd = '<cmd>lua require"gitlinker".get_buf_range_url("v")<CR>',
-      keys = { "v", "<leader>gl", noremap },
-      mode = cc.mode.SET,
+      cmd = "<cmd>GitLink!<CR>",
+      keys = { { "n", "v" }, "<leader>gl", noremap },
     },
 
     -- trouble

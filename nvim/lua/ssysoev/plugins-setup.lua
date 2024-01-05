@@ -507,10 +507,8 @@ return {
 
   {
     -- generates shareable link to a git repo, similar to open-in-github vscode plugin
-    "d4rkr00t/gitlinker.nvim",
-    event = "VeryLazy",
-    branch = "timeout",
-    dependencies = "nvim-lua/plenary.nvim",
+    "linrongbin16/gitlinker.nvim",
+    cmd = { "GitLink" },
     config = function()
       require("ssysoev.plugins.gitlinker")
     end,

@@ -167,7 +167,13 @@ return {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = function()
-      require("fidget").setup()
+      require("fidget").setup({
+        integration = {
+          ["nvim-tree"] = {
+            enable = false, -- Integrate with nvim-tree/nvim-tree.lua (if installed)
+          },
+        },
+      })
     end,
   },
 

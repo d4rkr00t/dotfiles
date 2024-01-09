@@ -178,6 +178,10 @@ local config = {
     setup_lsp = function(lspconfig, defaults)
       lspconfig["tsserver"].setup(merge_tables(defaults, {
         on_attach = on_attach,
+        root_dir = function(fname)
+          local util = require("lspconfig.util")
+          return util.root_pattern("tsconfig.json")(fname)
+        end,
         settings = {
           typescript = {
             tsserver = {
@@ -227,14 +231,16 @@ local config = {
           Lua = {
             runtime = {
               version = "LuaJIT",
-              path = runtime_path,
             },
             -- make the language server recognize "vim" global
             diagnostics = {
               globals = { "vim" },
             },
             workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = {
+                vim.env.VIMRUNTIME,
+                runtime_path,
+              },
               checkThirdParty = false,
             },
           },

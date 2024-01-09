@@ -2,14 +2,28 @@ local safe_require = require("ssysoev.utils.safe-require")
 safe_require({ "nvim-tree" }, function(mods)
   local nvimtree = mods["nvim-tree"]
 
-  -- local api = require("nvim-tree.api")
-  -- local Event = api.events.Event
-  -- api.events.subscribe(Event.FileCreated, function(data)
-  --   vim.cmd("edit " .. data.fname)
-  -- end)
+  local function my_on_attach(bufnr)
+    local api = require("nvim-tree.api")
+
+    local function opts(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    -- default mappings
+    api.config.mappings.default_on_attach(bufnr)
+
+    -- custom mappings
+    vim.keymap.set(
+      "n",
+      "<leader>fs",
+      require("ssysoev.core.plugins.nvimtree-telescope").grep_at_current_tree_node,
+      opts("Search in current folder")
+    )
+  end
 
   -- configure nvim-tree
   nvimtree.setup({
+    on_attach = my_on_attach,
     git = {
       enable = false,
     },
@@ -40,15 +54,6 @@ safe_require({ "nvim-tree" }, function(mods)
     view = {
       side = "right",
       width = 40,
-      mappings = {
-        list = {
-          {
-            key = "<leader>fs",
-            cb = ":lua require('ssysoev.core.plugins.nvimtree-telescope').grep_at_current_tree_node()<CR>",
-            mode = "n",
-          },
-        },
-      },
     },
 
     sync_root_with_cwd = true,

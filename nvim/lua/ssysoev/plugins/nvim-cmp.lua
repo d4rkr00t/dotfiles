@@ -76,7 +76,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       ["<M- >"] = cmp.mapping.complete(), -- show completion suggestions
       ["<C-e>"] = cmp.mapping.abort(), -- close completion window
       ["<CR>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
+        behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       }),
       ["<Tab>"] = cmp.mapping(function(fallback)
@@ -116,6 +116,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
             Snippet = 11,
             Field = 11,
             Property = 11,
+            Variable = 11,
             Constant = 10,
             Enum = 10,
             EnumMember = 10,
@@ -125,7 +126,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
             Operator = 10,
             Reference = 10,
             Struct = 10,
-            Variable = 9,
             File = 8,
             Folder = 8,
             Class = 5,
@@ -159,18 +159,21 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
     --   documentation = cmp.config.window.bordered(),
     -- },
     window = {
-      completion = cmp.config.window.bordered({
+      -- completion = cmp.config.window.bordered({
+      --   col_offset = -3,
+      --   side_padding = 0,
+      --   top_padding = 0,
+      --   winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+      -- }),
+      -- documentation = cmp.config.window.bordered({
+      --   winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+      -- }),
+      completion = {
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
         col_offset = -3,
         side_padding = 0,
-        top_padding = 0,
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-      }),
-      documentation = cmp.config.window.bordered({
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-      }),
+      },
     },
-
-    -- configure lspkind for vs-code like icons
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
@@ -185,11 +188,10 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
           },
         })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. strings[1] .. " "
-
-        local menu = " (" .. strings[2] .. ") "
+        kind.kind = " " .. (strings[1] or "") .. " "
+        local menu = "    (" .. (strings[2] or "") .. ")"
         if kind.menu then
-          menu = menu .. kind.menu
+          menu = menu .. " " .. kind.menu
         end
 
         kind.menu = menu
@@ -197,22 +199,43 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
         return kind
       end,
     },
-    -- formatting = {
-    --   fields = {
-    --     cmp.ItemField.Abbr,
-    --     cmp.ItemField.Kind,
-    --     cmp.ItemField.Menu,
-    --   },
-    --   format = lspkind.cmp_format({
-    --     maxwidth = 55,
-    --     ellipsis_char = "...",
-    --     menu = {
-    --       buffer = "[buf]",
-    --       nvim_lsp = "[lsp]",
-    --       copilot = "[copilot]",
-    --       luasnip = "[snip]",
-    --     },
-    --   }),
-    -- },
   })
+
+  -- Customization for Pmenu
+  vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#6e6a86", bg = "NONE", strikethrough = true })
+  vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#ea9a97", bg = "NONE", bold = true })
+  vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#ea9a97", bg = "NONE", bold = true })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = "#232136", bg = "#eb6f92" })
+  vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#232136", bg = "#eb6f92" })
+  vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = "#232136", bg = "#eb6f92" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#232136", bg = "#9FBD73" })
+  vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = "#232136", bg = "#9FBD73" })
+  vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#232136", bg = "#9FBD73" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = "#232136", bg = "#D4BB6C" })
+  vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = "#232136", bg = "#D4BB6C" })
+  vim.api.nvim_set_hl(0, "CmpItemKindReference", { fg = "#232136", bg = "#D4BB6C" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#232136", bg = "#c4a7e7" })
+  vim.api.nvim_set_hl(0, "CmpItemKindStruct", { fg = "#232136", bg = "#c4a7e7" })
+  vim.api.nvim_set_hl(0, "CmpItemKindClass", { fg = "#232136", bg = "#c4a7e7" })
+  vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = "#232136", bg = "#c4a7e7" })
+  vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = "#232136", bg = "#c4a7e7" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#232136", bg = "#908caa" })
+  vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = "#232136", bg = "#908caa" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#232136", bg = "#f6c177" })
+  vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "#232136", bg = "#f6c177" })
+  vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#232136", bg = "#f6c177" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#232136", bg = "#3e8fb0" })
+  vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = "#232136", bg = "#3e8fb0" })
+  vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { fg = "#232136", bg = "#3e8fb0" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#232136", bg = "#9ccfd8" })
+  vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#232136", bg = "#9ccfd8" })
+  vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#232136", bg = "#9ccfd8" })
 end)

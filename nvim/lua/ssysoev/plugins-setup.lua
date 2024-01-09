@@ -7,7 +7,7 @@ return {
   --
   {
     "nvim-tree/nvim-tree.lua",
-    tag = "nightly",
+    -- tag = "nightly",
     cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     config = function()
       require("ssysoev.plugins.nvim-tree")
@@ -39,7 +39,12 @@ return {
     cond = vim.g.THEME == "rose-pine",
     config = function()
       require("rose-pine").setup({
-        disable_italics = true,
+        extend_background_behind_borders = true,
+        styles = {
+          bold = true,
+          italic = false,
+          transparency = false,
+        },
       })
       pcall(vim.cmd, "colorscheme rose-pine-moon")
     end,
@@ -167,13 +172,7 @@ return {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = function()
-      require("fidget").setup({
-        integration = {
-          ["nvim-tree"] = {
-            enable = false, -- Integrate with nvim-tree/nvim-tree.lua (if installed)
-          },
-        },
-      })
+      require("fidget").setup({})
     end,
   },
 
@@ -251,7 +250,8 @@ return {
   {
     -- commenting with gc
     "echasnovski/mini.comment",
-    event = "InsertEnter",
+    event = "VeryLazy",
+    -- keys = { "gc", "gcc" },
     config = function()
       require("ssysoev.plugins.comment")
     end,

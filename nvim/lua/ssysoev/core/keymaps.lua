@@ -107,6 +107,13 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { "n", "<leader>th", noremap },
     },
 
+    -- jumplist
+    {
+      desc = "Add current location to jumplist",
+      cmd = "m'",
+      keys = { "n", "mm", noremap },
+    },
+
     -- copy file path
     {
       desc = "Copy Realtive Path",
@@ -237,8 +244,8 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Open recent",
-      cmd = "<cmd>lua require('fzf-lua').oldfiles(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
-      -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      -- cmd = "<cmd>lua require('fzf-lua').oldfiles(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
+      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 
@@ -306,6 +313,12 @@ safe_reqiure({ "command_center" }, function(mods)
       desc = "Fzf git status",
       cmd = "<cmd>FzfLua git_status<CR>",
       keys = { "n", "<leader>gs", noremap },
+    },
+
+    {
+      desc = "Fzf git_status tracked",
+      cmd = "<cmd>lua require('fzf-lua').git_status(function() return {cmd='git -c color.status=false status -s -uno'} end)<CR>",
+      keys = { "n", "<leader>gt", noremap },
     },
 
     {

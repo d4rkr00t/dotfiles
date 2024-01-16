@@ -34,6 +34,15 @@ return {
 
   -- colorscheme
   {
+    -- "mellow-theme/mellow.nvim",
+    "d4rkr00t/mellow.nvim",
+    cond = vim.g.THEME == "mellow",
+    config = function()
+      pcall(vim.cmd, "colorscheme mellow")
+    end,
+  },
+
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     cond = vim.g.THEME == "rose-pine",
@@ -356,9 +365,6 @@ return {
       {
         "L3MON4D3/LuaSnip",
         commit = "1182638",
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-        },
       },
     },
   },

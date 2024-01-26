@@ -20,10 +20,12 @@ end
 --   red      = '#ec5f67',
 -- }
 
--- local current_colors = vim.api.nvim_get_hl_by_name("Comment", true)
+local current_colors = vim.api.nvim_get_hl_by_name("Comment", true)
 -- print(vim.inspect(current_colors))
+-- local current_bg = string.format("%06x", 1710886)
+-- local current_fg = string.format("%06x", 5660553)
 local current_bg = string.format("%06x", 1710886)
-local current_fg = string.format("%06x", 5660553)
+local current_fg = string.format("%06x", tonumber(current_colors.foreground))
 
 if vim.g.THEME == "noirbuddy" then
   local noirbuddy = require("noirbuddy.colors").all()

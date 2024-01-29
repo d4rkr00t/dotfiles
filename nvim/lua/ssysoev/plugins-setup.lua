@@ -34,11 +34,122 @@ return {
 
   -- colorscheme
   {
-    -- "mellow-theme/mellow.nvim",
-    "d4rkr00t/mellow.nvim",
+    "rebelot/kanagawa.nvim",
     cond = vim.g.THEME == "mellow",
-    config = function()
-      pcall(vim.cmd, "colorscheme mellow")
+    init = function()
+      require("kanagawa").setup({
+        compile = false, -- enable compiling the colorscheme
+        undercurl = true, -- enable undercurls
+        keywordStyle = { italic = false },
+        commentStyle = { italic = false },
+        colors = { -- add/modify theme and palette colors
+          theme = {
+            dragon = {
+              ui = {
+                fg = "#ffffff",
+                fg_dim = "#A0A0A0",
+                fg_reverse = "#505050",
+
+                bg_dim = "#101010",
+                bg_gutter = "#101010",
+
+                bg_m3 = "#000000",
+                bg_m2 = "#101010",
+                bg_m1 = "#161616",
+                bg = "#101010",
+                --   bg_p1 = palette.dragonBlack4,
+                --   bg_p2 = palette.dragonBlack5,
+                --
+                --   special = palette.dragonGray3,
+                --   whitespace = palette.dragonBlack6,
+                --   nontext = palette.dragonBlack6,
+
+                bg_visual = "#242525",
+                bg_search = "#a0a0a0",
+
+                pmenu = {
+                  fg = "#ffffff",
+                  fg_sel = "none",
+                  bg = "#101010",
+                  bg_sel = "#242525",
+                  bg_thumb = "#101010",
+                  bg_sbar = "#101010",
+                },
+                --
+                float = {
+                  fg = "#ffffff",
+                  bg = "#161616",
+                  -- fg_border = palette.sumiInk6,
+                  bg_border = "#282828",
+                },
+              },
+              syn = {
+                string = "#99FFE4",
+                variable = "#ffffff",
+                number = "#FFC799",
+                constant = "#FFC799",
+                identifier = "#FFC799",
+                parameter = "#A0A0A0",
+                fun = "#FFC799",
+                statement = "#FFC799",
+                keyword = "#A0A0A0",
+                operator = "#A0A0A0",
+                preproc = "#FF8080",
+                type = "#FFC799",
+                regex = "#A0A0A0",
+                deprecated = "#A0A0A0",
+                punct = "#A0A0A0",
+                comment = "#515051",
+                special1 = "#FFC799",
+                special2 = "#FF8080",
+                special3 = "#FF8080",
+              },
+              diag = {
+                error = "#FF8080",
+                ok = "#99FFE4",
+                warning = "#FFC799",
+                -- info = palette.dragonBlue,
+                -- hint = palette.waveAqua1,
+              },
+              diff = {
+                add = "#99FFE4",
+                delete = "#FF8080",
+                change = "#FFC799",
+                text = "#090B14",
+              },
+              vcs = {
+                added = "#99FFE4",
+                removed = "#FF8080",
+                changed = "#FFC799",
+              },
+              -- term = {
+              --   palette.dragonBlack0, -- black
+              --   palette.dragonRed, -- red
+              --   palette.dragonGreen2, -- green
+              --   palette.dragonYellow, -- yellow
+              --   palette.dragonBlue2, -- blue
+              --   palette.dragonPink, -- magenta
+              --   palette.dragonAqua, -- cyan
+              --   palette.oldWhite, -- white
+              --   palette.dragonGray, -- bright black
+              --   palette.waveRed, -- bright red
+              --   palette.dragonGreen, -- bright green
+              --   palette.carpYellow, -- bright yellow
+              --   palette.springBlue, -- bright blue
+              --   palette.springViolet1, -- bright magenta
+              --   palette.waveAqua2, -- bright cyan
+              --   palette.dragonWhite, -- bright white
+              --   palette.dragonOrange, -- extended color 1
+              --   palette.dragonOrange2, -- extended color 2
+              -- },
+            },
+          },
+        },
+        background = {
+          dark = "dragon",
+        },
+      })
+      pcall(vim.cmd, "colorscheme kanagawa-dragon")
     end,
   },
 

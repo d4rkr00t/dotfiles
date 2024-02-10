@@ -57,9 +57,9 @@ return {
                 bg_m2 = "#101010",
                 bg_m1 = "#161616",
                 bg = "#101010",
-                --   bg_p1 = palette.dragonBlack4,
-                --   bg_p2 = palette.dragonBlack5,
-                --
+                bg_p1 = "#101010",
+                bg_p2 = "#242525",
+
                 --   special = palette.dragonGray3,
                 --   whitespace = palette.dragonBlack6,
                 --   nontext = palette.dragonBlack6,
@@ -101,8 +101,8 @@ return {
                 punct = "#A0A0A0",
                 comment = "#515051",
                 special1 = "#FFC799",
-                special2 = "#FF8080",
-                special3 = "#FF8080",
+                special2 = "#A0A0A0",
+                special3 = "#A0A0A0",
               },
               diag = {
                 error = "#FF8080",
@@ -475,7 +475,7 @@ return {
       -- snippets
       {
         "L3MON4D3/LuaSnip",
-        commit = "1182638",
+        pin = true,
       },
     },
   },

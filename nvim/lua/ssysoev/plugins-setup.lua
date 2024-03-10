@@ -94,7 +94,8 @@ return {
                 statement = "#FFC799",
                 keyword = "#A0A0A0",
                 operator = "#A0A0A0",
-                preproc = "#FF8080",
+                preproc = "#A0A0A0",
+                -- preproc = "#FF8080",
                 type = "#FFC799",
                 regex = "#A0A0A0",
                 deprecated = "#A0A0A0",
@@ -308,6 +309,7 @@ return {
   {
     "gelguy/wilder.nvim",
     keys = { ":", "/", "?" },
+    cond = false,
     config = function()
       local wilder = require("wilder")
       wilder.setup({ modes = { ":", "/", "?" } })

@@ -298,6 +298,12 @@ safe_reqiure({ "command_center" }, function(mods)
     },
 
     {
+      desc = "Fzf search edits",
+      cmd = "<cmd>FzfLua changes<CR>",
+      keys = { "n", "<leader>fe", noremap },
+    },
+
+    {
       desc = "Fzf search in current buffer",
       cmd = "<cmd>FzfLua lgrep_curbuf<CR>",
       keys = { "n", "<leader>/", noremap },

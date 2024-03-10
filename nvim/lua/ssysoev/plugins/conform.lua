@@ -26,11 +26,12 @@ safe_reqiure({ "command_center", "conform" }, function(mods)
     },
   })
 
-  vim.api.nvim_create_autocmd("BufWritePost", {
+  vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
       if should_format_on_save then
-        conform.format({ bufnr = args.buf, async = true, timeout_ms = 5000, lsp_fallback = true })
+        -- conform.format({ bufnr = args.buf, async = true, timeout_ms = 5000, lsp_fallback = true })
+        conform.format({ bufnr = args.buf })
       end
     end,
   })

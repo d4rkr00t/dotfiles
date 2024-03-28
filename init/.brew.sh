@@ -10,6 +10,7 @@ pkgs=(
     bat
     cloc
     coreutils
+    dua-cli
     exa
     fd
     ffmpeg

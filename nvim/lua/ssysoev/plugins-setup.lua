@@ -541,6 +541,7 @@ return {
   {
     -- list view for diagnostics
     "folke/trouble.nvim",
+    branch = "dev",
     dependencies = "nvim-tree/nvim-web-devicons",
     cmd = { "Trouble" },
     config = function()

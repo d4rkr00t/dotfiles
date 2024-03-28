@@ -336,12 +336,12 @@ safe_reqiure({ "command_center" }, function(mods)
     -- trouble
     {
       desc = "Trouble document diagnostics",
-      cmd = "<cmd>Trouble document_diagnostics<CR>",
+      cmd = "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>",
       keys = { "n", "<leader>xx", noremap },
     },
     {
       desc = "Trouble project diagnostics",
-      cmd = "<cmd>Trouble workspace_diagnostics<CR>",
+      cmd = "<cmd>Trouble diagnostics toggle focus=true<CR>",
     },
 
     -- yanky

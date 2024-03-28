@@ -502,7 +502,7 @@ return {
       -- additional functionality for typescript server (e.g. rename file & update imports)
       {
         "pmizio/typescript-tools.nvim",
-        cond = false,
+        -- cond = false,
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         config = function() end,
       },

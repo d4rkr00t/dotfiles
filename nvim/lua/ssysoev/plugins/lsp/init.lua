@@ -175,48 +175,49 @@ vim.diagnostic.config({
 local config = {
   tsserver = {
     type = "lsp",
-    setup_lsp = function(lspconfig, defaults)
-      lspconfig["tsserver"].setup(merge_tables(defaults, {
-        on_attach = on_attach,
-        root_dir = function(fname)
-          local util = require("lspconfig.util")
-          return util.root_pattern("tsconfig.json")(fname)
-        end,
-        settings = {
-          typescript = {
-            tsserver = {
-              maxTsServerMemory = 8000,
-              nodePath = "node",
-            },
-            suggest = {
-              completeFunctionCalls = true,
-            },
-            preferGoToSourceDefinition = true,
-          },
-          javascript = {
-            implicitProjectConfig = {
-              checkJs = true,
-            },
-            suggest = {
-              completeFunctionCalls = true,
-            },
-            preferGoToSourceDefinition = true,
-          },
-        },
-      }))
-    end,
-    -- setup_lsp = function()
-    --   safe_require({ "typescript-tools" }, function(mods)
-    --     mods["typescript-tools"].setup({
-    --       on_attach = on_attach,
-    --       settings = {
-    --         publish_diagnostic_on = "insert_leave",
-    --         separate_diagnostic_server = false,
-    --         tsserver_max_memory = "auto",
+    -- setup_lsp = function(lspconfig, defaults)
+    --   lspconfig["tsserver"].setup(merge_tables(defaults, {
+    --     on_attach = on_attach,
+    --     root_dir = function(fname)
+    --       local util = require("lspconfig.util")
+    --       return util.root_pattern("tsconfig.json")(fname)
+    --     end,
+    --     settings = {
+    --       typescript = {
+    --         tsserver = {
+    --           maxTsServerMemory = 8000,
+    --           nodePath = "node",
+    --         },
+    --         suggest = {
+    --           completeFunctionCalls = true,
+    --         },
+    --         preferGoToSourceDefinition = true,
     --       },
-    --     })
-    --   end)
+    --       javascript = {
+    --         implicitProjectConfig = {
+    --           checkJs = true,
+    --         },
+    --         suggest = {
+    --           completeFunctionCalls = true,
+    --         },
+    --         preferGoToSourceDefinition = true,
+    --       },
+    --     },
+    --   }))
     -- end,
+    setup_lsp = function()
+      safe_require({ "typescript-tools" }, function(mods)
+        mods["typescript-tools"].setup({
+          on_attach = on_attach,
+          settings = {
+            publish_diagnostic_on = "insert_leave",
+            separate_diagnostic_server = false,
+            tsserver_max_memory = "auto",
+            tsserver_file_preferences = {},
+          },
+        })
+      end)
+    end,
   },
   lua_ls = {
     type = "lsp",

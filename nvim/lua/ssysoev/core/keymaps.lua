@@ -329,7 +329,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Open in Github",
-      cmd = "<cmd>GitLink!<CR>",
+      cmd = "<cmd>GitLink! default_branch<CR>",
       keys = { { "n", "v" }, "<leader>gl", noremap },
     },
 

@@ -24,6 +24,9 @@ safe_require({ "gitlinker" }, function(mods)
       blame = {
         ["^bitbucket%-mirror%-au%.internal%.atlassian%.com"] = stash_matcher,
       },
+      default_branch = {
+        ["^bitbucket%-mirror%-au%.internal%.atlassian%.com"] = stash_matcher,
+      },
     },
   })
 end)

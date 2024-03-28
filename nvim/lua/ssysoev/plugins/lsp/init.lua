@@ -185,7 +185,8 @@ local config = {
         settings = {
           typescript = {
             tsserver = {
-              maxTsServerMemory = 12000,
+              maxTsServerMemory = 8000,
+              nodePath = "node",
             },
             suggest = {
               completeFunctionCalls = true,

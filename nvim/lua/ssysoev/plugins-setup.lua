@@ -328,7 +328,7 @@ return {
   -- fuzzy finder
   --
   {
-    "ibhagwan/fzf-lua",
+    url = "https://gitlab.com/ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = true,

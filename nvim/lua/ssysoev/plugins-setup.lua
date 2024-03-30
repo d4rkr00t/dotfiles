@@ -328,7 +328,7 @@ return {
   -- fuzzy finder
   --
   {
-    url = "https://gitlab.com/ibhagwan/fzf-lua",
+    "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = true,
@@ -649,8 +649,14 @@ return {
   },
 
   -- experiments
-  -- {
-  --   "tris203/hawtkeys.nvim",
-  --   config = true,
-  -- },
+  {
+    "cbochs/grapple.nvim",
+    cmd = "Grapple",
+    opts = {
+      scope = "git",
+    },
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons", lazy = true },
+    },
+  },
 }

@@ -312,7 +312,7 @@ safe_reqiure({ "command_center" }, function(mods)
     {
       desc = "Fzf buffers",
       cmd = "<cmd>FzfLua buffers<CR>",
-      keys = { "n", "<leader>b", noremap },
+      keys = { "n", "<leader>fb", noremap },
     },
 
     {
@@ -342,6 +342,18 @@ safe_reqiure({ "command_center" }, function(mods)
     {
       desc = "Trouble project diagnostics",
       cmd = "<cmd>Trouble diagnostics toggle focus=true<CR>",
+    },
+
+    -- grapple
+    {
+      desc = "Grapple toggle tag",
+      cmd = "<cmd>Grapple toggle<cr>",
+      keys = { "n", "<leader>b", noremap },
+    },
+    {
+      desc = "Grapple open tags window",
+      cmd = "<cmd>Grapple open_tags<cr>",
+      keys = { "n", "<leader>.", noremap },
     },
 
     -- yanky

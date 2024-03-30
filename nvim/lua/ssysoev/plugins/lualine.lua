@@ -218,6 +218,15 @@ ins_left({
 
 -- Add components to right sections
 ins_right({
+  function()
+    if require("grapple").name_or_index() == nil then
+      return ""
+    end
+    return "[󰛢 " .. require("grapple").name_or_index() .. "]"
+  end,
+  color = { fg = colors.green, gui = "bold" },
+})
+ins_right({
   "o:encoding", -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,

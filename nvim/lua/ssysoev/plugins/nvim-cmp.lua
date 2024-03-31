@@ -58,6 +58,11 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
   end
 
   cmp.setup({
+    view = {
+      entries = {
+        follow_cursor = true,
+      },
+    },
     completion = {
       completeopt = "menu,menuone,preview,noselect",
       autocomplete = false,

@@ -35,7 +35,7 @@ return {
   -- colorscheme
   {
     "rebelot/kanagawa.nvim",
-    cond = vim.g.THEME == "mellow",
+    cond = vim.g.THEME == "kanagawa",
     init = function()
       require("kanagawa").setup({
         compile = false, -- enable compiling the colorscheme
@@ -289,6 +289,7 @@ return {
     end,
   },
 
+  -- progress bar for lsp
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
@@ -303,24 +304,6 @@ return {
     event = "VeryLazy",
     init = function()
       require("ssysoev.plugins.dressing")
-    end,
-  },
-
-  {
-    "gelguy/wilder.nvim",
-    keys = { ":", "/", "?" },
-    cond = false,
-    config = function()
-      local wilder = require("wilder")
-      wilder.setup({ modes = { ":", "/", "?" } })
-      wilder.set_option(
-        "renderer",
-        wilder.popupmenu_renderer({
-          highlighter = wilder.basic_highlighter(),
-          left = { " ", wilder.popupmenu_devicons() },
-          right = { " ", wilder.popupmenu_scrollbar() },
-        })
-      )
     end,
   },
 
@@ -378,7 +361,13 @@ return {
       require("ssysoev.plugins.comment")
     end,
     dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        lazy = true,
+        opts = {
+          enable_autocmd = false,
+        },
+      },
     },
   },
 

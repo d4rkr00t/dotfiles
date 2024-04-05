@@ -10,7 +10,7 @@ vim.g.mapleader = ","
 -- vim.g.THEME = "tokyonight"
 -- vim.g.THEME = "catppuccin"
 -- vim.g.THEME = "rose-pine"
-vim.g.THEME = "mellow"
+vim.g.THEME = "kanagawa"
 --
 
 require("ssysoev.lazy")

@@ -4,7 +4,8 @@ opt.shortmess:append("I")
 opt.shortmess:append("C")
 
 -- Decrease update time
-opt.updatetime = 250
+opt.updatetime = 200
+opt.timeoutlen = 500
 
 -- mouse
 opt.mouse = "a"

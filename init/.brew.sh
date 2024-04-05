@@ -16,6 +16,7 @@ pkgs=(
     ffmpeg
     findutils
     fnm
+    fzf
     git
     git-absorb
     git-lfs

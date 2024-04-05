@@ -6,8 +6,12 @@ safe_require({ "telescope", "command_center" }, function(mods)
 
   telescope.setup({
     defaults = {
+      preview = {
+        filesize_limit = 0.1, -- MB
+        treesitter = false,
+      },
       sorting_strategy = "ascending",
-      layout_strategy = "horizontal",
+      layout_strategy = "flex",
       layout_config = {
         horizontal = {
           prompt_position = "top",

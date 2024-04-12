@@ -19,6 +19,10 @@ return {
     lazy = true,
     cmd = { "Oil" },
     opts = {
+      cleanup_delay_ms = 100,
+      view_options = {
+        show_hidden = true,
+      },
       keymaps = {
         ["<Esc><Esc>"] = { callback = "actions.close", mode = "n" },
         ["<C-v>"] = { callback = "actions.select_vsplit" },
@@ -390,7 +394,7 @@ return {
     "LunarVim/bigfile.nvim",
     config = function()
       require("bigfile").setup({
-        filesize = 4, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+        filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
         pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
         features = { -- features to disable
           "indent_blankline",

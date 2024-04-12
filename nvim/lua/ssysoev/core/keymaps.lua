@@ -215,7 +215,7 @@ safe_reqiure({ "command_center" }, function(mods)
     -- oil
     {
       desc = "Open parent directory",
-      cmd = "<cmd>lua require('oil').open_float()<CR>",
+      cmd = "<cmd>lua require('oil').open()<CR>",
       keys = { "n", "-", noremap },
     },
 

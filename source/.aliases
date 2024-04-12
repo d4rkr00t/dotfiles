@@ -107,6 +107,9 @@ alias path='echo -e ${PATH//:/\\n}'
 # Git
 alias gfl="rm -rf ./.git/index.lock"
 
+# Use git to character diff files
+alias gdc="git diff --no-index --word-diff=color --word-diff-regex=."
+
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
 

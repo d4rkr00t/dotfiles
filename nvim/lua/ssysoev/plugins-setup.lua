@@ -430,14 +430,7 @@ return {
   -- copilot
   --
   {
-    "zbirenbaum/copilot.lua",
-    cmd = { "Copilot" },
-    event = "InsertEnter",
-    config = function()
-      vim.schedule(function()
-        require("ssysoev.plugins.copilot")
-      end)
-    end,
+    "github/copilot.vim",
   },
 
   --
@@ -456,12 +449,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
 
       -- snippets
       {

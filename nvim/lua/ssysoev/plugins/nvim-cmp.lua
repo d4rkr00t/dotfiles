@@ -65,7 +65,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
     },
     completion = {
       completeopt = "menu,menuone,preview,noselect",
-      autocomplete = false,
     },
 
     snippet = {
@@ -111,7 +110,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       { name = "path", keyword_length = 3, max_item_count = 4 }, -- file system paths
       { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- snippets
       { name = "nvim_lsp_signature_help" },
-      { name = "copilot" }, -- copilot data source
     },
 
     sorting = {
@@ -146,7 +144,6 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
         --     Value = 1,
         --   },
         -- }),
-        require("copilot_cmp.comparators").prioritize,
         cmp.config.compare.offset,
         cmp.config.compare.exact,
         cmp.config.compare.score,

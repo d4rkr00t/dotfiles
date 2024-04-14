@@ -64,9 +64,9 @@ return {
                 bg_p1 = "#101010",
                 bg_p2 = "#242525",
 
-                --   special = palette.dragonGray3,
-                --   whitespace = palette.dragonBlack6,
-                --   nontext = palette.dragonBlack6,
+                special = "#7a8382",
+                whitespace = "#625e5a",
+                nontext = "#625e5a",
 
                 bg_visual = "#242525",
                 bg_search = "#a0a0a0",
@@ -81,10 +81,11 @@ return {
                 },
                 --
                 float = {
-                  fg = "#ffffff",
+                  fg = "#A0A0A0",
                   bg = "#161616",
                   -- fg_border = palette.sumiInk6,
-                  bg_border = "#282828",
+                  -- bg_border = "#282828",
+                  -- hello
                 },
               },
               syn = {
@@ -113,14 +114,14 @@ return {
                 error = "#FF8080",
                 ok = "#99FFE4",
                 warning = "#FFC799",
-                -- info = palette.dragonBlue,
-                -- hint = palette.waveAqua1,
+                info = "#A0A0A0",
+                hint = "#6A9589",
               },
               diff = {
-                add = "#99FFE4",
-                delete = "#FF8080",
-                change = "#FFC799",
-                text = "#090B14",
+                add = "#283E38",
+                delete = "#3C2526",
+                change = "#3B332A",
+                text = "#242525",
               },
               vcs = {
                 added = "#99FFE4",

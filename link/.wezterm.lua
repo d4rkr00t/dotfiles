@@ -29,15 +29,24 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 50
 
 config.window_padding = {
-  left = 16,
-  right = 16,
-  top = 16,
+  left = 18,
+  right = 18,
+  top = 18,
   bottom = 12,
 }
 
 config.font_size = 13
-config.line_height = 1.3
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.line_height = 1.4
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font_with_fallback({
+  {
+    family = "Monaspace Neon",
+    harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
+  },
+  { family = "JetBrainsMono Nerd Font" },
+})
+config.underline_position = -8
+config.underline_thickness = 2
 
 --
 -- Key bindings

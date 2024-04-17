@@ -13,14 +13,14 @@ end
 --
 -- Options
 --
-config.scrollback_lines = 1000000
+config.scrollback_lines = 10000000
 config.window_close_confirmation = "NeverPrompt"
 
 --
 -- Color & Appearance
 --
 
-config.color_scheme = "tokyonight_night"
+-- config.color_scheme = "tokyonight_night"
 config.window_decorations = "RESIZE"
 
 config.hide_tab_bar_if_only_one_tab = true
@@ -29,10 +29,10 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 30
 
 config.window_padding = {
-  left = 21,
-  right = 21,
+  left = 16,
+  right = 16,
   top = 16,
-  bottom = 8,
+  bottom = 12,
 }
 
 config.font_size = 13
@@ -93,5 +93,73 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_siz
     { Text = " ▕" },
   })
 end)
+
+--
+-- Custom Color Scheme
+--
+
+config.colors = {
+  -- The default text color
+  foreground = "#cfcfcf",
+  -- The default background color
+  background = "#101010",
+
+  -- Overrides the cell background color when the current cell is occupied by the
+  -- cursor and the cursor style is set to Block
+  cursor_bg = "#57575f",
+  -- Overrides the text color when the current cell is occupied by the cursor
+  cursor_fg = "#cfcfcf",
+  -- Specifies the border color of the cursor when the cursor style is set to Block,
+  -- or the color of the vertical or horizontal bar when the cursor style is set to
+  -- Bar or Underline.
+  cursor_border = "#57575f",
+
+  -- the foreground color of selected text
+  selection_fg = "#a0a0a0",
+  -- the background color of selected text
+  selection_bg = "#282828",
+
+  -- The color of the scrollbar "thumb"; the portion that represents the current viewport
+  scrollbar_thumb = "#222222",
+
+  -- The color of the split lines between panes
+  split = "#363635",
+
+  ansi = {
+    "#101010",
+    "#f5a191",
+    "#90b99f",
+    "#e6b99d",
+    "#aca1cf",
+    "#e29eca",
+    "#ea83a5",
+    "#a0a0a0",
+  },
+  brights = {
+    "#282828",
+    "#ff8080",
+    "#99ffe4",
+    "#ffc799",
+    "#b9aeda",
+    "#ecaad6",
+    "#f591b2",
+    "#ffffff",
+  },
+
+  tab_bar = {
+    background = "#101010",
+    inactive_tab_edge = "#363635",
+
+    active_tab = {
+      bg_color = "#101010",
+      fg_color = "#cfcfcf",
+    },
+
+    inactive_tab = {
+      bg_color = "#040204",
+      fg_color = "#3D3D3C",
+    },
+  },
+}
 
 return config

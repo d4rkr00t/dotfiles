@@ -26,7 +26,7 @@ config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
-config.tab_max_width = 30
+config.tab_max_width = 50
 
 config.window_padding = {
   left = 16,
@@ -69,9 +69,7 @@ config.keys = {
 -- Tab Title
 --
 local function get_current_working_folder_name(tab)
-  local cwd_uri = tab.active_pane.current_working_dir
-
-  cwd_uri = cwd_uri:sub(8)
+  local cwd_uri = tab.active_pane.current_working_dir.file_path
 
   local slash = cwd_uri:find("/")
   local cwd = cwd_uri:sub(slash)
@@ -86,10 +84,9 @@ end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)
   return wezterm.format({
-    { Attribute = { Intensity = "Half" } },
     { Text = string.format(" %s", tab.tab_index + 1) },
     { Text = " " },
-    { Text = wezterm.truncate_right(get_current_working_folder_name(tab), max_size - 5) },
+    { Text = get_current_working_folder_name(tab) },
     { Text = " ▕" },
   })
 end)

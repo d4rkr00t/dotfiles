@@ -616,8 +616,8 @@ return {
   },
 
   {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    "tpope/vim-fugitive",
+    cmd = { "Git", "Gvdiffsplit" },
   },
 
   -- visual window switcher

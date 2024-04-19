@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 -- This table will hold the configuration.
 local config = {}
@@ -29,10 +30,10 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 50
 
 config.window_padding = {
-  left = 18,
-  right = 18,
-  top = 18,
-  bottom = 12,
+  left = 8,
+  right = 8,
+  top = 8,
+  bottom = 4,
 }
 
 config.font_size = 13
@@ -52,6 +53,11 @@ config.underline_thickness = 2
 -- Key bindings
 --
 config.keys = {
+  {
+    key = "w",
+    mods = "CMD",
+    action = wezterm.action.CloseCurrentTab({ confirm = false }),
+  },
   {
     key = "k",
     mods = "CMD",
@@ -74,6 +80,30 @@ config.keys = {
   },
 }
 
+config.mouse_bindings = {
+  -- Change the default click behavior so that it only selects
+  -- text and doesn't open hyperlinks
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = act.CompleteSelection("PrimarySelection"),
+  },
+
+  -- and make CMD open hyperlinks
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CMD",
+    action = act.OpenLinkAtMouseCursor,
+  },
+
+  -- Disable the 'Down' event of CMD-Click to avoid weird program behaviors
+  {
+    event = { Down = { streak = 1, button = "Left" } },
+    mods = "CMD",
+    action = act.Nop,
+  },
+}
+
 --
 -- Tab Title
 --
@@ -93,7 +123,7 @@ end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)
   return wezterm.format({
-    { Text = string.format(" %s", tab.tab_index + 1) },
+    { Text = string.format("  %s", tab.tab_index + 1) },
     { Text = " " },
     { Text = get_current_working_folder_name(tab) },
     { Text = " ▕" },

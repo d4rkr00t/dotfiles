@@ -72,7 +72,7 @@ alias python="python3"
 #
 # Listing — LS
 #
-alias ls="command exa"
+alias ls="command eza"
 
 # List all files colorized in long format
 alias l="ls -lF"

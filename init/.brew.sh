@@ -11,7 +11,7 @@ pkgs=(
     cloc
     coreutils
     dua-cli
-    exa
+    eza
     fd
     ffmpeg
     findutils
@@ -30,6 +30,7 @@ pkgs=(
     rename
     ripgrep
     starship
+    tlrc
     tree
     vim --override-system-vi
     wget --with-iri

@@ -65,6 +65,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
     },
     completion = {
       completeopt = "menu,menuone,preview,noselect",
+      autocomplete = false,
     },
 
     snippet = {

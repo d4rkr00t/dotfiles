@@ -11,6 +11,7 @@ pkgs=(
     cloc
     coreutils
     dua-cli
+    entr
     eza
     fd
     ffmpeg

@@ -75,6 +75,8 @@ safe_reqiure({ "command_center" }, function(mods)
       desc = "Open command_center",
       cmd = "<CMD>Telescope command_center<CR>",
       keys = {
+        { "n", "<leader>p", noremap },
+        { "v", "<leader>p", noremap },
         { "n", "<leader>cc", noremap },
         { "v", "<leader>cc", noremap },
 
@@ -336,6 +338,20 @@ safe_reqiure({ "command_center" }, function(mods)
       keys = { { "n", "v" }, "<leader>gl", noremap },
     },
 
+    -- fugitive
+    {
+      desc = "Git status",
+      cmd = "<cmd>Git<CR>",
+    },
+    {
+      desc = "Git diff",
+      cmd = "<cmd>Gvdiffsplit<CR>",
+    },
+    {
+      desc = "Git blame",
+      cmd = "<cmd>Git blame<CR>",
+    },
+
     -- trouble
     {
       desc = "Trouble document diagnostics",
@@ -443,6 +459,48 @@ safe_reqiure({ "command_center" }, function(mods)
       desc = "Gitsigns go to prev hunk",
       cmd = "<cmd>Gitsigns prev_hunk<cr>",
       keys = { "n", "[h", noremap },
+    },
+
+    {
+      desc = "Preview hunk",
+      cmd = "<cmd>Gitsigns preview_hunk<cr>",
+      keys = { "n", "<leader>hp" },
+    },
+
+    {
+      desc = "Reset hunk",
+      cmd = "<cmd>Gitsigns reset_hunk<cr>",
+      keys = { "n", "<leader>hr" },
+    },
+
+    {
+      desc = "Stage hunk",
+      cmd = "<cmd>Gitsigns stage_hunk<cr>",
+      keys = { "n", "<leader>hs" },
+    },
+
+    {
+      desc = "Unstage hunk",
+      cmd = "<cmd>Gitsigns stage_hunk<cr>",
+      keys = { "n", "<leader>hu" },
+    },
+
+    {
+      desc = "Diff this",
+      cmd = "<cmd>Gitsigns diffthis<cr>",
+      keys = { "n", "<leader>hd" },
+    },
+
+    {
+      desc = "Toggle current line diff",
+      cmd = "<cmd>Gitsigns toggle_current_line_blame<cr>",
+    },
+
+    {
+      desc = "Blame line",
+      cmd = function()
+        require("gitsigns").blame_line({ full = true })
+      end,
     },
   })
 end)

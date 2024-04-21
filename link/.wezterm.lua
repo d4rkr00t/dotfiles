@@ -30,10 +30,10 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 50
 
 config.window_padding = {
-  left = 8,
-  right = 8,
-  top = 8,
-  bottom = 4,
+  left = "0.8 cell",
+  right = "0.8 cell",
+  top = "0.5 cell",
+  bottom = "0.2 cell",
 }
 
 config.font_size = 13

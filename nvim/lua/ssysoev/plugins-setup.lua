@@ -255,6 +255,15 @@ return {
     end,
   },
 
+  -- lightweight floating statuslines
+  {
+    "b0o/incline.nvim",
+    config = function()
+      require("incline").setup()
+    end,
+    event = "VeryLazy",
+  },
+
   -- better quickfix list
   {
     "kevinhwang91/nvim-bqf",

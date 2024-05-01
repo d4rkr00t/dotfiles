@@ -102,6 +102,7 @@
   r = rebase
   ri = "!r() { git rebase -i HEAD~$1; }; r"
   rom = "!r() { git fetch origin master --prune --prune-tags && git rebase origin/master; }; r"
+  romm = "!r() { git fetch origin main --prune --prune-tags && git rebase origin/main; }; r"
   rum = "!r() { git fetch upstream master --prune --prune-tags && rebase upstream/master; }; r"
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files

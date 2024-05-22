@@ -249,8 +249,9 @@ safe_reqiure({ "command_center" }, function(mods)
 
     {
       desc = "Open recent",
+      cmd = "<cmd>FzfLua oldfiles cwd_only=true include_current_session=true<CR>",
       -- cmd = "<cmd>lua require('fzf-lua').oldfiles(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
-      cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
+      -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },
 

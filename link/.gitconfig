@@ -169,6 +169,9 @@
 
   fsmonitor = true
 
+[pack]
+  threads = 8
+
 [color]
   # Use colors in Git commands that are capable of colored output when
   # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)

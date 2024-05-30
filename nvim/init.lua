@@ -2,6 +2,9 @@
 vim.g.VERBOSE_LOG = false
 --
 
+-- Hide deprecated api messages
+vim.deprecate = function() end
+
 -- leader
 vim.g.mapleader = ","
 --

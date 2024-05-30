@@ -21,11 +21,8 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "<", "<gv")
 
 -- <C-D> <C-U> to stay in the middle of the screen
--- keymap.set("n", "<C-d>", "<C-d>zz")
--- keymap.set("n", "<C-u>", "<C-u>zz")
--- Bug in nvim https://github.com/neovim/neovim/issues/28106
-keymap.set("n", "<C-d>", "<C-d>M")
-keymap.set("n", "<C-u>", "<C-u>M")
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Search and n N to stay in the middle of the screen
 keymap.set("n", "n", "nzzzv")

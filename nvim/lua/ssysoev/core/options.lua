@@ -70,7 +70,8 @@ opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 -- invisible characters
 opt.list = true -- Show some invisible characters
-opt.listchars = { tab = " ", trail = "·" }
+-- opt.listchars = { tab = " ", trail = "·" }
+opt.listchars = { tab = "  ", trail = "·" }
 
 -- undo
 opt.undofile = true

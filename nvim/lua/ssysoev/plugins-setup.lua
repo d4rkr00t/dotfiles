@@ -554,7 +554,6 @@ return {
   {
     -- list view for diagnostics
     "folke/trouble.nvim",
-    branch = "dev",
     dependencies = "nvim-tree/nvim-web-devicons",
     cmd = { "Trouble" },
     config = function()
@@ -671,5 +670,12 @@ return {
     dependencies = {
       { "nvim-tree/nvim-web-devicons", lazy = true },
     },
+  },
+
+  -- close unused buffers
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    event = "VeryLazy",
   },
 }

@@ -1,4 +1,4 @@
-local safe_reqiure = require("ssysoev.utils.safe-require")
+local safe_require = require("ssysoev.utils.safe-require")
 local keymap = vim.keymap
 local noremap = { noremap = true, silent = true }
 
@@ -64,7 +64,7 @@ local function close_floating()
   end
 end
 
-safe_reqiure({ "command_center" }, function(mods)
+safe_require({ "command_center" }, function(mods)
   local cc = mods.command_center
 
   cc.add({
@@ -118,7 +118,7 @@ safe_reqiure({ "command_center" }, function(mods)
 
     -- copy file path
     {
-      desc = "Copy Realtive Path",
+      desc = "Copy Relative Path",
       cmd = "<cmd>CopyRelPath<cr>",
       keys = { "n", "<leader>cr", noremap },
     },

@@ -116,7 +116,7 @@ local on_attach = function(client, buffer)
       },
 
       {
-        desc = "Highlight occurences of the word under cursor",
+        desc = "Highlight occurrences of the word under cursor",
         cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
         keys = { "n", "<leader>hh", opts },
       },

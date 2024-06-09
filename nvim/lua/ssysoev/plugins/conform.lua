@@ -1,6 +1,6 @@
-local safe_reqiure = require("ssysoev.utils.safe-require")
+local safe_require = require("ssysoev.utils.safe-require")
 
-safe_reqiure({ "command_center", "conform" }, function(mods)
+safe_require({ "command_center", "conform" }, function(mods)
   local cc = mods.command_center
   local conform = mods.conform
   local should_format_on_save = true

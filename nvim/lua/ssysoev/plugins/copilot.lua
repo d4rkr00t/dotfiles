@@ -8,5 +8,3 @@ safe_require({ "copilot" }, function(mods)
     },
   })
 end)
-
-

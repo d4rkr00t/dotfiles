@@ -20,6 +20,7 @@ return {
     cmd = { "Oil" },
     opts = {
       cleanup_delay_ms = 100,
+      skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
       },
@@ -665,7 +666,7 @@ return {
     "cbochs/grapple.nvim",
     cmd = "Grapple",
     opts = {
-      scope = "git_branch",
+      -- scope = "git_branch",
     },
     dependencies = {
       { "nvim-tree/nvim-web-devicons", lazy = true },

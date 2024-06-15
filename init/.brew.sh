@@ -22,15 +22,15 @@ pkgs=(
     git-absorb
     git-lfs
     git-when-merged
-    hh
+    # hh
     httpie
     imagemagick
-    ncdu
+    # ncdu
     nvim
     pure
     rename
     ripgrep
-    starship
+    # starship
     tlrc
     tree
     vim --override-system-vi

@@ -679,4 +679,10 @@ return {
     config = true,
     event = "VeryLazy",
   },
+
+  --
+  -- Local dev plugins
+  --
+
+  -- { dir = "~/Development/execa.nvim", opts = {} },
 }

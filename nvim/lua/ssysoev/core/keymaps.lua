@@ -218,19 +218,6 @@ safe_require({ "command_center" }, function(mods)
       keys = { "n", "-", noremap },
     },
 
-    -- nvim tree
-    {
-      desc = "Toggle NvimTree",
-      cmd = ":NvimTreeToggle<CR>",
-      keys = { "n", "<leader>ee", noremap },
-    },
-
-    {
-      desc = "Open NvimTree and focus current file",
-      cmd = ":NvimTreeFindFile<CR>",
-      keys = { "n", "<leader>ef", noremap },
-    },
-
     -- fzf
     {
       desc = "Fzf find files",

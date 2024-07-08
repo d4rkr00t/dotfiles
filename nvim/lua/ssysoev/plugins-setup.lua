@@ -1,3 +1,5 @@
+local safe_require = require("ssysoev.utils.safe-require")
+
 return {
   -- lua functions that many plugins use
   "nvim-lua/plenary.nvim",
@@ -5,15 +7,6 @@ return {
   --
   -- file tree
   --
-  {
-    "nvim-tree/nvim-tree.lua",
-    -- tag = "nightly",
-    cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-    config = function()
-      require("ssysoev.plugins.nvim-tree")
-    end,
-  },
-
   {
     "stevearc/oil.nvim",
     lazy = true,
@@ -27,6 +20,16 @@ return {
       keymaps = {
         ["<Esc><Esc>"] = { callback = "actions.close", mode = "n" },
         ["<C-v>"] = { callback = "actions.select_vsplit" },
+        ["<leader>fs"] = {
+          callback = function()
+            safe_require({ "fzf-lua" }, function(mods)
+              local current_dir = require("oil").get_current_dir()
+
+              local fzf = mods["fzf-lua"]
+              fzf.live_grep({ cwd = current_dir })
+            end)
+          end,
+        },
       },
     },
     -- Optional dependencies

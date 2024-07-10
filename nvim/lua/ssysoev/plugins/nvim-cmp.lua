@@ -31,8 +31,8 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 
   luasnip.setup({
     history = true,
-    region_check_events = "CursorHold,InsertLeave",
-    delete_check_events = "TextChanged,InsertEnter,InsertLeave",
+    region_check_events = "InsertEnter,CursorMoved,CursorMovedI",
+    delete_check_events = "TextChanged,TextChangedI",
     updateevents = "TextChanged,TextChangedI",
     -- Show virtual text hints for node types
     ext_opts = {

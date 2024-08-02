@@ -319,7 +319,7 @@ safe_require({ "command_center" }, function(mods)
 
     {
       desc = "Open in Github",
-      cmd = "<cmd>GitLink! default_branch<CR>",
+      cmd = "<cmd>GitLink! default_branch remote=origin<CR>",
       keys = { { "n", "v" }, "<leader>gl", noremap },
     },
 
@@ -486,6 +486,17 @@ safe_require({ "command_center" }, function(mods)
       cmd = function()
         require("gitsigns").blame_line({ full = true })
       end,
+    },
+
+    {
+      desc = "Execa repeat last command",
+      cmd = "<cmd>Execa repeat<cr>",
+      keys = { "n", "<leader>er" },
+    },
+    {
+      desc = "Execa telescope picker",
+      cmd = "<cmd>Execa telescope<cr>",
+      keys = { "n", "<leader>ee" },
     },
   })
 end)

@@ -360,6 +360,18 @@ return {
     config = function()
       require("fzf-lua").setup({
         "max-perf",
+        git = {
+          status = {
+            cmd = "git -c color.status=false --no-optional-locks status --porcelain=v1",
+          },
+        },
+
+        oldfiles = {
+          cwd_only = true,
+          stat_file = true,
+          include_current_session = true,
+        },
+
         keymap = {
           fzf = {
             ["CTRL-Q"] = "select-all+accept",
@@ -687,5 +699,17 @@ return {
   -- Local dev plugins
   --
 
-  -- { dir = "~/Development/execa.nvim", opts = {} },
+  {
+    dir = "~/Development/execa.nvim",
+    cmd = "Execa",
+    opts = {
+      split = "vsplit",
+      verbose = true,
+      commands = {
+        cargo_test = "cargo test $EX_FN",
+        afm_integration = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server",
+        execa_test = "echo $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
+      },
+    },
+  },
 }

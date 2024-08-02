@@ -1,5 +1,4 @@
 local safe_require = require("ssysoev.utils.safe-require")
-local split = require("ssysoev.utils.split-str")
 safe_require({ "gitlinker" }, function(mods)
   local gitlinker = mods["gitlinker"]
 

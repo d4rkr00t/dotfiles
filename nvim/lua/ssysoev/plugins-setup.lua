@@ -484,11 +484,18 @@ return {
   --
   {
     "github/copilot.vim",
+    cond = false,
   },
 
   --
   -- completion
   --
+  -- snippets
+  {
+    "L3MON4D3/LuaSnip",
+    build = "make install_jsregexp",
+  },
+
   {
     "hrsh7th/nvim-cmp",
     config = function()
@@ -502,12 +509,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-
-      -- snippets
-      {
-        "L3MON4D3/LuaSnip",
-        pin = true,
-      },
     },
   },
 
@@ -700,6 +701,7 @@ return {
   --
 
   {
+    -- "d4rkr00t/execa.nvim",
     dir = "~/Development/execa.nvim",
     cmd = "Execa",
     opts = {
@@ -707,7 +709,15 @@ return {
       verbose = true,
       commands = {
         cargo_test = "cargo test $EX_FN",
-        afm_integration = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server",
+
+        afm_integration_test = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server",
+        afm_integration_test_trace = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server --trace=on",
+
+        afm_unit_test = "yarn test $EX_FILE_PATH_REL",
+
+        npm_version = "npm view $EX_STR version",
+        npm_all_versions = "npm view $EX_STR versions",
+
         execa_test = "echo $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
       },
     },

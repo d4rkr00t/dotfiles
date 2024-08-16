@@ -31,7 +31,7 @@ safe_require({ "command_center", "conform" }, function(mods)
     callback = function(args)
       if should_format_on_save then
         -- conform.format({ bufnr = args.buf, async = true, timeout_ms = 5000, lsp_fallback = true })
-        conform.format({ bufnr = args.buf })
+        conform.format({ bufnr = args.buf, lsp_fallback = true })
       end
     end,
   })

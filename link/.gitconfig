@@ -273,7 +273,10 @@
 
 [init]
 	defaultBranch = main
+
 [maintenance]
 	repo = /Users/ssysoev/atlassian/confluence-frontend
 	repo = /Users/ssysoev/atlassian/atlassian-frontend
 	repo = /Users/ssysoev/atlassian/atlassian-frontend-monorepo
+
+  strategy = incremental

@@ -173,7 +173,7 @@ vim.diagnostic.config({
 })
 
 local config = {
-  tsserver = {
+  ts_ls = {
     type = "lsp",
     -- setup_lsp = function(lspconfig, defaults)
     --   lspconfig["tsserver"].setup(merge_tables(defaults, {

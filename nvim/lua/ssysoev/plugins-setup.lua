@@ -710,10 +710,13 @@ return {
       commands = {
         cargo_test = "cargo test $EX_FN",
 
-        afm_integration_test = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server",
-        afm_integration_test_trace = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server --trace=on",
+        afm_integration_test = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server --retries=0",
+        afm_integration_test_trace = "yarn test:integration $EX_FILE_PATH_REL --reuse-dev-server --trace=on --retries=0",
 
         afm_unit_test = "yarn test $EX_FILE_PATH_REL",
+
+        afm_gemini_test = "yarn test:vr $EX_FILE_PATH_REL",
+        afm_gemini_informational_test = "yarn test:vr-informational $EX_FILE_PATH_REL",
 
         npm_version = "npm view $EX_STR version",
         npm_all_versions = "npm view $EX_STR versions",

@@ -179,6 +179,7 @@ return {
       pcall(vim.cmd, "colorscheme rose-pine-moon")
     end,
   },
+
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -244,6 +245,7 @@ return {
       pcall(vim.cmd, "colorscheme catppuccin")
     end,
   },
+
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -304,13 +306,22 @@ return {
     config = function()
       require("ssysoev.plugins.bufferline")
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- icons
   {
-    "nvim-tree/nvim-web-devicons",
+    "echasnovski/mini.icons",
+    opts = {},
     lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
   },
 
   {
@@ -356,6 +367,7 @@ return {
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = true,
+    commit = "9427dc65afaa7972fb20fc52280cd1449f691928",
     cmd = { "FzfLua" },
     config = function()
       require("fzf-lua").setup({
@@ -606,7 +618,7 @@ return {
   {
     -- treesitter based navigation and selection
     "Dkendal/nvim-treeclimber",
-    event = "InsertEnter",
+    keys = { "<M-j>", "<M-k>" },
     config = function()
       require("ssysoev.plugins.nvim-treeclimber")
     end,
@@ -720,6 +732,8 @@ return {
 
         npm_version = "npm view $EX_STR version",
         npm_all_versions = "npm view $EX_STR versions",
+        npm_src_url = "open https://unpkg.com/browse/$EX_STR/",
+        npm_url = "open https://npm.com/package/$EX_STR/",
 
         execa_test = "echo $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
       },

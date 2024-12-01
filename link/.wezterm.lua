@@ -105,6 +105,13 @@ config.mouse_bindings = {
     mods = "CMD",
     action = act.Nop,
   },
+
+  -- Disable copy on select
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = wezterm.action.Nop,
+  },
 }
 
 --

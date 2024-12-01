@@ -19,6 +19,7 @@ safe_require({ "command_center", "conform" }, function(mods)
       html = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
+      bzl = { "buildifier" },
 
       lua = { "stylua" },
 

@@ -4,7 +4,8 @@ safe_require({ "gitlinker" }, function(mods)
 
   local function stash_matcher(url_data)
     local url = "https://stash.atlassian.com/projects/"
-    url = url .. url_data.user .. "/repos/" .. url_data.repo:gsub("%.git", "")
+    local user = string.gsub(url_data.user, "7999/", "")
+    url = url .. user .. "/repos/" .. url_data.repo:gsub("%.git", "")
     url = url .. "/browse/" .. url_data.file
     url = url .. "?at=" .. url_data.rev
     if url_data.lend then

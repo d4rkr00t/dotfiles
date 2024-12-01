@@ -18,6 +18,8 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL=λ
+PURE_GIT_PULL=0
+PURE_GIT_UNTRACKED_DIRTY=0
 # eval "$(starship init zsh)"
 # source $(brew --prefix)/opt/spaceship/spaceship.zsh
 

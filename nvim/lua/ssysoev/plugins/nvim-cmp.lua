@@ -79,6 +79,7 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<M- >"] = cmp.mapping.complete(), -- show completion suggestions
+      ["<C-i>"] = cmp.mapping.complete(), -- show completion suggestions
       ["<C-e>"] = cmp.mapping.abort(), -- close completion window
       ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,

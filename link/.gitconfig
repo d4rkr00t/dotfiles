@@ -14,7 +14,7 @@
   co = checkout
   cl = clone
   cp = cherry-pick
-  wip = "!f(){ git commit -m \"[$(date +\"%d.%m.%y %T\")]: WIP\"; }; f"
+  wip = "!f(){ git commit -m \"[$(date +\"%d.%m.%y %T\")]: WIP\" -n; }; f"
 
   #
   # Branches
@@ -117,6 +117,9 @@
   #
   # Misc
   #
+
+  # reset conflicting files to origin version
+  resconf = "!f() { git status -sb | rg UU | cut -d' ' -f2- | xargs git co --ours; }; f"
 
   resref = "!r() { git reset --hard HEAD@{$1}; }; r"
   cleanit = clean -fd

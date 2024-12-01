@@ -104,6 +104,11 @@ safe_require({ "command_center" }, function(mods)
     },
 
     {
+      desc = "Close all buffers",
+      cmd = "<cmd>bufdo bd<cr>",
+    },
+
+    {
       desc = "Toggle hidden characters",
       cmd = "<cmd>set list!<cr>",
       keys = { "n", "<leader>th", noremap },
@@ -434,6 +439,12 @@ safe_require({ "command_center" }, function(mods)
     },
 
     -- gitsigns
+    {
+      desc = "Gitsigns go to next hunk",
+      cmd = "<cmd>Gitsigns setqflist<cr>",
+      keys = { "n", "<leader>gh", noremap },
+    },
+
     {
       desc = "Gitsigns go to next hunk",
       cmd = "<cmd>Gitsigns next_hunk<cr>",

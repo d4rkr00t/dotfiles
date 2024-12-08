@@ -9,6 +9,7 @@ return {
   --
   {
     "stevearc/oil.nvim",
+    -- commit = "3c2de37accead0240fbe812f5ccdedfe0b973557",
     lazy = true,
     cmd = { "Oil" },
     opts = {
@@ -272,32 +273,58 @@ return {
 
   -- better quickfix list
   {
-    "kevinhwang91/nvim-bqf",
-    event = "VeryLazy",
-    config = function()
-      local bqf_pv_timer
-      require("bqf").setup({
-        preview = {
-          should_preview_cb = function(bufnr, qwinid)
-            local bufname = vim.api.nvim_buf_get_name(bufnr)
-            if bufname:match("^fugitive://") and not vim.api.nvim_buf_is_loaded(bufnr) then
-              if bqf_pv_timer and bqf_pv_timer:get_due_in() > 0 then
-                bqf_pv_timer:stop()
-                bqf_pv_timer = nil
-              end
-              bqf_pv_timer = vim.defer_fn(function()
-                vim.api.nvim_buf_call(bufnr, function()
-                  vim.cmd(("do fugitive BufReadCmd %s"):format(bufname))
-                end)
-                require("bqf.preview.handler").open(qwinid, nil, true)
-              end, 60)
-            end
-            return true
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {
+      keys = {
+        {
+          ">",
+          function()
+            require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
           end,
+          desc = "Expand quickfix context",
         },
-      })
-    end,
+        {
+          "<",
+          function()
+            require("quicker").collapse()
+          end,
+          desc = "Collapse quickfix context",
+        },
+      },
+    },
   },
+
+  -- better quickfix list
+  -- {
+  --   "kevinhwang91/nvim-bqf",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     local bqf_pv_timer
+  --     require("bqf").setup({
+  --       preview = {
+  --         should_preview_cb = function(bufnr, qwinid)
+  --           local bufname = vim.api.nvim_buf_get_name(bufnr)
+  --           if bufname:match("^fugitive://") and not vim.api.nvim_buf_is_loaded(bufnr) then
+  --             if bqf_pv_timer and bqf_pv_timer:get_due_in() > 0 then
+  --               bqf_pv_timer:stop()
+  --               bqf_pv_timer = nil
+  --             end
+  --             bqf_pv_timer = vim.defer_fn(function()
+  --               vim.api.nvim_buf_call(bufnr, function()
+  --                 vim.cmd(("do fugitive BufReadCmd %s"):format(bufname))
+  --               end)
+  --               require("bqf.preview.handler").open(qwinid, nil, true)
+  --             end, 60)
+  --           end
+  --           return true
+  --         end,
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     -- tabs
@@ -364,8 +391,8 @@ return {
   --
   {
     "ibhagwan/fzf-lua",
-    -- optional for icon support
     lazy = true,
+    -- commit = "9427dc65afaa7972fb20fc52280cd1449f691928",
     cmd = { "FzfLua" },
     config = function()
       require("fzf-lua").setup({
@@ -418,8 +445,7 @@ return {
   {
     -- commenting with gc
     "echasnovski/mini.comment",
-    event = "VeryLazy",
-    -- keys = { "gc", "gcc" },
+    keys = { "gc", "gcc" },
     config = function()
       require("ssysoev.plugins.comment")
     end,
@@ -702,7 +728,9 @@ return {
   -- close unused buffers
   {
     "chrisgrieser/nvim-early-retirement",
-    config = true,
+    opts = {
+      retirementAgeMins = 10,
+    },
     event = "VeryLazy",
   },
 

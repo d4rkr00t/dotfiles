@@ -6,28 +6,30 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
   local vscode_lazy_loader = require("luasnip/loaders/from_vscode")
   local types = require("luasnip.util.types")
 
-  -- Comparator form nvim-cmp that prioritises certain lsp item types (kind) over the others
-  local lspkind_comparator = function(conf)
-    local lsp_types = require("cmp.types").lsp
-    return function(entry1, entry2)
-      -- if entry1.source.name ~= "nvim_lsp" then
-      --   if entry2.source.name == "nvim_lsp" then
-      --     return false
-      --   else
-      --     return nil
-      --   end
-      -- end
-      local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
-      local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+  snippets = require("ssysoev.snippets.snippets")
 
-      local priority1 = conf.kind_priority[kind1] or 0
-      local priority2 = conf.kind_priority[kind2] or 0
-      if priority1 == priority2 then
-        return nil
-      end
-      return priority2 < priority1
-    end
-  end
+  -- Comparator form nvim-cmp that prioritises certain lsp item types (kind) over the others
+  -- local lspkind_comparator = function(conf)
+  --   local lsp_types = require("cmp.types").lsp
+  --   return function(entry1, entry2)
+  --     -- if entry1.source.name ~= "nvim_lsp" then
+  --     --   if entry2.source.name == "nvim_lsp" then
+  --     --     return false
+  --     --   else
+  --     --     return nil
+  --     --   end
+  --     -- end
+  --     local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
+  --     local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+  --
+  --     local priority1 = conf.kind_priority[kind1] or 0
+  --     local priority2 = conf.kind_priority[kind2] or 0
+  --     if priority1 == priority2 then
+  --       return nil
+  --     end
+  --     return priority2 < priority1
+  --   end
+  -- end
 
   luasnip.setup({
     history = true,
@@ -70,7 +72,16 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
 
     snippet = {
       expand = function(args)
-        luasnip.lsp_expand(args.body)
+        print("EXPAND!")
+        print("EXPAND!")
+        print("EXPAND!")
+        print("EXPAND!")
+        print("EXPAND!")
+        print("EXPAND!")
+        print("EXPAND!")
+
+        -- luasnip.lsp_expand(args.body)
+        vim.snippet.expand(args.body)
       end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -88,21 +99,41 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.snippet.jump(1)
+        elseif snippets.expand() then
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, { "i", "s", "n" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        elseif vim.snippet.active({ direction = -1 }) then
+          vim.snippet.jump(-1)
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, { "i", "s", "n" }),
+
+      -- ["<Tab>"] = cmp.mapping(function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_next_item()
+      --   elseif luasnip.expand_or_jumpable() then
+      --     luasnip.expand_or_jump()
+      --   else
+      --     fallback()
+      --   end
+      -- end, { "i", "s" }),
+      -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_prev_item()
+      --   elseif luasnip.jumpable(-1) then
+      --     luasnip.jump(-1)
+      --   else
+      --     fallback()
+      --   end
+      -- end, { "i", "s" }),
     }),
 
     -- sources for autocompletion
@@ -110,8 +141,9 @@ safe_require({ "cmp", "luasnip", "lspkind" }, function(mods)
       { name = "nvim_lsp" }, -- lsp data completion
       { name = "buffer", keyword_length = 2, max_item_count = 5 }, -- text within current buffer
       { name = "path", keyword_length = 3, max_item_count = 4 }, -- file system paths
-      { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- snippets
+      -- { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- snippets
       { name = "nvim_lsp_signature_help" },
+      { name = "snp" },
     },
 
     sorting = {

@@ -77,4 +77,5 @@ opt.listchars = { tab = "  ", trail = "·" }
 opt.undofile = true
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
 
--- vim.cmd("highlight Normal ctermbg=none guibg=none")
+-- history
+vim.opt.shada = "!,'200,<50,s10,h"

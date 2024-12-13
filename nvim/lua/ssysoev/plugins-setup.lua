@@ -9,7 +9,6 @@ return {
   --
   {
     "stevearc/oil.nvim",
-    -- commit = "3c2de37accead0240fbe812f5ccdedfe0b973557",
     lazy = true,
     cmd = { "Oil" },
     opts = {
@@ -712,7 +711,8 @@ return {
     cmd = "Execa",
     opts = {
       split = "vsplit",
-      verbose = true,
+      verbose = false,
+      confirm = true,
       commands = {
         cargo_test = "cargo test $EX_FN",
 

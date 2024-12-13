@@ -161,7 +161,22 @@ ins_left({
   color = { fg = colors.magenta, gui = "bold" },
 })
 
-ins_left({ "location" })
+ins_left({
+  "location",
+})
+
+-- count selected lines
+ins_left({
+  function()
+    local starts = vim.fn.line("v")
+    local ends = vim.fn.line(".")
+    local count = starts <= ends and ends - starts + 1 or starts - ends + 1
+    return count .. "V"
+  end,
+  cond = function()
+    return vim.fn.mode():find("[Vv]") ~= nil
+  end,
+})
 
 ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
 

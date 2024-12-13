@@ -17,15 +17,6 @@ safe_require({ "cmp", "lspkind" }, function(mods)
 
     snippet = {
       expand = function(args)
-        print("EXPAND!")
-        print("EXPAND!")
-        print("EXPAND!")
-        print("EXPAND!")
-        print("EXPAND!")
-        print("EXPAND!")
-        print("EXPAND!")
-
-        -- luasnip.lsp_expand(args.body)
         vim.snippet.expand(args.body)
       end,
     },

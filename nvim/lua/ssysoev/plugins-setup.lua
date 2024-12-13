@@ -83,13 +83,12 @@ return {
                   bg_thumb = "#101010",
                   bg_sbar = "#101010",
                 },
-                --
+
                 float = {
                   fg = "#A0A0A0",
                   bg = "#161616",
-                  -- fg_border = palette.sumiInk6,
-                  -- bg_border = "#282828",
-                  -- hello
+                  fg_border = "#282828",
+                  bg_border = "#282828",
                 },
               },
               syn = {
@@ -158,6 +157,9 @@ return {
         background = {
           dark = "dragon",
         },
+        overrides = function(colors)
+          return {}
+        end,
       })
       pcall(vim.cmd, "colorscheme kanagawa-dragon")
     end,
@@ -267,7 +269,6 @@ return {
   {
     "ibhagwan/fzf-lua",
     lazy = true,
-    -- commit = "9427dc65afaa7972fb20fc52280cd1449f691928",
     cmd = { "FzfLua" },
     config = function()
       require("fzf-lua").setup({
@@ -303,12 +304,17 @@ return {
 
   {
     "FeiyouG/commander.nvim",
-    opts = {
-      integrations = {
-        telescope = {
-          enable = false,
+    config = function()
+      require("commander").setup({
+        integrations = {
+          telescope = {
+            enable = true,
+          },
         },
-      },
+      })
+    end,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
     },
   },
 

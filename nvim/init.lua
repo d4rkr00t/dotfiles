@@ -13,7 +13,7 @@ vim.g.mapleader = ","
 vim.g.THEME = "kanagawa"
 --
 
-require("ssysoev.lazy")
+require("ssysoev.lazy-init")
 require("lazy").setup("ssysoev.plugins-setup", {
   change_detection = {
     -- automatically check for config file changes and reload the ui

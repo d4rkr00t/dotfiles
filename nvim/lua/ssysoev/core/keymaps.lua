@@ -70,7 +70,7 @@ safe_require({ "commander" }, function(mods)
   cc.add({
     {
       desc = "Open commander",
-      cmd = "<CMD>lua require(\"commander\").show()<CR>",
+      cmd = '<CMD>lua require("commander").show()<CR>',
       keys = {
         { "n", "<leader>p", noremap },
         { "v", "<leader>p", noremap },
@@ -393,13 +393,6 @@ safe_require({ "commander" }, function(mods)
       desc = "Lspsaga outline",
       cmd = "<cmd>Lspsaga outline<CR>",
       keys = { "n", "<leader>lo", noremap },
-    },
-
-    -- commenter
-    {
-      desc = "Toggle line comment",
-      cmd = "<Plug>(comment_toggle_linewise_current)<cr>",
-      keys = { "n", "gcc", noremap },
     },
 
     -- bufferline

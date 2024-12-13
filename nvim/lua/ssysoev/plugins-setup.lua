@@ -401,7 +401,13 @@ return {
 
   {
     "FeiyouG/commander.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" }
+    opts = {
+      integrations = {
+        telescope = {
+          enable = false,
+        },
+      },
+    },
   },
 
   --

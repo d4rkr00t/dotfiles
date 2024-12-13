@@ -1,8 +1,7 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-safe_require({ "telescope", "command_center" }, function(mods)
+safe_require({ "telescope" }, function(mods)
   local telescope = mods.telescope
-  local command_center = mods.command_center
 
   telescope.setup({
     defaults = {
@@ -22,20 +21,6 @@ safe_require({ "telescope", "command_center" }, function(mods)
       path_display = { "truncate" },
       color_devicons = true,
     },
-    extensions = {
-      command_center = {
-        components = {
-          command_center.component.DESC,
-          command_center.component.KEYS,
-        },
-        sort_by = {
-          command_center.component.DESC,
-          command_center.component.KEYS,
-        },
-        auto_replace_desc_with_cmd = false,
-      },
-    },
+    extensions = {},
   })
-
-  telescope.load_extension("command_center")
 end)

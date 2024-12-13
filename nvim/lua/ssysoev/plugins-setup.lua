@@ -394,16 +394,14 @@ return {
     "nvim-telescope/telescope.nvim",
     event = "VeryLazy",
     branch = "0.1.x",
-    dependencies = {
-      -- keymaps util and help
-      {
-        "FeiyouG/command_center.nvim",
-        commit = "0d820c438c871fe31ed942bc592a070da1564141",
-      },
-    },
     config = function()
       require("ssysoev.plugins.telescope")
     end,
+  },
+
+  {
+    "FeiyouG/commander.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" }
   },
 
   --

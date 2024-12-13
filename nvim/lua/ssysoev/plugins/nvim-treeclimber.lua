@@ -1,8 +1,8 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-safe_require({ "nvim-treeclimber", "command_center" }, function(mods)
+safe_require({ "nvim-treeclimber", "commander" }, function(mods)
   local tc = mods["nvim-treeclimber"]
-  local cc = mods["command_center"]
+  local cc = mods["commander"]
   local noremap = { noremap = true, silent = true }
 
   cc.add({

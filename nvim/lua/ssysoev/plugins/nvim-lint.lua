@@ -1,7 +1,7 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-safe_require({ "command_center", "lint" }, function(mods)
-  local cc = mods.command_center
+safe_require({ "commander", "lint" }, function(mods)
+  local cc = mods.commander
   local lint = mods.lint
 
   lint.linters_by_ft = {

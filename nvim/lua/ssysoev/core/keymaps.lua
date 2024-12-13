@@ -64,13 +64,13 @@ local function close_floating()
   end
 end
 
-safe_require({ "command_center" }, function(mods)
-  local cc = mods.command_center
+safe_require({ "commander" }, function(mods)
+  local cc = mods.commander
 
   cc.add({
     {
-      desc = "Open command_center",
-      cmd = "<CMD>Telescope command_center<CR>",
+      desc = "Open commander",
+      cmd = "<CMD>lua require(\"commander\").show()<CR>",
       keys = {
         { "n", "<leader>p", noremap },
         { "v", "<leader>p", noremap },
@@ -144,7 +144,6 @@ safe_require({ "command_center" }, function(mods)
       desc = "Move lines up",
       cmd = "<Esc><cmd>m .-2<CR>==gi",
       keys = { "i", "<M-UP>", noremap },
-      mode = cc.mode.SET,
     },
 
     {
@@ -157,7 +156,6 @@ safe_require({ "command_center" }, function(mods)
       desc = "Move lines down",
       cmd = "<Esc><cmd>m .+1<CR>==gi",
       keys = { "i", "<M-DOWN>", noremap },
-      mode = cc.mode.SET,
     },
 
     -- nvim-window
@@ -402,7 +400,6 @@ safe_require({ "command_center" }, function(mods)
       desc = "Toggle line comment",
       cmd = "<Plug>(comment_toggle_linewise_current)<cr>",
       keys = { "n", "gcc", noremap },
-      mode = cc.mode.ADD,
     },
 
     -- bufferline

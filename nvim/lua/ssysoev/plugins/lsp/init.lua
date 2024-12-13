@@ -8,8 +8,8 @@ local on_attach = function(client, buffer)
   client.server_capabilities.semanticTokensProvider = nil
 
   -- set keybinds
-  safe_require({ "command_center" }, function(mods)
-    local cc = mods.command_center
+  safe_require({ "commander" }, function(mods)
+    local cc = mods.commander
 
     -- keybind options
     local opts = { noremap = true, silent = true, buffer = buffer }

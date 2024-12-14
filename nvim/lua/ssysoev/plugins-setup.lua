@@ -88,7 +88,7 @@ return {
                   fg = "#A0A0A0",
                   bg = "#161616",
                   fg_border = "#282828",
-                  bg_border = "#282828",
+                  bg_border = "#101010",
                 },
               },
               syn = {
@@ -618,8 +618,8 @@ return {
   --
 
   {
-    -- "d4rkr00t/execa.nvim",
-    dir = "~/Development/execa.nvim",
+    "d4rkr00t/execa.nvim",
+    -- dir = "~/Development/execa.nvim",
     cmd = "Execa",
     opts = {
       split = "vsplit",

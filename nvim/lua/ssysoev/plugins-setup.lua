@@ -639,7 +639,7 @@ return {
         npm_version = "npm view $EX_STR version",
         npm_all_versions = "npm view $EX_STR versions",
         npm_src_url = "open https://unpkg.com/browse/$EX_STR/",
-        npm_url = "open https://npm.com/package/$EX_STR/",
+        npm_url = "open https://npmjs.com/package/$EX_STR/",
 
         execa_test = "echo $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
       },

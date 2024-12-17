@@ -494,8 +494,8 @@ safe_require({ "commander" }, function(mods)
       keys = { "n", "<leader>er" },
     },
     {
-      desc = "Execa telescope picker",
-      cmd = "<cmd>Execa telescope<cr>",
+      desc = "Execa commands picker",
+      cmd = "<cmd>Execa picker<cr>",
       keys = { "n", "<leader>ee" },
     },
   })

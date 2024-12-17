@@ -618,8 +618,8 @@ return {
   --
 
   {
-    "d4rkr00t/execa.nvim",
-    -- dir = "~/Development/execa.nvim",
+    -- "d4rkr00t/execa.nvim",
+    dir = "~/Development/execa.nvim",
     cmd = "Execa",
     opts = {
       split = "vsplit",

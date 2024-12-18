@@ -224,19 +224,19 @@ safe_require({ "commander" }, function(mods)
     -- fzf
     {
       desc = "Fzf find files",
-      cmd = "<cmd>lua require('fzf-lua').files(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
+      cmd = "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
       keys = { "n", "<leader>ff", noremap },
     },
 
     {
       desc = "Fzf find all files",
-      cmd = "<cmd>lua require('fzf-lua').files(function() return {show_cwd_header=true, cwd=vim.loop.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
+      cmd = "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
       keys = { "n", "<leader>fa", noremap },
     },
 
     {
       desc = "Open recent",
-      cmd = "<cmd>FzfLua oldfiles cwd_only=true include_current_session=true<CR>",
+      cmd = "<cmd>FzfLua oldfiles<CR>",
       -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },

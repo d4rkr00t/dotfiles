@@ -78,4 +78,4 @@ opt.undofile = true
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
 
 -- history
-vim.opt.shada = "!,'200,<50,s10,h"
+-- vim.opt.shada = "!,'200,<50,s10,h"

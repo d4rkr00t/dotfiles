@@ -237,6 +237,7 @@ safe_require({ "commander" }, function(mods)
     {
       desc = "Open recent",
       cmd = "<cmd>FzfLua oldfiles<CR>",
+      -- cmd = "<cmd>lua require('telescope').extensions.smart_open.smart_open { cwd_only = true }<CR>",
       -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },

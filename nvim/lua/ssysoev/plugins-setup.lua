@@ -290,6 +290,16 @@ return {
             ["CTRL-Q"] = "select-all+accept",
           },
         },
+
+        winopts = {
+          split = "bo new",
+          preview = {
+            default = "builtin",
+            winopts = {
+              split = "vert new",
+            },
+          },
+        },
       })
     end,
   },

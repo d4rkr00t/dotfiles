@@ -21,6 +21,5 @@ safe_require({ "telescope" }, function(mods)
       path_display = { "truncate" },
       color_devicons = true,
     },
-    extensions = {},
   })
 end)

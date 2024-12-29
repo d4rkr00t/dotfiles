@@ -224,7 +224,7 @@ safe_require({ "commander" }, function(mods)
     -- fzf
     {
       desc = "Fzf find files",
-      cmd = "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cwd_only=true} end)<CR>",
+      cmd = "<cmd>FzfLua files<cr>",
       keys = { "n", "<leader>ff", noremap },
     },
 
@@ -437,13 +437,13 @@ safe_require({ "commander" }, function(mods)
 
     {
       desc = "Gitsigns go to next hunk",
-      cmd = "<cmd>Gitsigns next_hunk<cr>",
+      cmd = "<cmd>lua require('gitsigns').nav_hunk('next', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
       keys = { "n", "]h", noremap },
     },
 
     {
       desc = "Gitsigns go to prev hunk",
-      cmd = "<cmd>Gitsigns prev_hunk<cr>",
+      cmd = "<cmd>lua require('gitsigns').nav_hunk('prev', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
       keys = { "n", "[h", noremap },
     },
 
@@ -473,7 +473,7 @@ safe_require({ "commander" }, function(mods)
 
     {
       desc = "Diff this",
-      cmd = "<cmd>Gitsigns diffthis<cr>",
+      cmd = "<cmd>lua require('gitsigns').diffthis('~1', { vertical = true })<cr>",
       keys = { "n", "<leader>hd" },
     },
 

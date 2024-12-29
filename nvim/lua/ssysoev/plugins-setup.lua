@@ -273,6 +273,7 @@ return {
     config = function()
       require("fzf-lua").setup({
         "max-perf",
+
         git = {
           status = {
             cmd = "git -c color.status=false --no-optional-locks status --porcelain=v1",
@@ -293,12 +294,6 @@ return {
 
         winopts = {
           split = "bo new",
-          preview = {
-            default = "builtin",
-            winopts = {
-              split = "vert new",
-            },
-          },
         },
       })
     end,

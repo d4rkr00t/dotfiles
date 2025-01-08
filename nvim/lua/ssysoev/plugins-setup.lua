@@ -267,6 +267,13 @@ return {
   -- fuzzy finder
   --
   {
+    "echasnovski/mini.visits",
+    version = false,
+    config = function()
+      require("mini.visits").setup()
+    end,
+  },
+  {
     "ibhagwan/fzf-lua",
     lazy = true,
     cmd = { "FzfLua" },

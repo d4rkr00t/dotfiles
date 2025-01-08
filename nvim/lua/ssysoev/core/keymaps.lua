@@ -236,31 +236,7 @@ safe_require({ "commander" }, function(mods)
 
     {
       desc = "Open recent",
-      -- cmd = "<cmd>FzfLua oldfiles<CR>",
-      cmd = function()
-        local sort_recent = require("mini.visits").gen_sort.default({ recency_weight = 1 })
-        local files = require("mini.visits").list_paths(nil, {
-          sort = sort_recent,
-          filter = function(path)
-            local cwd = vim.fn.getcwd()
-            if path["path"] == cwd then
-              return false
-            end
-            return true
-          end,
-        })
-        require("fzf-lua").fzf_exec(files, {
-          previewer = "builtin",
-          prompt = "History>",
-          fn_transform = function(x)
-            return require("fzf-lua").make_entry.file(x, { file_icons = true, color_icons = true })
-          end,
-          actions = {
-            ["default"] = require("fzf-lua").actions.file_edit,
-            ["ctrl-v"] = require("fzf-lua").actions.file_vsplit,
-          },
-        })
-      end,
+      cmd = "<cmd>FzfLua oldfiles<CR>",
       -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
       keys = { "n", "<leader>o", noremap },
     },

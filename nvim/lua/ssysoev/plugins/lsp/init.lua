@@ -8,126 +8,124 @@ local on_attach = function(client, buffer)
   client.server_capabilities.semanticTokensProvider = nil
 
   -- set keybinds
-  safe_require({ "commander" }, function(mods)
-    local cc = mods.commander
+  local cc = require("ssysoev.custom.commander")
 
-    -- keybind options
-    local opts = { noremap = true, silent = true, buffer = buffer }
+  -- keybind options
+  local opts = { noremap = true, silent = true, buffer = buffer }
 
-    cc.add({
-      {
-        desc = "Show definitions",
-        cmd = "<cmd>Telescope lsp_definitions<CR>",
-        keys = { "n", "gd", opts },
-      },
+  cc.add({
+    {
+      desc = "Show definitions",
+      cmd = "<cmd>FzfLua lsp_definitions<CR>",
+      keys = { "n", "gd", opts },
+    },
 
-      {
-        desc = "Peek definitions",
-        cmd = "<cmd>Lspsaga peek_definition<CR>",
-        keys = { "n", "gpd", opts },
-      },
+    {
+      desc = "Peek definitions",
+      cmd = "<cmd>Lspsaga peek_definition<CR>",
+      keys = { "n", "gpd", opts },
+    },
 
-      {
-        desc = "Open definition in a split",
-        cmd = "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
-        keys = { "n", "gs", opts },
-      },
+    {
+      desc = "Open definition in a split",
+      cmd = "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+      keys = { "n", "gs", opts },
+    },
 
-      {
-        desc = "Show references",
-        cmd = "<cmd>FzfLua lsp_references<CR>",
-        keys = { "n", "gr", opts },
-      },
+    {
+      desc = "Show references",
+      cmd = "<cmd>FzfLua lsp_references<CR>",
+      keys = { "n", "gr", opts },
+    },
 
-      {
-        desc = "Show references [lspsaga]",
-        cmd = "<cmd>Lspsaga finder<CR>",
-        keys = { "n", "gR", opts },
-      },
+    {
+      desc = "Show references [lspsaga]",
+      cmd = "<cmd>Lspsaga finder<CR>",
+      keys = { "n", "gR", opts },
+    },
 
-      {
-        desc = "Show implementation",
-        cmd = "<cmd>FzfLua lsp_implementations<CR>",
-      },
+    {
+      desc = "Show implementation",
+      cmd = "<cmd>FzfLua lsp_implementations<CR>",
+    },
 
-      {
-        desc = "Go to declaration",
-        cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
-        keys = { "n", "gD", opts },
-      },
+    {
+      desc = "Go to declaration",
+      cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
+      keys = { "n", "gD", opts },
+    },
 
-      {
-        desc = "Go to implementation",
-        cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
-        keys = { "n", "gi", opts },
-      },
+    {
+      desc = "Go to implementation",
+      cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
+      keys = { "n", "gi", opts },
+    },
 
-      {
-        desc = "Code actions",
-        cmd = "<cmd>Lspsaga code_action<cr>",
-        keys = { "n", "<leader>la", opts },
-      },
+    {
+      desc = "Code actions",
+      cmd = "<cmd>Lspsaga code_action<cr>",
+      keys = { "n", "<leader>la", opts },
+    },
 
-      {
-        desc = "Smart rename",
-        cmd = vim.lsp.buf.rename,
-        keys = { "n", "<leader>rn", opts },
-      },
+    {
+      desc = "Smart rename",
+      cmd = vim.lsp.buf.rename,
+      keys = { "n", "<leader>rn", opts },
+    },
 
-      {
-        desc = "Show line diagnostics",
-        cmd = function()
-          local float_opts = {
-            focusable = true,
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            border = "rounded",
-            source = "always",
-            prefix = " ",
-            scope = "line",
-          }
-          vim.diagnostic.open_float(nil, float_opts)
-        end,
-        keys = { "n", "<leader>d", opts },
-      },
+    {
+      desc = "Show line diagnostics",
+      cmd = function()
+        local float_opts = {
+          focusable = true,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = "rounded",
+          source = "always",
+          prefix = " ",
+          scope = "line",
+        }
+        vim.diagnostic.open_float(nil, float_opts)
+      end,
+      keys = { "n", "<leader>d", opts },
+    },
 
-      {
-        desc = "Jump to previous diagnostic",
-        cmd = function()
-          vim.diagnostic.goto_prev()
-        end,
-        keys = { "n", "[d", opts },
-      },
+    {
+      desc = "Jump to previous diagnostic",
+      cmd = function()
+        vim.diagnostic.goto_prev()
+      end,
+      keys = { "n", "[d", opts },
+    },
 
-      {
-        desc = "Jump to next diagnostic",
-        cmd = function()
-          vim.diagnostic.goto_next()
-        end,
-        keys = { "n", "]d", opts },
-      },
+    {
+      desc = "Jump to next diagnostic",
+      cmd = function()
+        vim.diagnostic.goto_next()
+      end,
+      keys = { "n", "]d", opts },
+    },
 
-      {
-        desc = "Show documentation",
-        -- cmd = "<cmd>Lspsaga hover_doc<cr>",
-        cmd = function()
-          vim.lsp.buf.hover()
-        end,
-        keys = { "n", "K", opts },
-      },
+    {
+      desc = "Show documentation",
+      -- cmd = "<cmd>Lspsaga hover_doc<cr>",
+      cmd = function()
+        vim.lsp.buf.hover()
+      end,
+      keys = { "n", "K", opts },
+    },
 
-      {
-        desc = "Highlight occurrences of the word under cursor",
-        cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
-        keys = { "n", "<leader>hh", opts },
-      },
+    {
+      desc = "Highlight occurrences of the word under cursor",
+      cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
+      keys = { "n", "<leader>hh", opts },
+    },
 
-      {
-        desc = "Signature documentation",
-        cmd = vim.lsp.buf.signature_help,
-        keys = { "i", "<C-k>", opts },
-      },
-    })
-  end)
+    {
+      desc = "Signature documentation",
+      cmd = vim.lsp.buf.signature_help,
+      keys = { "i", "<C-k>", opts },
+    },
+  })
 
   vim.api.nvim_exec(
     [[

@@ -1,7 +1,7 @@
 local safe_require = require("ssysoev.utils.safe-require")
 
-safe_require({ "commander", "conform" }, function(mods)
-  local cc = mods.commander
+safe_require({ "conform" }, function(mods)
+  local cc = require("ssysoev.custom.commander")
   local conform = mods.conform
   local should_format_on_save = true
 

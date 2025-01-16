@@ -298,30 +298,6 @@ return {
       })
     end,
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    event = "VeryLazy",
-    branch = "0.1.x",
-    config = function()
-      require("ssysoev.plugins.telescope")
-    end,
-  },
-
-  {
-    "FeiyouG/commander.nvim",
-    config = function()
-      require("commander").setup({
-        integrations = {
-          telescope = {
-            enable = true,
-          },
-        },
-      })
-    end,
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-  },
 
   --
   -- quick editing / editing niceties

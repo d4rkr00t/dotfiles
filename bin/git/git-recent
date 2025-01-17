@@ -3,7 +3,7 @@
 ##
 ## git-recent
 ##
-## list all local branches, sorted by last commit, formatted reall purdy
+## list all local branches, sorted by last commit, formatted real purdy
 ##
 
 format="\

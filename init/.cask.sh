@@ -5,7 +5,6 @@ pkgs=(
   firefox
   google-chrome
   numi
-  rectangle
 
   # QuickLook plugins
   # qlcolorcode

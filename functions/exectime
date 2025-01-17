@@ -1,8 +1,8 @@
 #!/bin/sh
 
 exectime() {
-  about 'Mesures execution time'
-  param '1: command to mesure'
+  about 'Measures execution time'
+  param '1: command to measure'
   example '$ exectime extract some.zip'
   group 'info'
 

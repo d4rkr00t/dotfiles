@@ -1,9 +1,0 @@
-#!/bin/sh
-
-bs-csscomb() {
-  about 'Copy default .csscomb.json to current folder'
-  example '$ bs-csscomb'
-  group 'bootstrap'
-
-  cp "$DOTFILES/link/.csscomb.json" ./
-}

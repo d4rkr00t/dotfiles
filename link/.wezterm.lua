@@ -121,9 +121,7 @@ config.mouse_bindings = {
 --
 local function get_current_working_folder_name(tab)
   local cwd_uri = tab.active_pane.current_working_dir.file_path
-
-  local slash = cwd_uri:find("/")
-  local cwd = cwd_uri:sub(slash)
+  local cwd = cwd_uri:sub(1, string.len(cwd_uri) - 1)
 
   local HOME_DIR = os.getenv("HOME")
   if cwd == HOME_DIR then

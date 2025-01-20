@@ -272,7 +272,7 @@ return {
     cmd = { "FzfLua" },
     config = function()
       require("fzf-lua").setup({
-        "max-perf",
+        { "max-perf", "ivy" },
 
         git = {
           status = {
@@ -290,10 +290,6 @@ return {
           fzf = {
             ["CTRL-Q"] = "select-all+accept",
           },
-        },
-
-        winopts = {
-          split = "bo new",
         },
       })
     end,

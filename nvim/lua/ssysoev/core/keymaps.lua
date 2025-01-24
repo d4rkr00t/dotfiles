@@ -1,4 +1,3 @@
-local safe_require = require("ssysoev.utils.safe-require")
 local keymap = vim.keymap
 local noremap = { noremap = true, silent = true }
 

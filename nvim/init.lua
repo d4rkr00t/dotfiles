@@ -7,6 +7,7 @@ vim.deprecate = function() end
 
 -- leader
 vim.g.mapleader = ","
+-- vim.g.maplocalleader = ","
 --
 
 -- colorscheme

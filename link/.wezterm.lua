@@ -42,6 +42,10 @@ config.font_size = 13
 config.line_height = 1.4
 -- config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font = wezterm.font_with_fallback({
+  -- {
+  --   family = "CommitMono Nerd Font",
+  --   harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
+  -- },
   {
     family = "Monaspace Neon",
     harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },

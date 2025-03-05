@@ -10,7 +10,7 @@ pkgs=(
   # qlcolorcode
   qlprettypatch
   qlimagesize
-  qlvideo
+  # qlvideo
   quicklook-csv
   quicklook-json
   webpquicklook

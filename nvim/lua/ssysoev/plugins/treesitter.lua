@@ -29,7 +29,7 @@ safe_require({ "nvim-treesitter.configs" }, function(mods)
     },
     -- ensure these language parsers are installed
     ensure_installed = {
-      "help",
+      -- "help",
       "bash",
       "json",
       "javascript",

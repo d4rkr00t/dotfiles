@@ -69,8 +69,10 @@ return {
                 bg_p2 = "#242525",
 
                 special = "#7a8382",
-                whitespace = "#625e5a",
-                nontext = "#625e5a",
+                -- whitespace = "#625e5a",
+                -- nontext = "#625e5a",
+                whitespace = "#312D2A",
+                nontext = "#312D2A",
 
                 bg_visual = "#242525",
                 bg_search = "#a0a0a0",
@@ -295,6 +297,18 @@ return {
     end,
   },
 
+  -- {
+  --   "otavioschwanck/fzf-lua-enchanted-files",
+  --   cmd = { "FzfLuaFiles" },
+  --   dependencies = { "ibhagwan/fzf-lua" },
+  --   config = function()
+  --     -- Modern configuration using vim.g
+  --     vim.g.fzf_lua_enchanted_files = {
+  --       max_history_per_cwd = 50,
+  --     }
+  --   end,
+  -- },
+
   {
     "MagicDuck/grug-far.nvim",
     cmd = { "GrugFar" },
@@ -394,7 +408,6 @@ return {
   --
   {
     "github/copilot.vim",
-    cond = false,
   },
 
   --
@@ -422,13 +435,17 @@ return {
   {
     -- in charge of managing lsp servers, linters & formatters
     "williamboman/mason.nvim",
+    commit = "fc98833b6da5de5a9c5b1446ac541577059555be",
     event = { "VeryLazy" },
     config = function()
       require("ssysoev.plugins.lsp.init")
     end,
     dependencies = {
       -- bridges gap b/w mason & lspconfig
-      "williamboman/mason-lspconfig.nvim",
+      {
+        "williamboman/mason-lspconfig.nvim",
+        commit = "1a31f824b9cd5bc6f342fc29e9a53b60d74af245",
+      },
 
       -- easily configure language servers
       "neovim/nvim-lspconfig",
@@ -603,12 +620,46 @@ return {
   },
 
   --
+  -- AI crap
+  --
+  {
+    "yetone/avante.nvim",
+    build = function()
+      if vim.g.IS_MAC then
+        return "make BUILD_FROM_SOURCE=true"
+      else
+        return "make"
+      end
+    end,
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {},
+    config = function()
+      local atl_avante = require("ssysoev.custom.atl-avante")
+
+      require("avante").setup({
+        provider = "atlgemini",
+        providers = vim.tbl_deep_extend("force", {}, atl_avante),
+        windows = {
+          width = 40,
+        },
+      })
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
+  --
   -- Local dev plugins
   --
 
   {
-    -- "d4rkr00t/execa.nvim",
-    dir = "~/Development/execa.nvim",
+    "d4rkr00t/execa.nvim",
+    -- dir = "~/Development/execa.nvim",
     cmd = "Execa",
     opts = {
       split = "vsplit",
@@ -630,7 +681,9 @@ return {
         npm_src_url = "open https://unpkg.com/browse/$EX_STR/",
         npm_url = "open https://npmjs.com/package/$EX_STR/",
 
-        execa_test = "echo $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
+        cursor_current_file = "cursor -r $EX_CWD -g $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
+
+        execa_test = "echo $EX_CWD $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
       },
     },
   },

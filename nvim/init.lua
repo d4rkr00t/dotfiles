@@ -5,6 +5,9 @@ vim.g.VERBOSE_LOG = false
 -- Hide deprecated api messages
 vim.deprecate = function() end
 
+-- Experimental UI
+-- require("vim._extui").enable({})
+
 -- leader
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -13,6 +16,13 @@ vim.g.maplocalleader = ","
 -- colorscheme
 vim.g.THEME = "kanagawa"
 --
+
+-- is mac
+if vim.fn.has("mac") == 1 then
+  vim.g.IS_MAC = true
+else
+  vim.g.IS_MAC = false
+end
 
 require("ssysoev.lazy-init")
 require("lazy").setup("ssysoev.plugins-setup", {

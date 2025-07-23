@@ -13,6 +13,12 @@ keymap.set("n", "gl", "$") -- jump to the last char of the line
 keymap.set("n", "gh", "^") -- jump to the first char of the line
 keymap.set("n", "<leader><leader>", "<cmd>w<cr>")
 keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>")
+
+-- Copy and comment n lines
+keymap.set("n", "ycc", function()
+  return "yy" .. vim.v.count1 .. "gcc']p"
+end, { remap = true, expr = true })
+
 -- keymap.set("n", "<Esc><Esc>", ":w<cr>")
 
 -- stay in indent mode
@@ -215,6 +221,7 @@ cc.add({
   {
     desc = "Fzf find files",
     cmd = "<cmd>FzfLua files<cr>",
+    -- cmd = "<cmd>FzfLuaFiles<cr>",
     keys = { "n", "<leader>ff", noremap },
   },
 
@@ -226,6 +233,7 @@ cc.add({
 
   {
     desc = "Open recent",
+    -- cmd = "<cmd>FzfLua combine pickers=oldfiles;buffers<CR>",
     cmd = "<cmd>FzfLua oldfiles<CR>",
     -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
     keys = { "n", "<leader>o", noremap },

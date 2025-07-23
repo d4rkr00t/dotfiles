@@ -66,12 +66,12 @@ opt.foldminlines = 1
 opt.foldlevel = 99
 opt.foldenable = true
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = "v:lua.vim.treesitter.foldtext"
+-- opt.foldtext = "v:lua.vim.treesitter.foldtext"
 
 -- invisible characters
 opt.list = true -- Show some invisible characters
--- opt.listchars = { tab = " ", trail = "·" }
-opt.listchars = { tab = "  ", trail = "·" }
+opt.listchars = { tab = " ", trail = "·" }
+-- opt.listchars = { tab = "  ", trail = "·" }
 
 -- undo
 opt.undofile = true

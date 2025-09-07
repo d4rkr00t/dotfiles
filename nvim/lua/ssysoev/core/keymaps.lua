@@ -233,8 +233,9 @@ cc.add({
 
   {
     desc = "Open recent",
-    -- cmd = "<cmd>FzfLua combine pickers=oldfiles;buffers<CR>",
-    cmd = "<cmd>FzfLua oldfiles<CR>",
+    cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles<CR>",
+    -- cmd = "<cmd>FzfLua oldfiles<CR>",
+    -- cmd = "<cmd>FzfLua frecency cwd_only=true<CR>",
     -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
     keys = { "n", "<leader>o", noremap },
   },
@@ -255,6 +256,12 @@ cc.add({
     desc = "Fzf live grep",
     cmd = "<cmd>FzfLua live_grep_glob<CR>",
     keys = { "n", "<leader>fs", noremap },
+  },
+
+  {
+    desc = "Fzf grep current word",
+    cmd = "<cmd>FzfLua grep_cword<CR>",
+    keys = { "n", "<leader>fw", noremap },
   },
 
   {

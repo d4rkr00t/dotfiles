@@ -216,7 +216,7 @@ return {
 
   -- icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     opts = {},
     lazy = true,
     specs = {
@@ -298,6 +298,13 @@ return {
   },
 
   -- {
+  --   "elanmed/fzf-lua-frecency.nvim",
+  --   opts = {
+  --    cwd_only = true,
+  --   },
+  -- },
+
+  -- {
   --   "otavioschwanck/fzf-lua-enchanted-files",
   --   cmd = { "FzfLuaFiles" },
   --   dependencies = { "ibhagwan/fzf-lua" },
@@ -332,7 +339,7 @@ return {
 
   {
     -- commenting with gc
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     keys = { "gc", "gcc" },
     config = function()
       require("ssysoev.plugins.comment")
@@ -384,7 +391,7 @@ return {
 
   -- better text-objects
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     keys = {
       { "a", mode = { "x", "o" } },
       { "i", mode = { "x", "o" } },
@@ -658,8 +665,8 @@ return {
   --
 
   {
-    "d4rkr00t/execa.nvim",
-    -- dir = "~/Development/execa.nvim",
+    -- "d4rkr00t/execa.nvim",
+    dir = "~/Development/execa.nvim",
     cmd = "Execa",
     opts = {
       split = "vsplit",

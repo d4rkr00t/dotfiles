@@ -12,3 +12,5 @@ export PROMPT_COMMAND="history -a; history -c; history -r"
 . "$HOME/.cargo/env"
 
 source ~/.afm-git-configrc
+
+export PATH="/Users/ssysoev/.orbit/bin:$PATH"

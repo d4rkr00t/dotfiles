@@ -107,6 +107,9 @@
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
+  # Pull single branch from origin
+  pb = "!r() { git fetch origin $1 && git checkout $1; }; r"
+
   #
   # Stash
   #

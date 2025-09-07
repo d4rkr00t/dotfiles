@@ -1,9 +1,9 @@
 # Install native apps
 
 pkgs=(
-  dropbox
+  # dropbox
   firefox
-  google-chrome
+ # google-chrome
   numi
 
   # QuickLook plugins

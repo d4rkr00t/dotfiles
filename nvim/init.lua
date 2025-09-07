@@ -6,7 +6,7 @@ vim.g.VERBOSE_LOG = false
 vim.deprecate = function() end
 
 -- Experimental UI
--- require("vim._extui").enable({})
+require("vim._extui").enable({})
 
 -- leader
 vim.g.mapleader = ","

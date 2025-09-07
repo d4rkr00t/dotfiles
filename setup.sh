@@ -10,7 +10,8 @@ export LOCAL_USERNAME=\"$USER\"" > link/.dotfiles
 
 # Synlink all files in "link" directory
 for file in $DIR/link/*; do
-    ln -sfF "$file" "$HOME/"
+    echo $file
+    ln -sfF "$file" "$HOME/$(basename $file)"
 done
 unset file
 

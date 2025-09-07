@@ -47,10 +47,10 @@ config.font = wezterm.font_with_fallback({
   --   harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
   -- },
   {
-    family = "Monaspace Neon",
+    family = "Monaspace Neon NF",
     harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
   },
-  { family = "JetBrainsMono Nerd Font" },
+  -- { family = "JetBrainsMono Nerd Font" },
 })
 config.underline_position = -8
 config.underline_thickness = 2
@@ -61,7 +61,7 @@ config.underline_thickness = 2
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   { key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "-",  mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
   {
     key = "w",
     mods = "CMD",

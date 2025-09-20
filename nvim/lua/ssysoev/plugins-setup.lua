@@ -46,7 +46,7 @@ return {
     cond = vim.g.THEME == "kanagawa",
     init = function()
       require("kanagawa").setup({
-        compile = false, -- enable compiling the colorscheme
+        compile = false,  -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         keywordStyle = { italic = false },
         commentStyle = { italic = false },
@@ -295,6 +295,9 @@ return {
           },
         },
       })
+
+      -- replace vim.ui.select with fzf-lua
+      require('fzf-lua').register_ui_select()
     end,
   },
 
@@ -375,9 +378,9 @@ return {
     "LunarVim/bigfile.nvim",
     config = function()
       require("bigfile").setup({
-        filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+        filesize = 1,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
         pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-        features = { -- features to disable
+        features = {       -- features to disable
           "indent_blankline",
           "lsp",
           "treesitter",

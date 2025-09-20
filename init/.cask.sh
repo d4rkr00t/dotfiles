@@ -1,16 +1,12 @@
 # Install native apps
 
 pkgs=(
-  # dropbox
-  firefox
- # google-chrome
+  wezterm
   numi
+  obsidian
 
   # QuickLook plugins
-  # qlcolorcode
   qlprettypatch
-  qlimagesize
-  # qlvideo
   quicklook-csv
   quicklook-json
   webpquicklook

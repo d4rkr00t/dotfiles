@@ -132,7 +132,7 @@ local function get_current_working_folder_name(tab)
     return "  ~"
   end
 
-  return string.format("  %s", string.match(cwd, "[^/]+$"))
+  return string.format("  %s", string.match(cwd_uri, "[^/]+$"))
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)

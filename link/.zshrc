@@ -107,7 +107,7 @@ setopt SHARE_HISTORY
 #
 # Navigation
 #
-setopt autocd autopushd
+# setopt autocd autopushd
 
 # Source all files in "source"
 for file in $DOTFILES/source/(.)*; do
@@ -128,10 +128,10 @@ eval "$(zoxide init zsh)"
 [ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
 
 # bun completions
-[ -s "/Users/ssysoev/.bun/_bun" ] && source "/Users/ssysoev/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="/Users/ssysoev/.orbit/bin:$PATH"
+export PATH="$HOME/.orbit/bin:$PATH"

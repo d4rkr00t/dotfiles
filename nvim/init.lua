@@ -26,7 +26,10 @@ else
 end
 
 require("ssysoev.lazy-init")
-require("lazy").setup("ssysoev.plugins-setup", {
+require("lazy").setup({
+  spec = {
+    { import = "ssysoev.plugins" }
+  },
   change_detection = {
     -- automatically check for config file changes and reload the ui
     enabled = true,
@@ -34,7 +37,7 @@ require("lazy").setup("ssysoev.plugins-setup", {
   },
 })
 
-require("ssysoev.plugins.treesitter")
+-- require("ssysoev.plugins.treesitter")
 
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")

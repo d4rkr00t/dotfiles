@@ -1,4 +1,4 @@
-local bootstrap = require("ssysoev.plugins.lsp.bootstrap")
+local bootstrap = require("ssysoev.lsp.bootstrap")
 local merge_tables = require("ssysoev.utils.merge-tables")
 -- local safe_require = require("ssysoev.utils.safe-require")
 

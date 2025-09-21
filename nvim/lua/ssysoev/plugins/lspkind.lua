@@ -1,12 +1,17 @@
-local safe_require = require("ssysoev.utils.safe-require")
-
-safe_require({ "lspkind" }, function(mods)
-  local lspkind = mods.lspkind
-  lspkind.init({
-    mode = "symbol",
-    preset = "codicons",
-    symbol_map = {
-      Copilot = "",
-    },
-  })
-end)
+return {
+  {
+    -- vs-code like icons for autocompletion
+    "onsails/lspkind.nvim",
+    event = "VeryLazy",
+    config = function()
+      local lspkind = require("lspkind")
+      lspkind.init({
+        mode = "symbol",
+        preset = "codicons",
+        symbol_map = {
+          Copilot = "",
+        },
+      })
+    end,
+  },
+}

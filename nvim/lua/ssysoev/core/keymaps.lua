@@ -3,14 +3,14 @@ local noremap = { noremap = true, silent = true }
 
 -- general keymaps
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
-keymap.set("n", "x", '"_x') -- in normal mode pressing x doesn't yank the char
-keymap.set("n", "Q", "<nop>") -- disable ex mode
+keymap.set("n", "x", '"_x')                     -- in normal mode pressing x doesn't yank the char
+keymap.set("n", "Q", "<nop>")                   -- disable ex mode
 keymap.set("n", "q:", "<cmd>q<cr>")
-keymap.set("v", "p", '"_dP') -- do not yank if pasting over something
-keymap.set("n", "U", "<C-r>") -- redo
+keymap.set("v", "p", '"_dP')                    -- do not yank if pasting over something
+keymap.set("n", "U", "<C-r>")                   -- redo
 keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
-keymap.set("n", "gl", "$") -- jump to the last char of the line
-keymap.set("n", "gh", "^") -- jump to the first char of the line
+keymap.set("n", "gl", "$")                      -- jump to the last char of the line
+keymap.set("n", "gh", "^")                      -- jump to the first char of the line
 keymap.set("n", "<leader><leader>", "<cmd>w<cr>")
 keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>")
 
@@ -227,13 +227,14 @@ cc.add({
 
   {
     desc = "Fzf find all files",
-    cmd = "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
+    cmd =
+    "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
     keys = { "n", "<leader>fa", noremap },
   },
 
   {
     desc = "Open recent",
-    cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles<CR>",
+    cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles;files<CR>",
     -- cmd = "<cmd>FzfLua oldfiles<CR>",
     -- cmd = "<cmd>FzfLua frecency cwd_only=true<CR>",
     -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
@@ -320,7 +321,8 @@ cc.add({
 
   {
     desc = "Fzf git_status tracked",
-    cmd = "<cmd>lua require('fzf-lua').git_status(function() return {cmd='git -c color.status=false status -s -uno'} end)<CR>",
+    cmd =
+    "<cmd>lua require('fzf-lua').git_status(function() return {cmd='git -c color.status=false status -s -uno'} end)<CR>",
     keys = { "n", "<leader>gt", noremap },
   },
 
@@ -444,13 +446,15 @@ cc.add({
 
   {
     desc = "Gitsigns go to next hunk",
-    cmd = "<cmd>lua require('gitsigns').nav_hunk('next', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
+    cmd =
+    "<cmd>lua require('gitsigns').nav_hunk('next', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
     keys = { "n", "]h", noremap },
   },
 
   {
     desc = "Gitsigns go to prev hunk",
-    cmd = "<cmd>lua require('gitsigns').nav_hunk('prev', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
+    cmd =
+    "<cmd>lua require('gitsigns').nav_hunk('prev', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
     keys = { "n", "[h", noremap },
   },
 

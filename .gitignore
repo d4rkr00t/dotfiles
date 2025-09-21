@@ -4,4 +4,4 @@ link/.dotfiles
 .tmux-plugins
 vim.log
 nvim/undo
-nvim/plugin/packer_compiled.lua
+nvim/lazy-lock.json

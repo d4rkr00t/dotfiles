@@ -15,6 +15,7 @@ vim.g.maplocalleader = ","
 
 -- colorscheme
 vim.g.THEME = "kanagawa"
+-- vim.g.THEME = "xeno"
 --
 
 -- is mac

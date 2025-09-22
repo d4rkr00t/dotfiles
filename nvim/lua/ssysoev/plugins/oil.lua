@@ -17,12 +17,10 @@ return {
         ["<C-v>"] = { callback = "actions.select_vsplit" },
         ["<leader>fs"] = {
           callback = function()
-            safe_require({ "fzf-lua" }, function(mods)
-              local current_dir = require("oil").get_current_dir()
+            local fzf = require("fzf-lua")
+            local current_dir = require("oil").get_current_dir()
 
-              local fzf = mods["fzf-lua"]
-              fzf.live_grep({ cwd = current_dir })
-            end)
+            fzf.live_grep({ cwd = current_dir })
           end,
         },
       },

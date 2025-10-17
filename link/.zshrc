@@ -21,6 +21,9 @@ PURE_PROMPT_SYMBOL=λ
 PURE_GIT_PULL=0
 PURE_GIT_UNTRACKED_DIRTY=0
 
+# Navigate without cd
+setopt AUTO_CD
+
 #
 # Word style: directory delimiter
 # http://stackoverflow.com/a/1438523

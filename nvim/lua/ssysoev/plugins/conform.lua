@@ -5,7 +5,19 @@ return {
     config = function()
       local cc = require("ssysoev.custom.commander")
       local conform = require("conform")
+      local util = require("conform.util")
       local should_format_on_save = true
+
+      local prettier_bin = util.from_node_modules("prettier")
+      local maybe_prettier_bin = vim.fs.find('node_modules/prettier/bin/prettier.cjs',
+        { upward = true, path = vim.api.nvim_buf_get_name(0), limit = 10 })
+
+      if maybe_prettier_bin[1] then
+        vim.fn.jobstart({ "chmod", "+x", maybe_prettier_bin[1] })
+        prettier_bin = function()
+          return maybe_prettier_bin[1]
+        end
+      end
 
       conform.setup({
         log_level = vim.log.levels.DEBUG,
@@ -27,6 +39,11 @@ return {
 
           rust = { "rustfmt" },
         },
+        formatters = {
+          prettier = {
+            command = prettier_bin
+          }
+        }
       })
 
       vim.api.nvim_create_autocmd("BufWritePre", {

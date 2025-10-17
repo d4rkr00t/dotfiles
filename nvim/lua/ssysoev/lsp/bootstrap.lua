@@ -21,7 +21,7 @@ local function bootstrap(config, on_attach)
     -- preprocess config
     --
     --
-    local mason_ensure_installed = {}
+    local mason_ensure_installed = { "ts_ls@4.4.1" }
     local lsp_setup_functions = {}
 
     for key, value in pairs(config) do

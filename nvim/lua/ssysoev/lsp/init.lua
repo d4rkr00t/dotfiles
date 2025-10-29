@@ -263,7 +263,8 @@ local config = {
         root_dir = lspconfig.util.root_pattern("zls.json", "build.zig", ".git"),
         single_file_support = true,
         settings = {
-          zig_lib_path = "/opt/homebrew/Cellar/zig/0.14.0/lib/zig",
+          zig_lib_path = "/opt/homebrew/Cellar/zig/0.15.1/lib/zig",
+          enable_build_on_save = true
         },
       }))
     end,

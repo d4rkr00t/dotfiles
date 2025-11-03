@@ -25,6 +25,8 @@ return {
 
         cursor_current_file = "cursor -r $EX_CWD -g $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
 
+        bun = "bun $EX_FILE_PATH",
+
         execa_test = "echo $EX_CWD $EX_FN $EX_FILE_PATH_REL:$EX_LINE:$EX_COL",
       },
     },

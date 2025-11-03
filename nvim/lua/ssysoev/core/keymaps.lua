@@ -220,7 +220,8 @@ cc.add({
   -- fzf
   {
     desc = "Fzf find files",
-    cmd = "<cmd>FzfLua files<cr>",
+    -- cmd = "<cmd>FzfLua files<cr>",
+    cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles;files<CR>",
     -- cmd = "<cmd>FzfLuaFiles<cr>",
     keys = { "n", "<leader>ff", noremap },
   },

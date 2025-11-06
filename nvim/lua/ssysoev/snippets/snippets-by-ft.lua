@@ -53,8 +53,31 @@ local M = {
     {
       trigger = "zi",
       body = "z-index: $0;"
+    },
+    {
+      trigger = "df",
+      body = "display: flex;"
+    },
+    {
+      trigger = "lh",
+      body = "line-height: $0;"
+    },
+    {
+      trigger = "mb",
+      body = "margin-bottom: $0;"
+    },
+    {
+      trigger = "mt",
+      body = "margin-top: $0;"
+    },
+    {
+      trigger = "ml",
+      body = "margin-left: $0;"
+    },
+    {
+      trigger = "mr",
+      body = "margin-right: $0;"
     }
-
   },
   javascript = ts_js_common,
   typescript = ts_js_common,

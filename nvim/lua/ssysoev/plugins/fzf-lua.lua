@@ -8,7 +8,21 @@ return {
     cmd = { "FzfLua" },
     config = function()
       require("fzf-lua").setup({
-        { "max-perf", "ivy" },
+        { "max-perf" },
+
+        winopts = {
+          row      = 1,
+          col      = 0,
+          width    = 1,
+          height   = 0.5,
+          backdrop = 75,
+          border   = "rounded",
+          preview  = {
+            border  = "rounded",
+            layout  = "horizontal",
+            winopts = { signcolumn = "yes" },
+          },
+        },
 
         git = {
           status = {

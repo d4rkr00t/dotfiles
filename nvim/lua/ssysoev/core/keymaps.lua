@@ -513,4 +513,14 @@ cc.add({
     cmd = "<cmd>Execa picker<cr>",
     keys = { "n", "<leader>ee" },
   },
+
+  -- Split Toggle Vertical / Horizontal
+  {
+    desc = "To Vertical Split",
+    cmd = "<cmd>windo wincmd H<cr>"
+  },
+  {
+    desc = "To Horizontal Split",
+    cmd = "<cmd>windo wincmd K<cr>"
+  },
 })

@@ -10,6 +10,8 @@ pkgs=(
   quicklook-csv
   quicklook-json
   webpquicklook
+
+  nikitabobko/tap/aerospace
 )
 
 for pkg in "${pkgs[@]}"; do

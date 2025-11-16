@@ -50,3 +50,6 @@ brew tap homebrew/services
 
 # Remove outdated versions from the cellar
 brew cleanup
+
+# enable fzf features
+$(brew --prefix)/opt/fzf/install

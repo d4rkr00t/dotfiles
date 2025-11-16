@@ -12,11 +12,19 @@ return {
       end
     end,
     keys = { '<leader>aa', '<leader>an' },
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {},
     config = function()
+      local atl_avante = require("ssysoev.custom.atl-avante")
       ---@module 'avante'
       ---@type avante.Config
       require("avante").setup({
-        provider = "gemini",
+        -- provider = "gemini",
+        provider = "atlgemini",
+        providers = vim.tbl_deep_extend("force", {}, atl_avante),
         mode = "legacy",
         behaviour = {
           auto_focus_sidebar = true,
@@ -36,16 +44,6 @@ return {
           width = 40,
         },
       })
-
-      -- local atl_avante = require("ssysoev.custom.atl-avante")
-      --
-      -- require("avante").setup({
-      --   provider = "atlgemini",
-      --   providers = vim.tbl_deep_extend("force", {}, atl_avante),
-      --   windows = {
-      --     width = 40,
-      --   },
-      -- })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",

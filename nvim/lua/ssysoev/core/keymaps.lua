@@ -523,4 +523,118 @@ cc.add({
     desc = "To Horizontal Split",
     cmd = "<cmd>windo wincmd K<cr>"
   },
+
+  -- LSP
+
+  {
+    desc = "Show definitions",
+    cmd = "<cmd>FzfLua lsp_definitions<CR>",
+    keys = { "n", "gd", noremap },
+  },
+
+  {
+    desc = "Peek definitions",
+    cmd = "<cmd>Lspsaga peek_definition<CR>",
+    keys = { "n", "gpd", noremap },
+  },
+
+  {
+    desc = "Open definition in a split",
+    cmd = "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+    keys = { "n", "gs", noremap },
+  },
+
+  {
+    desc = "Show references",
+    cmd = "<cmd>FzfLua lsp_references<CR>",
+    keys = { "n", "gr", noremap },
+  },
+
+  {
+    desc = "Show references [lspsaga]",
+    cmd = "<cmd>Lspsaga finder<CR>",
+    keys = { "n", "gR", noremap },
+  },
+
+  {
+    desc = "Show implementation",
+    cmd = "<cmd>FzfLua lsp_implementations<CR>",
+  },
+
+  {
+    desc = "Go to declaration",
+    cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
+    keys = { "n", "gD", noremap },
+  },
+
+  {
+    desc = "Go to implementation",
+    cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
+    keys = { "n", "gi", noremap },
+  },
+
+  {
+    desc = "Code actions",
+    cmd = "<cmd>Lspsaga code_action<cr>",
+    keys = { "n", "<leader>la", noremap },
+  },
+
+  {
+    desc = "Smart rename",
+    cmd = vim.lsp.buf.rename,
+    keys = { "n", "<leader>rn", noremap },
+  },
+
+  {
+    desc = "Show line diagnostics",
+    cmd = function()
+      local float_opts = {
+        focusable = true,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+        scope = "line",
+      }
+      vim.diagnostic.open_float(nil, float_opts)
+    end,
+    keys = { "n", "<leader>d", noremap },
+  },
+
+  {
+    desc = "Jump to previous diagnostic",
+    cmd = function()
+      vim.diagnostic.goto_prev()
+    end,
+    keys = { "n", "[d", noremap },
+  },
+
+  {
+    desc = "Jump to next diagnostic",
+    cmd = function()
+      vim.diagnostic.goto_next()
+    end,
+    keys = { "n", "]d", noremap },
+  },
+
+  {
+    desc = "Show documentation",
+    -- cmd = "<cmd>Lspsaga hover_doc<cr>",
+    cmd = function()
+      vim.lsp.buf.hover()
+    end,
+    keys = { "n", "K", noremap },
+  },
+
+  {
+    desc = "Highlight occurrences of the word under cursor",
+    cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
+    keys = { "n", "<leader>hh", noremap },
+  },
+
+  {
+    desc = "Signature documentation",
+    cmd = vim.lsp.buf.signature_help,
+    keys = { "i", "<C-k>", noremap },
+  },
 })

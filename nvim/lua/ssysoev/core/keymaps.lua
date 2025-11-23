@@ -69,6 +69,8 @@ local function close_floating()
   end
 end
 
+vim.keymap.set('t', '<C-n>', [[<C-\><C-n>]], noremap) -- maps <C-n> to go to normal mode in a terminal
+
 local cc = require("ssysoev.custom.commander")
 
 cc.add({

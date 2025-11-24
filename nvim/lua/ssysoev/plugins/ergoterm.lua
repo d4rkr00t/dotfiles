@@ -1,6 +1,7 @@
 return {
   {
     "waiting-for-dev/ergoterm.nvim",
+    keys = { "<leader>al" },
     config = function()
       local ergoterm = require("ergoterm")
 

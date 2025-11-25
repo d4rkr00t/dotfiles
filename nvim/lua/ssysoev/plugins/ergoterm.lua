@@ -31,6 +31,16 @@ return {
         }
       })
 
+      ai_chats:new({
+        cmd = "opencode",
+        name = "Opencode",
+        meta = {
+          add_file = function(file)
+            return "@" .. file
+          end,
+        }
+      })
+
       local chats = ergoterm.filter_by_tag("ai_chat")
 
       cc.add({
@@ -84,7 +94,10 @@ return {
               terminals = chats,
               propmpt = "Send to chat",
               callbacks = function(term)
-                return term:send("single_line", { trim = true, new_line = false })
+                local file = vim.fn.expand("%:p")
+                local line = vim.fn.line(".")
+                local file_path_with_loc = string.format("%s:%d", file, line)
+                return term:send({ term.meta.add_file(file_path_with_loc) }, { new_line = false })
               end
             })
           end,

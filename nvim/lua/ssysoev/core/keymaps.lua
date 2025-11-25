@@ -339,20 +339,6 @@ cc.add({
     },
   },
 
-  -- fugitive
-  {
-    desc = "Git status",
-    cmd = "<cmd>Git<CR>",
-  },
-  {
-    desc = "Git diff",
-    cmd = "<cmd>Gvdiffsplit<CR>",
-  },
-  {
-    desc = "Git blame",
-    cmd = "<cmd>Git blame<CR>",
-  },
-
   -- trouble
   {
     desc = "Trouble document diagnostics",
@@ -503,6 +489,22 @@ cc.add({
       require("gitsigns").blame_line({ full = true })
     end,
   },
+
+  {
+    desc = "Blame file",
+    cmd = function()
+      require("gitsigns").blame({ full = true })
+    end,
+  },
+
+  -- vscode diff
+  {
+    desc = "Diff",
+    cmd = "<cmd>:CodeDiff<cr>",
+    keys = { "n", "<leader>sd" },
+  },
+
+  -- execa
 
   {
     desc = "Execa repeat last command",

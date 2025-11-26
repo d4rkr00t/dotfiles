@@ -27,6 +27,9 @@ return {
         meta = {
           add_file = function(file)
             return "#" .. file
+          end,
+          add_file_context = function(file, context)
+            return "#" .. file .. " | " .. context
           end
         }
       })
@@ -38,6 +41,9 @@ return {
           add_file = function(file)
             return "@" .. file
           end,
+          add_file_context = function(file, context)
+            return "@" .. file .. " | " .. context
+          end
         }
       })
 
@@ -73,13 +79,18 @@ return {
           }
         },
         {
-          desc = "Send to chat",
+          desc = "Send visual selection to chat with context",
           cmd = function()
             ergoterm.select_started({
               terminals = chats,
               propmpt = "Send to chat",
               callbacks = function(term)
-                return term:send("visual_selection", { trim = false, new_line = false })
+                local file = vim.fn.expand("%:p")
+                local start_line = vim.fn.getpos(".")
+                local end_line = vim.fn.getpos("v")
+                local lines = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n");
+                local file_path_with_loc = string.format("%s:%d-%d", file, start_line[2], end_line[2])
+                return term:send({ term.meta.add_file_context(file_path_with_loc, lines) }, { new_line = false })
               end
             })
           end,

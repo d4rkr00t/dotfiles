@@ -148,6 +148,7 @@ end)
 -- Custom Color Scheme
 --
 
+
 config.colors = {
   -- The default text color
   foreground = "#cfcfcf",

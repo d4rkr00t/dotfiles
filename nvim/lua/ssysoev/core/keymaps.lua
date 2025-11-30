@@ -497,11 +497,11 @@ cc.add({
     end,
   },
 
-  -- diffview
+  -- vscode diff
   {
     desc = "Diff",
-    cmd = "<cmd>:DiffviewOpen<cr>",
-    keys = { "n", "<leader>sd" },
+    cmd = "<cmd>:CodeDiff<cr>",
+    keys = { "n", "<leader>do" },
   },
 
   -- execa

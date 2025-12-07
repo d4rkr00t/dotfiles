@@ -497,6 +497,16 @@ cc.add({
     end,
   },
 
+  -- Git
+  {
+    desc = "Git Conflicts",
+    cmd = function()
+      vim.cmd 'cexpr system("git diff --check --relative")'
+      vim.cmd "copen"
+    end,
+    keys = { "n", "<leader>gq" },
+  },
+
   -- vscode diff
   {
     desc = "Diff",

@@ -140,4 +140,8 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = "com.safeincloud.Safe-In-Cloud.OSX"
   run = ['layout floating']
 
+[[on-window-detected]]
+  if.app-id = "com.loom.desktop"
+  run = ['layout floating']
+
 

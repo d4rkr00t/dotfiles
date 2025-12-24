@@ -14,7 +14,7 @@ return {
         },
         completion = {
           completeopt = "menu,menuone,preview,noselect",
-          autocomplete = false,
+          -- autocomplete = false,
         },
 
         snippet = {

@@ -144,4 +144,26 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = "com.loom.desktop"
   run = ['layout floating']
 
+[[on-window-detected]]
+  if.app-id = "com.github.wez.wezterm"
+  run = ['move-node-to-workspace 3']
 
+[[on-window-detected]]
+  if.app-id = "company.thebrowser.Browser"
+  run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+  if.app-id = "com.apple.Safari.WebApp.14269B21-8700-413D-BA52-4B841D187899" # Telegram
+  run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+  if.app-id = "com.apple.Safari.WebApp.5B6E5143-D26D-4978-8021-57376EFE0E9B" # Gemini
+  run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+  if.app-id = "com.apple.Notes"
+  run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = "md.obsidian"
+  run = ['move-node-to-workspace 4']

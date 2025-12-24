@@ -507,6 +507,14 @@ cc.add({
     keys = { "n", "<leader>gq" },
   },
 
+  {
+    desc = "Git Pickaxe",
+    cmd = function()
+      require("ssysoev.custom.git-pickaxe").picker()
+    end,
+    keys = { "v", "<leader>gp" },
+  },
+
   -- vscode diff
   {
     desc = "Diff",

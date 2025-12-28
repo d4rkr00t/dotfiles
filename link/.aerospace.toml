@@ -157,7 +157,15 @@ automatically-unhide-macos-hidden-apps = false
   run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
+  if.app-id = "com.google.Chrome.app.ibblmnobmgdmpoeblocemifbpglakpoi" # Telegram
+  run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
   if.app-id = "com.apple.Safari.WebApp.5B6E5143-D26D-4978-8021-57376EFE0E9B" # Gemini
+  run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+  if.app-id = "com.google.Chrome.app.caidcmannjgahlnbpmidmiecjcoiiigg" # Gemini
   run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
@@ -167,3 +175,11 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
   if.app-id = "md.obsidian"
   run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = "com.tinyspeck.slackmacgap"
+  run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+  if.app-id = "us.zoom.xos"
+  run = ['move-node-to-workspace 2']

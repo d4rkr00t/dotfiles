@@ -102,11 +102,14 @@ return {
         },
         overrides = function(colors)
           return {
-            Boolean   = { fg = "#6ad0b7" },
-            Property  = { fg = "#6ad0b7" },
-            Field     = { fg = "#6ad0b7" },
-            Operator  = { fg = "#A0A0A0" },
-            Exception = { fg = "#FFCFA8" },
+            Boolean                = { fg = "#6ad0b7" },
+            Property               = { fg = "#6ad0b7" },
+            Field                  = { fg = "#6ad0b7" },
+            Operator               = { fg = "#A0A0A0" },
+            ["typescriptBinaryOp"] = { fg = "#A0A0A0" },
+            Exception              = { fg = "#FFCFA8" },
+            ["@property"]          = { fg = "#FFCFA8" },
+            ["tsxAttrib"]          = { fg = "#FFCFA8" }
           }
         end,
       })

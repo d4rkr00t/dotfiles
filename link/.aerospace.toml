@@ -153,6 +153,10 @@ automatically-unhide-macos-hidden-apps = false
   run = ['move-node-to-workspace 5']
 
 [[on-window-detected]]
+  if.app-id = "com.google.Chrome"
+  run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
   if.app-id = "com.apple.Safari.WebApp.14269B21-8700-413D-BA52-4B841D187899" # Telegram
   run = ['move-node-to-workspace 1']
 

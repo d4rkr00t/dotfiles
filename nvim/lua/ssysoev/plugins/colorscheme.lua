@@ -58,8 +58,9 @@ return {
                 number = "#6ad0b7",
 
                 constant = "#f5f5f5",
-                variable = "#f5f5f5",
-                identifier = "#f5f5f5",
+                variable = "#FFCFA8",
+                -- identifier = "#f5f5f5",
+                identifier = "#FFCFA8",
                 fun = "#FFC799",
                 parameter = "#f5f5f5",
                 statement = "#A0A0A0",
@@ -73,7 +74,7 @@ return {
                 punct = "#65737E",
 
                 special1 = "#FFCFA8",
-                special2 = "#65737E",
+                special2 = "#A0A0A0",
                 special3 = "#A0A0A0",
               },
               diag = {
@@ -102,14 +103,15 @@ return {
         },
         overrides = function(colors)
           return {
-            Boolean                = { fg = "#6ad0b7" },
-            Property               = { fg = "#6ad0b7" },
-            Field                  = { fg = "#6ad0b7" },
-            Operator               = { fg = "#A0A0A0" },
-            ["typescriptBinaryOp"] = { fg = "#A0A0A0" },
-            Exception              = { fg = "#FFCFA8" },
-            ["@property"]          = { fg = "#FFCFA8" },
-            ["tsxAttrib"]          = { fg = "#FFCFA8" }
+            Boolean                      = { fg = "#6ad0b7" },
+            Property                     = { fg = "#6ad0b7" },
+            Field                        = { fg = "#6ad0b7" },
+            Operator                     = { fg = "#A0A0A0" },
+            ["typescriptBinaryOp"]       = { fg = "#A0A0A0" },
+            ["typescriptPredefinedType"] = { fg = "#FFCFA8" },
+            Exception                    = { fg = "#FFCFA8" },
+            ["@property"]                = { fg = "#FFCFA8" },
+            ["tsxAttrib"]                = { fg = "#FFCFA8" }
           }
         end,
       })

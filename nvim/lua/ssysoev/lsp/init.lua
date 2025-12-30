@@ -5,7 +5,7 @@ local merge_tables = require("ssysoev.utils.merge-tables")
 -- enable keybindings for attached lsp servers
 local on_attach = function(client)
   -- disable semantic highlighting
-  -- client.server_capabilities.semanticTokensProvider = nil
+  client.server_capabilities.semanticTokensProvider = nil
 
   vim.api.nvim_exec(
     [[

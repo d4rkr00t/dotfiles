@@ -62,7 +62,7 @@ return {
                 statement = "#FFC799",
                 keyword = "#A0A0A0",
                 operator = "#A0A0A0",
-                preproc = "#A0A0A0",
+                preproc = "#b0b0b0",
                 -- preproc = "#FF8080",
                 type = "#FFC799",
                 regex = "#A0A0A0",

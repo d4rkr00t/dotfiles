@@ -111,7 +111,8 @@ return {
             ["typescriptPredefinedType"] = { fg = "#FFCFA8" },
             Exception                    = { fg = "#FFCFA8" },
             ["@property"]                = { fg = "#FFCFA8" },
-            ["tsxAttrib"]                = { fg = "#FFCFA8" }
+            ["tsxAttrib"]                = { fg = "#FFCFA8" },
+            TreesitterContext            = { bg = "#1e1f1f" }
           }
         end,
       })

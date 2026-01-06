@@ -659,4 +659,10 @@ cc.add({
     cmd = vim.lsp.buf.signature_help,
     keys = { "i", "<C-k>", noremap },
   },
+
+  {
+    desc = "LSP Info",
+    cmd = "<cmd>checkhealth vim.lsp<CR>",
+    keys = { "n", "<leader>li", noremap },
+  },
 })

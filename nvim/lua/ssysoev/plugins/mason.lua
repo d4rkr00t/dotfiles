@@ -30,7 +30,6 @@ return {
   {
     -- in charge of managing lsp servers, linters & formatters
     "williamboman/mason.nvim",
-    commit = "fc98833b6da5de5a9c5b1446ac541577059555be",
     event = { "VeryLazy" },
     config = function()
       require("mason").setup()

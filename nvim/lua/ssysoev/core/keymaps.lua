@@ -89,7 +89,7 @@ cc.add({
   },
 
   {
-    desc = "Replace a word under cursor [repetable]",
+    desc = "Replace a word under cursor [repeatable]",
     cmd = "<cmd>let @/='\\<'.expand('<cword>').'\\>'<cr>\"_ciw",
     keys = { "n", "<leader>cw", noremap },
   },

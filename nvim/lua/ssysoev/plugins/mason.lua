@@ -45,6 +45,7 @@ return {
       vim.lsp.enable("cssls")
       vim.lsp.enable("pylsp")
       vim.lsp.enable("gopls")
+      vim.lsp.enable("cspell_lsp")
     end,
     dependencies = {
       -- easily configure language servers

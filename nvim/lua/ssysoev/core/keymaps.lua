@@ -238,9 +238,10 @@ cc.add({
   {
     desc = "Open recent",
     -- cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles;files<CR>",
-    cmd = "<cmd>lua require('fzf-lua').combine({ pickers = 'buffers;oldfiles;files' })<cr>",
+    -- cmd = "<cmd>lua require('fzf-lua').combine({ pickers = 'buffers;oldfiles;files' })<cr>",
     -- cmd = "<cmd>FzfLua oldfiles<CR>",
     -- cmd = "<cmd>FzfLua frecency cwd_only=true<CR>",
+    cmd = "<cmd>lua require('fzf-lua-frecency').frecency({ cwd_only = true })<cr>",
     -- cmd = "<cmd>Telescope oldfiles cwd_only=true<CR>",
     keys = { "n", "<leader>o", noremap },
   },

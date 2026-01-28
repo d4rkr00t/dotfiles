@@ -384,13 +384,6 @@ cc.add({
     keys = { { "n", "<leader>m", noremap } },
   },
 
-  -- lspsaga
-  {
-    desc = "Lspsaga outline",
-    cmd = "<cmd>Lspsaga outline<CR>",
-    keys = { "n", "<leader>lo", noremap },
-  },
-
   -- bufferline
   {
     desc = "New tab",
@@ -551,12 +544,6 @@ cc.add({
   },
 
   {
-    desc = "Peek definitions",
-    cmd = "<cmd>Lspsaga peek_definition<CR>",
-    keys = { "n", "gpd", noremap },
-  },
-
-  {
     desc = "Open definition in a split",
     cmd = "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
     keys = { "n", "gs", noremap },
@@ -568,11 +555,6 @@ cc.add({
     keys = { "n", "gr", noremap },
   },
 
-  {
-    desc = "Show references [lspsaga]",
-    cmd = "<cmd>Lspsaga finder<CR>",
-    keys = { "n", "gR", noremap },
-  },
 
   {
     desc = "Show implementation",
@@ -593,7 +575,7 @@ cc.add({
 
   {
     desc = "Code actions",
-    cmd = "<cmd>Lspsaga code_action<cr>",
+    cmd = "<cmd>lua vim.lsp.buf.code_action()<cr>",
     keys = { "n", "<leader>la", noremap },
   },
 
@@ -637,7 +619,6 @@ cc.add({
 
   {
     desc = "Show documentation",
-    -- cmd = "<cmd>Lspsaga hover_doc<cr>",
     cmd = function()
       vim.lsp.buf.hover()
     end,

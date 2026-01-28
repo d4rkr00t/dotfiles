@@ -45,9 +45,6 @@ return {
 
       -- replace vim.ui.select with fzf-lua
       require('fzf-lua').register_ui_select()
-    end,
-    dependencies = {
-      "elanmed/fzf-lua-frecency.nvim"
-    }
+    end
   },
 }

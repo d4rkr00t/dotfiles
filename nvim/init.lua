@@ -1,3 +1,5 @@
+local safe_require = require("ssysoev.utils.safe-require")
+
 -- verbose mode for logging [custom]
 vim.g.VERBOSE_LOG = false
 --
@@ -6,7 +8,13 @@ vim.g.VERBOSE_LOG = false
 vim.deprecate = function() end
 
 -- Experimental UI
-require("vim._extui").enable({})
+safe_require({ "vim._core.ui2" }, function(mods)
+  mods["vim._core.ui2"].enable({})
+end)
+-- old
+safe_require({ "vim._extui" }, function(mods)
+  mods["vim._extui"].enable({})
+end)
 
 -- leader
 vim.g.mapleader = ","

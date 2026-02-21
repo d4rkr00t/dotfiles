@@ -22,6 +22,21 @@ return {
       local cc = require("ssysoev.custom.commander")
 
       ai_chats:new({
+        cmd = "gemini",
+        name = "Gemini",
+        meta = {
+          meta = {
+            add_file = function(file)
+              return "@" .. file
+            end,
+            add_file_context = function(file, context)
+              return "@" .. file .. " | " .. context
+            end
+          }
+        }
+      })
+
+      ai_chats:new({
         cmd = "acli rovodev",
         name = "Rovo Dev",
         meta = {

@@ -136,6 +136,12 @@ return {
       })
 
       ins_left({
+        "filetype",
+        cond = conditions.buffer_not_empty,
+        color = { fg = colors.magenta, gui = "bold" },
+      })
+
+      ins_left({
         "location",
       })
 

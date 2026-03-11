@@ -136,10 +136,25 @@ local function get_current_working_folder_name(tab)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)
+  local pane = tab.active_pane
+  local process_name = pane.foreground_process_name
+
+  local title = get_current_working_folder_name(tab)
+
+  if process_name:find("atlas") then
+    local mux_pane = wezterm.mux.get_pane(pane.pane_id)
+    local process_info = mux_pane:get_foreground_process_info()
+    local process_args = table.concat(process_info.argv, " ")
+    if process_args:match("atlas devenv remote ssh") then
+      local profile_name = process_args:match("--profile=([^%s]+)") or "unknown"
+      title = "󱘖 SSH (" .. profile_name .. ")"
+    end
+  end
+
   return wezterm.format({
     { Text = string.format("  %s", tab.tab_index + 1) },
     { Text = " " },
-    { Text = get_current_working_folder_name(tab) },
+    { Text = title },
     { Text = " ▕" },
   })
 end)

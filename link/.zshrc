@@ -77,12 +77,14 @@ function () {
 #
 
 # Load from Brew
-# As per `brew info zsh-history-substring-search`
-source `brew --prefix`/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Bind UP and DOWN arrow keys
-# Copied from https://github.com/zsh-users/zsh-history-substring-search/tree/47a7d416c652a109f6e8856081abc042b50125f4#usage
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+if [ -f `brew --prefix`/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  # As per `brew info zsh-history-substring-search`
+  source `brew --prefix`/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  # Bind UP and DOWN arrow keys
+  # Copied from https://github.com/zsh-users/zsh-history-substring-search/tree/47a7d416c652a109f6e8856081abc042b50125f4#usage
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+fi
 
 #
 # History

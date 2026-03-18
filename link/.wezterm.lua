@@ -68,11 +68,6 @@ config.keys = {
     action = wezterm.action.CloseCurrentTab({ confirm = false }),
   },
   {
-    key = "k",
-    mods = "CMD",
-    action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
-  },
-  {
     key = "LeftArrow",
     mods = "ALT|SHIFT",
     action = wezterm.action.MoveTabRelative(-1),

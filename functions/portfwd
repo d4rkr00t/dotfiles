@@ -1,0 +1,33 @@
+portfwd() {
+  about 'Forward ports with autossh'
+  param '1: host'
+  param 'rest: ports to forward'
+  example '$ portfwd rovoyolo 9000 8000 8001'
+  group 'utils'
+
+  # Grab the host from the first position and remove it from the list
+  local host="$1"
+  shift
+
+  local port_args=()
+  local ports_list=""
+
+  # Loop through all the remaining arguments (the ports)
+  for port in "$@"; do
+    # Ensure the port is actually a number before adding it
+    if ! [[ "$port" =~ ^[0-9]+$ ]]; then
+      echo "Error: '$port' is not a valid number. Aborting."
+      return 1
+    fi
+
+    # FIX: Using ${port} so Zsh doesn't interpret ":l" as a lowercase modifier
+    port_args+=("-L" "${port}:localhost:${port}")
+    ports_list+="${port} "
+  done
+
+  echo "Forwarding local ports: $ports_list-> same ports on $host..."
+
+  # Execute autossh
+  autossh -M 0 -N -o "ServerAliveInterval=30" -o "ServerAliveCountMax=3" \
+    "${port_args[@]}" "$host"
+}

@@ -1,5 +1,5 @@
 local function safe_root_pattern(...)
-  local exist, lspconfig = pcall(require, "nvim-lspconfig")
+  local exist, lspconfig = pcall(require, "lspconfig")
   if not exist then
     return nil
   end

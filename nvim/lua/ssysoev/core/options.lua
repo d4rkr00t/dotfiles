@@ -33,10 +33,10 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes:1" -- always show signcolumns
-opt.title = true -- show filename in the window titlebar
-opt.cursorline = true -- highlight current line
-opt.scrolloff = 10 -- lines above/below cursor to preferably be visible
-opt.ch = 0 -- height of a command line
+opt.title = true         -- show filename in the window titlebar
+opt.cursorline = true    -- highlight current line
+opt.scrolloff = 10       -- lines above/below cursor to preferably be visible
+opt.ch = 0               -- height of a command line
 
 -- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,noselect"
@@ -55,8 +55,8 @@ opt.splitkeep = "screen"
 
 -- other
 opt.iskeyword:append("-") -- makes - a part of a word
-opt.joinspaces = false -- No double spaces with join
-opt.autoread = true -- Deal with file loads after updating via git etc
+opt.joinspaces = false    -- No double spaces with join
+opt.autoread = true       -- Deal with file loads after updating via git etc
 
 -- folding
 opt.foldmethod = "expr"
@@ -66,12 +66,10 @@ opt.foldminlines = 1
 opt.foldlevel = 99
 opt.foldenable = true
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- opt.foldtext = "v:lua.vim.treesitter.foldtext"
 
 -- invisible characters
 opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }
--- opt.listchars = { tab = "  ", trail = "·" }
 
 -- undo
 opt.undofile = true

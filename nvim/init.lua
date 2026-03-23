@@ -45,8 +45,6 @@ require("lazy").setup({
   },
 })
 
--- require("ssysoev.plugins.treesitter")
-
 require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")

@@ -9,8 +9,6 @@ keymap.set("n", "q:", "<cmd>q<cr>")
 keymap.set("v", "p", '"_dP')                    -- do not yank if pasting over something
 keymap.set("n", "U", "<C-r>")                   -- redo
 keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
-keymap.set("n", "gl", "$")                      -- jump to the last char of the line
-keymap.set("n", "gh", "^")                      -- jump to the first char of the line
 keymap.set("n", "<leader><leader>", "<cmd>w<cr>")
 keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>")
 
@@ -231,7 +229,7 @@ cc.add({
   {
     desc = "Fzf find all files",
     cmd =
-    "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.loop.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
+    "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.uv.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
     keys = { "n", "<leader>fa", noremap },
   },
 
@@ -358,25 +356,6 @@ cc.add({
     keys = { "n", "<leader>.", noremap },
   },
 
-  -- yanky
-  {
-    desc = "Yanky Cycle Forward",
-    cmd = "<Plug>(YankyCycleForward)",
-    keys = {
-      { "n", "<c-n>", noremap },
-      { "x", "<c-n>", noremap },
-    },
-  },
-
-  {
-    desc = "Yanky Cycle Backward",
-    cmd = "<Plug>(YankyCycleBackward)",
-    keys = {
-      { "n", "<c-p>", noremap },
-      { "x", "<c-p>", noremap },
-    },
-  },
-
   -- treesj
   {
     desc = "Split/join block of code",
@@ -456,7 +435,7 @@ cc.add({
   },
 
   {
-    desc = "Unstage hunk",
+    desc = "Stage hunk",
     cmd = "<cmd>Gitsigns stage_hunk<cr>",
     keys = { "n", "<leader>hu" },
   },
@@ -604,7 +583,7 @@ cc.add({
   {
     desc = "Jump to previous diagnostic",
     cmd = function()
-      vim.diagnostic.goto_prev()
+      vim.diagnostic.jump({ count = -1 })
     end,
     keys = { "n", "[d", noremap },
   },
@@ -612,7 +591,7 @@ cc.add({
   {
     desc = "Jump to next diagnostic",
     cmd = function()
-      vim.diagnostic.goto_next()
+      vim.diagnostic.jump({ count = 1 })
     end,
     keys = { "n", "]d", noremap },
   },

@@ -63,6 +63,11 @@ config.keys = {
   { key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "-",  mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
   {
+    key = "k",
+    mods = "CMD",
+    action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+  },
+  {
     key = "w",
     mods = "CMD",
     action = wezterm.action.CloseCurrentTab({ confirm = false }),

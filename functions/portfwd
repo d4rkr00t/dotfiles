@@ -28,6 +28,6 @@ portfwd() {
   echo "Forwarding local ports: $ports_list-> same ports on $host..."
 
   # Execute autossh
-  autossh -M 0 -N -o "ServerAliveInterval=30" -o "ServerAliveCountMax=3" \
+  autossh -M 0 -gNC -o ExitOnForwardFailure=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
     "${port_args[@]}" "$host"
 }

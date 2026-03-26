@@ -46,6 +46,7 @@ return {
       vim.lsp.enable("pylsp")
       vim.lsp.enable("gopls")
       vim.lsp.enable("cspell_lsp")
+      vim.lsp.enable("oxlint")
     end,
     dependencies = {
       -- easily configure language servers

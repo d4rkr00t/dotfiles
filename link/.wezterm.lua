@@ -132,7 +132,7 @@ local function get_current_working_folder_name(tab)
     return "  ~"
   end
 
-  return string.format("  %s", string.match(cwd_uri, "[^/]+$"))
+  return string.format("  %s", string.match(cwd, "[^/]+$"))
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)
@@ -146,7 +146,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_siz
     local process_info = mux_pane:get_foreground_process_info()
     local process_args = table.concat(process_info.argv, " ")
     if process_args:match("atlas devenv remote ssh") then
-      local profile_name = process_args:match("--profile=([^%s]+)") or "unknown"
+      local profile_name = process_args:match("--profile[ =]([^%s]+)") or "unknown"
       title = "󱘖 SSH (" .. profile_name .. ")"
     end
   end

@@ -4,6 +4,12 @@
 alias sudo='sudo '
 
 #
+# Devbox only
+#
+
+alias rolo="acli rovodev --yolo"
+
+#
 # Editors
 #
 alias v="nvim"

@@ -18,3 +18,5 @@ unset file
 # link nvim config
 ln -sf "$DIR/nvim/" "$HOME/.config/"
 
+# link skills
+ln -sf "$DIR/skills/" "$HOME/.claude/skills"

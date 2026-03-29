@@ -35,6 +35,10 @@ return {
       require("mason").setup()
       setup_diagnostics()
 
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      })
+
       vim.lsp.enable("tsgo")
       vim.lsp.enable("eslint")
       vim.lsp.enable("lua_ls")

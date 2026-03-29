@@ -112,7 +112,16 @@ return {
             Exception                    = { fg = "#FFCFA8" },
             ["@property"]                = { fg = "#FFCFA8" },
             ["tsxAttrib"]                = { fg = "#FFCFA8" },
-            TreesitterContext            = { bg = "#1e1f1f" }
+            TreesitterContext            = { bg = "#1e1f1f" },
+
+            -- snacks picker
+            SnacksPickerInput            = { bg = "#101010" },
+            SnacksPickerList             = { bg = "#101010" },
+            SnacksPickerPreview          = { bg = "#101010" },
+            SnacksPickerSearch           = { bg = "#101010" },
+            SnacksPickerCmd              = { bg = "#101010" },
+            SnacksPickerCursorLine       = { bg = "#101010" },
+            SnacksPickerDir              = { fg = "#A0A0A0" },
           }
         end,
       })

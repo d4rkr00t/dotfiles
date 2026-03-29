@@ -217,116 +217,112 @@ cc.add({
     keys = { "n", "-", noremap },
   },
 
-  -- fzf
+  -- picker
   {
-    desc = "Fzf find files",
-    -- cmd = "<cmd>FzfLua files<cr>",
-    cmd = "<cmd>FzfLua combine pickers=buffers;oldfiles;files<CR>",
-    -- cmd = "<cmd>FzfLuaFiles<cr>",
+    desc = "Find files",
+    cmd = "<cmd>lua Snacks.picker.smart()<CR>",
     keys = { "n", "<leader>ff", noremap },
   },
 
   {
-    desc = "Fzf find all files",
-    cmd =
-    "<cmd>lua require('fzf-lua').files(function() return {cwd_header=true, cwd=vim.uv.cwd(), cmd = 'fd --type f --exclude .git -I'} end)<CR>",
+    desc = "Find all files (including ignored)",
+    cmd = "<cmd>lua Snacks.picker.files({ hidden = true, ignored = true })<CR>",
     keys = { "n", "<leader>fa", noremap },
   },
 
   {
     desc = "Open recent",
-    cmd = "<cmd>lua require('fzf-lua').combine({ pickers = 'buffers;oldfiles;files' })<cr>",
+    cmd = "<cmd>lua Snacks.picker.smart()<CR>",
     keys = { "n", "<leader>o", noremap },
   },
 
   {
-    desc = "Fzf quickfix list",
-    cmd = "<cmd>FzfLua quickfix<CR>",
+    desc = "Quickfix list",
+    cmd = "<cmd>lua Snacks.picker.qflist()<CR>",
     keys = { "n", "<leader>fq", noremap },
   },
 
   {
-    desc = "Fzf git files",
-    cmd = "<cmd>FzfLua git_files<CR>",
+    desc = "Git files",
+    cmd = "<cmd>lua Snacks.picker.git_files()<CR>",
     keys = { "n", "<leader>fg", noremap },
   },
 
   {
-    desc = "Fzf live grep",
-    cmd = "<cmd>FzfLua live_grep_glob<CR>",
+    desc = "Live grep",
+    cmd = "<cmd>lua Snacks.picker.grep()<CR>",
     keys = { "n", "<leader>fs", noremap },
   },
 
   {
-    desc = "Fzf grep current word",
-    cmd = "<cmd>FzfLua grep_cword<CR>",
+    desc = "Grep current word",
+    cmd = "<cmd>lua Snacks.picker.grep_word()<CR>",
     keys = { "n", "<leader>fw", noremap },
   },
 
   {
-    desc = "Fzf document symbols",
-    cmd = "<cmd>FzfLua lsp_document_symbols<CR>",
+    desc = "Document symbols",
+    cmd = "<cmd>lua Snacks.picker.lsp_symbols()<CR>",
     keys = { "n", "<leader>fo", noremap },
   },
 
   {
-    desc = "Fzf diagnostics",
-    cmd = "<cmd>FzfLua diagnostics_document<CR>",
+    desc = "Document diagnostics",
+    cmd = "<cmd>lua Snacks.picker.diagnostics_buffer()<CR>",
     keys = { "n", "<leader>fd", noremap },
   },
 
   {
-    desc = "Fzf restore previous picker",
-    cmd = "<cmd>FzfLua resume<CR>",
+    desc = "Restore previous picker",
+    cmd = "<cmd>lua Snacks.picker.resume()<CR>",
     keys = { "n", "<leader>fr", noremap },
   },
 
   {
-    desc = "Fzf search help tags",
-    cmd = "<cmd>FzfLua help_tags<CR>",
+    desc = "Search help tags",
+    cmd = "<cmd>lua Snacks.picker.help()<CR>",
     keys = { "n", "<leader>fh", noremap },
   },
 
   {
-    desc = "Fzf search commands",
-    cmd = "<cmd>FzfLua commands<CR>",
+    desc = "Search commands",
+    cmd = "<cmd>lua Snacks.picker.commands()<CR>",
     keys = { "n", "<leader>fc", noremap },
   },
 
   {
-    desc = "Fzf search edits",
-    cmd = "<cmd>FzfLua changes<CR>",
+    desc = "Search changes",
+    cmd = "<cmd>lua Snacks.picker.changes()<CR>",
     keys = { "n", "<leader>fe", noremap },
   },
 
   {
-    desc = "Fzf search in current buffer",
-    cmd = "<cmd>FzfLua lgrep_curbuf<CR>",
+    desc = "Search in current buffer",
+    cmd = "<cmd>lua Snacks.picker.lines()<CR>",
     keys = { "n", "<leader>/", noremap },
   },
 
   {
-    desc = "Fzf buffers",
-    cmd = "<cmd>FzfLua buffers<CR>",
+    desc = "Buffers",
+    cmd = "<cmd>lua Snacks.picker.buffers()<CR>",
     keys = { "n", "<leader>fb", noremap },
   },
 
   {
-    desc = "Fzf git status",
-    cmd = "<cmd>FzfLua git_status<CR>",
+    desc = "Git status",
+    cmd = "<cmd>lua Snacks.picker.git_status()<CR>",
     keys = { "n", "<leader>gs", noremap },
   },
 
   {
-    desc = "Fzf git_status tracked",
-    cmd =
-    "<cmd>lua require('fzf-lua').git_status(function() return {cmd='git -c color.status=false status -s -uno'} end)<CR>",
+    desc = "Git status (tracked only)",
+    cmd = "<cmd>lua Snacks.picker.git_status({ untracked = false })<CR>",
     keys = { "n", "<leader>gt", noremap },
   },
 
   {
     desc = "Open in Github",
-    cmd = "<cmd>GitLink! default_branch remote=origin<CR>",
+    cmd = "<cmd>lua require('snacks').gitbrowse.open()<CR>",
     keys = {
       { "n", "<leader>gl", noremap },
       { "v", "<leader>gl", noremap },
@@ -518,7 +514,7 @@ cc.add({
 
   {
     desc = "Show definitions",
-    cmd = "<cmd>FzfLua lsp_definitions<CR>",
+    cmd = "<cmd>lua Snacks.picker.lsp_definitions()<CR>",
     keys = { "n", "gd", noremap },
   },
 
@@ -530,14 +526,14 @@ cc.add({
 
   {
     desc = "Show references",
-    cmd = "<cmd>FzfLua lsp_references<CR>",
+    cmd = "<cmd>lua Snacks.picker.lsp_references()<CR>",
     keys = { "n", "gr", noremap },
   },
 
 
   {
     desc = "Show implementation",
-    cmd = "<cmd>FzfLua lsp_implementations<CR>",
+    cmd = "<cmd>lua Snacks.picker.lsp_implementations()<CR>",
   },
 
   {

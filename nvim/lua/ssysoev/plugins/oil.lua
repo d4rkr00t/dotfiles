@@ -17,15 +17,13 @@ return {
         ["<C-v>"] = { callback = "actions.select_vsplit" },
         ["<leader>fs"] = {
           callback = function()
-            local fzf = require("fzf-lua")
             local current_dir = require("oil").get_current_dir()
-
-            fzf.live_grep({ cwd = current_dir })
+            Snacks.picker.grep({ cwd = current_dir })
           end,
         },
       },
     },
     -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons", "ibhagwan/fzf-lua" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   }
 }

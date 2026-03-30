@@ -5,7 +5,7 @@ return {
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install { "vim", "markdown", "lua", "jsx", "tsx", "typescript", "rust", "go", "python", "zig", "json", "json5" }
+      require('nvim-treesitter').install { "vim", "markdown", "lua", "jsx", "tsx", "typescript", "rust", "go", "python", "zig", "json", "json5", "regex" }
     end
   },
 }

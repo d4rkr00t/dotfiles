@@ -10,6 +10,8 @@ return {
       picker = {
         enabled = true,
         ui_select = true,
+        live_limit = 100000,
+        hidden = true,
         layout = {
           preset = "bottom",
         },

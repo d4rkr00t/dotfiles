@@ -11,7 +11,7 @@ return {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
         ["<M- >"] = { "show", "fallback" },
-        ["<C-i>"] = { "show", "fallback" },
+        ["<C-o>"] = { "show", "fallback" },
         ["<C-e>"] = { "cancel", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = {
@@ -46,8 +46,8 @@ return {
           draw = {
             columns = {
               { "kind_icon" },
-              { "label", "label_description", gap = 1 },
-              { "kind", "source_name", gap = 1 },
+              { "label",    "label_description", gap = 1 },
+              { "kind",     "source_name",       gap = 1 },
             },
             components = {
               kind_icon = {

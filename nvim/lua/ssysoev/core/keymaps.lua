@@ -220,7 +220,7 @@ cc.add({
   -- picker
   {
     desc = "Find files",
-    cmd = "<cmd>lua Snacks.picker.smart()<CR>",
+    cmd = "<cmd>lua Snacks.picker.smart({filter = { cwd = true }})<CR>",
     keys = { "n", "<leader>ff", noremap },
   },
 
@@ -232,7 +232,7 @@ cc.add({
 
   {
     desc = "Open recent",
-    cmd = "<cmd>lua Snacks.picker.smart()<CR>",
+    cmd = "<cmd>lua Snacks.picker.smart({filter = { cwd = true }})<CR>",
     keys = { "n", "<leader>o", noremap },
   },
 

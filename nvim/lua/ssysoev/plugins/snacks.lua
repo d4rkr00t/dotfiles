@@ -4,7 +4,11 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      bigfile = { enabled = true, size = 1 * 1024 * 1024, notify = true },
+      bigfile = {
+        enabled = true,
+        size = 1 * 1024 * 1024,
+        notify = true,
+      },
       gitbrowse = {
         enabled = true,
         url_patterns = {
@@ -24,6 +28,9 @@ return {
         hidden = true,
         layout = {
           preset = "bottom",
+          layout = {
+            height = 0.5
+          }
         },
       },
       quickfile = { enabled = true },

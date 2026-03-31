@@ -5,7 +5,17 @@ return {
     lazy = false,
     opts = {
       bigfile = { enabled = true, size = 1 * 1024 * 1024, notify = true },
-      gitbrowse = { enabled = true },
+      gitbrowse = {
+        enabled = true,
+        url_patterns = {
+          ["bitbucket%.org"] = {
+            branch = "/src/{branch}",
+            file = "/src/{branch}/{file}#lines-{line_start}:{line_end}",
+            permalink = "/src/{commit}/{file}#lines-{line_start}:{line_end}",
+            commit = "/commits/{commit}",
+          },
+        }
+      },
       input = { enabled = true },
       picker = {
         enabled = true,

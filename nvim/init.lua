@@ -9,11 +9,14 @@ vim.deprecate = function() end
 
 -- Experimental UI
 safe_require({ "vim._core.ui2" }, function(mods)
-  mods["vim._core.ui2"].enable({})
-end)
--- old
-safe_require({ "vim._extui" }, function(mods)
-  mods["vim._extui"].enable({})
+  mods["vim._core.ui2"].enable({
+    msg = {
+      target = "msg",
+    },
+    cmdline = {
+      enable = true,
+    }
+  })
 end)
 
 -- leader

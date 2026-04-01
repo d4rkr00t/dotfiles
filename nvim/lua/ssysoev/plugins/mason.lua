@@ -1,6 +1,6 @@
 local function setup_diagnostics()
   vim.diagnostic.config({
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     float = {
       focusable = true,

@@ -5,7 +5,8 @@ return {
     config = function()
       local lualine = require("lualine")
       local current_colors = vim.api.nvim_get_hl(0, { name = "Comment" })
-      local current_bg = string.format("%06x", tonumber(current_colors.bg or vim.api.nvim_get_hl(0, { name = "Normal" }).bg or 0x1A1A26))
+      local current_bg = string.format("%06x",
+        tonumber(current_colors.bg or vim.api.nvim_get_hl(0, { name = "Normal" }).bg or 0x1A1A26))
       local current_fg = string.format("%06x", tonumber(current_colors.fg))
 
       local colors = {
@@ -64,7 +65,7 @@ return {
           lualine_x = {},
         },
         extensions = {
-         "trouble",
+          "trouble",
         },
       }
 
@@ -194,7 +195,7 @@ return {
         function()
           local msg = "No Active Lsp"
           local buf_ft = vim.bo[0].filetype
-          local clients = vim.lsp.get_clients()
+          local clients = vim.lsp.get_clients({ bufnr = 0 })
           if next(clients) == nil then
             return msg
           end

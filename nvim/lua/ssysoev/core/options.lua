@@ -59,13 +59,11 @@ opt.joinspaces = false    -- No double spaces with join
 opt.autoread = true       -- Deal with file loads after updating via git etc
 
 -- folding
-opt.foldmethod = "expr"
 opt.fillchars = "fold: ,foldopen:,foldclose:,foldsep: "
 opt.foldnestmax = 10
 opt.foldminlines = 1
 opt.foldlevel = 99
 opt.foldenable = true
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- invisible characters
 opt.list = true -- Show some invisible characters

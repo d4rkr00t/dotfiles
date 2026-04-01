@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufWritePre" },
     config = function()
       local cc = require("ssysoev.custom.commander")
       local conform = require("conform")

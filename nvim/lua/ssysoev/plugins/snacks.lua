@@ -24,7 +24,7 @@ return {
       picker = {
         enabled = true,
         ui_select = true,
-        live_limit = 100000,
+        live_limit = 50000,
         hidden = true,
         matcher = {
           frecency = true,
@@ -38,7 +38,12 @@ return {
         },
       },
       quickfile = { enabled = true },
-      statuscolumn = { enabled = true }
+      statuscolumn = {
+        enabled = true,
+        folds = {
+          open = true
+        }
+      }
     },
   },
 }

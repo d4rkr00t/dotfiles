@@ -437,8 +437,8 @@ cc.add({
   },
 
   {
-    desc = "Stage hunk",
-    cmd = "<cmd>Gitsigns stage_hunk<cr>",
+    desc = "Undo stage hunk",
+    cmd = "<cmd>Gitsigns undo_stage_hunk<cr>",
     keys = { "n", "<leader>hu" },
   },
 

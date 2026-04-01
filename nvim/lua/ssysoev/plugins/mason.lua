@@ -39,28 +39,30 @@ return {
         capabilities = require("blink.cmp").get_lsp_capabilities(),
       })
 
-      -- Ensure installed
-      local registry = require("mason-registry")
-      local packages = {
-        "tsgo",
-        "oxlint",
-        "eslint-lsp",
-        "lua-language-server",
-        "json-lsp",
-        "html-lsp",
-        "css-lsp",
-        "python-lsp-server",
-        "cspell-lsp",
-      }
+      -- Ensure installed (deferred to avoid blocking startup)
+      vim.defer_fn(function()
+        local registry = require("mason-registry")
+        local packages = {
+          "tsgo",
+          "oxlint",
+          "eslint-lsp",
+          "lua-language-server",
+          "json-lsp",
+          "html-lsp",
+          "css-lsp",
+          "python-lsp-server",
+          "cspell-lsp",
+        }
 
-      for _, pkg_name in ipairs(packages) do
-        local ok, pkg = pcall(registry.get_package, pkg_name)
-        if ok then
-          if not pkg:is_installed() then
-            pkg:install()
+        for _, pkg_name in ipairs(packages) do
+          local ok, pkg = pcall(registry.get_package, pkg_name)
+          if ok then
+            if not pkg:is_installed() then
+              pkg:install()
+            end
           end
         end
-      end
+      end, 0)
 
       vim.lsp.enable("tsgo")
       vim.lsp.enable("eslint")

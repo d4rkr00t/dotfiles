@@ -83,7 +83,7 @@ return {
       },
 
       sources = {
-        default = { "lsp", "buffer", "path", "snippets", "snp" },
+        default = { "lsp", "buffer", "path", "snp" },
         providers = {
           buffer = {
             min_keyword_length = 2,

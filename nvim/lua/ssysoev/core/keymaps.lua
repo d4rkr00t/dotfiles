@@ -623,4 +623,41 @@ cc.add({
     cmd = "<cmd>checkhealth vim.lsp<CR>",
     keys = { "n", "<leader>li", noremap },
   },
+
+  -- AI context copy
+  {
+    desc = "Copy file path for AI chat",
+    cmd = function()
+      local file = vim.fn.expand("%:p")
+      vim.fn.setreg("+", "@" .. file)
+      vim.notify("Copied: @" .. file)
+    end,
+    keys = { "n", "<leader>aa", noremap },
+  },
+
+  {
+    desc = "Copy file path with line for AI chat",
+    cmd = function()
+      local file = vim.fn.expand("%:p")
+      local line = vim.fn.line(".")
+      local ref = string.format("@%s:%d", file, line)
+      vim.fn.setreg("+", ref)
+      vim.notify("Copied: " .. ref)
+    end,
+    keys = { "n", "<leader>as", noremap },
+  },
+
+  {
+    desc = "Copy visual selection with context for AI chat",
+    cmd = function()
+      local file = vim.fn.expand("%:p")
+      local start_line = vim.fn.getpos(".")
+      local end_line = vim.fn.getpos("v")
+      local lines = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
+      local ref = string.format("@%s:%d-%d\n%s", file, start_line[2], end_line[2], lines)
+      vim.fn.setreg("+", ref)
+      vim.notify("Copied selection with context")
+    end,
+    keys = { "v", "<leader>as", noremap },
+  },
 })

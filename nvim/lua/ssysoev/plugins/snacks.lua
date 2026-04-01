@@ -26,6 +26,10 @@ return {
         ui_select = true,
         live_limit = 100000,
         hidden = true,
+        matcher = {
+          frecency = true,
+          history_bonus = true,
+        },
         layout = {
           preset = "bottom",
           layout = {

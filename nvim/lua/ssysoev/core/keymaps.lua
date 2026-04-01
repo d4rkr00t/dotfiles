@@ -219,6 +219,12 @@ cc.add({
 
   -- picker
   {
+    desc = "Find pickers",
+    cmd = "<cmd>lua Snacks.picker.pickers()<CR>",
+    keys = { "n", "<leader>fp", noremap },
+  },
+
+  {
     desc = "Find files",
     cmd = "<cmd>lua Snacks.picker.smart({filter = { cwd = true }})<CR>",
     keys = { "n", "<leader>ff", noremap },

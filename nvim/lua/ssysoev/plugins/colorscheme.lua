@@ -4,7 +4,7 @@ return {
     cond = vim.g.THEME == "kanagawa",
     init = function()
       require("kanagawa").setup({
-        compile = false,  -- enable compiling the colorscheme
+        compile = true,   -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         keywordStyle = { italic = false },
         commentStyle = { italic = false },

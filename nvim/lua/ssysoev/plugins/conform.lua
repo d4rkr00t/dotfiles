@@ -20,7 +20,7 @@ return {
       end
 
       conform.setup({
-        log_level = vim.log.levels.DEBUG,
+        log_level = vim.log.levels.WARN,
         formatters_by_ft = {
           javascript = { "prettier" },
           javascriptreact = { "prettier" },

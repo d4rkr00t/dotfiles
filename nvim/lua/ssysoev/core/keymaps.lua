@@ -660,4 +660,12 @@ cc.add({
     end,
     keys = { "v", "<leader>as", noremap },
   },
+
+  {
+    desc = "Undotree",
+    cmd = function()
+      vim.cmd("packadd nvim.undotree")
+      require("undotree").open()
+    end
+  }
 })

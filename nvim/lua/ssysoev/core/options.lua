@@ -36,6 +36,7 @@ opt.signcolumn = "yes:1" -- always show signcolumns
 opt.title = true         -- show filename in the window titlebar
 opt.cursorline = true    -- highlight current line
 opt.scrolloff = 10       -- lines above/below cursor to preferably be visible
+opt.scrolloffpad = 1     -- keep cursor centered even at the end of the file
 opt.ch = 0               -- height of a command line
 
 -- Set completeopt to have a better completion experience

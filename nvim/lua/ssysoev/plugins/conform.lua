@@ -22,10 +22,10 @@ return {
       conform.setup({
         log_level = vim.log.levels.WARN,
         formatters_by_ft = {
-          javascript = { "prettier" },
-          javascriptreact = { "prettier" },
-          typescript = { "prettier" },
-          typescriptreact = { "prettier" },
+          javascript = { "prettier", "oxfmt" },
+          javascriptreact = { "prettier", "oxfmt" },
+          typescript = { "prettier", "oxfmt" },
+          typescriptreact = { "prettier", "oxfmt" },
           json = { "prettier" },
           map = { "prettier" },
           svelte = { "prettier" },

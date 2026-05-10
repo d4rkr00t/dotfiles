@@ -48,7 +48,6 @@ alias imginfo='identify -verbose'
 alias ta='tmux attach'
 alias tls='tmux ls 2> /dev/null'
 alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
 
 #
 # Docker

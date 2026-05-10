@@ -1,0 +1,42 @@
+#!/bin/sh
+
+tns() {
+  about 'Create a new tmux session with a random name'
+  param '1: session name (optional, generates random adjective-animal if omitted)'
+  example '$ tns'
+  example '$ tns my-project'
+  group 'tmux'
+
+  local adjectives=(
+    amber ancient autumn bold brave bright calm clever cool crisp
+    crystal daring dawn deep divine dreamy dusk dusty electric emerald
+    epic faint fancy fierce fiery fluffy foggy forest frozen gentle
+    ghost gilded glacial glowing golden grand hidden hollow humble
+    icy indigo jade jolly keen kind lively lone lunar magic mellow
+    misty mystic noble ocean pale peaceful phantom polar prism proud
+    quiet radiant rapid regal remote rustic sacred scarlet serene
+    shadow shiny silent silver sleepy solar steady stone stormy
+    sunlit swift tender twilight velvet vibrant vivid wandering warm
+    wild windy winter wispy wooden young zen
+  )
+  local nouns=(
+    albatross antelope badger bear beaver bison canary cardinal
+    caribou cheetah cobra condor coyote crane crow deer dolphin
+    dragon dragonfly eagle egret falcon ferret finch firefly flamingo
+    fox gazelle gecko giraffe goose hawk hedgehog heron hippo
+    hummingbird ibis iguana jackal jaguar jellyfish kestrel kiwi
+    koala lemur leopard lion lizard llama lobster lynx magpie marmot
+    meerkat mink mongoose monkey moose narwhal newt nighthawk octopus
+    orca osprey otter owl oyster panda panther parrot pelican penguin
+    phoenix pigeon piranha platypus porcupine puffin python quail
+    rabbit raccoon raven reindeer rhino salamander salmon sardine
+    scorpion seahorse seal shark sloth snail snake sparrow squid
+    stag starling stingray stoat stork swan tapir tiger tortoise
+    toucan trout turkey turtle viper walrus weasel wolf wolverine
+    wombat woodpecker wren yak zebra
+  )
+  local adj=${adjectives[$((RANDOM % ${#adjectives[@]}))]}
+  local noun=${nouns[$((RANDOM % ${#nouns[@]}))]}
+  local name="${1:-${adj}-${noun}}"
+  tmux new-session -s "$name"
+}

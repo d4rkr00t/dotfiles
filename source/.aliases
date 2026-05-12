@@ -7,7 +7,7 @@ alias sudo='sudo '
 # Devbox only
 #
 
-alias rolo="acli rovodev --yolo"
+alias rolo="acli rovodev legacy --yolo"
 
 #
 # Editors

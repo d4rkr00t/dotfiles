@@ -1,10 +1,14 @@
 vim.filetype.add({
+  extension = {
+    json = "json",
+  },
   filename = {
     [".env"] = "sh",
     [".envrc"] = "sh",
-    ["*.js.map"] = "json",
-    ["*.json"] = "json",
-    ["*.css.map"] = "json",
     ["tsconfig.json"] = "jsonc",
+  },
+  pattern = {
+    [".*%.css%.map"] = "json",
+    [".*%.js%.map"] = "json",
   },
 })

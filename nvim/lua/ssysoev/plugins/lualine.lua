@@ -214,10 +214,17 @@ return {
       -- Add components to right sections
       ins_right({
         function()
-          if require("grapple").name_or_index() == nil then
+          local grapple = package.loaded["grapple"]
+          if not grapple then
             return ""
           end
-          return "[󰛢 " .. require("grapple").name_or_index() .. "]"
+
+          local name = grapple.name_or_index()
+          if name == nil then
+            return ""
+          end
+
+          return "[󰛢 " .. name .. "]"
         end,
         color = { fg = colors.green, gui = "bold" },
       })

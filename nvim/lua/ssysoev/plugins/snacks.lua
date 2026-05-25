@@ -30,6 +30,14 @@ return {
           frecency = true,
           history_bonus = true,
         },
+        sources = {
+          smart = {
+            matcher = {
+              sort_empty = false,
+            },
+            multi = { { source = "buffers", current = false }, "recent", "files" },
+          },
+        },
         layout = {
           preset = "bottom",
           layout = {

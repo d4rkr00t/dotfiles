@@ -35,9 +35,13 @@ M.expand = function()
     local snip_match = string.find(line_content, "%s+" .. snip.trigger .. "$")
       or string.find(line_content, "^" .. snip.trigger .. "$")
     if snip_match then
-      local cursor = get_cursor_0ind()
-      vim.api.nvim_buf_set_text(0, cursor[1], cursor[2] - string.len(snip.trigger), cursor[1], cursor[2], { "" })
-      vim.snippet.expand(snip.body)
+      -- blink.cmp runs this in an expr mapping (textlock active), so defer the
+      -- buffer mutation to the next tick to avoid E565.
+      vim.schedule(function()
+        local cursor = get_cursor_0ind()
+        vim.api.nvim_buf_set_text(0, cursor[1], cursor[2] - string.len(snip.trigger), cursor[1], cursor[2], { "" })
+        vim.snippet.expand(snip.body)
+      end)
       return true
     end
   end

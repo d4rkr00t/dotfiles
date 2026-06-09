@@ -5,9 +5,8 @@ return {
     config = function()
       require("incline").setup({
         hide = {
-          focused_win = true,
-          only_win = true
-        }
+          cursorline = true,
+        },
       })
     end,
     event = "VeryLazy",

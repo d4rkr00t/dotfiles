@@ -2,7 +2,7 @@
 
 extract() {
   about 'Extracts archives of various types'
-  param '1: atchive path'
+  param '1: archive path'
   example '$ extract project.zip'
   group 'utils'
 

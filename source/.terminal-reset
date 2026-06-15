@@ -1,0 +1,15 @@
+# Reset terminal modes that full-screen terminal apps can leave behind.
+__reset_terminal_private_modes() {
+  [ -t 1 ] || return
+
+  case "${TERM_PROGRAM:-}" in
+    WezTerm)
+      printf '\033[?9l\033[?1000l\033[?1001l\033[?1002l\033[?1003l\033[?1005l\033[?1006l\033[?1015l'
+      ;;
+  esac
+}
+
+if [ -n "${ZSH_VERSION:-}" ]; then
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd __reset_terminal_private_modes
+fi

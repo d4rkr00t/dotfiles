@@ -20,3 +20,4 @@ ln -sf "$DIR/nvim/" "$HOME/.config/"
 
 # link skills
 ln -sf "$DIR/skills/" "$HOME/.claude/skills"
+ln -sf "$DIR/skills/" "$HOME/.codex/skills"

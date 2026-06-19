@@ -5,7 +5,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install { "vim", "markdown", "lua", "jsx", "tsx", "typescript", "rust", "go", "python", "zig", "json", "json5", "regex" }
+      require('nvim-treesitter').install { "vim", "markdown", "lua", "javascript", "tsx", "typescript", "rust", "go", "python", "zig", "json", "json5", "regex" }
     end
   },
 }

@@ -84,9 +84,3 @@ vim.schedule(function()
     }
   end
 end)
-
--- treesitter
-au('FileType', {
-  group = ag('treesitter_highlight', { clear = true }),
-  callback = function() pcall(vim.treesitter.start) end,
-})

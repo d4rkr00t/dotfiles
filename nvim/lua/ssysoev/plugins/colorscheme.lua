@@ -104,14 +104,17 @@ return {
         overrides = function(colors)
           return {
             Boolean                      = { fg = "#6ad0b7" },
-            Property                     = { fg = "#6ad0b7" },
-            Field                        = { fg = "#6ad0b7" },
             Operator                     = { fg = "#A0A0A0" },
-            ["typescriptBinaryOp"]       = { fg = "#A0A0A0" },
-            ["typescriptPredefinedType"] = { fg = "#FFCFA8" },
             Exception                    = { fg = "#FFCFA8" },
-            ["@property"]                = { fg = "#FFCFA8" },
-            ["tsxAttrib"]                = { fg = "#FFCFA8" },
+
+            -- treesitter captures (replace legacy regex-syntax groups,
+            -- which are unused once vim.treesitter.start is active)
+            ["@property"]                = { fg = "#FFCFA8" }, -- key in key/value pairs
+            ["@variable.member"]         = { fg = "#FFCFA8" }, -- object / struct fields
+            ["@type.builtin"]            = { fg = "#FFCFA8" }, -- string, number, ... (was typescriptPredefinedType)
+            ["@operator"]                = { fg = "#A0A0A0" }, -- was typescriptBinaryOp
+            ["@keyword.import"]          = { fg = "#A0A0A0" }, -- import/from (kanagawa links these to PreProc = near-white)
+            ["@tag.attribute"]           = { fg = "#FFCFA8" }, -- JSX/HTML attributes (was tsxAttrib)
             TreesitterContext            = { bg = "#1e1f1f" },
 
             -- snacks picker

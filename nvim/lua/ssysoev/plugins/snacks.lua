@@ -45,7 +45,7 @@ return {
           }
         },
       },
-      quickfile = { enabled = false },
+      quickfile = { enabled = true },
       statuscolumn = {
         enabled = true,
         folds = {

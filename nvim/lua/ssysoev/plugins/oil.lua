@@ -21,6 +21,16 @@ return {
             Snacks.picker.grep({ cwd = current_dir })
           end,
         },
+        ["<leader>fo"] = {
+          callback = function()
+            local dir = require("oil").get_current_dir()
+            if dir then
+              vim.system({ "open", dir })
+            end
+          end,
+          desc = "Open current folder in Finder",
+          mode = "n",
+        },
       },
     },
     -- Optional dependencies

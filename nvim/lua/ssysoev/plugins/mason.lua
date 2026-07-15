@@ -64,6 +64,27 @@ return {
         end
       end, 0)
 
+      -- Quiet the eslint LSP when config/plugins can't be resolved
+      -- (e.g. before `npm install`). These are notification-style messages
+      -- that eslint re-fires on every change, so they spam while typing.
+      -- We swallow them instead of letting the default handlers pop errors.
+      vim.lsp.config("eslint", {
+        handlers = {
+          -- "Failed to load plugin ...", "Cannot find module ...", etc.
+          ["window/showMessageRequest"] = function()
+            return vim.NIL
+          end,
+          -- fired when eslint itself / a plugin lib can't be found
+          ["eslint/noLibrary"] = function()
+            return vim.NIL
+          end,
+          -- fired when eslint fails to lint a probed file
+          ["eslint/probeFailed"] = function()
+            return vim.NIL
+          end,
+        },
+      })
+
       vim.lsp.enable("tsgo")
       vim.lsp.enable("eslint")
       vim.lsp.enable("lua_ls")

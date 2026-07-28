@@ -4,7 +4,12 @@ __reset_terminal_private_modes() {
 
   case "${TERM_PROGRAM:-}" in
     WezTerm)
-      printf '\033[?9l\033[?1000l\033[?1001l\033[?1002l\033[?1003l\033[?1005l\033[?1006l\033[?1015l'
+      # Reset modes a full-screen app / tmux can leave enabled on exit:
+      #   ?9,?1000-?1006,?1015  mouse tracking
+      #   ?1004l                focus reporting (else focus events print ^[[I/^[[O and zsh beeps)
+      #   ?25h                  show cursor (else the cursor vanishes)
+      #   \033[0 q              restore default cursor shape
+      printf '\033[?9l\033[?1000l\033[?1001l\033[?1002l\033[?1003l\033[?1005l\033[?1006l\033[?1015l\033[?1004l\033[?25h\033[0 q'
       ;;
   esac
 }
@@ -12,4 +17,11 @@ __reset_terminal_private_modes() {
 if [ -n "${ZSH_VERSION:-}" ]; then
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd __reset_terminal_private_modes
+elif [ -n "${BASH_VERSION:-}" ]; then
+  # Prepend to PROMPT_COMMAND, once. NB: .bashrc must append (not overwrite)
+  # PROMPT_COMMAND after this file is sourced, or this registration is lost.
+  case "${PROMPT_COMMAND:-}" in
+    *__reset_terminal_private_modes*) ;;
+    *) PROMPT_COMMAND="__reset_terminal_private_modes${PROMPT_COMMAND:+; $PROMPT_COMMAND}" ;;
+  esac
 fi

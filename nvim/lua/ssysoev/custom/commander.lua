@@ -9,7 +9,7 @@ local registry = {}
 local function register_keymaps(desc, cmd, keymaps)
   local keymap = vim.keymap
 
-  for _, value in pairs(keymaps) do
+  for _, value in ipairs(keymaps) do
     local opts = value[3]
     if opts == nil then
       opts = {}
@@ -22,7 +22,7 @@ end
 local function display_keymaps(keymaps)
   local result = ""
 
-  for _, value in pairs(keymaps) do
+  for _, value in ipairs(keymaps) do
     result = result .. " " .. value[1] .. "|" .. value[2] .. " "
   end
 
@@ -32,7 +32,7 @@ end
 -- Register a list of commands
 -- @param commands table
 M.add = function(commands)
-  for _, value in pairs(commands) do
+  for _, value in ipairs(commands) do
     if value.keys then
       if type(value.keys[1]) ~= "table" then
         value.keys = { value.keys }

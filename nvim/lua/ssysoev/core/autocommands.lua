@@ -19,7 +19,7 @@ au("TextYankPost", {
   group = ag("yank_highlight", {}),
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 80 })
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 80 })
   end,
 })
 
@@ -50,13 +50,9 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   end,
 })
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Set up OSC 52 clipboard when running over SSH.
+--  Scheduled because it can increase startup-time.
 vim.schedule(function()
-  -- vim.o.clipboard:append('unnamedplus')
-
   -- Fix "waiting for osc52 response from terminal" message
   -- https://github.com/neovim/neovim/issues/28611
   if vim.env.SSH_TTY ~= nil then

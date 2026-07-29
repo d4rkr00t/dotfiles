@@ -6,7 +6,7 @@ local function setup_diagnostics()
       focusable = true,
       style = "full",
       border = "rounded",
-      source = "always",
+      source = true,
       header = "",
       prefix = "",
     },

@@ -1,7 +1,4 @@
 vim.filetype.add({
-  extension = {
-    json = "json",
-  },
   filename = {
     [".env"] = "sh",
     [".envrc"] = "sh",

@@ -36,6 +36,10 @@ else
   vim.g.IS_MAC = false
 end
 
+-- options are set before lazy.setup so plugin `init`/`config` hooks
+-- (e.g. the colorscheme reading 'background') see final values
+require("ssysoev.core.options")
+
 require("ssysoev.lazy-init")
 require("lazy").setup({
   spec = {
@@ -48,7 +52,6 @@ require("lazy").setup({
   },
 })
 
-require("ssysoev.core.options")
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")
 require("ssysoev.core.autocommands")

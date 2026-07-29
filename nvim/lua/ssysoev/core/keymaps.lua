@@ -34,10 +34,6 @@ keymap.set("c", "<CR>", function()
   return vim.fn.getcmdtype() == "/" and "<CR>zzzv" or "<CR>"
 end, { expr = true })
 
--- move lines visual mode maps
-keymap.set("v", "<M-DOWN>", ":m '>+1<CR>gvgv=gv", noremap)
-keymap.set("v", "<M-UP>", ":m '<-2<CR>gvgv=gv", noremap)
-
 -- H and L to start/end of line
 keymap.set({ "n", "x", "o" }, "H", "^", noremap)
 keymap.set({ "n", "x", "o" }, "L", "$", noremap)
@@ -152,6 +148,18 @@ cc.add({
     desc = "Move lines down",
     cmd = "<Esc><cmd>m .+1<CR>==gi",
     keys = { "i", "<M-DOWN>", noremap },
+  },
+
+  {
+    desc = "Move lines up (selection)",
+    cmd = ":m '<-2<CR>gvgv=gv",
+    keys = { "v", "<M-UP>", noremap },
+  },
+
+  {
+    desc = "Move lines down (selection)",
+    cmd = ":m '>+1<CR>gvgv=gv",
+    keys = { "v", "<M-DOWN>", noremap },
   },
 
   -- nvim-window
@@ -381,13 +389,11 @@ cc.add({
   {
     desc = "Next tab",
     cmd = "<cmd>BufferLineCycleNext<cr>",
-    keys = { "n", "<C-l>", noremap },
   },
 
   {
     desc = "Prev tab",
     cmd = "<cmd>BufferLineCyclePrev<cr>",
-    keys = { "n", "<C-h>", noremap },
   },
 
   -- colorizer
@@ -573,7 +579,7 @@ cc.add({
         focusable = true,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         border = "rounded",
-        source = "always",
+        source = true,
         prefix = " ",
         scope = "line",
       }

@@ -27,7 +27,6 @@ return {
           typescript = { "prettier", "oxfmt" },
           typescriptreact = { "prettier", "oxfmt" },
           json = { "prettier" },
-          map = { "prettier" },
           svelte = { "prettier" },
           css = { "prettier" },
           html = { "prettier" },
@@ -50,7 +49,7 @@ return {
         pattern = "*",
         callback = function(args)
           if should_format_on_save then
-            conform.format({ bufnr = args.buf, async = false, timeout_ms = 5000, lsp_fallback = true })
+            conform.format({ bufnr = args.buf, async = false, timeout_ms = 5000, lsp_format = "fallback" })
           end
         end,
       })
@@ -60,7 +59,7 @@ return {
           desc = "Format file",
           cmd = function()
             conform.format({
-              lsp_fallback = true,
+              lsp_format = "fallback",
               async = false,
             })
           end,

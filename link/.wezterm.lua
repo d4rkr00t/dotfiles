@@ -87,6 +87,11 @@ config.keys = {
     mods = "CMD",
     action = wezterm.action.ScrollToTop,
   },
+  {
+    key = 'R',
+    mods = 'CMD|SHIFT',
+    action = act.SendString("reset\r"),
+  },
 }
 
 config.mouse_bindings = {
@@ -156,7 +161,6 @@ end)
 --
 -- Custom Color Scheme
 --
-
 
 config.colors = {
   -- The default text color

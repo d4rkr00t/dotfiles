@@ -8,24 +8,26 @@ return {
       local util = require("conform.util")
       local should_format_on_save = true
 
-      local prettier_bin = util.from_node_modules("prettier")
-      local maybe_prettier_bin = vim.fs.find('node_modules/prettier/bin/prettier.cjs',
-        { upward = true, path = vim.api.nvim_buf_get_name(0), limit = 10 })
-
-      if maybe_prettier_bin[1] then
-        vim.fn.jobstart({ "chmod", "+x", maybe_prettier_bin[1] })
-        prettier_bin = function()
-          return maybe_prettier_bin[1]
-        end
+      local prettier_fallback = util.from_node_modules("prettier")
+      local function prettier_bin(self, ctx)
+        local found = vim.fs.find("node_modules/prettier/bin/prettier.cjs",
+          { upward = true, path = ctx.dirname, limit = 10 })
+        return found[1] or prettier_fallback(self, ctx)
       end
 
       conform.setup({
         log_level = vim.log.levels.WARN,
+        format_on_save = function()
+          if not should_format_on_save then
+            return
+          end
+          return { timeout_ms = 5000, lsp_format = "fallback" }
+        end,
         formatters_by_ft = {
-          javascript = { "prettier", "oxfmt" },
-          javascriptreact = { "prettier", "oxfmt" },
-          typescript = { "prettier", "oxfmt" },
-          typescriptreact = { "prettier", "oxfmt" },
+          javascript = { "oxfmt", "prettier", stop_after_first = true },
+          javascriptreact = { "oxfmt", "prettier", stop_after_first = true },
+          typescript = { "oxfmt", "prettier", stop_after_first = true },
+          typescriptreact = { "oxfmt", "prettier", stop_after_first = true },
           json = { "prettier" },
           svelte = { "prettier" },
           css = { "prettier" },
@@ -43,15 +45,6 @@ return {
             command = prettier_bin
           }
         }
-      })
-
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        callback = function(args)
-          if should_format_on_save then
-            conform.format({ bufnr = args.buf, async = false, timeout_ms = 5000, lsp_format = "fallback" })
-          end
-        end,
       })
 
       cc.add({

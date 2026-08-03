@@ -24,7 +24,6 @@ return {
       picker = {
         enabled = true,
         ui_select = true,
-        live_limit = 50000,
         hidden = true,
         matcher = {
           frecency = true,

@@ -1,7 +1,7 @@
 return {
   {
     -- highlight colors
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     cmd = { "ColorizerToggle" },
     opts = {
       RGB = true,      -- #RGB hex codes

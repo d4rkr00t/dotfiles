@@ -80,6 +80,7 @@ local M = {
     }
   },
   javascript = ts_js_common,
+  javascriptreact = ts_js_common,
   typescript = ts_js_common,
   typescriptreact = ts_js_common,
 }

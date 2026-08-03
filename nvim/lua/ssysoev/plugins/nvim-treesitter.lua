@@ -49,10 +49,7 @@ return {
             return
           end
 
-          -- No treesitter parser: fall back to Vim's built-in syntax.
-          if not pcall(vim.treesitter.start, args.buf, lang) then
-            vim.bo[args.buf].syntax = "ON"
-          end
+          vim.bo[args.buf].syntax = "ON"
         end,
       })
     end

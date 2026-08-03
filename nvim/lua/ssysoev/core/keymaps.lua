@@ -5,7 +5,6 @@ local noremap = { noremap = true, silent = true }
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x')                     -- in normal mode pressing x doesn't yank the char
 keymap.set("n", "Q", "<nop>")                   -- disable ex mode
-keymap.set("n", "q:", "<cmd>q<cr>")
 keymap.set("v", "p", '"_dP')                    -- do not yank if pasting over something
 keymap.set("n", "U", "<C-r>")                   -- redo
 keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
@@ -16,8 +15,6 @@ keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> norm
 keymap.set("n", "ycc", function()
   return "yy" .. vim.v.count1 .. "gcc']p"
 end, { remap = true, expr = true })
-
--- keymap.set("n", "<Esc><Esc>", ":w<cr>")
 
 -- stay in indent mode
 keymap.set("v", ">", ">gv")
@@ -47,11 +44,6 @@ end, { nargs = 0 })
 vim.api.nvim_create_user_command("Q", function()
   vim.cmd("q")
 end, { nargs = 0 })
-
--- remap E -> e
--- vim.api.nvim_create_user_command("E", function()
---   vim.cmd("e")
--- end, { nargs = 1 })
 
 -- close all floating windows
 local function close_floating()
@@ -158,7 +150,7 @@ cc.add({
 
   {
     desc = "Move lines down (selection)",
-    cmd = ":m '>+1<CR>gvgv=gv",
+    cmd = ":m '>+1<CR>gv=gv",
     keys = { "v", "<M-DOWN>", noremap },
   },
 
@@ -477,7 +469,7 @@ cc.add({
   {
     desc = "Git Conflicts",
     cmd = function()
-      vim.cmd 'cexpr system("git diff --check --relative")'
+      vim.cmd 'cexpr system("git diff --name-only --diff-filter=U")'
       vim.cmd "copen"
     end,
     keys = { "n", "<leader>gq" },
@@ -657,10 +649,11 @@ cc.add({
     desc = "Copy visual selection with context for AI chat",
     cmd = function()
       local file = vim.fn.expand("%:p")
-      local start_line = vim.fn.getpos(".")
-      local end_line = vim.fn.getpos("v")
-      local lines = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
-      local ref = string.format("@%s:%d-%d\n%s", file, start_line[2], end_line[2], lines)
+      local cursor = vim.fn.getpos(".")
+      local anchor = vim.fn.getpos("v")
+      local lines = table.concat(vim.fn.getregion(anchor, cursor), "\n")
+      local ref = string.format("@%s:%d-%d\n%s", file,
+        math.min(cursor[2], anchor[2]), math.max(cursor[2], anchor[2]), lines)
       vim.fn.setreg("+", ref)
       vim.notify("Copied selection with context")
     end,

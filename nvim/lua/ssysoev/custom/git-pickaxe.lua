@@ -14,20 +14,23 @@ M.picker = function()
       local search = ctx.filter.search
       if not search or search == "" then return {} end
 
-      local output = vim.fn.systemlist({
-        "git", "log", "-i", "--abbrev-commit", "--date=short",
-        "--pretty=format:%h %s (%cr) <%an>",
-        "-G", search,
-        "--", current_file,
-      })
-
-      local items = {}
-      for i, line in ipairs(output) do
-        if line ~= "" then
-          table.insert(items, { idx = i, text = line, file = current_file })
-        end
-      end
-      return items
+      return require("snacks.picker.source.proc").proc(
+        ctx:opts({
+          cmd = "git",
+          args = {
+            "log", "-i", "--abbrev-commit", "--date=short",
+            "--pretty=format:%h %s (%cr) <%an>",
+            "-G", search,
+            "--", current_file,
+          },
+          notify = false,
+          ---@param item snacks.picker.finder.Item
+          transform = function(item)
+            item.file = current_file
+          end,
+        }),
+        ctx
+      )
     end,
     format = function(item)
       return {

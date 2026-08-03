@@ -7,7 +7,8 @@ return {
       local current_colors = vim.api.nvim_get_hl(0, { name = "Comment" })
       local current_bg = string.format("%06x",
         tonumber(current_colors.bg or vim.api.nvim_get_hl(0, { name = "Normal" }).bg or 0x1A1A26))
-      local current_fg = string.format("%06x", tonumber(current_colors.fg))
+      local current_fg = string.format("%06x",
+        tonumber(current_colors.fg or vim.api.nvim_get_hl(0, { name = "Normal" }).fg or 0xCFCFCF))
 
       local colors = {
         bg = current_bg,

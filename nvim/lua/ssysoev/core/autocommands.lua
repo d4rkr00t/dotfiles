@@ -23,14 +23,18 @@ au("TextYankPost", {
   end,
 })
 
+local ui_group = ag("ui_tweaks", { clear = true })
+
 -- open help in vertical split
-vim.api.nvim_create_autocmd("FileType", {
+au("FileType", {
+  group = ui_group,
   pattern = "help",
   command = "wincmd L",
 })
 
 -- auto resize splits when the terminal's window is resized
-vim.api.nvim_create_autocmd("VimResized", {
+au("VimResized", {
+  group = ui_group,
   command = "wincmd =",
 })
 

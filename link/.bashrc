@@ -12,8 +12,4 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date"
 export PROMPT_COMMAND="history -a; history -c; history -r${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
-. "$HOME/.cargo/env"
-
-source ~/.afm-git-configrc
-
-export PATH="/Users/ssysoev/.orbit/bin:$PATH"
+[ -r ~/.afm-git-configrc ] && source ~/.afm-git-configrc

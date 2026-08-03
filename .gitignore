@@ -5,3 +5,7 @@ link/.dotfiles
 vim.log
 nvim/undo
 nvim/lazy-lock.json
+skills/twg/
+skills/twg-*/
+skills/perf-regression
+plans/

@@ -29,10 +29,15 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 fi;
 
 # SSH agent forwarding and tmux
+# Keep a stable socket path so reattached tmux sessions can still reach the
+# agent. Only point at it if it actually exists — otherwise leave whatever the
+# session gave us.
 if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
 fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+if [ -S ~/.ssh/ssh_auth_sock ]; then
+    export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+fi
 
 # Source all files in "source"
 for file in $DOTFILES/source/*; do
@@ -49,5 +54,3 @@ unset file
 # Extra dotfiles
 [ -r ~/.extra ] && source ~/.extra
 
-export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
-. "$HOME/.cargo/env"

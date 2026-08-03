@@ -6,13 +6,13 @@ n() {
   example '$ n eslint .'
   group 'npm'
 
-  if [[ -f bun.lockb ]] then
+  if [[ -f bun.lockb ]]; then
     command bun "$@"
-  elif [[ -f pnpm-lock.yaml ]] then
+  elif [[ -f pnpm-lock.yaml ]]; then
     command pnpm "$@"
-  elif [[ -f yarn.lock ]] then
+  elif [[ -f yarn.lock ]]; then
     command yarn "$@"
-  elif [[ -f package-lock.json ]] then
+  elif [[ -f package-lock.json ]]; then
     command npm "$@"
   else
     command pnpm "$@"

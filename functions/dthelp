@@ -55,7 +55,7 @@ metafor ()
 
   if [ -z "$keyword" ]; then
     printf '%s\n' 'missing parameter(s)'
-    reference metafor
+    ref metafor
     return
   fi
 
@@ -70,7 +70,7 @@ ref ()
 {
   about 'Displays apidoc help for a specific function'
   param '1: function name'
-  example '$ reference revise'
+  example '$ ref revise'
   group 'dthelp'
 
   local color_title="$(tput setaf 10)"
@@ -79,7 +79,7 @@ ref ()
   typeset func=$1
   if [ -z "$func" ]; then
     printf '%s\n' 'missing parameter(s)'
-    reference reference
+    ref ref
     return
   fi
 
@@ -105,12 +105,12 @@ ref ()
   fi
 }
 
-list ()
+dtlist ()
 {
   about 'Displays help summary for all functions, or summary for a group of functions'
   param '1: optional, group name'
-  example '$ list'
-  example '$ list misc'
+  example '$ dtlist'
+  example '$ dtlist misc'
   group 'dthelp'
 
   local color_func="$(tput setaf 4)"

@@ -35,8 +35,8 @@ tns() {
     toucan trout turkey turtle viper walrus weasel wolf wolverine
     wombat woodpecker wren yak zebra
   )
-  local adj=${adjectives[$((RANDOM % ${#adjectives[@]}))]}
-  local noun=${nouns[$((RANDOM % ${#nouns[@]}))]}
+  local adj=${adjectives[$((RANDOM % ${#adjectives[@]} + 1))]}
+  local noun=${nouns[$((RANDOM % ${#nouns[@]} + 1))]}
   local name="${1:-${adj}-${noun}}"
   tmux new-session -s "$name"
 }

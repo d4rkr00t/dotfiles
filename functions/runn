@@ -15,6 +15,6 @@ runn() {
 
   for run in $(seq 1 $runs)
   do
-    eval '$@'
+    eval "$@"
   done
 }

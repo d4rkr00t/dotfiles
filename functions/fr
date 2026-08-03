@@ -8,5 +8,5 @@ fr() {
   example '$ fr .js tset test'
   group 'search'
 
-  sed -i '' -e 's/'$2'/'$3'/g' $(find . -type f -iname $1)
+  find . -type f -iname "$1" -exec sed -i '' -e "s/$2/$3/g" {} +
 }

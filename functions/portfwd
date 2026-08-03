@@ -1,3 +1,5 @@
+#!/bin/sh
+
 portfwd() {
   about 'Forward ports with autossh'
   param '1: host'

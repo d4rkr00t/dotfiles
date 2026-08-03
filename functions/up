@@ -40,13 +40,6 @@ __upnum() {
   echo "$p"
 }
 
-_up() {
-  local p="$(dirname $PWD)"
-  local w="${COMP_WORDS[COMP_CWORD]}"
-
-  COMPREPLY=( $(IFS=';' compgen -S/ -W "${p//\//;}" -- "$w") )
-}
-
 up() {
   about 'Quickly traverse up the current working path.'
   param '1: optional, until path'

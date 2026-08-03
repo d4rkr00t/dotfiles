@@ -8,8 +8,8 @@ exectime() {
 
   local start_time=`date +%s`
 
-  eval '$@'
+  eval "$@"
   hr
-  echo ${yellow}run time is $(expr `date +%s` - $start_time)s${reset}
+  echo "run time is $(($(date +%s) - start_time))s"
   hr
 }

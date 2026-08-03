@@ -6,14 +6,14 @@ movtogif() {
   param '2: optional, output (default: out.gif)'
   param '3: optional, video frame size (default: 1024)'
   param '4: optional, frame rate (default: 10)'
-  param '4: optional, colors (default: 128)'
+  param '5: optional, colors (default: 128)'
   example '$ movtogif movie.mov'
   group 'convert'
 
   local output="${2:-out.gif}"
   local size="${3:-1024}"
   local rate="${4:-10}"
-  local colors="${4:-128}"
+  local colors="${5:-128}"
 
   time ffmpeg -i $1 -r $rate -f image2pipe -vcodec ppm - | time convert -verbose +dither -layers Optimize -resize "${size}x${size}"\> - gif:- | gifsicle --colors $colors --delay=5 --loop --optimize=3 --multifile -> $output
 }

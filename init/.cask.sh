@@ -1,15 +1,11 @@
+#!/usr/bin/env bash
+
 # Install native apps
 
 pkgs=(
   wezterm
   numi
   obsidian
-
-  # QuickLook plugins
-  qlprettypatch
-  quicklook-csv
-  quicklook-json
-  webpquicklook
 
   nikitabobko/tap/aerospace
 )

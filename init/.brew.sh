@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Make sure we’re using the latest Homebrew
 brew update
 
@@ -5,8 +7,9 @@ brew update
 brew upgrade
 
 pkgs=(
+    autossh
     bash
-    bash_completion
+    bash-completion
     bat
     cloc
     coreutils
@@ -17,7 +20,9 @@ pkgs=(
     ffmpeg
     findutils
     fnm
+    fswatch
     fzf
+    gifsicle
     git
     git-absorb
     git-lfs
@@ -25,16 +30,18 @@ pkgs=(
     # hh
     httpie
     imagemagick
+    jq
     # ncdu
-    nvim
+    neovim
     pure
     rename
     ripgrep
     # starship
     tlrc
+    tmux
     tree
-    vim --override-system-vi
-    wget --with-iri
+    vim
+    wget
     zoxide
     zsh
     zsh-completions
@@ -45,8 +52,6 @@ for pkg in "${pkgs[@]}"; do
     echo "Installing $pkg"
     brew install $pkg
 done
-
-brew tap homebrew/services
 
 # Remove outdated versions from the cellar
 brew cleanup

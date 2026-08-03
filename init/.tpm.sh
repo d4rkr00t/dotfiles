@@ -1,1 +1,10 @@
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#!/usr/bin/env bash
+
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ -d "$TPM_DIR" ]; then
+    echo "tpm already installed, updating"
+    git -C "$TPM_DIR" pull --ff-only
+else
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi

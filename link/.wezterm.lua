@@ -5,13 +5,13 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
-config.max_fps = 120
-
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
+
+config.max_fps = 120
 
 --
 -- Options
@@ -123,18 +123,23 @@ config.mouse_bindings = {
 -- Tab Title
 --
 local function get_current_working_folder_name(tab)
-  local cwd_uri = tab.active_pane.current_working_dir.file_path
-  local cwd = cwd_uri:sub(1, string.len(cwd_uri) - 1)
+  local cwd_dir = tab.active_pane.current_working_dir
+  if not cwd_dir then
+    return "  (unknown)"
+  end
+
+  -- strip a trailing slash only if present
+  local cwd = cwd_dir.file_path:gsub("/$", "")
 
   local HOME_DIR = os.getenv("HOME")
   if cwd == HOME_DIR then
     return "  ~"
   end
 
-  return string.format("  %s", string.match(cwd, "[^/]+$"))
+  return string.format("  %s", string.match(cwd, "[^/]+$") or cwd)
 end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_size)
+wezterm.on("format-tab-title", function(tab)
   local pane = tab.active_pane
   local process_name = pane.foreground_process_name
 

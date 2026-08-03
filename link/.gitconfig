@@ -77,8 +77,8 @@
 
   st = status -sb
 
-  # Watch my commits for last day
-  standup = log --since '1 day ago' --oneline --author d4rkr00t@gmail.com
+  # Watch my commits for last day (uses whichever identity applies to this repo)
+  standup = "!f() { git log --since '1 day ago' --oneline --author=\"$(git config user.email)\" \"$@\"; }; f"
 
   # List all tags
   t = tag -l
@@ -103,7 +103,7 @@
   ri = "!r() { git rebase -i HEAD~$1; }; r"
   rom = "!r() { git fetch origin master --prune --prune-tags && git rebase origin/master; }; r"
   romm = "!r() { git fetch origin main --prune --prune-tags && git rebase origin/main; }; r"
-  rum = "!r() { git fetch upstream master --prune --prune-tags && rebase upstream/master; }; r"
+  rum = "!r() { git fetch upstream master --prune --prune-tags && git rebase upstream/master; }; r"
   rc = rebase --continue
   rig = "!r(){ git ls-files --ignored --exclude-standard | xargs git rm; }; r" # untrack ignored files
 
@@ -163,12 +163,6 @@
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
 
-  # Git and the Umlaut problem on Mac OS X
-  # Prevent showing files which filenames contains umlauts as unversioned
-  # Needs to be false since OS X 10.9.x
-  # See http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-  precomposeunicode = false
-
   # Speed up commands involving untracked files such as `git status`.
   # https://git-scm.com/docs/git-update-index#_untracked_cache
   untrackedCache = true
@@ -176,7 +170,8 @@
   fsmonitor = true
 
 [pack]
-  threads = 8
+  # 0 = auto-detect CPU count
+  threads = 0
 
 [color]
   # Use colors in Git commands that are capable of colored output when
@@ -200,13 +195,13 @@
   untracked = cyan
 
 [help]
-  # Automatically correct and execute mistyped commands
-  autocorrect = 1
+  # Suggest the corrected command instead of running it
+  autocorrect = prompt
 
 [merge]
   # Include summaries of merged commits in newly created merge commit messages
   log = true
-  tool = vimdiff
+  tool = nvimdiff
 
 [pretty]
   custom = "%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset"
@@ -237,27 +232,15 @@
   indentHeuristic = true
   # Moved lines of code are colored differently.
   colorMoved = default
-  # removes a/ and b/ prefixes from file names
-  noprefix = false
 
 # URL shorthands
 [url "git@github.com:"]
   insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
-
-[url "git://github.com/"]
   insteadOf = "github:"
-
-[url "git@github.com:"]
   insteadOf = "https://github.com/"
 
 [url "git@gist.github.com:"]
   insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-
-[url "git://gist.github.com/"]
   insteadOf = "gist:"
 
 [filter "lfs"]
@@ -282,5 +265,4 @@
 
 [maintenance]
 	repo = /Users/ssysoev/atlassian/atlassian-frontend-monorepo
-
-  strategy = incremental
+	strategy = incremental

@@ -3,13 +3,17 @@
 
 source ~/.dotfiles
 
+# Cache Homebrew's prefix — `brew --prefix` forks a subprocess, and it was
+# previously called once per use site.
+BREW_PREFIX="$(brew --prefix)"
+
 #
 # fpath
 #
 
 # As per `brew info zsh-completions`
-fpath=(/usr/local/share/zsh-completions $fpath)
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath=("$BREW_PREFIX/share/zsh-completions" $fpath)
+fpath+=("$BREW_PREFIX/share/zsh/site-functions")
 
 #
 # Prompt theme
@@ -37,7 +41,12 @@ select-word-style bash
 
 # zsh.sourceforge.net/Doc/Release/Completion-System.html
 autoload -Uz compinit
-compinit
+# -u: use completions from group-writable dirs (/opt/homebrew/share) without
+#     prompting. Needed because share/zsh-completions' parent is group-writable.
+# -C: always trust the cached dump — skips scanning fpath for new completions,
+#     which costs ~0.16s vs ~0.01s. Run `compreload` after installing a tool
+#     whose completions you want.
+compinit -u -C
 
 # case insensitive (all), partial-word and substring completion
 # https://github.com/robbyrussell/oh-my-zsh/blob/e8aba1bf5912f89f408eaebd1bc74c25ba32a62c/lib/completion.zsh#L23
@@ -53,33 +62,15 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' format '%B---- %d%b'
 
 
-# Delete Git's official completions to allow Zsh's official Git completions to work.
-# Git ships with really bad Zsh completions. Zsh provides its own completions
-# for Git, and they are much better.
-# https://github.com/Homebrew/homebrew-core/issues/33275#issuecomment-432528793
-# https://twitter.com/OliverJAsh/status/1068483170578964480
-# Unfortunately it's not possible to install Git without completions (since
-# https://github.com/Homebrew/homebrew-core/commit/f710a1395f44224e4bcc3518ee9c13a0dc850be1#r30588883),
-# so in order to use Zsh's own completions, we must delete Git's completions.
-# This is also necessary for hub's Zsh completions to work:
-# https://github.com/github/hub/issues/1956.
-function () {
-  GIT_ZSH_COMPLETIONS_FILE_PATH="$(brew --prefix)/share/zsh/site-functions/_git"
-  if [ -f $GIT_ZSH_COMPLETIONS_FILE_PATH ]
-  then
-  rm $GIT_ZSH_COMPLETIONS_FILE_PATH
-  fi
-}
-
-
 #
 # zsh-history-substring-search
 #
 
 # Load from Brew
-if [ -f `brew --prefix`/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+HISTORY_SUBSTRING_SEARCH="$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+if [ -f "$HISTORY_SUBSTRING_SEARCH" ]; then
   # As per `brew info zsh-history-substring-search`
-  source `brew --prefix`/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  source "$HISTORY_SUBSTRING_SEARCH"
   # Bind UP and DOWN arrow keys
   # Copied from https://github.com/zsh-users/zsh-history-substring-search/tree/47a7d416c652a109f6e8856081abc042b50125f4#usage
   bindkey '^[[A' history-substring-search-up
@@ -116,6 +107,8 @@ setopt SHARE_HISTORY
 
 # Source all files in "source"
 for file in $DOTFILES/source/(.)*; do
+    # .bash_prompt is bash-only; zsh uses `prompt pure` (above).
+    [[ "${file:t}" == ".bash_prompt" ]] && continue
     source "$file"
 done
 unset file
@@ -130,7 +123,7 @@ unset file
 eval "$(zoxide init zsh)"
 
 # Extra dotfiles
-[ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
+[ -r ~/.extra ] && source ~/.extra
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

@@ -47,7 +47,7 @@ done
 unset file
 
 # Extra dotfiles
-[ -r ~/.extra ] && [ -f ~/.extra ] && source ~/.extra
+[ -r ~/.extra ] && source ~/.extra
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 . "$HOME/.cargo/env"

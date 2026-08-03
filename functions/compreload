@@ -1,0 +1,11 @@
+#!/bin/sh
+
+compreload() {
+  about 'Rebuild the zsh completion cache (needed because compinit runs with -C)'
+  example '$ compreload'
+  group 'other'
+
+  rm -f "$HOME/.zcompdump"
+  compinit -u
+  echo "zsh completion cache rebuilt"
+}

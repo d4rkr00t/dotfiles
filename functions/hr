@@ -1,0 +1,9 @@
+#!/bin/sh
+
+hr() {
+  about 'Print a horizontal rule across the terminal width'
+  example '$ hr'
+  group 'other'
+
+  printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+}

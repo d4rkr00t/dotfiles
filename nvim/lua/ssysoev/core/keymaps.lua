@@ -469,7 +469,7 @@ cc.add({
   {
     desc = "Git Conflicts",
     cmd = function()
-      vim.cmd 'cexpr system("git diff --name-only --diff-filter=U")'
+      vim.cmd 'cexpr system("git diff --check --relative")'
       vim.cmd "copen"
     end,
     keys = { "n", "<leader>gq" },

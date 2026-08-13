@@ -21,3 +21,6 @@ ln -sfn "$DIR/nvim/" "$HOME/.config/"
 # link skills
 ln -sfn "$DIR/skills/" "$HOME/.claude/skills"
 ln -sfn "$DIR/skills/" "$HOME/.codex/skills"
+
+# link workmux config
+ln -sfn "$DIR/misc/.workmux.yaml" "$HOME/.config/workmux/config.yaml"

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Pick a workmux worktree with fzf, then run `workmux <cmd>` on it.
+# Lives in bin/ rather than functions/ so tmux popups (non-interactive
+# shells, which never source .zshrc) can find it on PATH.
+#
+# Usage: workmux-fzf open|close|remove
+
+cmd="$1"
+[ -z "$cmd" ] && { echo "usage: ${0##*/} <open|close|remove>" >&2; exit 2; }
+
+# --header-lines=1 keeps the BRANCH/AGE/AGENT header visible while excluding it
+# from the selectable rows.
+row=$(workmux list | fzf --header-lines=1 --reverse) || exit 0
+
+branch=${row%% *}
+[ -z "$branch" ] && exit 0
+
+# `list` prints the branch, but open/close/remove want the worktree handle
+# (directory name) — they differ once a branch contains a slash.
+handle=$(workmux list --json | jq -r --arg b "$branch" 'first(.[] | select(.branch == $b) | .handle)')
+
+workmux "$cmd" "${handle:-$branch}" || {
+  printf '\nworkmux %s failed. Press any key to close.' "$cmd"
+  read -rsn1
+}

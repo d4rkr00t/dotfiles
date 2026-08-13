@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Prompt for a branch name and create a workmux worktree for it.
+# Lives in bin/ rather than functions/ so tmux popups (non-interactive
+# shells, which never source .zshrc) can find it on PATH.
+
+read -rp 'Branch: ' branch || exit 0
+[ -z "$branch" ] && exit 0
+
+workmux add "$branch" || {
+  printf '\nworkmux add failed. Press any key to close.'
+  read -rsn1
+}

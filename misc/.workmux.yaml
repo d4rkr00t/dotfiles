@@ -1,0 +1,15 @@
+mode: session
+nerdfont: true
+
+windows:
+  - name: editor
+    panes:
+      - command: nvim
+        focus: true
+  - name: agent
+    panes:
+      - command: claude
+  - name: term
+files:
+  symlink:
+    - node_modules # Share build cache across worktrees

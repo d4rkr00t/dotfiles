@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 #
-# Pick a workmux worktree with fzf, then run `workmux <cmd>` on it.
-# Lives in bin/ rather than functions/ so tmux popups (non-interactive
-# shells, which never source .zshrc) can find it on PATH.
-#
 # Usage: workmux-fzf open|close|remove
 
 cmd="$1"

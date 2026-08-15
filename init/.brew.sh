@@ -27,16 +27,13 @@ pkgs=(
     git-absorb
     git-lfs
     git-when-merged
-    # hh
     httpie
     imagemagick
     jq
-    # ncdu
     neovim
     pure
     rename
     ripgrep
-    # starship
     tlrc
     tmux
     tree
@@ -46,6 +43,7 @@ pkgs=(
     zsh
     zsh-completions
     zsh-history-substring-search
+    raine/workmux/workmux
 )
 
 for pkg in "${pkgs[@]}"; do

@@ -43,7 +43,7 @@ return {
       vim.defer_fn(function()
         local registry = require("mason-registry")
         local packages = {
-          "tsgo",
+          "tsc",
           "oxlint",
           "eslint-lsp",
           "lua-language-server",
@@ -85,7 +85,7 @@ return {
         },
       })
 
-      vim.lsp.enable("tsgo")
+      vim.lsp.enable("tsc")
       vim.lsp.enable("eslint")
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("zls")

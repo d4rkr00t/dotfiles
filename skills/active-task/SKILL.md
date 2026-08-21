@@ -13,5 +13,6 @@ Apply `/ponytail` to every solution. Write plan prose through `/caveman` — fil
 2. Task ambiguous → `/grill-me` until decisions resolved. Clear → skip.
 3. Write agreed plan back to `ACTIVE_TASK.md`: goal line + `- [ ]` subtasks, caveman prose. Each subtask must stay unambiguous — drop caveman for any step where order or condition could misread.
 4. Ask confirmation before implementing.
-5. Implement one subtask at a time. Check its box in `ACTIVE_TASK.md` right after it passes.
+5. Implement one subtask at a time. Check its box in `ACTIVE_TASK.md` right after it passes. Document must be in ready-to-handover state for another agent at all times.
 6. All boxes checked → report result, suggest `/simplify` or `/code-review`.
+7. After completion is confirmed, clear `ACTIVE_TASK.md`.

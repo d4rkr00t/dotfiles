@@ -12,6 +12,7 @@ Branch diff vs base + untracked files. Read the changes, not memory of them.
 # Checks
 
 - Each change — right file, right layer? Existing code already do this job? Better home → name it.
+- Same code twice → name it.
 - Rank changes by damage if wrong. Top 3 only. Each one:
   - Assumption made
   - How user find out assumption wrong — test, log, error, broken flow

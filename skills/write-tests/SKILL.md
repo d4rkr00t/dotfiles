@@ -3,6 +3,8 @@ name: write-tests
 description: Use when user asks to write tests - integration, unit, visual, e2e.
 ---
 
+Load /ponytail skill.
+
 # Philosophy
 
 - **Core principle**: Tests should verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't.

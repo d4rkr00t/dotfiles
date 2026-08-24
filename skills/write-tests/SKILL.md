@@ -7,20 +7,20 @@ Load /ponytail skill.
 
 # Philosophy
 
-- **Core principle**: Tests should verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't.
-- **Bad tests** are coupled to implementation. They mock internal collaborators, test private methods, or verify through external means (like querying a database directly instead of using the interface).
-- **Too many tests**: focus on writing absolutely necessary tests, do not over-test, do not cover edge cases that type system is verifying
-- **Appropriate testing layer**: select the lowest testing layer that still allows for a proper test coverage, if unsure what layer to use ask the user. Testing layers: unit -> integration -> visual -> e2e.
+- **Core principle**: Test behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't.
+- **Bad tests** couple to implementation: mock internal collaborators, test private methods, or verify by external means (querying DB directly instead of through the interface).
+- **Too many tests**: write only necessary tests. No over-testing. Skip edge cases the type system already guarantees.
+- **Testing layer**: pick lowest layer that still gives proper coverage. Layers: unit → integration → visual → e2e. Unsure → ask user.
 
 # Workflow
 
 ## Review
 
-Check existing coverage, and make sure that code is not covered by existing tests before proceiding.
+Check existing coverage. Code already covered → say so, stop before writing duplicates.
 
 ## Planning
 
-Give a detailed plan on what tests you are about to write, and confirm with the user. Format:
+Detailed plan of tests to write, confirm with user. Format:
 
 - Describe: text of a describe block
   - should do this ...
@@ -28,8 +28,8 @@ Give a detailed plan on what tests you are about to write, and confirm with the 
 
 ## Implementation
 
-Implement tests that were approved by the user.
+Implement approved tests only.
 
 ## Verification
 
-Run tests and make sure they are passing. In case of failure iterate on broken tests fixing issues.
+Run tests. Failing → iterate on broken tests until green.

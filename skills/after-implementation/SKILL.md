@@ -15,6 +15,7 @@ Branch diff vs base + untracked files. Read the changes, not memory of them.
 - Rank changes by damage if wrong. Top 3 only. Each one:
   - Assumption made
   - How user find out assumption wrong — test, log, error, broken flow
+- Bugs in change. Rank critical/high/medium/low.
 - Everything changed that user not ask for. None → say none.
 - What would you do differently. Concrete alternative, not vague wish.
 

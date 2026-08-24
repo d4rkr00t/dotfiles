@@ -11,24 +11,12 @@ Branch diff vs base + untracked files. Read the changes, not memory of them.
 
 # Checks
 
-## Placement
-
-Each change — right file, right layer? Existing code already do this job? Better home → name it.
-
-## Blast radius
-
-Rank changes by damage if wrong. Top 3 only. Each one:
-
-- Assumption made
-- How user find out assumption wrong — test, log, error, broken flow
-
-## Scope creep
-
-Everything changed that user not ask for. None → say none.
-
-## Regret
-
-What do differently. Concrete alternative, not vague wish.
+- Each change — right file, right layer? Existing code already do this job? Better home → name it.
+- Rank changes by damage if wrong. Top 3 only. Each one:
+  - Assumption made
+  - How user find out assumption wrong — test, log, error, broken flow
+- Everything changed that user not ask for. None → say none.
+- What would you do differently. Concrete alternative, not vague wish.
 
 # Output
 

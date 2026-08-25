@@ -20,6 +20,7 @@ return {
         "zig",
         "json",
         "json5",
+        "toml",
         "regex",
         "html",
         "css",

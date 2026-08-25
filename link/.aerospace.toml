@@ -4,7 +4,7 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders style=round width=4.0 hidpi=on active_color=0xff7a8376 inactive_color=0xff181818 blacklist="Raycast"'
+  'exec-and-forget borders style=round width=2.0 hidpi=on active_color=0xcc6ad0b7 inactive_color=0xff181818 blacklist="Raycast"'
 ]
 
 

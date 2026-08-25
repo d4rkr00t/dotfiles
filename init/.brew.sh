@@ -44,6 +44,7 @@ pkgs=(
     zsh-completions
     zsh-history-substring-search
     raine/workmux/workmux
+    FelixKratz/formulae/borders
 )
 
 for pkg in "${pkgs[@]}"; do

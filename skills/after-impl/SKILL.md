@@ -1,5 +1,5 @@
 ---
-name: after-implementation
+name: after-impl
 description: Final sanity check on own work before calling task complete. Use when implementation done and user asks to sanity-check, self-review, or "am I done".
 ---
 

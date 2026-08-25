@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Dragon Peach",
+  "version": "1.0",
+  "description": "Chrome theme matching the kanagawa-dragon palette used in nvim and wezterm.",
+  "theme": {
+    "colors": {
+      "frame": [4, 2, 4],
+      "frame_inactive": [0, 0, 0],
+      "toolbar": [16, 16, 16],
+      "tab_text": [245, 245, 245],
+      "tab_background_text": [160, 160, 160],
+      "tab_background_text_inactive": [160, 160, 160],
+      "toolbar_text": [207, 207, 207],
+      "toolbar_button_icon": [160, 160, 160],
+      "bookmark_text": [160, 160, 160],
+      "omnibox_background": [22, 22, 22],
+      "omnibox_text": [245, 245, 245],
+      "ntp_background": [16, 16, 16],
+      "ntp_text": [207, 207, 207],
+      "ntp_link": [255, 199, 153],
+      "button_background": [36, 37, 37]
+    },
+    "tints": {
+      "buttons": [-1, -1, -1]
+    },
+    "properties": {
+      "ntp_logo_alternate": 1
+    }
+  }
+}

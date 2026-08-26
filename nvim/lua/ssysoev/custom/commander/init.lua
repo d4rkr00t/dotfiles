@@ -1,5 +1,8 @@
 local M = {}
 
+local stats = require("ssysoev.custom.commander.stats")
+local ui = require("ssysoev.custom.commander.ui")
+
 local registry = {}
 
 -- Function that registers a list of keymaps
@@ -10,11 +13,32 @@ local function register_keymaps(desc, cmd, keymaps)
   local keymap = vim.keymap
 
   for _, value in ipairs(keymaps) do
+    local mode = value[1]
+    local lhs = value[2]
     local opts = value[3]
     if opts == nil then
       opts = {}
     end
-    keymap.set(value[1], value[2], cmd, vim.tbl_deep_extend("force", opts, { desc = desc }))
+
+    local id = mode .. "|" .. lhs
+    local rhs, extra
+
+    if type(cmd) == "function" then
+      rhs = function()
+        stats.hit(id)
+        cmd()
+      end
+      extra = { desc = desc }
+    else
+      -- count the press, then hand the original rhs back to nvim untouched
+      rhs = function()
+        stats.hit(id)
+        return cmd
+      end
+      extra = { desc = desc, expr = true, replace_keycodes = true }
+    end
+
+    keymap.set(mode, lhs, rhs, vim.tbl_deep_extend("force", opts, extra))
   end
 end
 
@@ -59,6 +83,8 @@ M.picker = function()
       return
     end
 
+    stats.hit("palette|" .. item.desc)
+
     if type(item.cmd) == "function" then
       item.cmd()
     else
@@ -67,5 +93,26 @@ M.picker = function()
     end
   end)
 end
+
+-- Open the usage dashboard
+M.stats = function()
+  ui.open(registry)
+end
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  group = vim.api.nvim_create_augroup("commander_stats", { clear = true }),
+  callback = function()
+    stats.flush(registry)
+  end,
+})
+
+vim.api.nvim_create_user_command("CommanderStats", function()
+  M.stats()
+end, { nargs = 0 })
+
+vim.api.nvim_create_user_command("CommanderStatsPrune", function()
+  local dropped = stats.prune(registry)
+  vim.notify("Commander: pruned " .. dropped .. " stale stats entries")
+end, { nargs = 0 })
 
 return M

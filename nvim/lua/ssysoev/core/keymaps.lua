@@ -4,7 +4,6 @@ local noremap = { noremap = true, silent = true }
 -- general keymaps
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x')                     -- in normal mode pressing x doesn't yank the char
-keymap.set("n", "Q", "<nop>")                   -- disable ex mode
 keymap.set("v", "p", '"_dP')                    -- do not yank if pasting over something
 keymap.set("n", "U", "<C-r>")                   -- redo
 keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list

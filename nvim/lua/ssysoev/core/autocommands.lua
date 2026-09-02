@@ -54,6 +54,33 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   end,
 })
 
+-- Highlight #tags in markdown. Matches are window-local, so keep them in sync
+-- with whatever buffer a window shows instead of adding one per buffer in
+-- ftplugin (which stacked duplicates and leaked into other buffers).
+local function markdown_tag_match(win)
+  for _, m in ipairs(vim.fn.getmatches(win)) do
+    if m.group == "MarkdownTag" then
+      return m.id
+    end
+  end
+end
+
+au({ "BufEnter", "WinEnter" }, {
+  group = ag("markdown_tags", { clear = true }),
+  callback = function(ev)
+    local win = vim.api.nvim_get_current_win()
+    local id = markdown_tag_match(win)
+    if vim.bo[ev.buf].filetype == "markdown" then
+      if not id then
+        vim.api.nvim_set_hl(0, "MarkdownTag", { link = "DiagnosticError", default = true })
+        vim.fn.matchadd("MarkdownTag", [[#[a-zA-Z0-9_-]\+]], 10, -1, { window = win })
+      end
+    elseif id then
+      vim.fn.matchdelete(id, win)
+    end
+  end,
+})
+
 -- Set up OSC 52 clipboard when running over SSH.
 --  Scheduled because it can increase startup-time.
 vim.schedule(function()

@@ -1,10 +1,11 @@
-local get_visual_selection_text = require("ssysoev.utils.get-selected-text")
-
 local M = {}
 
 M.picker = function()
   local current_file = vim.api.nvim_buf_get_name(0)
-  local query = table.concat(get_visual_selection_text(), " ")
+  local query = table.concat(
+    vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() }),
+    " "
+  )
 
   Snacks.picker.pick({
     title = "Pickaxe",

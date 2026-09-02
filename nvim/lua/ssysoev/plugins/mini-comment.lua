@@ -2,7 +2,7 @@ return {
   {
     -- commenting with gc
     "nvim-mini/mini.comment",
-    keys = { "gc", "gcc" },
+    keys = { { "gc", mode = { "n", "x" } }, "gcc" },
     config = function()
       vim.g.skip_ts_context_commentstring_module = true
 

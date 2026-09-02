@@ -85,18 +85,21 @@ return {
         },
       })
 
-      vim.lsp.enable("tsc")
-      vim.lsp.enable("eslint")
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("zls")
-      vim.lsp.enable("rust_analyzer")
-      vim.lsp.enable("jsonls")
-      vim.lsp.enable("html")
-      vim.lsp.enable("cssls")
-      vim.lsp.enable("pylsp")
-      vim.lsp.enable("gopls")
-      vim.lsp.enable("cspell_lsp")
-      vim.lsp.enable("oxlint")
+      -- one call: each enable() re-runs `doautoall FileType` over open buffers
+      vim.lsp.enable({
+        "tsc",
+        "eslint",
+        "lua_ls",
+        "zls",
+        "rust_analyzer",
+        "jsonls",
+        "html",
+        "cssls",
+        "pylsp",
+        "gopls",
+        "cspell_lsp",
+        "oxlint",
+      })
     end,
     dependencies = {
       -- easily configure language servers

@@ -273,12 +273,6 @@ cc.add({
   },
 
   {
-    desc = "Document diagnostics",
-    cmd = "<cmd>lua Snacks.picker.diagnostics_buffer()<CR>",
-    keys = { "n", "<leader>fd", noremap },
-  },
-
-  {
     desc = "Restore previous picker",
     cmd = "<cmd>lua Snacks.picker.resume()<CR>",
     keys = { "n", "<leader>fr", noremap },
@@ -614,6 +608,23 @@ cc.add({
     desc = "Signature documentation",
     cmd = vim.lsp.buf.signature_help,
     keys = { "i", "<C-k>", noremap },
+  },
+
+  -- conform (plugin is lazy-loaded on first require)
+  {
+    desc = "Format file",
+    cmd = function()
+      require("conform").format({ lsp_format = "fallback", async = false })
+    end,
+    keys = { "n", "<leader>lf", noremap },
+  },
+
+  {
+    desc = "Toggle format on save",
+    cmd = function()
+      vim.g.format_on_save = vim.g.format_on_save == false
+      vim.notify("Format on save: " .. (vim.g.format_on_save and "on" or "off"))
+    end,
   },
 
   {

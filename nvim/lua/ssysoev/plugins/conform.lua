@@ -3,10 +3,8 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     config = function()
-      local cc = require("ssysoev.custom.commander")
       local conform = require("conform")
       local util = require("conform.util")
-      local should_format_on_save = true
 
       local prettier_fallback = util.from_node_modules("prettier")
       local function prettier_bin(self, ctx)
@@ -18,7 +16,8 @@ return {
       conform.setup({
         log_level = vim.log.levels.WARN,
         format_on_save = function()
-          if not should_format_on_save then
+          -- toggled from keymaps.lua ("Toggle format on save")
+          if vim.g.format_on_save == false then
             return
           end
           return { timeout_ms = 5000, lsp_format = "fallback" }
@@ -45,25 +44,6 @@ return {
             command = prettier_bin
           }
         }
-      })
-
-      cc.add({
-        {
-          desc = "Format file",
-          cmd = function()
-            conform.format({
-              lsp_format = "fallback",
-              async = false,
-            })
-          end,
-          keys = { "n", "<leader>lf", { noremap = true, silent = true } },
-        },
-        {
-          desc = "Toggle format on save",
-          cmd = function()
-            should_format_on_save = not should_format_on_save
-          end,
-        },
       })
     end,
   },

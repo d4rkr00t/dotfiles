@@ -18,7 +18,8 @@ local function get_current_line_to_cursor()
   return line_chars_before(get_cursor_0ind())
 end
 
-local function get_buf_snips()
+-- snippets for the current buffer's filetype
+M.get_buf_snips = function()
   local snippets_by_filetype = require("ssysoev.snippets.snippets-by-ft")
   local ft = vim.bo.filetype
   local snips = {}
@@ -30,7 +31,7 @@ end
 
 M.expand = function()
   local line_content = get_current_line_to_cursor()
-  local snips = get_buf_snips()
+  local snips = M.get_buf_snips()
   for _, snip in ipairs(snips or {}) do
     local snip_match = string.find(line_content, "%s+" .. snip.trigger .. "$")
       or string.find(line_content, "^" .. snip.trigger .. "$")

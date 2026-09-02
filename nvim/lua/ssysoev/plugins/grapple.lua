@@ -5,8 +5,5 @@ return {
     opts = {
       -- scope = "git_branch",
     },
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons", lazy = true },
-    },
   },
 }

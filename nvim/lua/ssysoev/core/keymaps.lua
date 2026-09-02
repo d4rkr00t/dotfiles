@@ -2,11 +2,10 @@ local keymap = vim.keymap
 local noremap = { noremap = true, silent = true }
 
 -- general keymaps
-keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
-keymap.set("n", "x", '"_x')                     -- in normal mode pressing x doesn't yank the char
-keymap.set("v", "p", '"_dP')                    -- do not yank if pasting over something
-keymap.set("n", "U", "<C-r>")                   -- redo
-keymap.set("n", "<C-s>", "<cmd>normal! m'<cr>") -- add current location to jump list
+keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
+keymap.set("n", "x", '"_x')   -- in normal mode pressing x doesn't yank the char
+keymap.set("x", "p", "P")     -- do not yank if pasting over something
+keymap.set("n", "U", "<C-r>") -- redo
 keymap.set("n", "<leader><leader>", "<cmd>w<cr>")
 keymap.set("n", "X", "<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>")
 
@@ -69,7 +68,9 @@ cc.add({
 
   {
     desc = "Open link under cursor",
-    cmd = [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]],
+    cmd = function()
+      vim.ui.open(vim.fn.expand("<cfile>"))
+    end,
     keys = { "n", "gx", noremap },
   },
 
@@ -404,14 +405,14 @@ cc.add({
   {
     desc = "Gitsigns go to next hunk",
     cmd =
-    "<cmd>lua require('gitsigns').nav_hunk('next', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
+    "<cmd>lua require('gitsigns').nav_hunk('next', { wrap = true, navigation_message = false, preview=false, foldopen = true })<cr>",
     keys = { "n", "]h", noremap },
   },
 
   {
     desc = "Gitsigns go to prev hunk",
     cmd =
-    "<cmd>lua require('gitsigns').nav_hunk('prev', { wrap = true, navigation_message = false, preview=false, foldeopen = true })<cr>",
+    "<cmd>lua require('gitsigns').nav_hunk('prev', { wrap = true, navigation_message = false, preview=false, foldopen = true })<cr>",
     keys = { "n", "[h", noremap },
   },
 
@@ -486,7 +487,7 @@ cc.add({
   {
     desc = "Diff",
     cmd = "<cmd>:CodeDiff<cr>",
-    keys = { "n", "<leader>do" },
+    keys = { "n", "<leader>gd" },
   },
 
   -- execa
@@ -541,7 +542,7 @@ cc.add({
 
   {
     desc = "Go to declaration",
-    cmd = "<cmd>lua vim.lsp.buf.definition()<CR>",
+    cmd = "<cmd>lua vim.lsp.buf.declaration()<CR>",
     keys = { "n", "gD", noremap },
   },
 

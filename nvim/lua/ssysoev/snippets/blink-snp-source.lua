@@ -5,13 +5,7 @@ function M.new()
 end
 
 function M:get_completions(ctx, callback)
-  local snippets_by_filetype = require("ssysoev.snippets.snippets-by-ft")
-  local ft = vim.bo.filetype
-  local snips = {}
-
-  if ft and snippets_by_filetype[ft] then
-    vim.list_extend(snips, snippets_by_filetype[ft])
-  end
+  local snips = require("ssysoev.snippets.snippets").get_buf_snips()
 
   local items = vim.tbl_map(function(s)
     return {

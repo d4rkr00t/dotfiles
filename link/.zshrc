@@ -1,5 +1,6 @@
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf: completion + key bindings (^R history, ^T files, M-c cd)
+source <(fzf --zsh)
 
 source ~/.dotfiles
 

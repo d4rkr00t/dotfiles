@@ -43,15 +43,21 @@ return {
       vim.defer_fn(function()
         local registry = require("mason-registry")
         local packages = {
-          "tsc",
-          "oxlint",
-          "eslint-lsp",
-          "lua-language-server",
-          "json-lsp",
-          "html-lsp",
-          "css-lsp",
-          "python-lsp-server",
           "cspell-lsp",
+          "css-lsp",
+          "cssls",
+          "eslint-lsp",
+          "gopls",
+          "html-lsp",
+          "json-lsp",
+          "jsonls",
+          "lua-language-server",
+          "lua_ls",
+          "oxlint",
+          "python-lsp-server",
+          "rust_analyzer",
+          "tsc",
+          "zls",
         }
 
         for _, pkg_name in ipairs(packages) do

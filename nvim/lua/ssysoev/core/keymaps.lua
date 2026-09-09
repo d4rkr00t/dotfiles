@@ -292,7 +292,7 @@ cc.add({
 
   {
     desc = "Search changes",
-    cmd = "<cmd>lua Snacks.picker.changes()<CR>",
+    cmd = "<cmd>lua Snacks.picker.git_diff()<CR>",
     keys = { "n", "<leader>fe", noremap },
   },
 

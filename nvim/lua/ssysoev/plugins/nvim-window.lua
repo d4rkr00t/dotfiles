@@ -1,6 +1,6 @@
 return {
   {
-    url = "https://gitlab.com/yorickpeterse/nvim-window.git",
+    "yorickpeterse/nvim-window",
     event = "VeryLazy",
     opts = {
       chars = {

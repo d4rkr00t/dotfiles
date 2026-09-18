@@ -1,5 +1,5 @@
 -- rg globs for stuff that is almost never what you are grepping for.
--- Each group is toggled independently in the grep picker: T / N.
+-- Each group is toggled independently in the grep/file pickers: T / N.
 local exclude_groups = {
   -- T -- tests, fixtures, snapshots
   no_tests = {
@@ -50,26 +50,22 @@ local exclude_groups = {
   },
 }
 
--- Which groups are active. Toggling in the picker updates this, so the next
--- grep reopens with the same filters. Session only; resets on restart.
-local excluding = { no_tests = true, no_noise = true }
-
--- union of the globs of every active group
-local function build_exclude()
-  local exclude = {}
-  for group, globs in pairs(exclude_groups) do
-    if excluding[group] then
-      vim.list_extend(exclude, globs)
-    end
-  end
-  return exclude
-end
+-- Which groups are active, per source. Toggling in the picker updates this, so
+-- the next open reuses the same filters. Session only; resets on restart.
+local excluding = {
+  grep = { no_tests = true, no_noise = true },
+  smart = { no_noise = true },
+}
 
 -- applied on every open, so the picker starts from the remembered state
 local function apply_excluding(opts)
-  opts.exclude = build_exclude()
-  for group in pairs(exclude_groups) do
-    opts[group] = excluding[group]
+  local state = excluding[opts.source]
+  opts.exclude = {}
+  for group, globs in pairs(exclude_groups) do
+    opts[group] = state[group]
+    if state[group] then
+      vim.list_extend(opts.exclude, globs)
+    end
   end
   return opts
 end
@@ -77,12 +73,22 @@ end
 -- action that flips one group, remembers it, and re-runs the finder
 local function toggle_group(group)
   return function(picker)
-    excluding[group] = not excluding[group]
+    local state = excluding[picker.opts.source]
+    state[group] = not state[group]
     apply_excluding(picker.opts)
     picker.list:set_target()
     picker:find()
   end
 end
+
+local toggle_keys = {
+  input = {
+    keys = {
+      ["<a-t>"] = { "toggle_tests", mode = { "i", "n" } },
+      ["<a-n>"] = { "toggle_noise", mode = { "i", "n" } },
+    },
+  },
+}
 
 return {
   {
@@ -116,24 +122,20 @@ return {
           history_bonus = true,
         },
         sources = {
+          -- file search skips noise but keeps tests by default
           smart = {
             matcher = {
               sort_empty = false,
             },
             multi = { { source = "buffers", current = false }, "recent", "files" },
+            config = apply_excluding,
+            win = toggle_keys,
           },
           -- grep skips tests + noise by default; <a-t> / <a-n> toggle them
           -- back in, and the choice sticks for the rest of the session
           grep = {
             config = apply_excluding,
-            win = {
-              input = {
-                keys = {
-                  ["<a-t>"] = { "toggle_tests", mode = { "i", "n" } },
-                  ["<a-n>"] = { "toggle_noise", mode = { "i", "n" } },
-                },
-              },
-            },
+            win = toggle_keys,
           },
         },
         -- "T" / "N" in the picker title while that group is excluded

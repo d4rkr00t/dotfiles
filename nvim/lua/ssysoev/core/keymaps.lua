@@ -535,6 +535,14 @@ cc.add({
   },
 
   {
+    desc = "LSP clients (stop/restart)",
+    cmd = function()
+      require("ssysoev.custom.lsp-clients").picker()
+    end,
+    keys = { "n", "<leader>lc", noremap },
+  },
+
+  {
     desc = "Go to declaration",
     cmd = "<cmd>lua vim.lsp.buf.declaration()<CR>",
     keys = { "n", "gD", noremap },

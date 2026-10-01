@@ -20,3 +20,7 @@ jsconfig.json
 node_modules
 .node-bin/node_modules
 npm-debug.log
+
+**/.claude/.cc-writes/
+
+**/.claude/settings.local.json

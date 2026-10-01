@@ -22,12 +22,6 @@ for option in autocd globstar; do
     shopt -s "$option" 2> /dev/null
 done
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-    export TERM='gnome-256color';
-elif infocmp xterm-256color >/dev/null 2>&1; then
-    export TERM='xterm-256color';
-fi;
-
 # SSH agent forwarding and tmux
 # Keep a stable socket path so reattached tmux sessions can still reach the
 # agent. Only point at it if it actually exists — otherwise leave whatever the

@@ -7,7 +7,7 @@ npmurl() {
   example '$ npmurl'
   group 'npm'
 
-  local package=`jsonval package.json name 1 | tr -d ' '`
+  local package=$(jq -r '.name // empty' package.json 2>/dev/null)
 
   [[ "$package" ]] || return
 

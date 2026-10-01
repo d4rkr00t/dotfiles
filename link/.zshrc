@@ -4,9 +4,8 @@ source <(fzf --zsh)
 
 source ~/.dotfiles
 
-# Cache Homebrew's prefix — `brew --prefix` forks a subprocess, and it was
-# previously called once per use site.
-BREW_PREFIX="$(brew --prefix)"
+# Hardcoded: `brew --prefix` costs ~25ms per shell startup
+BREW_PREFIX=/opt/homebrew
 
 #
 # fpath
@@ -92,13 +91,9 @@ export SAVEHIST=$HISTSIZE
 # This isn't set by default.
 export HISTFILE="$HOME/.zsh_history"
 
-# Do not display a line previously found.
-setopt HIST_FIND_NO_DUPS
 # Delete old recorded entry if new entry is a duplicate.
 setopt HIST_IGNORE_ALL_DUPS
-# Write to the history file immediately, not when the shell exits.
-setopt INC_APPEND_HISTORY
-# Share history between all sessions.
+# Share history between all sessions (implies incremental append).
 setopt SHARE_HISTORY
 
 #

@@ -19,6 +19,7 @@ unset file
 ln -sfn "$DIR/nvim/" "$HOME/.config/"
 
 # link skills
+mkdir -p "$HOME/.claude" "$HOME/.codex" "$HOME/.config/workmux"
 ln -sfn "$DIR/skills/" "$HOME/.claude/skills"
 ln -sfn "$DIR/skills/" "$HOME/.codex/skills"
 

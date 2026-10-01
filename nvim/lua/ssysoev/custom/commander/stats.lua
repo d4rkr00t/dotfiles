@@ -79,7 +79,10 @@ M.age_days = function(stamp)
     hour = 12,
   })
 
-  return math.max(0, math.floor(os.difftime(os.time(), then_at) / 86400))
+  local now = os.date("*t")
+  local today_at = os.time({ year = now.year, month = now.month, day = now.day, hour = 12 })
+
+  return math.max(0, math.floor(os.difftime(today_at, then_at) / 86400 + 0.5))
 end
 
 local function merge(stats)

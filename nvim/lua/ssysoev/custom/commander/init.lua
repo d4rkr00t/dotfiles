@@ -1,7 +1,6 @@
 local M = {}
 
 local stats = require("ssysoev.custom.commander.stats")
-local ui = require("ssysoev.custom.commander.ui")
 
 local registry = {}
 
@@ -96,7 +95,7 @@ end
 
 -- Open the usage dashboard
 M.stats = function()
-  ui.open(registry)
+  require("ssysoev.custom.commander.ui").open(registry)
 end
 
 vim.api.nvim_create_autocmd("VimLeave", {

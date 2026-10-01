@@ -2,7 +2,9 @@ return {
   {
     "rebelot/kanagawa.nvim",
     cond = vim.g.THEME == "kanagawa",
-    init = function()
+    lazy = false,
+    priority = 1000,
+    config = function()
       require("kanagawa").setup({
         compile = false,  -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
@@ -103,28 +105,28 @@ return {
         },
         overrides = function(colors)
           return {
-            Boolean                      = { fg = "#6ad0b7" },
-            Operator                     = { fg = "#A0A0A0" },
-            Exception                    = { fg = "#FFCFA8" },
+            Boolean                = { fg = "#6ad0b7" },
+            Operator               = { fg = "#A0A0A0" },
+            Exception              = { fg = "#FFCFA8" },
 
             -- treesitter captures (replace legacy regex-syntax groups,
             -- which are unused once vim.treesitter.start is active)
-            ["@property"]                = { fg = "#FFCFA8" }, -- key in key/value pairs
-            ["@variable.member"]         = { fg = "#FFCFA8" }, -- object / struct fields
-            ["@type.builtin"]            = { fg = "#FFCFA8" }, -- string, number, ... (was typescriptPredefinedType)
-            ["@operator"]                = { fg = "#A0A0A0" }, -- was typescriptBinaryOp
-            ["@keyword.import"]          = { fg = "#A0A0A0" }, -- import/from (kanagawa links these to PreProc = near-white)
-            ["@tag.attribute"]           = { fg = "#FFCFA8" }, -- JSX/HTML attributes (was tsxAttrib)
-            TreesitterContext            = { bg = "#1e1f1f" },
+            ["@property"]          = { fg = "#FFCFA8" }, -- key in key/value pairs
+            ["@variable.member"]   = { fg = "#FFCFA8" }, -- object / struct fields
+            ["@type.builtin"]      = { fg = "#FFCFA8" }, -- string, number, ... (was typescriptPredefinedType)
+            ["@operator"]          = { fg = "#A0A0A0" }, -- was typescriptBinaryOp
+            ["@keyword.import"]    = { fg = "#A0A0A0" }, -- import/from (kanagawa links these to PreProc = near-white)
+            ["@tag.attribute"]     = { fg = "#FFCFA8" }, -- JSX/HTML attributes (was tsxAttrib)
+            TreesitterContext      = { bg = "#1e1f1f" },
 
             -- snacks picker
-            SnacksPickerInput            = { bg = "#101010" },
-            SnacksPickerList             = { bg = "#101010" },
-            SnacksPickerPreview          = { bg = "#101010" },
-            SnacksPickerSearch           = { bg = "#101010" },
-            SnacksPickerCmd              = { bg = "#101010" },
-            SnacksPickerCursorLine       = { bg = "#101010" },
-            SnacksPickerDir              = { fg = "#A0A0A0" },
+            SnacksPickerInput      = { bg = "#101010" },
+            SnacksPickerList       = { bg = "#101010" },
+            SnacksPickerPreview    = { bg = "#101010" },
+            SnacksPickerSearch     = { bg = "#101010" },
+            SnacksPickerCmd        = { bg = "#101010" },
+            SnacksPickerCursorLine = { bg = "#101010" },
+            SnacksPickerDir        = { fg = "#A0A0A0" },
           }
         end,
       })

@@ -35,27 +35,20 @@ return {
       require("mason").setup()
       setup_diagnostics()
 
-      vim.lsp.config("*", {
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-      })
-
       -- Ensure installed (deferred to avoid blocking startup)
       vim.defer_fn(function()
         local registry = require("mason-registry")
         local packages = {
           "cspell-lsp",
           "css-lsp",
-          "cssls",
           "eslint-lsp",
           "gopls",
           "html-lsp",
           "json-lsp",
-          "jsonls",
           "lua-language-server",
-          "lua_ls",
           "oxlint",
           "python-lsp-server",
-          "rust_analyzer",
+          "rust-analyzer",
           "tsc",
           "zls",
         }
@@ -103,11 +96,14 @@ return {
         "cssls",
         "pylsp",
         "gopls",
-        "cspell_lsp",
+        "cspell_ls",
         "oxlint",
       })
     end,
     dependencies = {
+      -- loaded first so its plugin/ file sets LSP capabilities before servers start
+      "saghen/blink.cmp",
+
       -- easily configure language servers
       "neovim/nvim-lspconfig",
 

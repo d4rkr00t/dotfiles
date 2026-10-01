@@ -1,19 +1,6 @@
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
 
--- Enable treesitter folding only for buffers with a treesitter parser
-au("BufReadPost", {
-  group = ag("treesitter_folds", { clear = true }),
-  callback = function()
-    if pcall(vim.treesitter.get_parser, 0) then
-      vim.opt_local.foldmethod = "expr"
-      vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    else
-      vim.opt_local.foldmethod = "indent"
-    end
-  end,
-})
-
 ---Highlight yanked text
 au("TextYankPost", {
   group = ag("yank_highlight", {}),

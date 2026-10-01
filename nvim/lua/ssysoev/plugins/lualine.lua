@@ -31,11 +31,6 @@ return {
         hide_in_width = function()
           return vim.fn.winwidth(0) > 80
         end,
-        check_git_workspace = function()
-          local filepath = vim.fn.expand("%:p:h")
-          local gitdir = vim.fn.finddir(".git", filepath .. ";")
-          return gitdir and #gitdir > 0 and #gitdir < #filepath
-        end,
       }
 
       -- Config
@@ -244,15 +239,20 @@ return {
       })
 
       ins_right({
-        "branch",
+        "b:gitsigns_head",
         icon = "",
         color = { fg = colors.violet, gui = "bold" },
       })
 
       ins_right({
         "diff",
-        -- Is it me or the symbol for modified us really weird
-        symbols = { added = " ", modified = "柳 ", removed = " " },
+        source = function()
+          local g = vim.b.gitsigns_status_dict
+          if g then
+            return { added = g.added, modified = g.changed, removed = g.removed }
+          end
+        end,
+        symbols = { added = " ", modified = " ", removed = " " },
         diff_color = {
           added = { fg = colors.green },
           modified = { fg = colors.orange },

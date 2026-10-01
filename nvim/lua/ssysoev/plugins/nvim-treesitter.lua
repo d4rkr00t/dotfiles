@@ -30,27 +30,17 @@ return {
         group = vim.api.nvim_create_augroup("treesitter_autostart", { clear = true }),
         callback = function(args)
           local ft = args.match
-          if ft == "" then return end
+          if ft == "" or vim.bo[args.buf].buftype ~= "" then return end
 
           local lang = vim.treesitter.language.get_lang(ft) or ft
 
-          -- Already installed: just start highlighting.
-          if vim.tbl_contains(ts.get_installed("parsers"), lang) then
-            pcall(vim.treesitter.start, args.buf, lang)
-            return
+          if pcall(vim.treesitter.start, args.buf, lang) then
+            vim.opt_local.foldmethod = "expr"
+            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          else
+            vim.opt_local.foldmethod = "indent"
+            vim.bo[args.buf].syntax = "ON"
           end
-
-          -- A parser exists upstream: install it, then start highlighting.
-          if vim.tbl_contains(ts.get_available(), lang) then
-            ts.install({ lang }):await(function()
-              if vim.api.nvim_buf_is_valid(args.buf) then
-                pcall(vim.treesitter.start, args.buf, lang)
-              end
-            end)
-            return
-          end
-
-          vim.bo[args.buf].syntax = "ON"
         end,
       })
     end

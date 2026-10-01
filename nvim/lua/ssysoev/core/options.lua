@@ -55,7 +55,6 @@ opt.splitbelow = true
 opt.splitkeep = "screen"
 
 -- other
-opt.iskeyword:append("-") -- makes - a part of a word
 opt.joinspaces = false    -- No double spaces with join
 opt.autoread = true       -- Deal with file loads after updating via git etc
 

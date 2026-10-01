@@ -49,6 +49,11 @@ require("lazy").setup({
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
+  performance = {
+    rtp = {
+      disabled_plugins = { "gzip", "tarPlugin", "zip", "tutor" },
+    },
+  },
 })
 
 require("ssysoev.core.keymaps")

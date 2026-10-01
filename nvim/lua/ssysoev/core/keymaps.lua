@@ -144,7 +144,7 @@ cc.add({
 
   {
     desc = "Move lines up (selection)",
-    cmd = ":m '<-2<CR>gvgv=gv",
+    cmd = ":m '<-2<CR>gv=gv",
     keys = { "v", "<M-UP>", noremap },
   },
 
@@ -157,7 +157,7 @@ cc.add({
   -- nvim-window
   {
     desc = "Switch between splits",
-    cmd = ":lua require('nvim-window').pick()<CR>",
+    cmd = "<cmd>lua require('nvim-window').pick()<CR>",
     keys = { "n", "<leader>w", noremap },
   },
 
@@ -182,7 +182,7 @@ cc.add({
 
   {
     desc = "Close current split window",
-    cmd = ":close<CR>",
+    cmd = "<cmd>close<CR>",
     keys = { "n", "<leader>sx", noremap },
   },
 
@@ -269,7 +269,7 @@ cc.add({
   {
     desc = "Document symbols",
     cmd = "<cmd>lua Snacks.picker.lsp_symbols()<CR>",
-    keys = { "n", "<leader>fo", noremap },
+    keys = { "n", "gO", noremap },
   },
 
   {
@@ -525,13 +525,20 @@ cc.add({
   {
     desc = "Show references",
     cmd = "<cmd>lua Snacks.picker.lsp_references()<CR>",
-    keys = { "n", "gr", noremap },
+    keys = { "n", "grr", noremap },
   },
 
 
   {
     desc = "Show implementation",
     cmd = "<cmd>lua Snacks.picker.lsp_implementations()<CR>",
+    keys = { "n", "gri", noremap },
+  },
+
+  {
+    desc = "Show type definition",
+    cmd = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>",
+    keys = { "n", "grt", noremap },
   },
 
   {
@@ -549,21 +556,15 @@ cc.add({
   },
 
   {
-    desc = "Go to implementation",
-    cmd = "<cmd>lua vim.lsp.buf.implementation()<CR>",
-    keys = { "n", "gi", noremap },
-  },
-
-  {
     desc = "Code actions",
     cmd = "<cmd>lua vim.lsp.buf.code_action()<cr>",
-    keys = { "n", "<leader>la", noremap },
+    keys = { { "n", "gra", noremap }, { "x", "gra", noremap } },
   },
 
   {
     desc = "Smart rename",
     cmd = vim.lsp.buf.rename,
-    keys = { "n", "<leader>rn", noremap },
+    keys = { "n", "grn", noremap },
   },
 
   {

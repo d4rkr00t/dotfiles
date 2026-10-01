@@ -20,7 +20,7 @@ return {
           if vim.g.format_on_save == false then
             return
           end
-          return { timeout_ms = 5000, lsp_format = "fallback" }
+          return { timeout_ms = 1000, lsp_format = "fallback" }
         end,
         formatters_by_ft = {
           javascript = { "oxfmt", "prettier", stop_after_first = true },

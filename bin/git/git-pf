@@ -8,7 +8,7 @@ color_notice="\033[1;33m"
 branch=$(git rev-parse --abbrev-ref HEAD)
 remote=${1:-origin}
 
-if [ $branch == "master" -o $branch == "main" -o $branch == "dev" ]; then
+if [ "$branch" = "master" -o "$branch" = "main" -o "$branch" = "dev" ]; then
     echo "You should not push with force branch — ${color_notice}[$branch]${color_reset}"
 else
     git push $remote +$branch

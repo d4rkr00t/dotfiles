@@ -175,6 +175,10 @@ automatically-unhide-macos-hidden-apps = false
   run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
+  if.app-id = "com.anthropic.claudefordesktop"
+  run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
   if.app-id = "com.apple.Notes"
   run = ['move-node-to-workspace 4']
 

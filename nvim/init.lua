@@ -25,7 +25,7 @@ vim.g.maplocalleader = ","
 --
 
 -- colorscheme
-vim.g.THEME = "kanagawa"
+vim.g.theme = "ember"
 --
 
 -- is mac

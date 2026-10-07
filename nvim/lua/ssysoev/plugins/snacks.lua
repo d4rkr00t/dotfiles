@@ -90,11 +90,91 @@ local toggle_keys = {
   },
 }
 
+-- resume renders the previous results instantly, then refreshes them in place.
+-- lsp_* sources keep the stock behaviour (cached, no refresh).
+local function patch_resume()
+  local resume = require("snacks.picker.resume")
+  local add, _resume = resume.add, resume._resume
+
+  resume.add = function(picker)
+    add(picker)
+    local state = resume.state[picker.opts.source or "custom"]
+    if not state.items then
+      state.stale = { items = picker.finder.items, find = picker.finder._find }
+    end
+  end
+
+  resume._resume = function(state)
+    local stale = state.stale
+    if not stale then
+      return _resume(state)
+    end
+    local finder = state.opts.finder
+    state.opts.finder = function()
+      return stale.items
+    end
+    local picker = _resume(state)
+    state.opts.finder = finder
+    picker.finder._find = stale.find
+    picker.matcher.task:on("done", vim.schedule_wrap(function()
+      if picker.closed then
+        return
+      end
+      -- build the fresh list off-screen so the old one stays untouched
+      local filter = picker.input.filter:clone({ trim = true })
+      local fresh = require("snacks.picker.core.finder").new(stale.find)
+      fresh:init(filter)
+      local on_close = picker.opts.on_close
+      picker.opts.on_close = function(p)
+        fresh:abort()
+        if on_close then
+          on_close(p)
+        end
+      end
+      fresh:run(picker)
+      local function swap()
+        if picker.closed or picker.input.filter.search ~= filter.search then
+          return
+        end
+        local current, offset = picker:current(), picker.list.cursor - picker.list.top
+        picker.finder._find = function()
+          picker.finder._find = stale.find
+          return fresh.items
+        end
+        picker:find({
+          refresh = true,
+          on_done = vim.schedule_wrap(function()
+            if not current then
+              return
+            end
+            for item, idx in picker:iter() do
+              if item.text == current.text and item.file == current.file then
+                picker.list:view(idx, math.max(1, idx - offset))
+                return
+              end
+            end
+          end),
+        })
+      end
+      if fresh:running() then
+        fresh.task:on("done", vim.schedule_wrap(swap))
+      else
+        swap()
+      end
+    end))
+    return picker
+  end
+end
+
 return {
   {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    config = function(_, opts)
+      require("snacks").setup(opts)
+      patch_resume()
+    end,
     opts = {
       bigfile = {
         enabled = true,

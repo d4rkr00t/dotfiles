@@ -38,6 +38,13 @@ local hl = {
   Whitespace = { fg = "#312D2A" },
   NonText = { fg = "#312D2A" },
   SnacksPickerDir = { fg = grey },
+  SnacksPickerSearch = { fg = peach, bg = "#4a3626", bold = true },
+  PmenuSel = { bg = "#242525" },
+
+  DiffAdd = { bg = "#16302a" },
+  DiffDelete = { bg = "#3a1c1c" },
+  DiffChange = { bg = "#1e1f1f" },
+  DiffText = { bg = "#3d3020" },
 
   LineNr = { fg = "#515051", bg = bg },
   SignColumn = { bg = bg },

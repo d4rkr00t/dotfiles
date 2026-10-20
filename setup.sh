@@ -26,3 +26,9 @@ ln -sfn "$DIR/skills/" "$HOME/.codex/skills"
 # link workmux config
 ln -sfn "$DIR/misc/.workmux.yaml" "$HOME/.config/workmux/config.yaml"
 ln -sfn "$DIR/misc/.claude.md" "$HOME/.claude/CLAUDE.md"
+
+# claude status line (merged, settings.json is also written by claude and managed tooling)
+settings="$HOME/.claude/settings.json"
+[ -f "$settings" ] || echo '{}' > "$settings"
+jq --arg cmd "$DIR/misc/claude-statusline.sh" '.statusLine = {type: "command", command: $cmd}' \
+    "$settings" > "$settings.tmp" && mv "$settings.tmp" "$settings"

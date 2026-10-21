@@ -322,7 +322,16 @@ cc.add({
 
   {
     desc = "Open in Github",
-    cmd = "<cmd>lua require('snacks').gitbrowse.open()<CR>",
+    cmd = function()
+      local git = { "git", "-C", vim.fn.expand("%:p:h") }
+      local head = vim.fn.systemlist(vim.list_extend(vim.deepcopy(git), { "rev-parse", "--abbrev-ref", "origin/HEAD" }))[1]
+      local branch = vim.v.shell_error == 0 and head:gsub("^origin/", "") or nil
+      if not branch then
+        vim.fn.system(vim.list_extend(git, { "rev-parse", "--verify", "--quiet", "origin/main" }))
+        branch = vim.v.shell_error == 0 and "main" or "master"
+      end
+      require("snacks").gitbrowse.open({ branch = branch })
+    end,
     keys = {
       { "n", "<leader>gl", noremap },
       { "v", "<leader>gl", noremap },

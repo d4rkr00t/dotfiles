@@ -13,4 +13,5 @@ nvim/lazy-lock.json
 skills/twg/
 skills/twg-*/
 skills/perf-regression
+skills/synced/
 nvim/undo

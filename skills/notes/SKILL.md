@@ -1,6 +1,6 @@
 ---
 name: notes
-description: Work with the user's Obsidian vault at ~/Development/obsidian. Use when the user wants to add/file a note (article, video, book, idea, leetcode task…), search their notes or ask what their notes say about a topic, or tidy/audit the vault.
+description: Work with the user's Obsidian vault at ~/Development/obsidian. Use when the user wants to add/file a note (article, video, book, idea, leetcode task…), search their notes or ask what their notes say about a topic, or tidy/audit the vault. Also use proactively when the user's own prior notes could inform the task — researching a topic, comparing approaches, design decisions in CS, build tools/Bazel/monorepos, browser internals, web performance, JS/TS, compilers, or developer productivity.
 ---
 
 # Notes (Obsidian vault)

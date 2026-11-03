@@ -27,6 +27,11 @@ ln -sfn "$DIR/skills/" "$HOME/.codex/skills"
 ln -sfn "$DIR/misc/.workmux.yaml" "$HOME/.config/workmux/config.yaml"
 ln -sfn "$DIR/misc/.claude.md" "$HOME/.claude/CLAUDE.md"
 
+# link rex config (replace an older whole-dir symlink so ln doesn't write through it)
+[ -L "$HOME/.config/rex" ] && rm "$HOME/.config/rex"
+mkdir -p "$HOME/.config/rex"
+ln -sfn "$DIR/rex/init.lua" "$HOME/.config/rex/init.lua"
+
 # claude status line (merged, settings.json is also written by claude and managed tooling)
 settings="$HOME/.claude/settings.json"
 [ -f "$settings" ] || echo '{}' > "$settings"

@@ -279,6 +279,14 @@ cc.add({
   },
 
   {
+    desc = "Search history (grep + files)",
+    cmd = function()
+      require("ssysoev.custom.search-history").picker()
+    end,
+    keys = { "n", "<leader>fl", noremap },
+  },
+
+  {
     desc = "Search help tags",
     cmd = "<cmd>lua Snacks.picker.help()<CR>",
     keys = { "n", "<leader>fh", noremap },

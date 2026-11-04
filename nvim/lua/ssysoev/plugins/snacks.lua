@@ -214,12 +214,14 @@ return {
             multi = { { source = "buffers", current = false }, "recent", "files" },
             config = apply_excluding,
             win = toggle_keys,
+            on_close = function(picker) require("ssysoev.custom.search-history").record(picker) end,
           },
           -- grep skips tests + noise by default; <a-t> / <a-n> toggle them
           -- back in, and the choice sticks for the rest of the session
           grep = {
             config = apply_excluding,
             win = toggle_keys,
+            on_close = function(picker) require("ssysoev.custom.search-history").record(picker) end,
           },
         },
         -- "T" / "N" in the picker title while that group is excluded

@@ -20,9 +20,10 @@ local function read()
   local content = file:read("*a")
   file:close()
 
+  -- nil, not {}: callers must never overwrite a file they failed to parse
   local ok, decoded = pcall(vim.json.decode, content)
   if not ok or type(decoded) ~= "table" then
-    return {}
+    return nil
   end
 
   return decoded
@@ -31,13 +32,16 @@ end
 local function write(stats)
   vim.fn.mkdir(vim.fn.fnamemodify(path, ":h"), "p")
 
-  local file = io.open(path, "w")
+  -- rename is atomic, so a concurrent read never sees a half-written file
+  local tmp = path .. ".tmp." .. vim.fn.getpid()
+  local file = io.open(tmp, "w")
   if file == nil then
     return
   end
 
   file:write(vim.json.encode(stats))
   file:close()
+  os.rename(tmp, path)
 end
 
 M.today = function()
@@ -100,13 +104,18 @@ end
 
 -- What is on disk plus what this session has not written yet
 M.snapshot = function()
-  return merge(read())
+  return merge(read() or {})
 end
 
 -- Merge the session into the file. Deltas land first, so seeding an unseen id
 -- can never overwrite a fresh count.
 M.flush = function(registry)
-  local stats = merge(read())
+  local disk = read()
+  if disk == nil then
+    return
+  end
+
+  local stats = merge(disk)
   local stamp = M.today()
 
   -- Seed ids we have never seen with today's date, so a keymap added now ages
@@ -128,6 +137,9 @@ end
 -- Drop ids no registry entry owns any more. Returns how many went.
 M.prune = function(registry)
   local stats = read()
+  if stats == nil then
+    return 0
+  end
 
   local live = {}
   for _, entry in ipairs(registry) do

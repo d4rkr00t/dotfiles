@@ -19,6 +19,10 @@ local exclude_groups = {
     "**/testdata/**",
     "**/fixtures/**",
     -- test files: foo.test.tsx, foo-test.ts, foo_test.go, foo.specs.ts, ...
+    "**/test.*", -- foo/test.tsx
+    "**/tests.*",
+    "**/spec.*",
+    "**/specs.*",
     "**/*[._-]test.*",
     "**/*[._-]tests.*",
     "**/*[._-]spec.*",

@@ -68,5 +68,24 @@ rex.action{
   end,
 }
 
+-- pick URLs from the pane's scrollback; enter opens, ctrl-y copies
+local pick_urls = [[
+out=$(rex capture -b "$1" --unwrap |
+  grep -oE "https?://[^][:space:]\"'<>()]+" | sed 's/[.,;:]*$//' |
+  tail -r | awk '!s[$0]++' |
+  fzf --multi --reverse --expect=ctrl-y --header='[URLs]  enter: open  ctrl-y: copy')
+key=$(printf '%s\n' "$out" | head -1); urls=$(printf '%s\n' "$out" | sed 1d)
+[ -z "$urls" ] && exit 0
+if [ "$key" = ctrl-y ]; then printf '%s' "$urls" | pbcopy
+else printf '%s\n' "$urls" | xargs -n1 open; fi
+]]
+
+rex.action{
+  name = "pick_urls",
+  title = "Find URLs in Pane…",
+  run = function(ctx) popup(nil, pick_urls, ctx.block_id) end,
+}
+
 rex.bind("cmd+o", "insert_files")
+rex.bind("cmd+u", "pick_urls")
 rex.bind("cmd+j", "zoxide_session")

@@ -4,9 +4,6 @@ local safe_require = require("ssysoev.utils.safe-require")
 vim.g.VERBOSE_LOG = false
 --
 
--- Hide deprecated api messages
-vim.deprecate = function() end
-
 -- Experimental UI
 safe_require({ "vim._core.ui2" }, function(mods)
   mods["vim._core.ui2"].enable({
@@ -59,4 +56,3 @@ require("lazy").setup({
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")
 require("ssysoev.core.autocommands")
-require("ssysoev.core.commands")

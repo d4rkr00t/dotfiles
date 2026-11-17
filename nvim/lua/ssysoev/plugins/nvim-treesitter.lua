@@ -35,8 +35,10 @@ return {
           local lang = vim.treesitter.language.get_lang(ft) or ft
 
           if pcall(vim.treesitter.start, args.buf, lang) then
-            vim.opt_local.foldmethod = "expr"
-            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            for _, win in ipairs(vim.fn.win_findbuf(args.buf)) do
+              vim.wo[win][0].foldmethod = "expr"
+              vim.wo[win][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            end
           else
             vim.opt_local.foldmethod = "indent"
             vim.bo[args.buf].syntax = "ON"

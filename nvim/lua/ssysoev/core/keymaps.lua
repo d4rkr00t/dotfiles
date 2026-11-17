@@ -1,6 +1,11 @@
 local keymap = vim.keymap
 local noremap = { noremap = true, silent = true }
 
+local function copy(text, msg)
+  vim.fn.setreg("+", text)
+  vim.notify(msg or ("Copied: " .. text))
+end
+
 -- general keymaps
 keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { silent = true, desc = "Remove Search Highlighting" })
 keymap.set("n", "x", '"_x')   -- in normal mode pressing x doesn't yank the char
@@ -69,9 +74,15 @@ cc.add({
   {
     desc = "Open link under cursor",
     cmd = function()
-      vim.ui.open(vim.fn.expand("<cfile>"))
+      local mode = vim.fn.mode()
+      if mode:match("[vV\22]") then
+        local lines = vim.fn.getregion(vim.fn.getpos("."), vim.fn.getpos("v"), { type = mode })
+        vim.ui.open(table.concat(vim.tbl_map(vim.trim, lines)))
+      else
+        vim.ui.open(vim.fn.expand("<cfile>"))
+      end
     end,
-    keys = { "n", "gx", noremap },
+    keys = { { "n", "gx", noremap }, { "x", "gx", noremap } },
   },
 
   {
@@ -108,12 +119,12 @@ cc.add({
   -- copy file path
   {
     desc = "Copy Relative Path",
-    cmd = "<cmd>CopyRelPath<cr>",
+    cmd = function() copy(vim.fn.expand("%:.")) end,
     keys = { "n", "<leader>cr", noremap },
   },
   {
     desc = "Copy Absolute Path",
-    cmd = "<cmd>CopyAbsPath<cr>",
+    cmd = function() copy(vim.fn.expand("%:p")) end,
     keys = { "n", "<leader>ca", noremap },
   },
 
@@ -237,7 +248,7 @@ cc.add({
   },
 
   {
-    desc = "Open recent",
+    desc = "Smart open (buffers, recent, files)",
     cmd = "<cmd>lua Snacks.picker.smart({filter = { cwd = true }})<CR>",
     keys = { "n", "<leader>o", noremap },
   },
@@ -446,19 +457,13 @@ cc.add({
   },
 
   {
-    desc = "Undo stage hunk",
-    cmd = "<cmd>Gitsigns undo_stage_hunk<cr>",
-    keys = { "n", "<leader>hu" },
-  },
-
-  {
     desc = "Diff this",
     cmd = "<cmd>lua require('gitsigns').diffthis('~1', { vertical = true })<cr>",
     keys = { "n", "<leader>hd" },
   },
 
   {
-    desc = "Toggle current line diff",
+    desc = "Toggle current line blame",
     cmd = "<cmd>Gitsigns toggle_current_line_blame<cr>",
   },
 
@@ -497,7 +502,7 @@ cc.add({
   -- vscode diff
   {
     desc = "Diff",
-    cmd = "<cmd>:CodeDiff<cr>",
+    cmd = "<cmd>CodeDiff<cr>",
     keys = { "n", "<leader>gd" },
   },
 
@@ -587,15 +592,7 @@ cc.add({
   {
     desc = "Show line diagnostics",
     cmd = function()
-      local float_opts = {
-        focusable = true,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = "rounded",
-        source = true,
-        prefix = " ",
-        scope = "line",
-      }
-      vim.diagnostic.open_float(nil, float_opts)
+      vim.diagnostic.open_float()
     end,
     keys = { "n", "<leader>d", noremap },
   },
@@ -603,7 +600,7 @@ cc.add({
   {
     desc = "Jump to previous diagnostic",
     cmd = function()
-      vim.diagnostic.jump({ count = -1 })
+      vim.diagnostic.jump({ count = -vim.v.count1 })
     end,
     keys = { "n", "[d", noremap },
   },
@@ -611,22 +608,20 @@ cc.add({
   {
     desc = "Jump to next diagnostic",
     cmd = function()
-      vim.diagnostic.jump({ count = 1 })
+      vim.diagnostic.jump({ count = vim.v.count1 })
     end,
     keys = { "n", "]d", noremap },
   },
 
   {
-    desc = "Show documentation",
-    cmd = function()
-      vim.lsp.buf.hover()
-    end,
-    keys = { "n", "K", noremap },
-  },
-
-  {
     desc = "Highlight occurrences of the word under cursor",
-    cmd = "<cmd>lua vim.lsp.buf.document_highlight()<CR>",
+    cmd = function()
+      vim.lsp.buf.document_highlight()
+      vim.api.nvim_create_autocmd("CursorMoved", {
+        once = true,
+        callback = function() vim.lsp.buf.clear_references() end,
+      })
+    end,
     keys = { "n", "<leader>hh", noremap },
   },
 
@@ -663,9 +658,7 @@ cc.add({
   {
     desc = "Copy file path for AI chat",
     cmd = function()
-      local file = vim.fn.expand("%:p")
-      vim.fn.setreg("+", "@" .. file)
-      vim.notify("Copied: @" .. file)
+      copy("@" .. vim.fn.expand("%:p"))
     end,
     keys = { "n", "<leader>aa", noremap },
   },
@@ -673,11 +666,7 @@ cc.add({
   {
     desc = "Copy file path with line for AI chat",
     cmd = function()
-      local file = vim.fn.expand("%:p")
-      local line = vim.fn.line(".")
-      local ref = string.format("@%s:%d", file, line)
-      vim.fn.setreg("+", ref)
-      vim.notify("Copied: " .. ref)
+      copy(string.format("@%s:%d", vim.fn.expand("%:p"), vim.fn.line(".")))
     end,
     keys = { "n", "<leader>as", noremap },
   },
@@ -689,10 +678,8 @@ cc.add({
       local cursor = vim.fn.getpos(".")
       local anchor = vim.fn.getpos("v")
       local lines = table.concat(vim.fn.getregion(anchor, cursor), "\n")
-      local ref = string.format("@%s:%d-%d\n%s", file,
-        math.min(cursor[2], anchor[2]), math.max(cursor[2], anchor[2]), lines)
-      vim.fn.setreg("+", ref)
-      vim.notify("Copied selection with context")
+      copy(string.format("@%s:%d-%d\n%s", file,
+        math.min(cursor[2], anchor[2]), math.max(cursor[2], anchor[2]), lines), "Copied selection with context")
     end,
     keys = { "v", "<leader>as", noremap },
   },

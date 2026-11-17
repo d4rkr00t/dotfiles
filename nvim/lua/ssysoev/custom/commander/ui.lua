@@ -34,26 +34,18 @@ local function trunc(text, width)
   return text:sub(1, width - 3) .. "..."
 end
 
-local function by_count(a, b)
-  return a.count > b.count
-end
-
-local function by_age(a, b)
-  return a.age > b.age
-end
-
-local function by_palette(a, b)
-  return a.palette > b.palette
-end
-
-local function head(list, limit)
-  local result = {}
-
-  for index = 1, math.min(#list, limit) do
-    table.insert(result, list[index])
+local function by(field)
+  return function(a, b)
+    return a[field] > b[field]
   end
+end
 
-  return result
+local function widest(rows, text)
+  local width = 0
+  for _, row in ipairs(rows) do
+    width = math.max(width, #text(row))
+  end
+  return width
 end
 
 -- Assemble a line out of { text, highlight } pieces, tracking byte columns
@@ -117,13 +109,23 @@ local function render(registry, data)
     end
   end
 
-  local function section(title)
+  -- fmt(rows) returns the per-row function producing that row's chunks
+  local function section(title, source, keep, order, limit, fmt)
+    local rows = vim.tbl_filter(keep, source)
+    table.sort(rows, by(order))
+    rows = vim.list_slice(rows, 1, limit)
+
     add("")
     add(chunks({ { " " .. title, "Title" } }))
-  end
+    if #rows == 0 then
+      add(chunks({ { "  nothing yet", "NonText" } }))
+      return
+    end
 
-  local function nothing()
-    add(chunks({ { "  nothing yet", "NonText" } }))
+    local pieces = fmt(rows)
+    for _, row in ipairs(rows) do
+      add(chunks(pieces(row)))
+    end
   end
 
   -- header
@@ -171,106 +173,68 @@ local function render(registry, data)
     { " palette-only", "Comment" },
   }))
 
-  -- TOP
-  local top = vim.tbl_filter(function(row)
+  section("TOP", keys, function(row)
     return row.count > 0
-  end, keys)
-  table.sort(top, by_count)
-  top = head(top, TOP_N)
+  end, "count", TOP_N, function(rows)
+    local label_w = widest(rows, function(row) return row.label end)
+    local count_w = widest(rows, function(row) return tostring(row.count) end)
+    local max = rows[1].count
 
-  section("TOP")
-  if #top == 0 then
-    nothing()
-  else
-    local label_w, count_w, max = 0, 0, top[1].count
-    for _, row in ipairs(top) do
-      label_w = math.max(label_w, #row.label)
-      count_w = math.max(count_w, #tostring(row.count))
-    end
-
-    for _, row in ipairs(top) do
+    return function(row)
       local filled = math.max(1, math.floor(row.count / max * BAR_W + 0.5))
-      add(chunks({
+      return {
         { "  " .. rpad(row.label, label_w) .. "  ", "Identifier" },
         { string.rep("█", filled), "String" },
         { string.rep(" ", BAR_W - filled) .. "  ", nil },
         { lpad(tostring(row.count), count_w), "Number" },
-      }))
+      }
     end
-  end
+  end)
 
-  -- DEAD
-  local dead = vim.tbl_filter(function(row)
+  section("DEAD  (>" .. DEAD_DAYS .. "d)", keys, function(row)
     return row.age > DEAD_DAYS
-  end, keys)
-  table.sort(dead, by_age)
-  dead = head(dead, DEAD_N)
+  end, "age", DEAD_N, function(rows)
+    local label_w = widest(rows, function(row) return row.label end)
 
-  section("DEAD  (>" .. DEAD_DAYS .. "d)")
-  if #dead == 0 then
-    nothing()
-  else
-    local label_w = 0
-    for _, row in ipairs(dead) do
-      label_w = math.max(label_w, #row.label)
-    end
-
-    for _, row in ipairs(dead) do
-      add(chunks({
+    return function(row)
+      return {
         { "  " .. rpad(row.label, label_w) .. "  ", "Identifier" },
         { rpad(trunc(row.desc, DESC_W), DESC_W) .. "  ", "Comment" },
         { lpad(row.age .. "d", 5), "DiagnosticWarn" },
-      }))
+      }
     end
-  end
+  end)
 
-  -- FORGOTTEN: has a key, but you keep reaching for the palette instead
-  local forgotten = vim.tbl_filter(function(command)
+  -- has a key, but you keep reaching for the palette instead
+  section("FORGOTTEN  (palette ≫ key)", commands, function(command)
     return #command.keys > 0 and command.palette >= PALETTE_MIN and command.palette > command.key_count
-  end, commands)
-  table.sort(forgotten, by_palette)
-  forgotten = head(forgotten, FORGOTTEN_N)
+  end, "palette", FORGOTTEN_N, function(rows)
+    local label_w = widest(rows, function(command) return command.keys[1].label end)
 
-  section("FORGOTTEN  (palette ≫ key)")
-  if #forgotten == 0 then
-    nothing()
-  else
-    local label_w = 0
-    for _, command in ipairs(forgotten) do
-      label_w = math.max(label_w, #command.keys[1].label)
-    end
-
-    for _, command in ipairs(forgotten) do
-      add(chunks({
+    return function(command)
+      return {
         { "  " .. rpad(command.keys[1].label, label_w) .. "  ", "Identifier" },
         { rpad(trunc(command.desc, DESC_W), DESC_W) .. "  ", "Comment" },
         { "key ", "Comment" },
         { lpad(tostring(command.key_count), 3), "Number" },
         { "  pal ", "Comment" },
         { lpad(tostring(command.palette), 3), "Number" },
-      }))
+      }
     end
-  end
+  end)
 
-  -- BIND ME: no key at all, yet you run it often
-  local bind = vim.tbl_filter(function(command)
+  -- no key at all, yet you run it often
+  section("BIND ME  (no key, used often)", commands, function(command)
     return #command.keys == 0 and command.palette >= PALETTE_MIN
-  end, commands)
-  table.sort(bind, by_palette)
-  bind = head(bind, BIND_N)
-
-  section("BIND ME  (no key, used often)")
-  if #bind == 0 then
-    nothing()
-  else
-    for _, command in ipairs(bind) do
-      add(chunks({
+  end, "palette", BIND_N, function()
+    return function(command)
+      return {
         { "  " .. rpad(trunc(command.desc, DESC_W), DESC_W) .. "  ", "Comment" },
         { "pal ", "Comment" },
         { lpad(tostring(command.palette), 3), "Number" },
-      }))
+      }
     end
-  end
+  end)
 
   add("")
 

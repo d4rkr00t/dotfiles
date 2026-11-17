@@ -4,7 +4,6 @@ local function setup_diagnostics()
     underline = true,
     float = {
       focusable = true,
-      style = "full",
       border = "rounded",
       source = true,
       header = "",

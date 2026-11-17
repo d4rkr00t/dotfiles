@@ -32,7 +32,12 @@ local function read()
     lines = vim.list_slice(lines, #lines - MAX_ENTRIES + 1)
     vim.fn.writefile(lines, PATH)
   end
-  return vim.tbl_map(vim.json.decode, lines)
+  local entries = {}
+  for _, line in ipairs(lines) do
+    local decoded, entry = pcall(vim.json.decode, line)
+    if decoded and type(entry) == "table" then table.insert(entries, entry) end
+  end
+  return entries
 end
 
 -- newest first, current cwd only; drops repeats and queries that are a prefix of another query

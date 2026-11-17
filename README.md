@@ -19,7 +19,7 @@ Optional:
 
 - Symlinks every file in `link/` into `$HOME` (tmux, wezterm, aerospace, readline, curl, wget, screen).
 - Writes `~/.zshrc`, `~/.bashrc` and `~/.bash_profile` as untracked stubs that source `rc/*`, unless a regular file already exists. Machine-specific lines and anything appended by other tools belong in those stubs or in `~/.extra`, not in the repo.
-- Symlinks `git/config` and `git/ignore` into `~/.config/git/`. `~/.gitconfig` stays a local untracked file; git reads both and `git config --global` writes to `~/.gitconfig`.
+- Symlinks `git/config` and `git/ignore` into `~/.config/git/`. `~/.gitconfig` is created as an empty untracked file if missing; git reads both and `git config --global` writes to `~/.gitconfig`.
 - Symlinks `nvim/` to `~/.config/nvim`, `rex/init.lua` to `~/.config/rex/`, `skills/` to `~/.claude/skills` and `~/.codex/skills`, `misc/.claude.md` to `~/.claude/CLAUDE.md`.
 - Registers `misc/claude-statusline.sh` as the Claude Code status line.
 

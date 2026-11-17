@@ -31,7 +31,8 @@ mkdir -p "$HOME/.config/git" "$HOME/.claude" "$HOME/.codex"
 # local untracked file for machine-specific settings.
 ln -sfn "$DIR/git/config" "$HOME/.config/git/config"
 ln -sfn "$DIR/git/ignore" "$HOME/.config/git/ignore"
-[ -L "$HOME/.gitconfig" ] && rm "$HOME/.gitconfig"
+# must exist, otherwise `git config --global` writes into the tracked file
+stub "$HOME/.gitconfig" "# machine-local git config, not tracked"
 [ -L "$HOME/.gitignore" ] && rm "$HOME/.gitignore"
 
 # link nvim config

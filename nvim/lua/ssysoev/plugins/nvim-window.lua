@@ -1,7 +1,7 @@
 return {
   {
     "yorickpeterse/nvim-window",
-    event = "VeryLazy",
+    lazy = true,
     opts = {
       chars = {
         "w",

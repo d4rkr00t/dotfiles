@@ -153,7 +153,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
   if.app-id = "com.superlogical.rex"
-  run = ['move-node-to-workspace 3']
+  run = ['layout tiling', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
   if.app-id = "company.thebrowser.Browser"

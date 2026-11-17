@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 n() {
-  about 'Runs given command using binary in node_modules/.bin of the current project (https://github.com/ai/environment)'
-  param '1: binary name'
-  example '$ n eslint .'
+  about 'Runs the package manager matching the lockfile in the current directory (bun, pnpm, yarn, npm; default pnpm)'
+  param 'rest: package manager arguments'
+  example '$ n install'
   group 'npm'
 
   if [[ -f bun.lock || -f bun.lockb ]]; then

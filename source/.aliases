@@ -50,20 +50,9 @@ alias tls='tmux ls 2> /dev/null'
 alias tat='tmux attach -t'
 
 #
-# Docker
-#
-
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
-alias docker_clean_volumes='docker volume rm $(docker volume ls --filter=dangling=true -q)'
-alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
-alias docker_kill_all='docker kill $(docker ps -q)'
-
-#
 # NODE / NPM
 #
 
-alias nom="rm -rf node_modules && npm cache clean --force && npm i"
-alias nup="npm update --save-dev && npm update --save"
 alias y="yarn"
 
 
@@ -90,10 +79,6 @@ alias lsd="ls -lFd"
 # Misc
 #
 
-# TypeScript Tree Map
-# https://effectivetypescript.com/2022/07/30/treemap-for-source-files/
-alias tscmap="tsc --noEmit --listFiles | xargs stat -f \"%z %N\" | npx webtreemap-cli"
-
 # SSH
 alias sad="ssh-add --apple-use-keychain"
 
@@ -104,7 +89,7 @@ alias cl="clear"
 alias r="fc -s"
 
 # History stats
-alias hstat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head -n 50"
+alias hstat="fc -l 1 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head -n 50"
 
 # Show $PATH in a readable way
 alias path='echo -e ${PATH//:/\\n}'
@@ -115,13 +100,10 @@ alias gfl="rm -rf ./.git/index.lock"
 # Use git to character diff files
 alias gdc="git diff --no-index --word-diff=color --word-diff-regex=."
 
-# Gzip-enabled `curl`
-alias gurl='curl --compressed'
-
 # Get week number
 alias week='date +%V'
 
-# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+# macOS software updates, Homebrew and global npm packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update -g'
 
 # IP addresses
@@ -149,11 +131,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash"
 # (useful when executing time-consuming commands)
 alias badge="tput bel"
 
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
-done
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
@@ -161,10 +138,6 @@ alias reload="exec $SHELL -l"
 # URL-encode/decode strings
 alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]))"'
 alias urldecode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
-
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"

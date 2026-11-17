@@ -23,7 +23,6 @@ config.window_close_confirmation = "NeverPrompt"
 -- Color & Appearance
 --
 
--- config.color_scheme = "tokyonight_night"
 config.window_decorations = "RESIZE"
 
 config.hide_tab_bar_if_only_one_tab = true
@@ -40,17 +39,11 @@ config.window_padding = {
 
 config.font_size = 13
 config.line_height = 1.4
--- config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font = wezterm.font_with_fallback({
-  -- {
-  --   family = "CommitMono Nerd Font",
-  --   harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
-  -- },
   {
     family = "Monaspace Neon NF",
     harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
   },
-  -- { family = "JetBrainsMono Nerd Font" },
 })
 config.underline_position = -8
 config.underline_thickness = 2
@@ -60,32 +53,32 @@ config.underline_thickness = 2
 --
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-  { key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "-",  mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { key = "-",  mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   {
     key = "k",
     mods = "CMD",
-    action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+    action = act.ClearScrollback("ScrollbackAndViewport"),
   },
   {
     key = "w",
     mods = "CMD",
-    action = wezterm.action.CloseCurrentTab({ confirm = false }),
+    action = act.CloseCurrentTab({ confirm = false }),
   },
   {
     key = "LeftArrow",
     mods = "ALT|SHIFT",
-    action = wezterm.action.MoveTabRelative(-1),
+    action = act.MoveTabRelative(-1),
   },
   {
     key = "RightArrow",
     mods = "ALT|SHIFT",
-    action = wezterm.action.MoveTabRelative(1),
+    action = act.MoveTabRelative(1),
   },
   {
     key = "UpArrow",
     mods = "CMD",
-    action = wezterm.action.ScrollToTop,
+    action = act.ScrollToTop,
   },
   {
     key = 'R',

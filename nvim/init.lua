@@ -56,3 +56,4 @@ require("lazy").setup({
 require("ssysoev.core.keymaps")
 require("ssysoev.core.filetype")
 require("ssysoev.core.autocommands")
+require("ssysoev.core.commands")

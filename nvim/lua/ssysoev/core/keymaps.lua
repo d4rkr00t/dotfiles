@@ -119,12 +119,12 @@ cc.add({
   -- copy file path
   {
     desc = "Copy Relative Path",
-    cmd = function() copy(vim.fn.expand("%:.")) end,
+    cmd = "<cmd>CopyRelPath<cr>",
     keys = { "n", "<leader>cr", noremap },
   },
   {
     desc = "Copy Absolute Path",
-    cmd = function() copy(vim.fn.expand("%:p")) end,
+    cmd = "<cmd>CopyAbsPath<cr>",
     keys = { "n", "<leader>ca", noremap },
   },
 

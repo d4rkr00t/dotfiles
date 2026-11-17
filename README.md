@@ -2,27 +2,31 @@
 
 ## Installation
 
-### Using Git and the bootstrap script
-
-You can clone the repository wherever you want.
-The bootstrapper script will create symlinks for few needed files and also updates DOTFILES path in ~/.dotfiles.
-
 ```bash
-git clone https://github.com/d4rkr00t/dotfiles.git && cd dotfiles && ./setup.sh
+git clone https://github.com/d4rkr00t/dotfiles.git && cd dotfiles
+./init/.brew.sh   # Homebrew packages, casks and fonts from Brewfile
+./setup.sh        # needs jq; safe to rerun
 ```
 
-Install and init settings for some apps:
+Optional:
 
 ```bash
-./init/.osx.sh
-./init/.brew.sh
-./init/.cask.sh
-./init/.npm.sh
-./init/.tpm.sh
+./init/.osx.sh    # macOS defaults
+./init/.npm.sh    # npm init defaults
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
+## What `setup.sh` does
 
-```bash
-./setup.sh
-```
+- Symlinks every file in `link/` into `$HOME` (tmux, wezterm, aerospace, readline, curl, wget, screen).
+- Writes `~/.zshrc`, `~/.bashrc` and `~/.bash_profile` as untracked stubs that source `rc/*`, unless a regular file already exists. Machine-specific lines and anything appended by other tools belong in those stubs or in `~/.extra`, not in the repo.
+- Symlinks `git/config` and `git/ignore` into `~/.config/git/`. `~/.gitconfig` stays a local untracked file; git reads both and `git config --global` writes to `~/.gitconfig`.
+- Symlinks `nvim/` to `~/.config/nvim`, `rex/init.lua` to `~/.config/rex/`, `skills/` to `~/.claude/skills` and `~/.codex/skills`, `misc/.claude.md` to `~/.claude/CLAUDE.md`.
+- Registers `misc/claude-statusline.sh` as the Claude Code status line.
+
+## Layout
+
+- `rc/` — zsh and bash startup files.
+- `source/` — aliases, exports, PATH, completion; sourced by both shells.
+- `functions/` — shell functions, one per file; `dtlist` lists them, `ref <name>` shows help.
+- `bin/git/` — extra git subcommands.
+- `git/`, `link/`, `nvim/`, `rex/`, `skills/`, `misc/`, `init/` — as described above.

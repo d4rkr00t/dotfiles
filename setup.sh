@@ -15,16 +15,15 @@ for file in "$DIR"/link/*; do
 done
 unset file
 
+mkdir -p "$HOME/.config" "$HOME/.claude" "$HOME/.codex"
+
 # link nvim config
 ln -sfn "$DIR/nvim/" "$HOME/.config/"
 
 # link skills
-mkdir -p "$HOME/.claude" "$HOME/.codex" "$HOME/.config/workmux"
 ln -sfn "$DIR/skills/" "$HOME/.claude/skills"
 ln -sfn "$DIR/skills/" "$HOME/.codex/skills"
 
-# link workmux config
-ln -sfn "$DIR/misc/.workmux.yaml" "$HOME/.config/workmux/config.yaml"
 ln -sfn "$DIR/misc/.claude.md" "$HOME/.claude/CLAUDE.md"
 
 # link rex config (replace an older whole-dir symlink so ln doesn't write through it)

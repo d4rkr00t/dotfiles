@@ -2,8 +2,6 @@
 
 link/.dotfiles
 
-.tmux-plugins
-
 npm-debug.log
 vim.log
 nvim.log

@@ -8,3 +8,6 @@ if [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 eval "$(fnm env)"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$HOME/.orbit/bin:$BUN_INSTALL/bin:$PATH"

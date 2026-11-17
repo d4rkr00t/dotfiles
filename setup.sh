@@ -15,7 +15,24 @@ for file in "$DIR"/link/*; do
 done
 unset file
 
-mkdir -p "$HOME/.config" "$HOME/.claude" "$HOME/.codex"
+# Shell rc files in $HOME are untracked stubs that source the repo files, so
+# tools appending to ~/.zshrc and friends never modify the repo.
+stub() {
+    [ -L "$1" ] && rm "$1"
+    [ -e "$1" ] || echo "$2" > "$1"
+}
+stub "$HOME/.zshrc" "source \"$DIR/rc/zshrc\""
+stub "$HOME/.bashrc" "source \"$DIR/rc/bashrc\""
+stub "$HOME/.bash_profile" 'source ~/.bashrc'
+
+mkdir -p "$HOME/.config/git" "$HOME/.claude" "$HOME/.codex"
+
+# Git reads ~/.config/git/config as well as ~/.gitconfig; the latter stays a
+# local untracked file for machine-specific settings.
+ln -sfn "$DIR/git/config" "$HOME/.config/git/config"
+ln -sfn "$DIR/git/ignore" "$HOME/.config/git/ignore"
+[ -L "$HOME/.gitconfig" ] && rm "$HOME/.gitconfig"
+[ -L "$HOME/.gitignore" ] && rm "$HOME/.gitignore"
 
 # link nvim config
 ln -sfn "$DIR/nvim/" "$HOME/.config/"

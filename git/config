@@ -150,9 +150,6 @@
   manyFiles = true
 
 [core]
-  # Use custom `.gitignore`
-  excludesfile = ~/.gitignore
-
   # Treat spaces before tabs and all kinds of trailing whitespace as an error.
   # [default] trailing-space: looks for spaces at the end of a line
   # [default] space-before-tab: looks for spaces before tabs at the beginning of
@@ -252,13 +249,6 @@
 [lfs]
   batch = true
   concurrenttransfers = 15
-
-[trace2]
-	eventTarget = af_unix:/Users/ssysoev/.gittrace/trace.sock
-	configparams = custom.metacommands
-	eventBrief = true
-	maxFiles = 2000
-	eventNesting = 1
 
 [init]
 	defaultBranch = main

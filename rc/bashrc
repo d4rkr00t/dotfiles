@@ -1,4 +1,6 @@
-[ -n "$PS1" ] && source ~/.bash_profile
+source ~/.dotfiles
+
+[ -n "$PS1" ] && source "$DOTFILES/rc/bash_profile"
 
 command -v fzf > /dev/null && eval "$(fzf --bash)"
 

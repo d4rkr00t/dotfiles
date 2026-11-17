@@ -84,22 +84,17 @@ fi
 #
 
 # How many we load (?)
-export HISTSIZE=100000
+HISTSIZE=100000
 # How many we can hold (?)
-export SAVEHIST=$HISTSIZE
+SAVEHIST=$HISTSIZE
 # History won't be saved without the following command
 # This isn't set by default.
-export HISTFILE="$HOME/.zsh_history"
+HISTFILE="$HOME/.zsh_history"
 
 # Delete old recorded entry if new entry is a duplicate.
 setopt HIST_IGNORE_ALL_DUPS
 # Share history between all sessions (implies incremental append).
 setopt SHARE_HISTORY
-
-#
-# Navigation
-#
-# setopt autocd autopushd
 
 # Source all files in "source"
 for file in $DOTFILES/source/(.)*; do
@@ -123,9 +118,3 @@ eval "$(zoxide init zsh)"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-export PATH="$HOME/.orbit/bin:$PATH"

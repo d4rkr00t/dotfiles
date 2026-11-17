@@ -72,6 +72,8 @@
 
   ref = reflog -n 25 --format=ref
 
+  root = rev-parse --show-toplevel
+
   # List remotes
   rem = remote -v
 
@@ -89,11 +91,10 @@
 
   last = log --graph --decorate --oneline -1 --stat # last commit stats
   lg = log --color --graph -n 20 --pretty=custom --abbrev-commit --date=short --decorate
-  lgm = "!r() { git lg --merges; }; r"
-  lgnl = "!r() { git lg | nl; }; r"
+  lgm = lg --merges
+  lgnl = !git lg | nl
   ld = log -p -1 # last commit diff
   lp = log --branches --not --remotes --decorate --oneline # commits to push
-  lst = log --graph --decorate --oneline -1 --stat HEAD^..HEAD
 
   #
   # Rebase
@@ -121,7 +122,7 @@
   # Misc
   #
 
-  # reset conflicting files to origin version
+  # resolve conflicting files with `checkout --ours`
   resconf = "!f() { git status -sb | rg UU | cut -d' ' -f2- | xargs git co --ours; }; f"
 
   resref = "!r() { git reset --hard HEAD@{$1}; }; r"
@@ -135,7 +136,7 @@
   }; f"
 
   # Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
-  # Use: `git gh-pr 123` or `git gh-pr 123 upstream`
+  # Use: `git pr 123` or `git pr 123 upstream`
   pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1' -
 
   tr = "!r() { git checkout --track $1; }; r" # checkout and track branch

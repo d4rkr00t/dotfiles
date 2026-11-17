@@ -15,6 +15,12 @@ Optional:
 ./init/.npm.sh    # npm init defaults
 ```
 
+Machine set up from the old layout (rc files in `link/`, workmux, tpm): after `git pull && ./setup.sh`, run once:
+
+```bash
+./init/.migrate.sh
+```
+
 ## What `setup.sh` does
 
 - Symlinks every file in `link/` into `$HOME` (tmux, wezterm, aerospace, readline, curl, wget, screen).

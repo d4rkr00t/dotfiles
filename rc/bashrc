@@ -4,12 +4,8 @@ source ~/.dotfiles
 
 command -v fzf > /dev/null && eval "$(fzf --bash)"
 
-# Atlassian security config
+# Append to the history file, rather than overwriting it
 shopt -s histappend
-export HISTFILESIZE=1048576
-export HISTSIZE=1048576
-export HISTTIMEFORMAT="%s "
-export HISTCONTROL=ignoredups
 # Keep noise out of history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date"
 
@@ -21,6 +17,4 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date"
 reset_terminal_modes() {
     [ -z "$TMUX" ] && printf '\e[?1000l\e[?1002l\e[?1003l\e[?1004l\e[?1006l\e[?2004l'
 }
-export PROMPT_COMMAND="history -a; history -c; history -r; reset_terminal_modes${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
-
-[ -r ~/.afm-git-configrc ] && source ~/.afm-git-configrc
+export PROMPT_COMMAND="reset_terminal_modes${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

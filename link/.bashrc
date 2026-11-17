@@ -1,6 +1,6 @@
 [ -n "$PS1" ] && source ~/.bash_profile
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+command -v fzf > /dev/null && eval "$(fzf --bash)"
 
 # Atlassian security config
 shopt -s histappend
